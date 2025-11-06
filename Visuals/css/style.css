@@ -1,0 +1,41 @@
+/* ___________________________________________ */
+
+/* Root Settings */
+
+/* ___________________________________________ */
+
+:root {
+
+    /* Default */
+    --background: #FFF;
+
+    /* Colors */
+    --project-orange: orange;
+    --project-red: red;
+    --project-blue: blue;
+    --project-green: green;
+    --project-black: black;
+    --project-less-black: rgb(61, 61, 61);
+    --project-white: white;
+    --project-less-white: rgb(182, 182, 182);
+    --project-grey: rgb(95, 95, 95);
+
+}
+
+/* ___________________________________________ */
+
+/* Default Site Settings */
+
+/* ___________________________________________ */
+
+html, body {
+    overflow-x: hidden !important;
+    overflow-y: scroll; /* Makes sure users can still Scroll */
+    scrollbar-width: none;
+    -ms-overflow-style: none; /* Old Browsers. Just for safety. */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar { /* All other browsers */
+    display: none;
+}
