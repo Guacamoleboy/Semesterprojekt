@@ -7,7 +7,7 @@
 :root {
 
     /* Default */
-    --background: #FFF;
+    --background: #6a9ae2;
 
     /* Colors */
     --project-orange: orange;
@@ -20,6 +20,14 @@
     --project-less-white: rgb(182, 182, 182);
     --project-grey: rgb(95, 95, 95);
 
+    /* FOG */
+    --fog-blue: #003D76;
+    --fog-blue-less: #00488b;
+    --fog-white: #FFF;
+
+    /* Sections */
+    --section-1-background: #D8D8D8;
+
 }
 
 /* ___________________________________________ */
@@ -29,13 +37,321 @@
 /* ___________________________________________ */
 
 html, body {
+    background: var(--background);
     overflow-x: hidden !important;
-    overflow-y: scroll; /* Makes sure users can still Scroll */
+    overflow-y: hidden;
     scrollbar-width: none;
+    scroll-behavior: smooth;
     -ms-overflow-style: none; /* Old Browsers. Just for safety. */
 }
 
 html::-webkit-scrollbar,
 body::-webkit-scrollbar { /* All other browsers */
     display: none;
+}
+
+.fog-logo-tiny {
+    width: 2.5rem;
+    height: auto;
+}
+
+.fog-logo-small {
+    width: 5rem;
+    height: auto;
+}
+
+.fog-logo-medium {
+    width: 10rem;
+    height: auto;
+}
+
+.fog-logo-big {
+    width: 15rem;
+    height: auto;
+}
+
+.fog-logo-massive {
+    width: 20rem;
+    height: auto;
+}
+
+.guac-container {
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+/* ___________________________________________ */
+
+/* Hero Section */
+
+/* ___________________________________________ */
+
+.hero {
+    background: linear-gradient(to bottom, var(--background) 0%, var(--background) 80%, var(--section-1-background) 100%);
+    min-height: 60rem;
+    color: var(--project-white);
+}
+
+.hero h2 {
+    font-size: 1.5rem !important;
+}
+
+.dynamic-word-wrapper {
+    margin-top: 18rem !important;
+}
+
+.dynamic-word-wrapper h2 {
+    font-size: 2rem !important;
+    font-weight: 500;
+    color: var(--project-white);
+}
+
+#dynamic-word {
+    font-weight: 700;
+    transition: opacity 0.3s ease;
+}
+
+.guac-btn-hero { 
+    display: inline-block;
+    position: relative;
+    font: inherit;
+    font-size: 3rem;
+    font-weight: 600;
+    text-decoration: none !important;
+    text-align: center;
+    padding: 0.375em 1em;
+    color: var(--project-white);
+    background-color: transparent;
+    border: 0;
+    border-radius: 10px !important;
+    text-shadow: 0 0.0625em 0 #fff;
+    box-shadow: inset 0 0.0625em 0 0 #f4f4f4, 0 0.0625em 0 0 #efefef,
+        0 0.125em 0 0 #ececec, 0 0.25em 0 0 #e0e0e0, 0 0.3125em 0 0 #dedede,
+        0 0.375em 0 0 #dcdcdc, 0 0.425em 0 0 #cacaca, 0 0.425em 0.5em 0 #cecece;
+    transition: 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease, opacity 0.25s ease;
+    cursor: pointer;
+    pointer-events: auto;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    z-index: 0;
+}
+
+.guac-btn-hero::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 110%;
+    top: 0;
+    left: 0;
+    background-color: var(--fog-blue);
+    border-radius: 10px !important;
+    z-index: -1;
+    transition: height 0.25s ease, background-color 0.25s ease;
+}
+
+.guac-btn-hero:hover,
+.guac-btn-hero:active {
+    transform: translateY(0.225em);
+    box-shadow: inset 0 0.03em 0 0 #f4f4f4, 0 0.03em 0 0 #efefef,
+        0 0.0625em 0 0 #ececec, 0 0.125em 0 0 #e0e0e0, 0 0.125em 0 0 #dedede,
+        0 0.2em 0 0 #dcdcdc, 0 0.225em 0 0 #cacaca, 0 0.225em 0.375em 0 #cecece;
+    opacity: 1;
+}
+
+.guac-btn-hero:hover::after,
+.guac-btn-hero:active::after {
+    height: 100%;
+}
+
+
+/* ___________________________________________ */
+
+/* Section 1 */
+
+/* ___________________________________________ */
+
+.section-1 {
+    background: var(--section-1-background);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.section-1 h2::after {
+    content: "";
+    display: block;
+    width: 10rem;            
+    border-bottom: 3px dotted var(--fog-blue);
+    opacity: 0.4 !important;
+    margin: 0.5rem 0 0 0;     
+}
+
+.section-1 p {
+    max-width: 50ch;
+}
+
+.guac-btn-fog {
+    background-color: var(--fog-blue);
+    color: var(--project-white);
+    border-radius: 16px !important;
+    text-decoration: none;
+}
+
+.guac-btn-fog:hover {
+    text-decoration: none !important;
+}
+
+/* ___________________________________________ */
+
+/* Section 2 */
+
+/* ___________________________________________ */
+
+.section-2 {
+    background: var(--section-1-background);
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.guac-card {
+    text-align: center !important;
+    background-color: var(--project-white);
+    border-radius: 16px !important;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    max-width: 20rem;
+    padding: 2rem 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.guac-card-title {
+    background-color: var(--fog-blue);
+    color: var(--fog-white);
+    padding: 0.75rem 1rem;
+    border-radius: 12px 12px 0 0;
+    margin: -2rem -1.5rem 1rem -1.5rem;
+    font-size: 1.25rem;
+}
+
+.card-p-dotted {
+    position: relative;
+    padding-top: 1rem;
+    text-align: center;
+}
+
+.card-p-dotted::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30%;
+    border-top: 2px dotted var(--fog-blue); 
+    opacity: 0.4 !important;
+}
+
+.section-2-info {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-2-info p:first-of-type {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--fog-blue);
+    text-transform: uppercase;
+    margin-bottom: 0rem;
+}
+
+.section-2-info h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--fog-blue);
+    margin: 0 0 1rem 0;
+    position: relative;
+}
+
+.section-2-info h2::after {
+    content: "";
+    display: block;
+    width: 6rem;
+    height: 3px;
+    margin: 0.5rem auto 1rem auto;
+    border-bottom: 3px dotted var(--fog-blue);
+    opacity: 0.6;
+}
+
+.section-2-info p:last-of-type {
+    font-size: 1rem;
+    color: var(--project-less-black);
+    max-width: 45ch;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+/* ___________________________________________ */
+
+/* Scroll Button */
+
+/* ___________________________________________ */
+
+.scroll-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 10px 20px;
+    background-color: var(--fog-blue);
+    color: var(--fog-white);
+    border: none;
+    border-radius: 0.9375rem;
+    font-size: 16px;
+    opacity: 0;
+    display: none;
+    pointer-events: none;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.scroll-btn i {
+    font-size: 1.3rem;
+    color: var(--fog-white);
+}
+
+.scroll-btn.show {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.scroll-btn:hover {
+    background-color: var(--fog-blue-less);
+    transition: all 0.3s ease;
+}
+
+/* ___________________________________________ */
+
+/* Section 3 */
+
+/* ___________________________________________ */
+
+.section-3 {
+    background: var(--section-1-background);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+/* ___________________________________________ */
+
+/* Section Beregn */
+
+/* ___________________________________________ */
+
+.section-beregn {
+    background: var(--fog-blue);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
 }
