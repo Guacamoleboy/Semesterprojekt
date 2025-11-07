@@ -6,21 +6,26 @@
     <meta charset="UTF-8"> <!-- ÆØÅ -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- In case some nerd uses Internet Explorer -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Mobile Responsiveness -->
-    <meta name="description" content="Projekt beskrivelse her"> <!-- SEO / Google -->
+    <meta name="description" content="Beregn prisen på din carport i dag på få minutter"> <!-- SEO / Google -->
     <meta name="author" content="Guacamoleboy"> <!-- Author of Website -->
 
     <!-- Visuals -->
-    <title>Title</title>
+    <title>Fog - Beregner</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&family=Montserrat:wght@400;700&family=Lato:wght@400;700&family=Poppins:wght@400;700&family=Raleway:wght@400;700&family=Nunito:wght@400;700&family=Work+Sans:wght@400;700&family=Exo+2:wght@400;700&family=Fira+Sans:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Icon -->
-    <link rel="icon" href="#" type="image/x-icon">
-    <link rel="apple-touch-icon" href="#">
+    <link rel="icon" href="/images/logo/fog.svg" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/images/logo/fog.svg">
 
     <!-- CSS Load -->
     <link rel="stylesheet" href="/css/style.css">
 
     <!-- Script Load -->
     <script src="/js/notification.js" defer></script>
+    <script src="/js/dynamic-text.js" defer></script>
+    <script src="/js/button-to-top.js" defer></script>
 
     <!-- Framwork load -->
     <link rel="stylesheet" href="/css/guacamoleboy-wow.css">
@@ -32,6 +37,122 @@
 
 </head>
 <body>
+
+    <!-- Scroll Button Start -->
+    <button id="scrollToTopBtn" class="scroll-btn" onclick="scrollToSection()"><i class="fa fa-arrow-up"></i></button>
+    <!-- Scroll Button End -->
+
+    <section class="hero">
+        <div class="guac-container">
+            <div class="guac-row guac-flex-column guac-align-center">
+                
+                <a href="https://www.johannesfog.dk" class="guac-animate guac-slide-down">
+                    <img src="/images/logo/fog.svg" alt="FOG Logo" class="fog-logo-small guac-pt-4">
+                </a>
+                <h2 class="guac-animate guac-fade-in guac-mt-1">Holder i længden</h2>
+
+                <!-- Dynamic Wrapper -->
+                <div class="dynamic-word-wrapper guac-animate guac-slide-up guac-mt-2">
+                    <h2>
+                        Byg din unikke carport på <span id="dynamic-word">mål</span>
+                    </h2>
+                </div>
+                <!-- Dynamic Wrapper -->
+
+                <a href="#section-1-goto" class="guac-btn guac-btn-hero guac-mt-4">Læs mere</a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 1 Start -->
+    <section class="section-1" id="section-1-goto">
+        <div class="guac-container">
+            <div class="guac-row guac-align-center guac-pt-5 guac-pb-5">
+                
+                <!-- Left -->
+                <div class="guac-col-auto guac-w-50 guac-animate guac-slide-left">
+                    <img src="/images/blobs/blob-done-1.svg" alt="imgText here bby girl" class="guac-w-100">
+                </div>
+
+                <!-- Right -->
+                <div class="guac-col-auto guac-w-50 guac-animate guac-slide-right">
+                    <h2>Så nemt kan du beregne din carport</h2>
+                    <p>
+                        Indtast dine mål, vælg materialer og få et vejledende tilbud på få minutter. Vi står selvfølgelig også altid klar i butikken til
+                        en samtale over en kop kaffe.
+                    </p>
+                    <a href="#step-1" class="guac-btn guac-btn-fog guac-mt-4">Se hvordan</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- Section 1 End -->
+
+    <!-- Section 2 Start -->
+    <section class="section-2" id="step-1">
+        <div class="guac-container">
+            
+            <!-- Section 2 Information -->
+            <div class="section-2-info">
+                <p>Beregn pris</p>
+                <h2>Så nemt er det</h2>
+                <p>På ganske få minutter står du med et tilbud på en komplet carport</p>
+            </div>
+
+            <!-- Cards -->
+
+            <div class="guac-row guac-justify-center guac-gap-5">
+
+                <!-- Left -->
+                <div class="guac-col-3 guac-card guac-animate guac-slide-up" style="animation-delay: 0.5s;">
+                    <h2 class="guac-card-title">1. Vælg materiale</h2>
+                    <p class="card-p-dotted">Vælg de materialer som passer til lige netop dit projekt.</p>
+                    <img src="/images/page-content/index/step-1.png" alt="imgText here bby girl" class="guac-w-100">
+                </div>
+
+                <!-- Middle -->
+                <div class="guac-col-3 guac-card guac-animate guac-slide-up" style="animation-delay: 1.0s;">
+                    <h2 class="guac-card-title">2. Indtast mål</h2>
+                    <p class="card-p-dotted">Angiv længde, bredde og højde for din carport. Hurtigt og enkelt.</p>
+                    <img src="/images/page-content/index/step-2.png" alt="imgText here bby girl" class="guac-w-100">
+                </div>
+
+                <!-- Right -->
+                <div class="guac-col-3 guac-card guac-animate guac-slide-up" style="animation-delay: 1.5s;">
+                    <h2 class="guac-card-title">3. Godkend</h2>
+                    <p class="card-p-dotted">Se dit samlede tilbud og bed om tilbud, når alt ser rigtigt ud.</p>
+                    <img src="/images/page-content/index/step-3.png" alt="imgText here bby girl" class="guac-w-100">
+                </div>
+
+                <a href="#pre-beregner" class="guac-btn guac-btn-fog guac-mt-4">Prøv nu</a>
+
+            </div>
+        </div>
+    </section>
+    <!-- Section 2 End -->
+
+    <!-- Section 3 Start -->
+    <section class="section-3" id="pre-beregner">
+        <div class="guac-container">
+
+            <!-- Section 3 Information -->
+            <div class="section-2-info">
+                <p>Beregn pris</p>
+                <h2>Inden vi starter</h2>
+                <p>Dine mål er afgørende for pris og vejledning. Sørg for at du har målt op korrekt inden du går videre</p>
+            </div>
+
+            <div class="guac-row guac-align-center guac-flex-column">
+                <h2>Billede, timeline eller anden form for visual guide her</h2>
+                <a href="beregn.html" class="guac-btn guac-btn-fog guac-mt-4">Jeg har målt op</a>
+            </div>
+
+            
+        </div>
+    </section>
+    <!-- Section 3 End -->
 
 <!-- Notifications -->
 <div id="guac-notification-container"></div>
