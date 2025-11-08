@@ -26,6 +26,7 @@
     <script src="/js/notification.js" defer></script>
     <script src="/js/dynamic-text.js" defer></script>
     <script src="/js/button-to-top.js" defer></script>
+    <script src="/js/beregner-showcase.js" defer></script>
 
     <!-- Framwork load -->
     <link rel="stylesheet" href="/css/guacamoleboy-wow.css">
@@ -35,28 +36,44 @@
     <!-- Font Awesome Load -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <!-- Modules -->
+    <script type="module" src="/js/components/navbar2.js" defer></script>
+
 </head>
 <body>
 
-    <!-- 
-    
-        Jeg gad godt hvis denne side var fog-blue bagground. Det ser ondt nok ud. 
-        Jeg har lige pt bare linket til siden og sat farven til --fog-blue.
-    
-    -->
+    <!-- Navbar -->
+    <div id="navbar2-component"></div>
+    <!-- Navbar -->
 
     <!-- Beregn Start -->
     <section class="section-beregn" id="beregn">
         <div class="guac-container">
-            <div class="guac-row guac-align-center guac-pt-5 guac-pb-5">
-                
 
-
+            <!-- Section Information -->
+            <div class="section-beregn-info guac-animate guac-slide-down">
+                <p>Beregner</p>
+                <h2>Indtast dine mål</h2>
+                <p>Indtast den længde du ønsker din carport skal være. Fra hus og ud.</p>
             </div>
+
+            <div class="guac-row guac-justify-center guac-animate guac-zoom-in">
+                <img src="/images/page-content/beregn/beregn-1.png" alt="Step Image" class="beregn-img guac-w-100">
+            </div>
+
+            <div class="beregn-input-wrapper guac-d-flex guac-align-center guac-justify-center guac-gap-2 guac-mt-4 guac-animate guac-slide-up">
+                <button type="button" class="beregn-btn beregn-btn-back" style="display: none;">
+                    Tilbage
+                </button>
+                <input type="text" class="beregn-input" placeholder="Indtast længde i cm">
+                <button type="button" class="beregn-btn beregn-btn-next">
+                    Næste
+                </button>
+            </div>
+
         </div>
     </section>
     <!-- Beregn End -->
-
 
 <!-- Notifications -->
 <div id="guac-notification-container"></div>

@@ -13,7 +13,7 @@
     --project-orange: orange;
     --project-red: red;
     --project-blue: blue;
-    --project-green: green;
+    --project-green: rgb(0, 160, 0);
     --project-black: black;
     --project-less-black: rgb(61, 61, 61);
     --project-white: white;
@@ -23,7 +23,9 @@
     /* FOG */
     --fog-blue: #003D76;
     --fog-blue-less: #00488b;
+    --fog-blue-2: #0056a7;
     --fog-white: #FFF;
+    --fog-white-dim: rgba(255, 255, 255, 0.2);
 
     /* Sections */
     --section-1-background: #D8D8D8;
@@ -55,6 +57,17 @@ body::-webkit-scrollbar { /* All other browsers */
     height: auto;
 }
 
+.fog-logo-nav {
+    width: 3.5rem;
+    height: auto;
+    display: block;
+}
+
+.fog-logo-nav-2 {
+    width: 3.5rem;
+    height: auto;
+}
+
 .fog-logo-small {
     width: 5rem;
     height: auto;
@@ -81,19 +94,9 @@ body::-webkit-scrollbar { /* All other browsers */
 
 /* ___________________________________________ */
 
-/* Hero Section */
+/* Dynamic word */
 
 /* ___________________________________________ */
-
-.hero {
-    background: linear-gradient(to bottom, var(--background) 0%, var(--background) 80%, var(--section-1-background) 100%);
-    min-height: 60rem;
-    color: var(--project-white);
-}
-
-.hero h2 {
-    font-size: 1.5rem !important;
-}
 
 .dynamic-word-wrapper {
     margin-top: 18rem !important;
@@ -109,60 +112,6 @@ body::-webkit-scrollbar { /* All other browsers */
     font-weight: 700;
     transition: opacity 0.3s ease;
 }
-
-.guac-btn-hero { 
-    display: inline-block;
-    position: relative;
-    font: inherit;
-    font-size: 3rem;
-    font-weight: 600;
-    text-decoration: none !important;
-    text-align: center;
-    padding: 0.375em 1em;
-    color: var(--project-white);
-    background-color: transparent;
-    border: 0;
-    border-radius: 10px !important;
-    text-shadow: 0 0.0625em 0 #fff;
-    box-shadow: inset 0 0.0625em 0 0 #f4f4f4, 0 0.0625em 0 0 #efefef,
-        0 0.125em 0 0 #ececec, 0 0.25em 0 0 #e0e0e0, 0 0.3125em 0 0 #dedede,
-        0 0.375em 0 0 #dcdcdc, 0 0.425em 0 0 #cacaca, 0 0.425em 0.5em 0 #cecece;
-    transition: 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease, opacity 0.25s ease;
-    cursor: pointer;
-    pointer-events: auto;
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    z-index: 0;
-}
-
-.guac-btn-hero::after {
-    content: "";
-    position: absolute;
-    display: block;
-    width: 100%;
-    height: 110%;
-    top: 0;
-    left: 0;
-    background-color: var(--fog-blue);
-    border-radius: 10px !important;
-    z-index: -1;
-    transition: height 0.25s ease, background-color 0.25s ease;
-}
-
-.guac-btn-hero:hover,
-.guac-btn-hero:active {
-    transform: translateY(0.225em);
-    box-shadow: inset 0 0.03em 0 0 #f4f4f4, 0 0.03em 0 0 #efefef,
-        0 0.0625em 0 0 #ececec, 0 0.125em 0 0 #e0e0e0, 0 0.125em 0 0 #dedede,
-        0 0.2em 0 0 #dcdcdc, 0 0.225em 0 0 #cacaca, 0 0.225em 0.375em 0 #cecece;
-    opacity: 1;
-}
-
-.guac-btn-hero:hover::after,
-.guac-btn-hero:active::after {
-    height: 100%;
-}
-
 
 /* ___________________________________________ */
 
@@ -350,8 +299,311 @@ body::-webkit-scrollbar { /* All other browsers */
 /* ___________________________________________ */
 
 .section-beregn {
+    padding-top: 1rem !important;
     background: var(--fog-blue);
     min-height: 100vh;
     display: flex;
     align-items: center;
+}
+
+.section-beregn-info {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-beregn-info p:first-of-type {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--fog-white);
+    text-transform: uppercase;
+    margin-bottom: 0rem;
+}
+
+.section-beregn-info h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--fog-white);
+    margin: 0 0 1rem 0;
+    position: relative;
+}
+
+.section-beregn-info h2::after {
+    content: "";
+    display: block;
+    width: 6rem;
+    height: 3px;
+    margin: 0.5rem auto 1rem auto;
+    border-bottom: 3px dotted var(--fog-white-dim);
+    opacity: 0.8;
+}
+
+.section-beregn-info p:last-of-type {
+    font-size: 1rem;
+    color: var(--fog-white);
+    max-width: 45ch;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+.section-beregn img {
+    margin-top: -3rem !important;
+    width: 35%;
+    height: auto;
+}
+
+.beregn-input-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    gap: 1rem;            
+    margin-top: 1rem;
+    flex-wrap: wrap;         
+}
+
+.beregn-input {
+    flex: 0 0 15rem; 
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    border: 2px solid var(--project-white);
+    border-radius: 16px;
+    box-sizing: border-box;
+    transition: all 0.25s ease-in-out;
+}
+
+.beregn-btn {
+    background-color: var(--fog-blue-2);
+    color: var(--fog-white);
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 16px;
+    border: 2px solid var(--fog-white-dim);
+    text-decoration: none !important;
+    transition: all 0.25s ease-in-out;
+}
+
+.beregn-input:focus {
+    outline: none;    
+    border-color: var(--fog-blue);   
+}
+
+.beregn-btn:hover {
+    background-color: var(--fog-blue-less);
+}
+
+.beregn-btn-next.godkend {
+    background-color: var(--fog-blue-2); /* Change here for "Beregn" button @Ebou @Andreas */
+    color: var(--fog-white);
+    font-weight: 500;
+}
+
+/* ___________________________________________ */
+
+/* Hero 2 */
+
+/* ___________________________________________ */
+
+.hero-2 {
+    position: relative;
+    overflow: hidden;
+    color: var(--guac-white);
+    background-color: var(--fog-blue);
+    height: 100vh;
+}
+
+.hero-2-visual {
+    position: relative;
+}
+
+.hero-2-visual img {
+    max-width: 90%;
+    height: auto;
+}
+
+.hero-2-visual .floating-card {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: var(--guac-white);
+    color: var(--guac-black);
+    border: 2px solid var(--fog-blue-less);
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+    border-radius: 16px;
+    padding: 0.75rem 1rem;
+    width: fit-content;
+    max-width: 100%; 
+    white-space: nowrap; 
+    transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+}
+
+.hero-2-visual .floating-card i {
+    color: var(--fog-blue);
+    font-size: 1.25rem;
+    position: relative;
+    padding-right: 1rem;
+}
+
+.hero-2-visual .floating-card i::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 170%;
+    opacity: 0.5 !important;
+    background-color: var(--fog-blue-less);
+    border-radius: 2px;
+}
+
+.hero-2-visual .floating-card strong {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--guac-black);
+}
+
+.hero-2-visual .floating-card span {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--guac-black);
+}
+
+.hero-2 i.fa {
+    color: var(--guac-primary);
+}
+
+.hero-2-visual .floating-card strong,
+.hero-2-visual .floating-card span {
+    display: inline;
+}
+
+.guac-visual-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--fog-blue);
+    border: 2px solid var(--fog-blue-less);
+    color: var(--fog-white);
+    padding: 0.5rem 1rem;
+    border-radius: 16px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+    line-height: 1.2;
+    user-select: none;
+    transition: all 0.25s ease-in-out;
+}
+
+.guac-visual-tag i {
+    color: var(--fog-white);
+    font-size: 1rem;
+}
+
+.guac-visual-tag:hover {
+    background-color: var(--fog-blue-less);
+    border-color: var(--fog-blue);
+}
+
+.guac-btn-hero-left {
+    text-decoration: none !important;
+    background-color: var(--fog-blue-2);
+    color: var(--fog-white);
+    border-radius: 16px !important;
+    border: 2px solid var(--fog-white-dim);
+}
+
+.guac-btn-hero-right {
+    text-decoration: none !important;
+    background-color: var(--project-white);
+    color: var(--fog-blue);
+    font-weight: 600 !important;
+    border-radius: 16px !important;
+}
+
+.guac-btn-hero-right:hover,
+.guac-btn-hero-left:hover {
+    opacity: 0.6 !important;
+}
+
+/* ___________________________________________ */
+
+/* Navbar 2 */
+
+/* ___________________________________________ */
+
+.guac-navbar-overlay {
+    background: var(--fog-blue-less);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    pointer-events: none;
+    border-bottom: 2px solid var(--fog-white-dim); 
+}
+
+.guac-navbar-overlay a,
+.guac-navbar-overlay h2 {
+    pointer-events: auto;
+    color: var(--fog-white);
+    font-size: 1.25rem; 
+}
+
+.navbar-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.fog-logo-nav {
+    height: 3rem; 
+    display: block;
+}
+
+.navbar-text {
+    margin: 0;
+    font-weight: 500;
+    line-height: 3rem; 
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem; 
+    max-width: 50%; 
+    flex-shrink: 1;
+    overflow: hidden;
+}
+
+.navbar-right-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none !important;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative; 
+    padding: 0 0.5rem; 
+}
+
+.navbar-right-link:not(:last-child)::after {
+    content: "";
+    display: block;
+    width: 2px; 
+    height: 1.5rem;
+    background-color: var(--fog-white-dim);
+    margin-left: 2rem;
 }
