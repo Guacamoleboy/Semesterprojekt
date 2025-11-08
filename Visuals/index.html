@@ -35,6 +35,9 @@
     <!-- Font Awesome Load -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <!-- Modules -->
+    <script type="module" src="/js/components/navbar.js" defer></script>
+
 </head>
 <body>
 
@@ -42,28 +45,103 @@
     <button id="scrollToTopBtn" class="scroll-btn" onclick="scrollToSection()"><i class="fa fa-arrow-up"></i></button>
     <!-- Scroll Button End -->
 
-    <section class="hero">
+    <!-- Navbar -->
+    <div id="navbar-component"></div>
+    <!-- Navbar -->
+
+    <!-- Hero 2 -->
+    <section id="hero-2" class="hero-2 guac-d-flex guac-align-center">
         <div class="guac-container">
-            <div class="guac-row guac-flex-column guac-align-center">
-                
-                <a href="https://www.johannesfog.dk" class="guac-animate guac-slide-down">
-                    <img src="/images/logo/fog.svg" alt="FOG Logo" class="fog-logo-small guac-pt-4">
-                </a>
-                <h2 class="guac-animate guac-fade-in guac-mt-1">Holder i længden</h2>
+            <div class="guac-row guac-align-center guac-justify-between">
 
-                <!-- Dynamic Wrapper -->
-                <div class="dynamic-word-wrapper guac-animate guac-slide-up guac-mt-2">
-                    <h2>
-                        Byg din unikke carport på <span id="dynamic-word">mål</span>
-                    </h2>
+                <!-- Left Content -->
+                <div class="guac-col-6 guac-p-4 guac-animate guac-slide-left">
+
+                    <!-- Pre tag -->
+                    <div class="guac-visual-tag">
+                        <i class="fa fa-bolt"></i> En del af XL-Byg
+                    </div>
+
+                    <!-- Dynamic header -->
+                    <h1 class="guac-mb-3 guac-fw-bold">
+                        Beregn prisen på din unikke<br> carport på <span id="dynamic-word">mål</span>
+                    </h1>
+
+                    <!-- Hero text-->
+                    <p class="guac-mb-4 guac-fs-4">
+                    Prøv vores online beregner og find ud af hvad din helt personlige carport kan laves for. Det er helt gratis.
+                    </p>
+
+                    <!-- Random information -->
+                    <div class="guac-mb-4 guac-d-flex guac-flex-wrap guac-gap-2">
+                        <div class="guac-d-flex guac-align-center guac-gap-1">
+                            <i class="fa fa-check-circle"></i> <span>Uforpligtende</span>
+                        </div>
+                        <div class="guac-d-flex guac-align-center guac-gap-1">
+                            <i class="fa fa-check-circle"></i> <span>Gratis</span>
+                        </div>
+                        <div class="guac-d-flex guac-align-center guac-gap-1">
+                            <i class="fa fa-check-circle"></i> <span>Nemt & Hurtigt</span>
+                        </div>
+                    </div>
+
+                    <!-- Hero buttons -->
+                    <div class="guac-d-flex guac-gap-3 guac-flex-wrap guac-mb-4">
+                        <a href="beregn.html" class="guac-btn guac-btn-hero-left guac-btn-lg">
+                            Gå til beregner
+                        </a>
+                        <a href="#section-1-goto" class="guac-btn guac-btn-hero-right guac-btn-lg">
+                            Læs mere
+                        </a>
+                    </div>
+
+                    <!-- Trustpilot -->
+                    <div class="guac-d-flex guac-align-center guac-gap-2 guac-mt-3">
+                        <div>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half"></i>
+                        </div>
+                        <span class="guac-fs-3">4.2/5 stjerner på Trustpilot</span>
+                    </div>
                 </div>
-                <!-- Dynamic Wrapper -->
 
-                <a href="#section-1-goto" class="guac-btn guac-btn-hero guac-mt-4">Læs mere</a>
+                <!-- Right Visual -->
+                <div class="guac-col-6 guac-text-center guac-p-4">
+                    <div class="hero-2-visual guac-animate guac-slide-right">
+                    <img src="/images/page-content/index/illustration-1.webp" alt="#" class="guac-w-100">
 
-            </div>
+                    <!-- Floating Card -->
+                    <div class="guac-card floating-card guac-animate guac-floating-card up" style="top: 10%; left: 10%;">
+                        <div class="guac-d-flex guac-align-center guac-gap-2">
+                        <i class="fa fa-truck"></i>
+                        <div class="guac-pl-2">
+                            <strong>25 års</strong><br>
+                            <span>Erfaring & Levering</span>
+                        </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating Card -->
+                    <div class="guac-card floating-card guac-animate guac-floating-card down" style="bottom: 15%; right: 15%;">
+                        <div class="guac-d-flex guac-align-center guac-gap-2">
+                        <i class="fa fa-home"></i>
+                        <div class="guac-pl-2">
+                            <strong>+2500</strong><br>
+                            <span>Opsatte carporte</span>
+                        </div>
+                        </div>
+                    </div>
+
+                    </div>
+                </div>
+
+            </div> 
         </div>
     </section>
+    <!-- Hero 2 -->
 
     <!-- Section 1 Start -->
     <section class="section-1" id="section-1-goto">
@@ -126,9 +204,12 @@
                     <img src="/images/page-content/index/step-3.png" alt="imgText here bby girl" class="guac-w-100">
                 </div>
 
-                <a href="#pre-beregner" class="guac-btn guac-btn-fog guac-mt-4">Prøv nu</a>
-
             </div>
+            
+            <div class="guac-d-flex guac-justify-center guac-mt-5">
+                <a href="#pre-beregner" class="guac-btn guac-btn-fog">Prøv nu</a>
+            </div>
+
         </div>
     </section>
     <!-- Section 2 End -->
@@ -149,7 +230,6 @@
                 <a href="beregn.html" class="guac-btn guac-btn-fog guac-mt-4">Jeg har målt op</a>
             </div>
 
-            
         </div>
     </section>
     <!-- Section 3 End -->
