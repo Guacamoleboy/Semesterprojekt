@@ -26,6 +26,7 @@
     <script src="/js/notification.js" defer></script>
     <script src="/js/dynamic-text.js" defer></script>
     <script src="/js/button-to-top.js" defer></script>
+    <script src="/js/pre-beregner.js" defer></script>
 
     <!-- Framwork load -->
     <link rel="stylesheet" href="/css/guacamoleboy-wow.css">
@@ -43,6 +44,7 @@
 
     <!-- Scroll Button Start -->
     <button id="scrollToTopBtn" class="scroll-btn" onclick="scrollToSection()"><i class="fa fa-arrow-up"></i></button>
+    <!--<button id="scrollDownBtn" class="scroll-btn"><i class="fa fa-arrow-down"></i></button>-->
     <!-- Scroll Button End -->
 
     <!-- Navbar -->
@@ -87,7 +89,7 @@
 
                     <!-- Hero buttons -->
                     <div class="guac-d-flex guac-gap-3 guac-flex-wrap guac-mb-4">
-                        <a href="beregn.html" class="guac-btn guac-btn-hero-left guac-btn-lg">
+                        <a href="#pre-beregner" class="guac-btn guac-btn-hero-left guac-btn-lg">
                             Gå til beregner
                         </a>
                         <a href="#section-1-goto" class="guac-btn guac-btn-hero-right guac-btn-lg">
@@ -146,7 +148,7 @@
     <!-- Section 1 Start -->
     <section class="section-1" id="section-1-goto">
         <div class="guac-container">
-            <div class="guac-row guac-align-center guac-pt-5 guac-pb-5">
+            <div class="guac-row guac-align-center guac-pt-5 guac-pb-5 guac-gap-5">
                 
                 <!-- Left -->
                 <div class="guac-col-auto guac-w-50 guac-animate guac-slide-left">
@@ -225,9 +227,56 @@
                 <p>Dine mål er afgørende for pris og vejledning. Sørg for at du har målt op korrekt inden du går videre</p>
             </div>
 
-            <div class="guac-row guac-align-center guac-flex-column">
-                <h2>Billede, timeline eller anden form for visual guide her</h2>
-                <a href="beregn.html" class="guac-btn guac-btn-fog guac-mt-4">Jeg har målt op</a>
+            <div class="guac-grid guac-grid-auto guac-gap-3 guac-mt-4 checklist">
+
+                <!-- Card -->
+                <div class="guac-col-auto">
+                    <div class="guac-card checklist-item">
+                        <label>
+                            <input type="checkbox" class="check-input">
+                            <h4>1. Længde</h4>
+                            <p>Mål længden på din ønskede carport</p>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Card -->
+                <div class="guac-col-auto">
+                    <div class="guac-card checklist-item">
+                        <label>
+                            <input type="checkbox" class="check-input">
+                            <h4>2. Bredde</h4>
+                            <p>Mål bredden på din ønskede carport</p>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Card -->
+                <div class="guac-col-auto">
+                    <div class="guac-card checklist-item">
+                        <label>
+                            <input type="checkbox" class="check-input">
+                            <h4>3. Højde</h4>
+                            <p>Mål højden på din ønskede carport</p>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Card -->
+                <div class="guac-col-auto">
+                    <div class="guac-card checklist-item">
+                        <label>
+                            <input type="checkbox" class="check-input">
+                            <h4>4. Materialer</h4>
+                            <p>Vælg materiale og hældning</p>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Validation -->
+            <div class="guac-text-center guac-pt-5">
+                <a href="beregn.html" class="guac-btn guac-btn-fog guac-locked" id="submitBtn">Jeg har målt op</a>
             </div>
 
         </div>

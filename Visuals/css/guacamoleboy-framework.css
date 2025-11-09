@@ -1320,9 +1320,9 @@ li {
 
 .guac-locked {
     opacity: 0.6;
-    pointer-events: auto;
+    pointer-events: none !important;
     position: relative;
-    cursor: not-allowed;
+    cursor: not-allowed !important;
 }
 
 .guac-locked:hover {

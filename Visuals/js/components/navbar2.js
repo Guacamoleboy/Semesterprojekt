@@ -26,7 +26,7 @@ const navbarHTML = `
         <a href="#" class="navbar-right-link guac-animate guac-slide-right">
             <i class="fa fa-phone guac-mr-2"></i> 20 21 44 11
         </a>
-        <a href="https://www.johannesfog.dk" class="navbar-right-link guac-animate guac-slide-right">
+        <a href="https://www.johannesfog.dk/om-fog/forretninger" class="navbar-right-link guac-animate guac-slide-right">
             <i class="fa fa-map-marker-alt"></i> Find butik
         </a>
         <a href="/index.html" class="navbar-right-link guac-animate guac-slide-right">

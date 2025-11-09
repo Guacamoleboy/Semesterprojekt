@@ -4,7 +4,7 @@
     Written by Guacamoleboy
 
     Last updated by: Guacamoleboy
-    Date: 08/11-2025
+    Date: 09/11-2025
 
 */
 
@@ -26,25 +26,6 @@ const beregnSteps = [
 
 // ____________________________________________________________________
 
-function loadStep(stepIndex) {
-    const wrapper = document.querySelector(".beregn-input-wrapper");
-    const backBtn = wrapper.querySelector(".beregn-btn-back");
-    const input = wrapper.querySelector(".beregn-input");
-    const img = document.querySelector(".section-beregn .guac-row img");
-
-    if (!beregnSteps[stepIndex]) return;
-
-    img.src = beregnSteps[stepIndex].img;
-    input.placeholder = beregnSteps[stepIndex].placeholder;
-
-    backBtn.style.display = stepIndex === 0 ? "none" : "inline-flex";
-
-    currentStep = stepIndex;
-
-}
-
-// ____________________________________________________________________
-
 document.addEventListener("DOMContentLoaded", () => {
 
     const wrapper = document.querySelector(".beregn-input-wrapper");
@@ -53,16 +34,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const input = wrapper.querySelector(".beregn-input");
     const img = document.querySelector(".section-beregn .guac-row img");
 
-    function loadStep(stepIndex) {
+    function loadStep(i) {
 
-        if (!beregnSteps[stepIndex]) return;
+        img.src = beregnSteps[i].img;
+        input.placeholder = beregnSteps[i].placeholder;
 
-        img.src = beregnSteps[stepIndex].img;
-        input.placeholder = beregnSteps[stepIndex].placeholder;
+        // Visuals for "Tilbage" button
+        backBtn.style.display = i === 0 ? "none" : "inline-flex";
 
-        backBtn.style.display = stepIndex === 0 ? "none" : "inline-flex";
-
-        if (stepIndex === beregnSteps.length - 1) {
+        // Validation for last button
+        if (i === beregnSteps.length - 1) {
             nextBtn.textContent = "Beregn";
             nextBtn.classList.add("godkend");
         } else {
@@ -70,7 +51,8 @@ document.addEventListener("DOMContentLoaded", () => {
             nextBtn.classList.remove("godkend");
         }
 
-        currentStep = stepIndex;
+        currentStep = i;
+
     }
 
     backBtn.addEventListener("click", () => {
