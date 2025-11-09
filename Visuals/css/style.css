@@ -292,6 +292,52 @@ body::-webkit-scrollbar { /* All other browsers */
     align-items: center;
 }
 
+.section-3 .guac-grid,
+.section-3 .guac-grid-auto {
+    align-items: stretch; 
+}
+
+.section-3 .guac-col-auto {
+    display: flex; 
+}
+
+.section-3 .checklist-item {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.section-3 .checklist-item label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    cursor: pointer;
+    height: 100%;
+}
+
+.section-3 .check-input {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    cursor: pointer;
+    accent-color: var(--guac-success);
+}
+
+.section-3 .check-input:checked ~ h4,
+.section-3 .check-input:checked ~ p {
+    color: var(--guac-success);
+}
+
+.section-3 .checklist-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+}
+
 /* ___________________________________________ */
 
 /* Section Beregn */
