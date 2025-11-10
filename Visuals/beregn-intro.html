@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+
+    <!-- Meta -->
+    <meta charset="UTF-8"> <!-- ÆØÅ -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- In case some nerd uses Internet Explorer -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Mobile Responsiveness -->
+    <meta name="description" content="Beregn prisen på din carport i dag på få minutter"> <!-- SEO / Google -->
+    <meta name="author" content="Guacamoleboy"> <!-- Author of Website -->
+
+    <!-- Visuals -->
+    <title>Fog - Beregner</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&family=Montserrat:wght@400;700&family=Lato:wght@400;700&family=Poppins:wght@400;700&family=Raleway:wght@400;700&family=Nunito:wght@400;700&family=Work+Sans:wght@400;700&family=Exo+2:wght@400;700&family=Fira+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Icon -->
+    <link rel="icon" href="/images/logo/fog.svg" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/images/logo/fog.svg">
+
+    <!-- CSS Load -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Script Load -->
+    <script src="/js/notification.js" defer></script>
+    <script src="/js/dynamic-text.js" defer></script>
+    <script src="/js/button-to-top.js" defer></script>
+    <script src="/js/slideshow.js" defer></script>
+
+    <!-- Framwork load -->
+    <link rel="stylesheet" href="/css/guacamoleboy-wow.css">
+    <link rel="stylesheet" href="/css/guacamoleboy-framework.css">
+    <script src="/js/guacamoleboy-wow.js" defer></script>
+
+    <!-- Font Awesome Load -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Modules -->
+    <script type="module" src="/js/components/navbar2.js" defer></script>
+
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div id="navbar2-component"></div>
+    <!-- Navbar -->
+
+    <!-- Beregn Intro Start -->
+    <section class="beregn-intro">
+        <div class="guac-container">
+            <div class="guac-row guac-justify-center">
+                <div class="beregn-intro-wrapper guac-animate guac-zoom-in">
+
+                    <!-- Left -->
+                    <div class="guac-col-7 beregn-intro-image">
+                        <img id="slideshow-img" src="/images/page-content/beregn-intro/carport-1.png"alt="Carport Showcase"class="beregn-img guac-w-100"/>
+                    </div>
+
+                    <!-- Right -->
+                    <div class="guac-col-5 beregn-intro-text">
+                        <h2>Vælg Materiale</h2>
+                        <p>
+                        Vores beregner giver dig en <strong>prisidé</strong> på din carport.
+                        Det er ikke et endeligt tilbud, men en hjælp til at forstå prisniveauet for dit projekt.
+                        </p>
+                        <form class="beregn-form" action="beregn.html" method="#">
+                            <select id="materiale" class="guac-text-center" required>
+                                <option value="" disabled selected hidden>Vælg materiale</option>
+                                <option value="træ">Træ</option>
+                                <option value="stål">Plastik</option>
+                                <option value="mere1">Mere</option>
+                                <option value="mere2">Mere</option>
+                                <option value="mere3">Mere</option>
+                            </select>
+                            <button type="submit" class="guac-btn guac-btn-fog">
+                                Gå videre
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Beregn Intro End -->
+
+<!-- Notifications -->
+<div id="guac-notification-container"></div>
+<!-- Notifications -->
+
+</body>
+</html>
