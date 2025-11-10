@@ -629,13 +629,14 @@ body::-webkit-scrollbar { /* All other browsers */
 .navbar-right {
     display: flex;
     align-items: center;
-    gap: 1rem; 
+    gap: 0rem; 
     max-width: 50%; 
     flex-shrink: 1;
     overflow: hidden;
 }
 
 .navbar-right-link {
+    font-size: 1.0rem !important;
     display: flex;
     align-items: center;
     text-decoration: none !important;
@@ -645,11 +646,130 @@ body::-webkit-scrollbar { /* All other browsers */
     padding: 0 0.5rem; 
 }
 
-.navbar-right-link:not(:last-child)::after {
+.navbar-right-link:not(:last-child)::after { /* Line until it's last-child. So every item has a line except the last item */
     content: "";
     display: block;
     width: 2px; 
     height: 1.5rem;
     background-color: var(--fog-white-dim);
-    margin-left: 2rem;
+    margin-left: 1rem !important;
+}
+
+/* ___________________________________________ */
+
+/* Beregn intro */
+
+/* ___________________________________________ */
+
+.beregn-intro {
+    background-color: var(--fog-blue);
+    height: 100vh !important;
+    display: flex;
+    padding-top: 2rem;
+    align-items: center;
+}
+
+.beregn-intro-wrapper {
+    background-color: var(--section-1-background);
+    border-radius: 16px !important;
+    box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 100%;
+    height: 70vh;
+}
+
+.beregn-intro-image {
+    position: relative;
+    overflow: hidden;
+    padding: 0 !important;
+}
+
+.beregn-intro-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.beregn-intro-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;       
+    text-align: center;
+    background-color: var(--fog-white);
+    height: 100%;
+    padding: 0;                 
+}
+
+.beregn-intro-text h2 {
+    color: var(--fog-blue);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.beregn-intro-text h2::after {
+    content: "";
+    display: block;
+    width: 6rem;            
+    border-bottom: 3px dotted var(--fog-blue);
+    opacity: 0.4 !important;
+    margin: 2rem auto 0;     
+}
+
+.beregn-intro-text p {
+    color: var(--project-less-black);
+    max-width: 80%;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+.beregn-form {
+    margin-top: 0.5rem; 
+    width: 50%;
+}
+
+.beregn-form label {
+    display: block;
+    font-weight: 600;
+    color: var(--fog-blue-2);
+    margin-bottom: 0.5rem;
+}
+
+.beregn-form select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--project-less-white);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    background-color: var(--fog-white);
+}
+
+.beregn-form select:focus {
+    outline: none;
+    border: 2px solid var(--fog-blue);
+    box-shadow: none;
+}
+
+.beregn-form button {
+    font-size: 1rem;        
+    font-weight: 600;          
+    border-radius: 0.4rem;      
+    padding: 0.5rem 1rem;        
+    transition: all 0.2s ease;   
+    border: 2px solid var(--fog-blue);           
+    outline: none;
+}
+
+.beregn-form button:hover {
+    opacity: 0.85;              
+    transform: translateY(2px); 
 }
