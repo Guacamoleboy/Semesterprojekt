@@ -29,7 +29,7 @@ const navbarHTML = `
         <a href="https://www.johannesfog.dk/om-fog/forretninger" class="navbar-right-link guac-animate guac-slide-right">
             <i class="fa fa-map-marker-alt"></i> Find butik
         </a>
-        <a href="/" class="navbar-right-link guac-animate guac-slide-right">
+        <a href="/beregn" class="navbar-right-link guac-animate guac-slide-right">
             <i class="fa fa-map-marker-alt"></i> Tilbage
         </a>
     </div>
