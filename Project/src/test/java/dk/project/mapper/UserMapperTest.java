@@ -44,6 +44,8 @@ class UserMapperTest {
 
     // ______________________________________________________________________
 
+    // Workflow
+
     @Test
     void shouldInsertAndRetrieveUser() throws SQLException, DatabaseException {
 
