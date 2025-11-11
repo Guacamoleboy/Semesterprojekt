@@ -921,91 +921,130 @@ body::-webkit-scrollbar { /* All other browsers */
     animation: guacFadeOut 1s ease-in-out forwards;
 }
 
+/* ___________________________________________ */
 
 /* Login */
 
-#login {
+/* ___________________________________________ */
+
+.login-section {
+    background: url("../images/page-content/beregn-intro/carport-5.png") center center no-repeat;
+    background-size: cover;
+    width: 100vw;
+    min-height: 100vh;
     display: flex;
+    align-items: center;
     justify-content: center;
-    align-content: center;
-    height: 30rem;
-    width: 100%;
-    box-shadow: 0 0.1rem 2rem rgba(0, 0, 0, 0.7);
 }
 
-
-#login .left-contaier {
-    flex: 1;
+.login-box {
     display: flex;
-    flex-direction: column;
+    width: 80%;
+    min-height: 45vh !important;
+    background-color: var(--project-white);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 0.5rem;
+}
+
+.login-left {
+    display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--project-light-grey);
     padding: 2rem;
 }
 
-
-#login .left-contaier h1 {
-    color: white;
-    font-size: 2.5rem;
-    text-align: center;
+.login-form-wrapper {
+    width: 100%;
+    max-width: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+.login-left h2 {
+    margin: 0 0 1rem 0;
+    text-align: center;
+    color: var(--fog-blue);
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+}
 
-#login .left-contaier h1::after {
+.login-left h2::after {
     content: "";
     display: block;
-    width: 80%;
-    height: 0.2rem;
-    background-color: var(--fog-blue);
-    margin: 0.5rem auto 2rem auto;
+    width: 3rem;
+    border-bottom: 3px dotted var(--fog-blue);
+    opacity: 0.4 !important;
+    margin: 0.5rem auto 1rem;
 }
 
-#login .left-contaier form {
+.login-left form {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    flex-direction: row;
     gap: 1rem;
 }
 
-#login .left-contaier input {
-    padding: 0.8rem;
+.login-left input {
+    border: 2px solid var(--project-less-white);
+    text-align: center !important;
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
     font-size: 1rem;
-    text-align: center;
-    border: none;
-    border-radius: 0.6rem;
+    margin-bottom: 0.5rem;
+    background-color: var(--fog-white);
+    transition: all 0.2s ease-in-out;
 }
 
-#login .left-contaier .btn-container {
-    display: flex;
-    margin-top: 1rem;
-    gap: 17.3rem;
+.login-left input:focus {
+    outline: none;
+    border: 2px solid var(--fog-blue);
+    box-shadow: none;
 }
 
-#login .left-contaier .login-btn {
-    background-color: var(--fog-blue);
-    color: white;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 0.6rem;
-    cursor: pointer;
-    transition: background 0.8s;
-}
-
-#login .left-contaier .login-btn:hover {
-    transform: scale(1.06);
-    background-color: #0055a4;
-}
-
-
-#login .right-container {
-    width: 45%;
+.login-right {
     display: flex;
     justify-content: center;
+    align-items: center;
     background-color: var(--fog-blue);
+    position: relative;
+    border-radius: 0.5rem;
+    top: -5%;
+    bottom: -5%;
+    height: 110%;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
 }
 
+.button-wrapper-login {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.button-wrapper-login button {
+    padding: 0.6rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem !important;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    color: var(--project-white);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.button-wrapper-login button:hover {
+    transform: translateY(2px);
+    opacity: 0.9 !important;
+}
+
+/* ___________________________________________ */
+
 /* Admin Menu */
+
+/* ___________________________________________ */
 
 .adminMenu {
     background-color: var(--background);
