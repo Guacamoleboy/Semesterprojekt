@@ -1,6 +1,6 @@
 /*
 
-    Navbar for subpage "beregner"
+    Navbar for subpage "modtag"
     Written by Guacamoleboy
 
 */
@@ -29,7 +29,7 @@ const navbarHTML = `
         <a href="https://www.johannesfog.dk/om-fog/forretninger" class="navbar-right-link guac-animate guac-slide-right">
             <i class="fa fa-map-marker-alt"></i> Find butik
         </a>
-        <a href="/" class="navbar-right-link guac-animate guac-slide-right">
+        <a href="/beregn/app" class="navbar-right-link guac-animate guac-slide-right">
             <i class="fa fa-map-marker-alt"></i> Tilbage
         </a>
     </div>
@@ -51,3 +51,4 @@ export function loadNavbar(containerId = "navbar2-component") {
 }
 
 loadNavbar();
+

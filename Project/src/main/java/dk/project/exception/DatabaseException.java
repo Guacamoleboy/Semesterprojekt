@@ -6,6 +6,14 @@ public class DatabaseException extends Exception {
 
     // __________________________________________________________
 
+    public DatabaseException(String userMessage, Throwable cause) {
+        super(userMessage, cause);
+        System.out.println("userMessage: " + userMessage);
+        System.out.println("cause: " + cause);
+    }
+
+    // __________________________________________________________
+
     public DatabaseException(String userMessage) {
         super(userMessage);
         System.out.println("userMessage: " + userMessage);
