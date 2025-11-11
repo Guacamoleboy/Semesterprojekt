@@ -1,3 +1,15 @@
+/*
+
+    File changed so our project has Github Automations included as a workflow
+    It'll pass / fail our Unit Tests by default on Pull Requests to either "development"
+    or "review" branch.
+
+    If it's not being run by Github it'll use our local variables instead.
+
+    - Guac
+
+*/
+
 package dk.project.db;
 
 import java.sql.Connection;
@@ -27,4 +39,4 @@ public class Database {
         databaseName = newDatabaseName;
     }
 
-}
+} // Database end
