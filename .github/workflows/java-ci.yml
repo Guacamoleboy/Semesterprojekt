@@ -10,8 +10,22 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:15
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: fog_test
+        options: >-
+          --health-cmd "pg_isready -U test"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
       - name: Checkout code
@@ -34,3 +48,9 @@ jobs:
       - name: Build and run tests
         run: mvn clean test
         working-directory: Project
+        env:
+          DB_HOST: localhost
+          DB_PORT: 5432
+          DB_NAME: fog_test
+          DB_USER: test
+          DB_PASSWORD: test
