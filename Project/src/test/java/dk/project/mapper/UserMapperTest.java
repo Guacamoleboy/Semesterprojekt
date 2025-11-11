@@ -43,7 +43,6 @@ class UserMapperTest {
     }
 
     // ______________________________________________________________________
-    // Unit test
 
     @Test
     void shouldInsertAndRetrieveUser() throws SQLException, DatabaseException {
