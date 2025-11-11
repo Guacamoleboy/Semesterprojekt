@@ -21,7 +21,7 @@
     --project-grey: rgb(95, 95, 95);
 
     /* FOG */
-    --fog-blue: #003D76;
+    --fog-blue: rgb(0, 61, 118);
     --fog-blue-less: #00488b;
     --fog-blue-2: #0056a7;
     --fog-white: #FFF;

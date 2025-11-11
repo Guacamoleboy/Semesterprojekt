@@ -7,7 +7,7 @@
 :root {
 
     /* Default */
-    --background: #6a9ae2;
+    --background: #6c8b97;
 
     /* Colors */
     --project-orange: orange;
@@ -19,6 +19,7 @@
     --project-white: white;
     --project-less-white: rgb(182, 182, 182);
     --project-grey: rgb(95, 95, 95);
+    --project-light-grey: rgb(188, 188, 188);
 
     /* FOG */
     --fog-blue: #003D76;
@@ -787,4 +788,277 @@ body::-webkit-scrollbar { /* All other browsers */
     justify-content: center;
     z-index: 9999;
     animation: guacFadeOut 1s ease-in-out forwards;
+}
+
+
+/* Login */
+
+#login {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 30rem;
+    width: 100%;
+    box-shadow: 0 0.1rem 2rem rgba(0, 0, 0, 0.7);
+}
+
+
+#login .left-contaier {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--project-light-grey);
+    padding: 2rem;
+}
+
+
+#login .left-contaier h1 {
+    color: white;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+
+#login .left-contaier h1::after {
+    content: "";
+    display: block;
+    width: 80%;
+    height: 0.2rem;
+    background-color: var(--fog-blue);
+    margin: 0.5rem auto 2rem auto;
+}
+
+#login .left-contaier form {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+#login .left-contaier input {
+    padding: 0.8rem;
+    font-size: 1rem;
+    text-align: center;
+    border: none;
+    border-radius: 0.6rem;
+}
+
+#login .left-contaier .btn-container {
+    display: flex;
+    margin-top: 1rem;
+    gap: 17.3rem;
+}
+
+#login .left-contaier .login-btn {
+    background-color: var(--fog-blue);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    transition: background 0.8s;
+}
+
+#login .left-contaier .login-btn:hover {
+    transform: scale(1.06);
+    background-color: #0055a4;
+}
+
+
+#login .right-container {
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    background-color: var(--fog-blue);
+}
+
+/* Admin Menu */
+
+.adminMenu {
+    background-color: var(--background);
+    display: flex;
+    height: 100vh;
+}
+
+
+.adminMenu .left-contaier {
+    background-color: #94a9b0;
+    width: 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.adminMenu .left-contaier .top-container {
+    background-color: #426c93;
+    width: 100%;
+    text-align: center;
+}
+
+.adminMenu .profile-picture {
+    margin-top: 0.5rem;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
+}
+
+.adminMenu .left-contaier h2 {
+    color: white;
+    font-size: 0.8rem;
+    margin-top:0;
+    margin-bottom: 0.7rem;
+}
+
+.adminMenu .left-contaier .bottom-container {
+    margin-bottom: 2rem;
+}
+
+.adminMenu .backToHomePage {
+    background: var(--fog-blue);
+    border: none;
+    border-radius: 0.4rem;
+    padding: 0.5rem 0.8rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.adminMenu .backToHomePage:hover {
+    background: #0056a7;
+}
+
+.adminMenu .right-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.adminMenu .right-container .top-container {
+    background: var(--fog-blue);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    min-height:5.6rem;
+}
+
+.adminMenu .nav-bar {
+    margin-left: 35%;
+    justify-content: center;
+    display: flex;
+    gap: 1rem;
+}
+
+.adminMenu .nav-bar button {
+    background-color: #0e5ba8;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.25rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.adminMenu .nav-bar button:hover {
+    transform: scale(1.1);
+    background-color: #0074e0;
+}
+
+.adminMenu #exit {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0 1rem;
+    transition: 0.3s;
+}
+
+.adminMenu #exit:hover {
+    transform: scale(1.1);
+    opacity: 0.7;
+}
+
+.adminMenu .right-container .bottom-container {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.adminMenu .backToHomePage svg {
+    margin-top: 0.2rem; /* Blev nødt til at lave margin top, fordi SVG har mere bund end top */
+    width: 2rem;
+    height: 2rem;
+    color: white;
+}
+
+.adminMenu .content-section {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 1rem;
+    padding: 2rem;
+    color: white;
+    width: 100rem;
+}
+
+.adminMenu .content-section h1 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+    padding-bottom: 0.5rem;
+}
+
+.adminMenu .content {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.adminMenu .content p {
+    margin: 0;
+    color: white;
+}
+
+.adminMenu .content input {
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.6rem 1rem;
+    width: 12rem;
+    text-align: center;
+    color: var(--fog-blue);
+}
+
+
+.adminMenu .btn-container {
+    display: flex;
+    gap: 1rem;
+}
+
+.adminMenu .search-btn,
+.adminMenu .hide-btn {
+    border: none;
+    border-radius: 0.6rem;
+    padding: 0.7rem 1.2rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.adminMenu .search-btn,
+.adminMenu .hide-btn{
+    background: var(--fog-blue);
+    color: white;
+}
+
+.adminMenu .search-btn:hover {
+    background: #0055a4;
+}
+
+.adminMenu .hide-btn:hover {
+    background: #0055a4;
 }
