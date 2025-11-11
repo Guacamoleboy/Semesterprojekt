@@ -7,18 +7,28 @@
 :root {
 
     /* Default */
-    --background: #FFF;
+    --background: #6a9ae2;
 
     /* Colors */
     --project-orange: orange;
     --project-red: red;
     --project-blue: blue;
-    --project-green: green;
+    --project-green: rgb(0, 160, 0);
     --project-black: black;
     --project-less-black: rgb(61, 61, 61);
     --project-white: white;
     --project-less-white: rgb(182, 182, 182);
     --project-grey: rgb(95, 95, 95);
+
+    /* FOG */
+    --fog-blue: #003D76;
+    --fog-blue-less: #00488b;
+    --fog-blue-2: #0056a7;
+    --fog-white: #FFF;
+    --fog-white-dim: rgba(255, 255, 255, 0.2);
+
+    /* Sections */
+    --section-1-background: #D8D8D8;
 
 }
 
@@ -29,13 +39,752 @@
 /* ___________________________________________ */
 
 html, body {
+    background: var(--background);
     overflow-x: hidden !important;
-    overflow-y: scroll; /* Makes sure users can still Scroll */
+    overflow-y: hidden;
     scrollbar-width: none;
+    scroll-behavior: smooth;
     -ms-overflow-style: none; /* Old Browsers. Just for safety. */
 }
 
 html::-webkit-scrollbar,
 body::-webkit-scrollbar { /* All other browsers */
     display: none;
+}
+
+.fog-logo-tiny {
+    width: 2.5rem;
+    height: auto;
+}
+
+.fog-logo-nav {
+    width: 3rem;
+    height: auto;
+    display: block;
+}
+
+.fog-logo-nav-2 {
+    width: 3.5rem;
+    height: auto;
+}
+
+.fog-logo-small {
+    width: 5rem;
+    height: auto;
+}
+
+.fog-logo-medium {
+    width: 10rem;
+    height: auto;
+}
+
+.fog-logo-big {
+    width: 15rem;
+    height: auto;
+}
+
+.fog-logo-massive {
+    width: 20rem;
+    height: auto;
+}
+
+.guac-container {
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+/* ___________________________________________ */
+
+/* Dynamic word */
+
+/* ___________________________________________ */
+
+.dynamic-word-wrapper {
+    margin-top: 18rem !important;
+}
+
+.dynamic-word-wrapper h2 {
+    font-size: 2rem !important;
+    font-weight: 500;
+    color: var(--project-white);
+}
+
+#dynamic-word {
+    font-weight: 700;
+    transition: opacity 0.3s ease;
+}
+
+/* ___________________________________________ */
+
+/* Section 1 */
+
+/* ___________________________________________ */
+
+.section-1 {
+    background: var(--section-1-background);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.section-1 h2::after {
+    content: "";
+    display: block;
+    width: 10rem;
+    border-bottom: 3px dotted var(--fog-blue);
+    opacity: 0.4 !important;
+    margin: 0.5rem 0 0 0;
+}
+
+.section-1 p {
+    max-width: 50ch;
+}
+
+.guac-btn-fog {
+    background-color: var(--fog-blue);
+    color: var(--project-white);
+    border-radius: 16px !important;
+    text-decoration: none;
+}
+
+.guac-btn-fog:hover {
+    text-decoration: none !important;
+}
+
+/* ___________________________________________ */
+
+/* Section 2 */
+
+/* ___________________________________________ */
+
+.section-2 {
+    background: var(--section-1-background);
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.guac-card {
+    text-align: center !important;
+    background-color: var(--project-white);
+    border-radius: 16px !important;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    max-width: 20rem;
+    padding: 2rem 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.guac-card-title {
+    background-color: var(--fog-blue);
+    color: var(--fog-white);
+    padding: 0.75rem 1rem;
+    border-radius: 12px 12px 0 0;
+    margin: -2rem -1.5rem 1rem -1.5rem;
+    font-size: 1.25rem;
+}
+
+.card-p-dotted {
+    position: relative;
+    padding-top: 1rem;
+    text-align: center;
+}
+
+.card-p-dotted::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30%;
+    border-top: 2px dotted var(--fog-blue);
+    opacity: 0.4 !important;
+}
+
+.section-2-info {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-2-info p:first-of-type {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--fog-blue);
+    text-transform: uppercase;
+    margin-bottom: 0rem;
+}
+
+.section-2-info h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--fog-blue);
+    margin: 0 0 1rem 0;
+    position: relative;
+}
+
+.section-2-info h2::after {
+    content: "";
+    display: block;
+    width: 6rem;
+    height: 3px;
+    margin: 0.5rem auto 1rem auto;
+    border-bottom: 3px dotted var(--fog-blue);
+    opacity: 0.6;
+}
+
+.section-2-info p:last-of-type {
+    font-size: 1rem;
+    color: var(--project-less-black);
+    max-width: 45ch;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+/* ___________________________________________ */
+
+/* Scroll Button */
+
+/* ___________________________________________ */
+
+.scroll-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 10px 20px;
+    background-color: var(--fog-blue);
+    color: var(--fog-white);
+    border: none;
+    border-radius: 0.9375rem;
+    font-size: 16px;
+    opacity: 0;
+    display: none;
+    pointer-events: none;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.scroll-btn i {
+    font-size: 1.3rem;
+    color: var(--fog-white);
+}
+
+.scroll-btn.show {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.scroll-btn:hover {
+    background-color: var(--fog-blue-less);
+    transition: all 0.3s ease;
+}
+
+/* ___________________________________________ */
+
+/* Section 3 */
+
+/* ___________________________________________ */
+
+.section-3 {
+    background: var(--section-1-background);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.section-3 .guac-grid,
+.section-3 .guac-grid-auto {
+    align-items: stretch;
+}
+
+.section-3 .guac-col-auto {
+    display: flex;
+}
+
+.section-3 .checklist-item {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.section-3 .checklist-item label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    cursor: pointer;
+    height: 100%;
+}
+
+.section-3 .check-input {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    cursor: pointer;
+    accent-color: var(--guac-success);
+}
+
+.section-3 .check-input:checked ~ h4,
+.section-3 .check-input:checked ~ p {
+    color: var(--guac-success);
+}
+
+.section-3 .checklist-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+}
+
+/* ___________________________________________ */
+
+/* Section Beregn */
+
+/* ___________________________________________ */
+
+.section-beregn {
+    padding-top: 1rem !important;
+    background: var(--fog-blue);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.section-beregn-info {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-beregn-info p:first-of-type {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--fog-white);
+    text-transform: uppercase;
+    margin-bottom: 0rem;
+}
+
+.section-beregn-info h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--fog-white);
+    margin: 0 0 1rem 0;
+    position: relative;
+}
+
+.section-beregn-info h2::after {
+    content: "";
+    display: block;
+    width: 6rem;
+    height: 3px;
+    margin: 0.5rem auto 1rem auto;
+    border-bottom: 3px dotted var(--fog-white-dim);
+    opacity: 0.8;
+}
+
+.section-beregn-info p:last-of-type {
+    font-size: 1rem;
+    color: var(--fog-white);
+    max-width: 45ch;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+.section-beregn img {
+    margin-top: -3rem !important;
+    width: 35%;
+    height: auto;
+}
+
+.beregn-input-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.beregn-input {
+    flex: 0 0 15rem;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    border: 2px solid var(--project-white);
+    border-radius: 16px;
+    box-sizing: border-box;
+    transition: all 0.25s ease-in-out;
+}
+
+.beregn-btn {
+    background-color: var(--fog-blue-2);
+    color: var(--fog-white);
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 16px;
+    border: 2px solid var(--fog-white-dim);
+    text-decoration: none !important;
+    transition: all 0.25s ease-in-out;
+}
+
+.beregn-input:focus {
+    outline: none;
+    border-color: var(--fog-blue);
+}
+
+.beregn-btn:hover {
+    background-color: var(--fog-blue-less);
+}
+
+.beregn-btn-next.godkend {
+    background-color: var(--fog-blue-2); /* Change here for "Beregn" button @Ebou @Andreas */
+    color: var(--fog-white);
+    font-weight: 500;
+}
+
+/* ___________________________________________ */
+
+/* Hero 2 */
+
+/* ___________________________________________ */
+
+.hero-2 {
+    position: relative;
+    overflow: hidden;
+    color: var(--guac-white);
+    background-color: var(--fog-blue);
+    height: 100vh;
+}
+
+.hero-2-visual {
+    position: relative;
+}
+
+.hero-2-visual img {
+    max-width: 90%;
+    height: auto;
+}
+
+.hero-2-visual .floating-card {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: var(--guac-white);
+    color: var(--guac-black);
+    border: 2px solid var(--fog-blue-less);
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+    border-radius: 16px;
+    padding: 0.75rem 1rem;
+    width: fit-content;
+    max-width: 100%;
+    white-space: nowrap;
+    transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+}
+
+.hero-2-visual .floating-card i {
+    color: var(--fog-blue);
+    font-size: 1.25rem;
+    position: relative;
+    padding-right: 1rem;
+}
+
+.hero-2-visual .floating-card i::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 170%;
+    opacity: 0.5 !important;
+    background-color: var(--fog-blue-less);
+    border-radius: 2px;
+}
+
+.hero-2-visual .floating-card strong {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--guac-black);
+}
+
+.hero-2-visual .floating-card span {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--guac-black);
+}
+
+.hero-2 i.fa {
+    color: var(--guac-primary);
+}
+
+.hero-2-visual .floating-card strong,
+.hero-2-visual .floating-card span {
+    display: inline;
+}
+
+.guac-visual-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--fog-blue);
+    border: 2px solid var(--fog-blue-less);
+    color: var(--fog-white);
+    padding: 0.5rem 1rem;
+    border-radius: 16px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+    line-height: 1.2;
+    user-select: none;
+    transition: all 0.25s ease-in-out;
+}
+
+.guac-visual-tag i {
+    color: var(--fog-white);
+    font-size: 1rem;
+}
+
+.guac-visual-tag:hover {
+    background-color: var(--fog-blue-less);
+    border-color: var(--fog-blue);
+}
+
+.guac-btn-hero-left {
+    text-decoration: none !important;
+    background-color: var(--fog-blue-2);
+    color: var(--fog-white);
+    border-radius: 16px !important;
+    border: 2px solid var(--fog-white-dim);
+}
+
+.guac-btn-hero-right {
+    text-decoration: none !important;
+    background-color: var(--project-white);
+    color: var(--fog-blue);
+    font-weight: 600 !important;
+    border-radius: 16px !important;
+}
+
+.guac-btn-hero-right:hover,
+.guac-btn-hero-left:hover {
+    opacity: 0.6 !important;
+}
+
+/* ___________________________________________ */
+
+/* Navbar 2 */
+
+/* ___________________________________________ */
+
+.guac-navbar-overlay {
+    background: var(--fog-blue-less);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    pointer-events: none;
+    border-bottom: 2px solid var(--fog-white-dim);
+}
+
+.guac-navbar-overlay a,
+.guac-navbar-overlay h2 {
+    pointer-events: auto;
+    color: var(--fog-white);
+    font-size: 1.25rem;
+}
+
+.navbar-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.navbar-text {
+    margin: 0;
+    font-weight: 500;
+    line-height: 3rem;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 0rem;
+    max-width: 50%;
+    flex-shrink: 1;
+    overflow: hidden;
+}
+
+.navbar-right-link {
+    font-size: 1.0rem !important;
+    display: flex;
+    align-items: center;
+    text-decoration: none !important;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+    padding: 0 0.5rem;
+}
+
+.navbar-right-link:not(:last-child)::after { /* Line until it's last-child. So every item has a line except the last item */
+    content: "";
+    display: block;
+    width: 2px;
+    height: 1.5rem;
+    background-color: var(--fog-white-dim);
+    margin-left: 1rem !important;
+}
+
+/* ___________________________________________ */
+
+/* Beregn intro */
+
+/* ___________________________________________ */
+
+.beregn-intro {
+    background-color: var(--fog-blue);
+    height: 100vh !important;
+    display: flex;
+    padding-top: 2rem;
+    align-items: center;
+}
+
+.beregn-intro-wrapper {
+    background-color: var(--section-1-background);
+    border-radius: 16px !important;
+    box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 100%;
+    height: 70vh;
+}
+
+.beregn-intro-image {
+    position: relative;
+    overflow: hidden;
+    padding: 0 !important;
+}
+
+.beregn-intro-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.beregn-intro-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--fog-white);
+    height: 100%;
+    padding: 0;
+}
+
+.beregn-intro-text h2 {
+    color: var(--fog-blue);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.beregn-intro-text h2::after {
+    content: "";
+    display: block;
+    width: 6rem;
+    border-bottom: 3px dotted var(--fog-blue);
+    opacity: 0.4 !important;
+    margin: 2rem auto 0;
+}
+
+.beregn-intro-text p {
+    color: var(--project-less-black);
+    max-width: 80%;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+.beregn-form {
+    margin-top: 0.5rem;
+    width: 50%;
+}
+
+.beregn-form label {
+    display: block;
+    font-weight: 600;
+    color: var(--fog-blue-2);
+    margin-bottom: 0.5rem;
+}
+
+.beregn-form select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--project-less-white);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    background-color: var(--fog-white);
+}
+
+.beregn-form select:focus {
+    outline: none;
+    border: 2px solid var(--fog-blue);
+    box-shadow: none;
+}
+
+.beregn-form button {
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 0.4rem;
+    padding: 0.5rem 1rem;
+    transition: all 0.2s ease;
+    border: 2px solid var(--fog-blue);
+    outline: none;
+}
+
+.beregn-form button:hover {
+    opacity: 0.85;
+    transform: translateY(2px);
+}
+
+/* ___________________________________________ */
+
+/* Preloader */
+
+/* ___________________________________________ */
+
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--fog-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: guacFadeOut 1s ease-in-out forwards;
 }
