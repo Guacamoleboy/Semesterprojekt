@@ -12,6 +12,7 @@
 /* ______________________________________________ */
 
 /* ROOT */
+
 /* ______________________________________________ */
 
 :root {
@@ -252,7 +253,7 @@ li {
 
 .guac-row {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     margin-left: -0.5rem;
     margin-right: -0.5rem;
     gap: 1rem;
@@ -1319,9 +1320,9 @@ li {
 
 .guac-locked {
     opacity: 0.6;
-    pointer-events: auto;
+    pointer-events: none !important;
     position: relative;
-    cursor: not-allowed;
+    cursor: not-allowed !important;
 }
 
 .guac-locked:hover {
@@ -1406,10 +1407,21 @@ li {
 /* ______________________________________________ */
 
 /* Dividers */
+
 /* ______________________________________________ */
 
 .section-divider {
     border: 0;
     border-top: 2px solid rgba(255, 255, 255, 0.3);
     margin: 2rem 0;
+}
+
+/* ______________________________________________ */
+
+/* Gap fix */
+
+/* ______________________________________________ */
+
+.guac-no-gap {
+    gap: 0 !important;
 }
