@@ -4,7 +4,6 @@ package dk.project.controller;
 // Imports
 import dk.project.server.ThymeleafSetup;
 import io.javalin.Javalin;
-import java.util.Map;
 
 public class PageController {
 
