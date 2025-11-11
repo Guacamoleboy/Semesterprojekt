@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (currentStep < beregnSteps.length - 1) {
             loadStep(currentStep + 1);
         } else {
-            window.location.href = "#modtag";
+            window.location.href = "/beregn/modtag";
         }
     });
 
