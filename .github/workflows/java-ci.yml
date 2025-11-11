@@ -46,13 +46,14 @@ jobs:
             ${{ runner.os }}-maven-
 
       - name: Initialize database
-        run: psql -h localhost -U test -d fog_test -f Project/schema.sql
+        working-directory: Project
+        run: psql -h localhost -U test -d fog_test -f src/test/resources/schema.sql
         env:
           PGPASSWORD: test
 
       - name: Build and run tests
-        run: mvn clean test
         working-directory: Project
+        run: mvn clean test
         env:
           DB_HOST: localhost
           DB_PORT: 5432
