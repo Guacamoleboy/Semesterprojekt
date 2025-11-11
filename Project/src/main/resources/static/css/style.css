@@ -447,6 +447,137 @@ body::-webkit-scrollbar { /* All other browsers */
 
 /* ___________________________________________ */
 
+/* Modtag */
+
+/* ___________________________________________ */
+
+.modtag-download-link {
+    color: var(--fog-blue);
+    text-decoration: none;
+}
+
+.modtag-download-link:hover { 
+    text-decoration: underline; 
+    opacity: 0.9; 
+}
+
+.modtag-form { 
+    margin-top: 0.5rem; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modtag-form .guac-row {
+    align-items: flex-end;
+    gap: 1rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.modtag-label {
+    display: block;
+    font-weight: 600;
+    color: var(--fog-blue-2);
+    margin-bottom: 0.5rem;
+}
+
+.modtag-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    min-height: 2.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: left;
+    border: 0.125rem solid var(--project-less-white);
+    border-radius: 1rem;
+    box-sizing: border-box;
+    transition: all 0.25s ease-in-out;
+    background-color: var(--fog-white);
+    color: var(--project-less-black);
+}
+
+.modtag-input:focus {
+    outline: none;
+    border-color: var(--fog-blue);
+    box-shadow: none;
+}
+
+.modtag-terms-link {
+    color: var(--fog-blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    text-align: center;
+    transition: all 0.25s ease-in-out;
+}
+
+.modtag-terms-link:hover {
+    text-decoration: underline;
+    opacity: 0.9;
+}
+
+.modtag-card-form {
+    max-width: none;
+    width: 100%;
+    text-align: left !important;
+}
+
+.modtag-card-form .guac-card-title {
+    text-align: center !important;
+}
+
+#modtag .guac-row > .guac-col-5,
+#modtag .guac-row > .guac-col-7 {
+    display: flex;
+}
+
+#modtag .guac-row {
+    margin-left: auto;
+    max-width: fit-content;
+}
+
+.modtag-info {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.modtag-info p:first-of-type {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--fog-blue);
+    text-transform: uppercase;
+    margin-bottom: 0rem;
+}
+
+.modtag-info h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--fog-blue);
+    margin: 0 0 1rem 0;
+    position: relative;
+}
+
+.modtag-info h2::after {
+    content: "";
+    display: block;
+    width: 6rem;
+    height: 3px;
+    margin: 0.5rem auto 1rem auto;
+    border-bottom: 3px dotted var(--fog-blue);
+    opacity: 0.6;
+}
+
+.modtag-info p:last-of-type {
+    font-size: 1rem;
+    color: var(--project-less-black);
+    max-width: 45ch;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+
+/* ___________________________________________ */
+
 /* Hero 2 */
 
 /* ___________________________________________ */

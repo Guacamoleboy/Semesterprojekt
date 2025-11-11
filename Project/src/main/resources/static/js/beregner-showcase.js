@@ -60,7 +60,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     nextBtn.addEventListener("click", () => {
-        if (currentStep < beregnSteps.length - 1) loadStep(currentStep + 1);
+        if (currentStep < beregnSteps.length - 1) {
+            loadStep(currentStep + 1);
+        } else {
+            window.location.href = "#modtag";
+        }
     });
 
     loadStep(0);
