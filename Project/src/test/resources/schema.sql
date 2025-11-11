@@ -1,12 +1,13 @@
 CREATE TABLE roles (
 id SERIAL PRIMARY KEY,
-name VARCHAR(255) NOT NULL
+name VARCHAR(50) UNIQUE NOT NULL /* sale & admin */
 );
 
+/* Users */
 CREATE TABLE users (
 id SERIAL PRIMARY KEY,
-username VARCHAR(255) NOT NULL,
-roleid INT NOT NULL REFERENCES roles(id),
-password_hash VARCHAR(255) NOT NULL,
-createdat TIMESTAMP NOT NULL
+username VARCHAR(100) UNIQUE NOT NULL,
+password_hash TEXT NOT NULL,
+role_id INT NOT NULL REFERENCES roles(id) ON DELETE RESTRICT,
+created_at TIMESTAMP DEFAULT NOW()
 );
