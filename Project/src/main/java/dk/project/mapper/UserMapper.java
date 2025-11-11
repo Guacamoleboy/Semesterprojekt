@@ -13,7 +13,7 @@ public class UserMapper {
     // _____________________________________________________________________
 
     public void newUser(User user) throws DatabaseException {
-        String sql = "INSERT INTO users (username, roleID, password_hash, createdAt) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO users (username, role_id, password_hash, created_at) VALUES (?, ?, ?, ?)";
         try (Connection conn = Database.getConnection();
             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
@@ -31,8 +31,33 @@ public class UserMapper {
             }
 
         } catch (SQLException e) {
-            throw new DatabaseException("Fejl ved oprettelse af bruger", null);
+            throw new DatabaseException("Fejl ved oprettelse af bruger", e);
         }
+    }
+
+    // _____________________________________________________________________
+
+    public User getById(int id) throws DatabaseException {
+        String sql = "SELECT * FROM users WHERE id = ?";
+        try (Connection conn = Database.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return new User(
+                            rs.getInt("id"),
+                            rs.getString("username"),
+                            rs.getInt("role_id"),
+                            rs.getString("password_hash"),
+                            rs.getTimestamp("created_at")
+                    );
+                } else {
+                    return null;
+                }
+            }
+            } catch (SQLException e) {
+                throw new DatabaseException("Fejl ved hentning af bruger", e);
+            }
     }
 
     // ________________________________________________________________________________

@@ -21,6 +21,10 @@ public class User {
         this.createdAt = createdAt;
     }
 
+    public User() {
+
+    }
+
     // __________________________________________________________
 
     public int getId() {
