@@ -1,6 +1,8 @@
 package dk.project.server.routing;
 
 // Imports
+import dk.project.controller.ErrorController;
+import dk.project.controller.PageController;
 import io.javalin.Javalin;
 
 public class Routing {
@@ -11,13 +13,10 @@ public class Routing {
 
     public static void registerRoutes(Javalin app) {
 
-        /*
         PageController.registerRoutes(app);
 
         // Last
         registerErrorRoutes(app);
-
-        */
 
     }
 
@@ -25,7 +24,6 @@ public class Routing {
 
     private static void registerErrorRoutes(Javalin app) {
 
-        /*
         app.error(400, ErrorController::handle400);
         app.error(401, ErrorController::handle401);
         app.error(403, ErrorController::handle403);
@@ -33,7 +31,6 @@ public class Routing {
         app.error(429, ErrorController::handle429);
         app.error(500, ErrorController::handle500);
         app.error(503, ErrorController::handle503);
-        */
 
     }
 
