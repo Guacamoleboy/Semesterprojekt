@@ -26,7 +26,7 @@
     <script src="/js/notification.js" defer></script>
     <script src="/js/dynamic-text.js" defer></script>
     <script src="/js/button-to-top.js" defer></script>
-    <script src="/js/beregner-showcase.js" defer></script>
+    <script src="/js/slideshow.js" defer></script>
 
     <!-- Framwork load -->
     <link rel="stylesheet" href="/css/guacamoleboy-wow.css">
@@ -43,37 +43,18 @@
 <body>
 
 <!-- Navbar -->
-<div id="navbar2-component" data-backlink="/beregn"></div>
+<div id="navbar2-component"></div>
 <!-- Navbar -->
 
-<!-- Beregn Start -->
-<section class="section-beregn" id="beregn">
+<!-- Generic Error Page -->
+<section class="error-section">
     <div class="guac-container">
-
-        <!-- Section Information -->
-        <div class="section-beregn-info guac-animate guac-slide-down">
-            <p>Beregner</p>
-            <h2>Indtast dine mål</h2>
-            <p>Indtast den længde du ønsker din carport skal være. Fra hus og ud.</p>
-        </div>
-
-        <div class="guac-row guac-justify-center guac-animate guac-zoom-in">
-            <img src="/images/page-content/beregn/beregn-1.png" alt="Step Image" class="beregn-img guac-w-100">
-        </div>
-
-        <div class="beregn-input-wrapper guac-d-flex guac-align-center guac-justify-center guac-gap-2 guac-mt-4 guac-animate guac-slide-up">
-            <button type="button" class="beregn-btn beregn-btn-back" style="display: none;">
-                Tilbage
-            </button>
-            <input type="text" class="beregn-input" placeholder="Indtast længde i cm">
-            <button type="button" class="beregn-btn beregn-btn-next">
-                Næste
-            </button>
-        </div>
-
+        <h2 th:text="${errorTitle}">Fejl</h2>
+        <p th:text="${errorMessage}">Noget gik galt.</p>
+        <a href="/" class="guac-btn-error">Til Forsiden</a>
     </div>
 </section>
-<!-- Beregn End -->
+<!-- Generic Error Page -->
 
 <!-- Notifications -->
 <div id="guac-notification-container"></div>
