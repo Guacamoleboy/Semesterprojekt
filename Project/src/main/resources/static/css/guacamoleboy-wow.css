@@ -119,6 +119,14 @@
     animation: guacSlideDown 1s forwards;
 }
 
+.guac-floating-card.up {
+    animation: floatCard 6s ease-in-out infinite alternate;
+}
+
+.guac-floating-card.down {
+    animation: floatCardReverse 6s ease-in-out infinite alternate;
+}
+
 /* _______________________________________________________ */
 
 /* KEY FRAMES */
@@ -127,6 +135,16 @@
 @keyframes guacFadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
+}
+
+@keyframes floatCard {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+}
+
+@keyframes floatCardReverse {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(10px); }
 }
 
 @keyframes guacSlideDown {
@@ -265,5 +283,32 @@
     100% {
         transform: translateX(-100%);
         opacity: 0;
+    }
+}
+
+@keyframes guacRotate {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+@keyframes guacMove {
+    to { transform: translateY(15px) rotate(45deg); }
+}
+
+@keyframes guacFadeOut {
+    0%, 80% { opacity: 1; }
+    100% { opacity: 0; pointer-events: none; }
+}
+
+@keyframes guacSpinAndPulse {
+    0% {
+        transform: rotate(0deg) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: rotate(180deg) scale(1.05);
+        opacity: 0.85;
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+        opacity: 1;
     }
 }

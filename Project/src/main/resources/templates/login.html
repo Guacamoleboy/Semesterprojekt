@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+
+    <!-- Meta -->
+    <meta charset="UTF-8"> <!-- ÆØÅ -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- In case some nerd uses Internet Explorer -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Mobile Responsiveness -->
+    <meta name="description" content="Projekt beskrivelse her"> <!-- SEO / Google -->
+    <meta name="author" content="Guacamoleboy"> <!-- Author of Website -->
+
+    <!-- Visuals -->
+    <title>Fog - Login</title>
+
+    <!-- Icon -->
+    <link rel="icon" href="/images/logo/fog.svg" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/images/logo/fog.svg">
+
+    <!-- CSS Load -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Script Load -->
+    <script src="/js/notification.js" defer></script>
+
+    <!-- Framwork load -->
+    <link rel="stylesheet" href="/css/guacamoleboy-wow.css">
+    <link rel="stylesheet" href="/css/guacamoleboy-framework.css">
+    <script src="/js/guacamoleboy-wow.js" defer></script>
+
+    <!-- Font Awesome Load -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+
+    <!-- Login Section Start -->
+    <section class="login-section">
+        <div class="guac-container">
+            <div class="guac-row guac-justify-center">
+                <div class="login-box">
+
+                    <!-- Left -->
+                    <div class="guac-col-6 login-left">
+                        <div class="login-form-wrapper">
+                            <h2>Log Ind</h2>
+
+                            <!-- TODO Skal laves til POST når vi laver validation -->
+                            <form action="/menu" method="get">
+                                <input type="text" id="username" placeholder="Indtast brugernavn" required>
+                                <input type="password" id="password" placeholder="Indtast password" required>
+                                <div class="button-wrapper-login">
+                                    <a href="/">
+                                        <button type="button" class="guac-btn-fog">Tilbage</button>
+                                    </a>
+                                    <button type="submit" class="guac-btn-fog">Log ind</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Right -->
+                    <div class="guac-col-4 login-right">
+                        <img src="/images/logo/fog.svg" alt="FOG Logo" class="fog-logo-big">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Login Section End -->
+
+<!-- Notifications -->
+<div id="guac-notification-container"></div>
+<!-- Notifications -->
+
+</body>
+</html>
