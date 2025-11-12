@@ -2,6 +2,7 @@ package dk.project.server.routing;
 
 // Imports
 import dk.project.controller.ErrorController;
+import dk.project.controller.Login.LoginController;
 import dk.project.controller.PageController;
 import io.javalin.Javalin;
 
@@ -14,6 +15,8 @@ public class Routing {
     public static void registerRoutes(Javalin app) {
 
         PageController.registerRoutes(app);
+
+        LoginController.registerRoutes(app);
 
         // Last
         registerErrorRoutes(app);

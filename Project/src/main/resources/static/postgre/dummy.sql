@@ -8,9 +8,11 @@ roles
 RESTART IDENTITY CASCADE;
 
 INSERT INTO roles (name) VALUES
-('sale'),
-('admin');
+('employee'),
+('admin'),
+('owner');
 
 INSERT INTO users (username, password_hash, role_id) VALUES
+('employee', crypt('employee', gen_salt('bf')), 1),
 ('admin', crypt('admin', gen_salt('bf')), 2),
-('customer', crypt('customer', gen_salt('bf')), 1)
+('owner', crypt('owner', gen_salt('bf')), 3);
