@@ -8,6 +8,7 @@ import io.javalin.http.Context;
 import org.mindrot.jbcrypt.BCrypt;
 
 public class LoginController {
+
     UserMapper usermapper = new UserMapper();
 
     public static void registerRoutes(Javalin app) {
@@ -17,6 +18,8 @@ public class LoginController {
         app.get("/loginPage", ctx -> ctx.html(ThymeleafSetup.render("login.html", null)));
         app.post("/login", controller::login);
     }
+
+    // _______________________________________________
 
     private void login(Context ctx) {
         String username = ctx.formParam("username");
@@ -49,4 +52,5 @@ public class LoginController {
             ctx.redirect("/loginPage?error=500");
         }
     }
+
 }
