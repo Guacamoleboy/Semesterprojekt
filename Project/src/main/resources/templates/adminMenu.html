@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="da">
+<html lang="da" xmlns:th="http://www.thymeleaf.org">
+
 <head>
 
     <!-- Meta -->
@@ -26,6 +27,11 @@
     <link rel="stylesheet" href="/css/guacamoleboy-wow.css">
     <link rel="stylesheet" href="/css/guacamoleboy-framework.css">
     <script src="/js/guacamoleboy-wow.js" defer></script>
+    <script src="/js/AdminMenu/nav-bar.js" defer></script>
+    <script src="/js/AdminMenu/priceController.js" defer></script>
+    <script type="module" src="/js/Generic/generic-callback.js"></script>
+
+
 
     <!-- Font Awesome Load -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -39,7 +45,7 @@
 
             <div class="top-container">
                 <img class="profile-picture" src="/images/profile.png">
-                <h2>{Name}</h2>
+                <h2 th:text="${user.username}">{NAME}</h2>
             </div>
 
             <div class="bottom-container">
@@ -78,17 +84,18 @@
 
             <div class="bottom-container">
 
-                <div class="content-section" id="Forespørgelser">
+                <div class="content-section" id="Forespørgelser" style="display:block;">
                     <h1>Forespørgelser</h1>
                     <div class="content">
+                        <h1>Forespørgel 1???</h1>
                         <p>Hvad skal der lige være her?</p>
                     </div>
                 </div>
 
-                <div class="content-section" id="Ordre">
+                <div class="content-section" id="Ordre" style="display:none;">
                     <h1>Ordre</h1>
                     <div class="content">
-                        <p>Søg ordre ID</p>
+                        <h1>Søg ordre ID</h1>
                         <form>
 
                             <input type="number" name="ordreID" placeholder="Ordre ID" required>
@@ -101,25 +108,54 @@
 
                         <div class="btn-container">
 
-                            <button type="button" class="hide-btn" id="hide" >Skjul</button>
-                            <button type="submit" class="search-btn" id="searchOrderbtn" >Søg</button>
+                            <button type="button" class="action-btn" id="hide" >Skjul</button>
+                            <button type="submit" class="action-btn" id="searchOrderbtn" >Søg</button>
 
                         </div>
                     </div>
                 </div>
 
 
-                <div class="content-section" id="Prisliste">
+                <div class="content-section" id="Prisliste" style="display:none;">
                     <h1>Prisliste</h1>
-                    <div class="content">
-                        <p>Hvad skal der lige være her?</p>
+
+                    <div class="content" id="allProductsSection">
+                        <h1>Vis vareliste</h1>
+                        <div id="priceListContent">
+                        </div>
+                        <div class="btn-container">
+                            <button type="button" id="prevAllProducts" class="action-btn">Forrige</button>
+                            <button type="button" id="nextAllProducts" class="action-btn">Næste</button>
+                        </div>
+                    </div>
+
+
+
+                    <div class="content" id="searchProductsSection">
+                        <h1>Søg efter vare</h1>
+                        <form id="searchForm">
+                            <input type="text" name="varenr" placeholder="Varenr">
+                            <input type="text" name="title" placeholder="Title">
+                            <input type="text" name="mål" placeholder="Mål">
+                            <button type="submit" class="action-btn">Søg</button>
+                        </form>
+
+                        <div id="searchResults">
+                        </div>
+                        <div class="btn-container" id="searchNavigation" style="display:none;">
+                            <br>
+                            <button type="button" id="hideSearchResults" class="action-btn">Skjul</button>
+                            <button type="button" id="prevSearch" class="action-btn">Forrige</button>
+                            <button type="button" id="nextSearch" class="action-btn">Næste</button>
+                        </div>
                     </div>
                 </div>
 
 
-                <div class="content-section" id="CMS">
+                <div class="content-section" id="CMS" style="display:none;">
                     <h1>CMS</h1>
                     <div class="content">
+                        <h1>CMS</h1>
                         <p>Hvad skal der lige være her?</p>
                     </div>
                 </div>

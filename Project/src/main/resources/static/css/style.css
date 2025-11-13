@@ -25,11 +25,19 @@
     --fog-blue: #003D76;
     --fog-blue-less: #00488b;
     --fog-blue-2: #0056a7;
+    --fog-brighter: #407bb5;
     --fog-white: #FFF;
     --fog-white-dim: rgba(255, 255, 255, 0.2);
 
     /* Sections */
     --section-1-background: #D8D8D8;
+
+    /*Admin colors*/
+    --am-left-container: #94a9b0;
+    --am-top-container: #426c93;
+    --am-nav-bar: #0e5ba8;
+    --am-action-btn-hover: #0074e0;
+    --am-product-card: #FFFFFF33;
 
 }
 
@@ -1253,7 +1261,7 @@ body::-webkit-scrollbar { /* All other browsers */
 
 
 .adminMenu .left-contaier {
-    background-color: #94a9b0;
+    background-color: var(--am-left-container);
     width: 15rem;
     display: flex;
     flex-direction: column;
@@ -1262,7 +1270,7 @@ body::-webkit-scrollbar { /* All other browsers */
 }
 
 .adminMenu .left-contaier .top-container {
-    background-color: #426c93;
+    background-color: var(--am-top-container);
     width: 100%;
     text-align: center;
 }
@@ -1276,9 +1284,9 @@ body::-webkit-scrollbar { /* All other browsers */
 }
 
 .adminMenu .left-contaier h2 {
-    color: white;
+    color: var(--project-white);
     font-size: 0.8rem;
-    margin-top:0;
+    margin-top: 0;
     margin-bottom: 0.7rem;
 }
 
@@ -1296,8 +1304,16 @@ body::-webkit-scrollbar { /* All other browsers */
 }
 
 .adminMenu .backToHomePage:hover {
-    background: #0056a7;
+    background: var(--fog-brighter);
 }
+
+.adminMenu .backToHomePage svg {
+    margin-top: 0.2rem;
+    width: 2rem;
+    height: 2rem;
+    color: var(--project-white);
+}
+
 
 .adminMenu .right-container {
     flex: 1;
@@ -1311,7 +1327,7 @@ body::-webkit-scrollbar { /* All other browsers */
     justify-content: space-between;
     align-items: center;
     padding: 0.75rem 1rem;
-    min-height:5.6rem;
+    min-height: 5.6rem;
 }
 
 .adminMenu .nav-bar {
@@ -1322,7 +1338,7 @@ body::-webkit-scrollbar { /* All other browsers */
 }
 
 .adminMenu .nav-bar button {
-    background-color: #0e5ba8;
+    background-color: var(--fog-blue-2);
     color: white;
     border: none;
     padding: 0.5rem 1.25rem;
@@ -1333,13 +1349,13 @@ body::-webkit-scrollbar { /* All other browsers */
 
 .adminMenu .nav-bar button:hover {
     transform: scale(1.1);
-    background-color: #0074e0;
+    background-color: var(--fog-brighter);
 }
 
 .adminMenu #exit {
     background: none;
     border: none;
-    color: white;
+    color: var(--project-white);
     font-size: 2rem;
     cursor: pointer;
     padding: 0 1rem;
@@ -1351,50 +1367,63 @@ body::-webkit-scrollbar { /* All other browsers */
     opacity: 0.7;
 }
 
+
 .adminMenu .right-container .bottom-container {
     flex: 1;
     padding: 2rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    overflow-y: auto;
+    scrollbar-width: none;
 }
 
-.adminMenu .backToHomePage svg {
-    margin-top: 0.2rem; /* Blev nødt til at lave margin top, fordi SVG har mere bund end top */
-    width: 2rem;
-    height: 2rem;
-    color: white;
+.adminMenu .right-container .bottom-container::-webkit-scrollbar {
+    display: none;
 }
+
 
 .adminMenu .content-section {
-    background-color: rgba(255, 255, 255, 0.15);
     border-radius: 1rem;
     padding: 2rem;
-    color: white;
     width: 100rem;
+    margin-bottom: 2rem;
 }
 
 .adminMenu .content-section h1 {
+    color: var(--project-white);
+    margin-top: 0;
+    font-size: 1.5rem;
+    padding-bottom: 0.5rem;
+}
+
+
+.adminMenu .content {
+    color: var(--project-white);
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 1rem;
+    padding: 1rem 2rem;
+}
+
+.adminMenu .content h1 {
+    color: var(--project-white);
     margin-top: 0;
     font-size: 1.5rem;
     border-bottom: 2px solid rgba(255, 255, 255, 0.4);
     padding-bottom: 0.5rem;
 }
 
-.adminMenu .content {
-    margin-top: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-}
-
 .adminMenu .content p {
     margin: 0;
-    color: white;
+    color: var(--project-white);
 }
 
 .adminMenu .content input {
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--project-white);
     border: none;
     border-radius: 0.5rem;
     padding: 0.6rem 1rem;
@@ -1409,25 +1438,49 @@ body::-webkit-scrollbar { /* All other browsers */
     gap: 1rem;
 }
 
-.adminMenu .search-btn,
-.adminMenu .hide-btn {
+
+.adminMenu .action-btn {
+    background-color: var(--fog-blue);
+    color: var(--project-white);
     border: none;
-    border-radius: 0.6rem;
-    padding: 0.7rem 1.2rem;
+    border-radius: 0.5rem;
+    padding: 0.7rem 1.5rem;
     cursor: pointer;
     transition: 0.3s;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
-.adminMenu .search-btn,
-.adminMenu .hide-btn{
-    background: var(--fog-blue);
-    color: white;
+
+.adminMenu .action-btn:hover {
+    background-color: var(--am-action-btn-hover);
+    transform: scale(1.05);
 }
 
-.adminMenu .search-btn:hover {
-    background: #0055a4;
+
+#priceListContent,
+#searchResults {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-.adminMenu .hide-btn:hover {
-    background: #0055a4;
+.adminMenu .product-item {
+    background: var(--am-product-card);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    color: var(--project-white);
+}
+
+
+.adminMenu #searchForm {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.adminMenu #searchForm input {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: none;
 }

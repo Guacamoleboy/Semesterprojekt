@@ -37,7 +37,7 @@ class UserMapperTest {
             Statement stmt = conn.createStatement()) {
             stmt.execute("TRUNCATE TABLE users RESTART IDENTITY CASCADE");
             stmt.execute("TRUNCATE TABLE roles RESTART IDENTITY CASCADE");
-            stmt.execute("INSERT INTO roles (name) VALUES ('sale'), ('admin')");
+            stmt.execute("INSERT INTO roles (name) VALUES ('employee'), ('admin')");
         }
 
     }

@@ -11,3 +11,13 @@ password_hash TEXT NOT NULL,
 role_id INT NOT NULL REFERENCES roles(id) ON DELETE RESTRICT,
 created_at TIMESTAMP DEFAULT NOW()
 );
+
+/* Products */
+CREATE TABLE products (
+id SERIAL PRIMARY KEY,
+title VARCHAR(100) NOT NULL,
+description VARCHAR(255),
+size VARCHAR(50),
+quantity INT NOT NULL,
+price DECIMAL(10, 2) NOT NULL
+);
