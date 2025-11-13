@@ -27,7 +27,7 @@ public class LoginController {
 
         if (username == null || password == null || username.isBlank() || password.isBlank()) {
 
-            ctx.redirect("/loginPage?error=missingFields");
+            ctx.redirect("/login?error=missingFields");
             return;
         }
 
@@ -36,12 +36,12 @@ public class LoginController {
 
             if (user == null) {
 
-                ctx.redirect("/loginPage?error=wrongInfo");
+                ctx.redirect("/login?error=wrongInfo");
                 return;
             }
 
             if (!BCrypt.checkpw(password, user.getPassword_hash())) {
-                ctx.redirect("/loginPage?error=wrongInfo");
+                ctx.redirect("/login?error=wrongInfo");
                 return;
             }
 
@@ -49,7 +49,7 @@ public class LoginController {
             ctx.redirect("/menu");
 
         } catch (Exception e) {
-            ctx.redirect("/loginPage?error=500");
+            ctx.redirect("/login?error=500");
         }
     }
 
