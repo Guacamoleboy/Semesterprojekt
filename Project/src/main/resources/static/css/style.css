@@ -135,10 +135,13 @@ body::-webkit-scrollbar { /* All other browsers */
 /* ___________________________________________ */
 
 .section-1 {
-    background: var(--section-1-background);
+    position: relative;
     min-height: 100vh;
     display: flex;
     align-items: center;
+    background: url("../images/page-content/index/test2.png") center center no-repeat;
+    background-size: cover;
+    overflow: hidden;
 }
 
 .section-1 h2::after {
@@ -172,7 +175,8 @@ body::-webkit-scrollbar { /* All other browsers */
 /* ___________________________________________ */
 
 .section-2 {
-    background: var(--section-1-background);
+    background: url("../images/page-content/index/test3.png") center center no-repeat;
+    background-size: cover;
     position: relative;
     min-height: 100vh;
     display: flex;
@@ -256,6 +260,20 @@ body::-webkit-scrollbar { /* All other browsers */
 
 /* ___________________________________________ */
 
+/* Section Modtag */
+
+/* ___________________________________________ */
+
+.section-modtag {
+    background-color: var(--section-1-background);
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+/* ___________________________________________ */
+
 /* Scroll Button */
 
 /* ___________________________________________ */
@@ -301,7 +319,8 @@ body::-webkit-scrollbar { /* All other browsers */
 /* ___________________________________________ */
 
 .section-3 {
-    background: var(--section-1-background);
+    background: url("../images/page-content/index/test4.png") center center no-repeat;
+    background-size: cover;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -458,6 +477,146 @@ body::-webkit-scrollbar { /* All other browsers */
     background-color: var(--fog-blue-2); /* Change here for "Beregn" button @Ebou @Andreas */
     color: var(--fog-white);
     font-weight: 500;
+}
+
+.c-checkbox {
+    display: none;
+}
+
+.c-checkbox:checked + .c-formContainer .c-form {
+    width: 19em;
+}
+
+.c-checkbox:checked + .c-formContainer .c-form__toggle {
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0.7);
+}
+
+.c-checkbox:checked + .c-formContainer .c-form__input,
+.c-checkbox:checked + .c-formContainer .c-form__buttonLabel {
+    transition: 0.2s 0.1s;
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.c-formContainer,
+.c-form,
+.c-form__toggle {
+    width: 10.5em;
+    height: 3.4em;
+}
+
+.c-formContainer {
+    position: relative;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.c-form,
+.c-form__toggle {
+    position: absolute;
+    border-radius: 3em;
+    border: 2px solid var(--fog-white);
+    background-color: var(--fog-blue);
+    transition: 0.2s;
+}
+
+.c-form {
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.38em;
+    box-sizing: border-box;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.c-form__toggle {
+    color: var(--fog-white);
+    cursor: pointer;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15em;
+}
+
+.c-form__toggle::before {
+    content: attr(data-title);
+}
+
+.c-form__input,
+.c-form__button {
+    font: inherit;
+    border: 0;
+    outline: 0;
+    border-radius: 3em;
+    box-sizing: border-box;
+}
+
+.c-form__input,
+.c-form__buttonLabel {
+    font-size: 1.05em;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.7);
+    transition: 0s;
+}
+
+.c-form__input {
+    color: var(--fog-white);
+    height: 100%;
+    width: 100%;
+    padding: 0 0.65em;
+    background: transparent;
+}
+
+.c-form__input::placeholder {
+    color: var(--fog-white);
+    opacity: 0.7;
+}
+
+.c-form__input:required:valid {
+    color: var(--fog-white);
+}
+
+.c-form__buttonLabel {
+    color: var(--fog-blue);
+    height: 100%;
+    width: auto;
+    position: relative;
+}
+
+.c-form__buttonLabel::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    cursor: pointer;
+}
+
+.c-form__button {
+    color: var(--fog-blue);
+    padding: 0;
+    height: 100%;
+    width: 4.3em;
+    background-color: var(--fog-white);
+    transition: background-color 0.3s;
+    font-size: 0.95em;
+    cursor: pointer;
+}
+
+.c-form__button:hover {
+    background-color: var(--project-less-white);
+}
+
+.c-checkbox:not(:checked) + .c-formContainer .c-form__toggle {
+    pointer-events: auto !important;
+    cursor: pointer !important;
 }
 
 /* ___________________________________________ */

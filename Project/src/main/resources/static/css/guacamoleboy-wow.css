@@ -312,3 +312,40 @@
         opacity: 1;
     }
 }
+
+@keyframes rotateSlow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes rotateSlowReverse {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); }
+}
+
+@keyframes pulseDots {
+    0%, 100% { background-size: 1.25rem 1.25rem; }
+    50% { background-size: 1.5rem 1.5rem; }
+}
+
+@keyframes pulseOne {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.7;
+    }
+}
+
+@keyframes pulseTwo {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+    50% {
+        transform: translateX(-50%) translateY(-4px);
+        opacity: 0.85;
+    }
+}

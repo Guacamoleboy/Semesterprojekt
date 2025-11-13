@@ -57,18 +57,23 @@
             <p>Indtast den længde du ønsker din carport skal være. Fra hus og ud.</p>
         </div>
 
-        <div class="guac-row guac-justify-center guac-animate guac-zoom-in">
+        <!-- Image Load -->
+        <div class="guac-row guac-justify-center">
             <img src="/images/page-content/beregn/beregn-1.png" alt="Step Image" class="beregn-img guac-w-100">
         </div>
 
+        <!-- Input / form -->
         <div class="beregn-input-wrapper guac-d-flex guac-align-center guac-justify-center guac-gap-2 guac-mt-4 guac-animate guac-slide-up">
-            <button type="button" class="beregn-btn beregn-btn-back" style="display: none;">
-                Tilbage
-            </button>
-            <input type="text" class="beregn-input" placeholder="Indtast længde i cm">
-            <button type="button" class="beregn-btn beregn-btn-next">
-                Næste
-            </button>
+            <input class="c-checkbox" type="checkbox" id="checkbox">
+            <div class="c-formContainer">
+                <form class="c-form" action="#">
+                    <input class="c-form__input" placeholder="Indtast længde i cm" type="text" pattern="^[0-9]+$" required>
+                    <label class="c-form__buttonLabel" for="checkbox">
+                        <button class="c-form__button" type="button">Næste</button>
+                    </label>
+                    <label class="c-form__toggle" for="checkbox" data-title="Start"></label>
+                </form>
+            </div>
         </div>
 
     </div>

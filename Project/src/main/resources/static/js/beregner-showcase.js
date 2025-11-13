@@ -4,7 +4,7 @@
     Written by Guacamoleboy
 
     Last updated by: Guacamoleboy
-    Date: 09/11-2025
+    Date: 13/11-2025
 
 */
 
@@ -29,44 +29,52 @@ const beregnSteps = [
 document.addEventListener("DOMContentLoaded", () => {
 
     const wrapper = document.querySelector(".beregn-input-wrapper");
-    const backBtn = wrapper.querySelector(".beregn-btn-back");
-    const nextBtn = wrapper.querySelector(".beregn-btn-next");
-    const input = wrapper.querySelector(".beregn-input");
     const img = document.querySelector(".section-beregn .guac-row img");
+    const input = wrapper.querySelector(".c-form__input");
+    const nextBtn = wrapper.querySelector(".c-form__button");
+    const toggle = wrapper.querySelector(".c-form__toggle");
+    const checkbox = wrapper.querySelector(".c-checkbox");
+
+    toggle.dataset.title = "Start";
+    checkbox.checked = false;
 
     function loadStep(i) {
-
         img.src = beregnSteps[i].img;
         input.placeholder = beregnSteps[i].placeholder;
+        input.value = ""; // Clears placeholder text per step
 
-        // Visuals for "Tilbage" button
-        backBtn.style.display = i === 0 ? "none" : "inline-flex";
-
-        // Validation for last button
         if (i === beregnSteps.length - 1) {
             nextBtn.textContent = "Beregn";
-            nextBtn.classList.add("godkend");
         } else {
             nextBtn.textContent = "Næste";
-            nextBtn.classList.remove("godkend");
         }
 
         currentStep = i;
-
     }
 
-    backBtn.addEventListener("click", () => {
-        if (currentStep > 0) loadStep(currentStep - 1);
+    // ________________________________________________________________
+
+    checkbox.addEventListener("change", () => {
+        if (checkbox.checked) {
+            loadStep(0);
+        }
     });
 
+    // ________________________________________________________________
+
     nextBtn.addEventListener("click", () => {
+
+        if (!/^\d{1,10}$/.test(input.value.trim())) {
+            showNotification("Indtast venligst kun tal", "fog");
+            return;
+        }
+
         if (currentStep < beregnSteps.length - 1) {
             loadStep(currentStep + 1);
         } else {
             window.location.href = "/beregn/modtag";
         }
-    });
 
-    loadStep(0);
+    });
 
 });
