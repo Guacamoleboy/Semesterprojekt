@@ -33,11 +33,11 @@
     --section-1-background: #D8D8D8;
 
     /*Admin colors*/
-    --left-container: #94a9b0;
-    --top-container: #426c93;
-    --nav-bar: #0e5ba8;
-    --action-btn-hover: #0074e0;
-    --product-card: #FFFFFF33;
+    --am-left-container: #94a9b0;
+    --am-top-container: #426c93;
+    --am-nav-bar: #0e5ba8;
+    --am-action-btn-hover: #0074e0;
+    --am-product-card: #FFFFFF33;
 
 }
 
@@ -1261,7 +1261,7 @@ body::-webkit-scrollbar { /* All other browsers */
 
 
 .adminMenu .left-contaier {
-    background-color: var(--left-container);
+    background-color: var(--am-left-container);
     width: 15rem;
     display: flex;
     flex-direction: column;
@@ -1270,7 +1270,7 @@ body::-webkit-scrollbar { /* All other browsers */
 }
 
 .adminMenu .left-contaier .top-container {
-    background-color: var(--top-container);
+    background-color: var(--am-top-container);
     width: 100%;
     text-align: center;
 }
@@ -1453,7 +1453,7 @@ body::-webkit-scrollbar { /* All other browsers */
 
 
 .adminMenu .action-btn:hover {
-    background-color: var(--action-btn-hover);
+    background-color: var(--am-action-btn-hover);
     transform: scale(1.05);
 }
 
@@ -1466,7 +1466,7 @@ body::-webkit-scrollbar { /* All other browsers */
 }
 
 .adminMenu .product-item {
-    background: var(--product-card);
+    background: var(--am-product-card);
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     color: var(--project-white);

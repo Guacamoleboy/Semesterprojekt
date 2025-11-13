@@ -34,7 +34,7 @@ title VARCHAR(100) NOT NULL,
 description VARCHAR(255),
 size VARCHAR(50),
 quantity INT NOT NULL,
-price NUMERIC(10, 2) NOT NULL
+price DECIMAL(10, 2) NOT NULL
 );
 
 

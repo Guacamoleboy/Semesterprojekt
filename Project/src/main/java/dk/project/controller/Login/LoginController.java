@@ -15,7 +15,7 @@ public class LoginController {
 
         LoginController controller = new LoginController();
 
-        app.get("/loginPage", ctx -> ctx.html(ThymeleafSetup.render("login.html", null)));
+        app.get("/login", ctx -> ctx.html(ThymeleafSetup.render("login.html", null)));
         app.post("/login", controller::login);
     }
 
