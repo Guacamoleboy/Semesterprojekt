@@ -6,12 +6,10 @@ import dk.project.exception.DatabaseException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserMapperTest {
@@ -37,7 +35,7 @@ class UserMapperTest {
             Statement stmt = conn.createStatement()) {
             stmt.execute("TRUNCATE TABLE users RESTART IDENTITY CASCADE");
             stmt.execute("TRUNCATE TABLE roles RESTART IDENTITY CASCADE");
-            stmt.execute("INSERT INTO roles (name) VALUES ('employee'), ('admin')");
+            stmt.execute("INSERT INTO roles (name) VALUES ('sale'), ('admin')");
         }
 
     }

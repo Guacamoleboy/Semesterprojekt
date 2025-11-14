@@ -2,7 +2,7 @@
 
     Notification Box Bottom Right
     Written by Guacamoleboy
-    Date: 01/11-2025
+    Date: 13/11-2025
 
 */
 
@@ -31,6 +31,9 @@ function showNotification(message, color = "green") {
         case "warning":
             bgColor = rootStyles.getPropertyValue('--project-orange');
             break;
+        case "fog":
+            bgColor = rootStyles.getPropertyValue('--fog-blue');
+            break;
         case "red":
         default:
             bgColor = rootStyles.getPropertyValue('--project-red');
@@ -41,6 +44,11 @@ function showNotification(message, color = "green") {
     notificationBox.className = 'guac-notification';
     notificationBox.innerText = message;
     notificationBox.style.backgroundColor = bgColor.trim();
+
+    if (color.toLowerCase() === "fog") {
+        notificationBox.style.color = rootStyles.getPropertyValue('--fog-white').trim();
+        notificationBox.style.border = `2px solid ${rootStyles.getPropertyValue('--fog-white').trim()}`;
+    }
 
     container.appendChild(notificationBox);
 
