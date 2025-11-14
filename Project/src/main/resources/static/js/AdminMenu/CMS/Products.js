@@ -17,19 +17,12 @@ window.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
 
         const form = new FormData(e.target);
-        const params = {
-
-            id: form.get("varenr") || "",
-            title: form.get("title") || "",
-            size: form.get("mål") || ""
-
-        };
 
         const res = await fetch("/searchProducts", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(params)
+            body: form
         });
+
 
         CMSProducts = await res.json();
         productPage = 0;

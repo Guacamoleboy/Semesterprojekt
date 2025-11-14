@@ -5,6 +5,8 @@ import dk.project.exception.DatabaseException;
 import dk.project.mapper.AdminMenu.ProductMapper;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,24 +38,40 @@ public class ProductController {
     // _______________________________________________
 
     private void searchProducts(Context ctx) throws DatabaseException {
-        Product search = ctx.bodyAsClass(Product.class);
 
-        List<Product> result = productMapper.getProducts().stream()
+        List<Product> result = new ArrayList<>();
+        String idParam = ctx.formParam("varenr");
+        String title = ctx.formParam("title");
+        String size = ctx.formParam("mål");
 
-                .filter(p -> search.getId() <= 0 || String.valueOf(p.getId()).contains(String.valueOf(search.getId())))
+        int id = 0;
+        try {
 
+            if (idParam != null && !idParam.isEmpty()) {
 
-                .filter(p -> search.getTitle() == null || search.getTitle().isEmpty()
-                        || p.getTitle().toLowerCase().contains(search.getTitle().toLowerCase()))
+                id = Integer.parseInt(idParam);
 
+            }
 
-                .filter(p -> search.getSize() == null || search.getSize().isEmpty()
-                        || p.getSize().toLowerCase().contains(search.getSize().toLowerCase()))
+        } catch (NumberFormatException ignored) {}
 
-                .collect(Collectors.toList());
+        for (Product p : productMapper.getProducts()) {
+
+            if ((id <= 0 || String.valueOf(p.getId()).contains(String.valueOf(id))) &&
+            (title == null || title.isEmpty() || p.getTitle().toLowerCase().contains(title.toLowerCase())) &&
+            (size == null || size.isEmpty() || p.getSize().toLowerCase().contains(size.toLowerCase()))) {
+
+                result.add(p);
+
+            }
+
+        }
 
         ctx.json(result);
+
     }
+
+
 
     // _______________________________________________
 
