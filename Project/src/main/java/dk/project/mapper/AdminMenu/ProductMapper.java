@@ -72,7 +72,7 @@ public class ProductMapper {
 
     // ________________________________________________________________________________
 
-    public Product getProuctByID(int id) throws DatabaseException {
+    public Product getProductByID(int id) throws DatabaseException {
         String sql = "SELECT * FROM products where id = ?";
 
         try (Connection conn = Database.getConnection();
