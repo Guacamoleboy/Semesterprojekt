@@ -43,11 +43,14 @@ window.addEventListener("DOMContentLoaded", () => {
             body: form
         });
 
+        e.target.reset();
+
         if (!res.ok) {
 
             console.log("Der er sket en fejl!")
 
         }
+
 
     });
 
@@ -61,7 +64,7 @@ window.addEventListener("DOMContentLoaded", () => {
         if (CMSProducts.length === 0) {
 
             CMSproducts.innerHTML = "<p>Ingen produkter fundet.</p>";
-            togglePagination(false);
+            togglePageShift(false);
             addHideButton();
             return;
 
@@ -98,7 +101,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
         setupEditButtons();
         setupDeleteButtons();
-        togglePagination(true);
+        togglePageShift(true);
         addHideButton();
 
     }
@@ -187,13 +190,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
                 if (res.ok) {
 
-                    alert("Produkt slettet!");
                     CMSProducts = CMSProducts.filter(p => p.id != id);
                     renderProducts();
 
                 } else {
 
-                    alert("Noget gik galt. Prøv igen.");
+                    console.log("Noget gik galt. Prøv igen.");
 
                 }
 
@@ -205,7 +207,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // _________________________________________________
 
-    function togglePagination(show) {
+    function togglePageShift(show) {
 
         const prevBtn = document.getElementById("prevCMSProducts");
         const nextBtn = document.getElementById("nextCMSProducts");
@@ -267,7 +269,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
             CMSproducts.innerHTML = "";
             CMSproducts.style.display = "none";
-            togglePagination(false);
+            togglePageShift(false);
             hideBtn.remove();
 
         });

@@ -8,7 +8,6 @@ import io.javalin.http.Context;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ProductController {
 
@@ -80,9 +79,10 @@ public class ProductController {
         String title = ctx.formParam("title");
         String description = ctx.formParam("description");
         String size = ctx.formParam("size");
+        String stringQuantity = ctx.formParam("quantity");
         String stringUnitPrice = ctx.formParam("price");
 
-        if (stringUnitPrice == null){
+        if (stringUnitPrice == null || stringQuantity == null){
 
             //TODO: Lav notification!
             return;
@@ -90,11 +90,13 @@ public class ProductController {
         }
 
         try {
+            int quantity = Integer.parseInt(stringQuantity);
             double unitPrice = Double.parseDouble(stringUnitPrice);
             Product product = new Product();
             product.setTitle(title);
             product.setDescription(description);
             product.setSize(size);
+            product.setQuantity(quantity);
             product.setUnitPrice(unitPrice);
 
             productMapper.newProduct(product);
