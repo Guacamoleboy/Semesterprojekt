@@ -17,7 +17,6 @@ public class Routing {
     public static void registerRoutes(Javalin app) {
 
         PageController.registerRoutes(app);
-
         LoginController.registerRoutes(app);
         AdminController.registerRoutes(app);
         ProductController.registerRoutes(app);
