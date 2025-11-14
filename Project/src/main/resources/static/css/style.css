@@ -298,6 +298,17 @@ body::-webkit-scrollbar { /* All other browsers */
     flex-direction: column;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: none;
+    width: 100%;
+    padding: 2.5rem 2rem;
+}
+
+.modtag-card-form {
+    text-align: left !important;
+}
+
+.modtag-card-form .guac-card-title {
+    text-align: center !important;
 }
 
 .modtag-card-form:hover,
@@ -367,9 +378,6 @@ body::-webkit-scrollbar { /* All other browsers */
     text-align: right;
 }
 
-.modtag-card-resume {
-    max-width: none;
-}
 
 
 /* ___________________________________________ */
@@ -733,13 +741,6 @@ body::-webkit-scrollbar { /* All other browsers */
     align-items: center;
 }
 
-.modtag-form .guac-row {
-    align-items: flex-end;
-    gap: 1rem;
-    width: 100%;
-    justify-content: center;
-}
-
 .modtag-label {
     display: block;
     font-weight: 600;
@@ -781,20 +782,6 @@ body::-webkit-scrollbar { /* All other browsers */
     opacity: 0.9;
 }
 
-.modtag-card-form {
-    max-width: none;
-    width: 100%;
-    text-align: left !important;
-    padding: 2.5rem 2rem;
-}
-
-.modtag-card-form .guac-card-title {
-    text-align: center !important;
-}
-
-.modtag-card-resume {
-    padding: 2.5rem 2rem;
-}
 
 .modtag-info {
     text-align: center;
