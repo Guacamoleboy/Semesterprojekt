@@ -72,6 +72,31 @@ public class ProductMapper {
 
     // ________________________________________________________________________________
 
+    public Product getProuctByID(int id) throws DatabaseException {
+        String sql = "SELECT * FROM products where id = ?";
+
+        try (Connection conn = Database.getConnection();
+
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+            stmt.setInt(1, id);
+
+            while (rs.next()) {
+
+                return toProduct(rs);
+
+            }
+
+        } catch (SQLException e) {
+
+            throw new DatabaseException("Fejl ved hentning af produkter", e);
+
+        }
+        return null;
+    }
+
+    // ________________________________________________________________________________
+
     public Product toProduct(ResultSet rs) throws SQLException {
 
         return new Product(
