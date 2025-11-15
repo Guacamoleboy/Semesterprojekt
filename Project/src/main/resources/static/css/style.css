@@ -28,6 +28,7 @@
     --fog-brighter: #407bb5;
     --fog-white: #FFF;
     --fog-white-dim: rgba(255, 255, 255, 0.2);
+    --fog-blue-dim: rgba(0, 61, 118, 0.1);
 
     /* Sections */
     --section-1-background: #D8D8D8;
@@ -265,12 +266,119 @@ body::-webkit-scrollbar { /* All other browsers */
 /* ___________________________________________ */
 
 .section-modtag {
+    background: url("../images/page-content/modtag/bg.png") center center no-repeat;
+    background-size: contain;
     background-color: var(--section-1-background);
     position: relative;
     min-height: 100vh;
     display: flex;
     align-items: center;
+    padding: 4rem 0;
 }
+
+.modtag-content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.modtag-form-wrapper,
+.modtag-resume-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.modtag-card-form,
+.modtag-card-resume {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: none;
+    width: 100%;
+    padding: 2.5rem 2rem;
+}
+
+.modtag-card-form {
+    text-align: left !important;
+}
+
+.modtag-card-form .guac-card-title {
+    text-align: center !important;
+}
+
+.modtag-card-form:hover,
+.modtag-card-resume:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
+}
+
+.modtag-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.modtag-form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.modtag-form-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.modtag-submit-btn {
+    width: 100%;
+    max-width: 300px;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.modtag-resume-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 0.5rem 0;
+}
+
+.modtag-resume-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--fog-blue-dim);
+}
+
+.modtag-resume-item:last-child {
+    border-bottom: none;
+}
+
+.modtag-resume-label {
+    font-weight: 600;
+    color: var(--fog-blue-2);
+    font-size: 1rem;
+}
+
+.modtag-resume-value {
+    font-weight: 500;
+    color: var(--project-less-black);
+    font-size: 1rem;
+    text-align: right;
+}
+
+
 
 /* ___________________________________________ */
 
@@ -625,28 +733,12 @@ body::-webkit-scrollbar { /* All other browsers */
 
 /* ___________________________________________ */
 
-.modtag-download-link {
-    color: var(--fog-blue);
-    text-decoration: none;
-}
-
-.modtag-download-link:hover { 
-    text-decoration: underline; 
-    opacity: 0.9; 
-}
 
 .modtag-form { 
     margin-top: 0.5rem; 
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.modtag-form .guac-row {
-    align-items: flex-end;
-    gap: 1rem;
-    width: 100%;
-    justify-content: center;
 }
 
 .modtag-label {
@@ -674,7 +766,7 @@ body::-webkit-scrollbar { /* All other browsers */
 .modtag-input:focus {
     outline: none;
     border-color: var(--fog-blue);
-    box-shadow: none;
+    box-shadow: 0 0 0 3px var(--fog-blue-dim);
 }
 
 .modtag-terms-link {
@@ -690,29 +782,11 @@ body::-webkit-scrollbar { /* All other browsers */
     opacity: 0.9;
 }
 
-.modtag-card-form {
-    max-width: none;
-    width: 100%;
-    text-align: left !important;
-}
-
-.modtag-card-form .guac-card-title {
-    text-align: center !important;
-}
-
-#modtag .guac-row > .guac-col-5,
-#modtag .guac-row > .guac-col-7 {
-    display: flex;
-}
-
-#modtag .guac-row {
-    margin-left: auto;
-    max-width: fit-content;
-}
 
 .modtag-info {
     text-align: center;
     margin-bottom: 4rem;
+    padding: 0 1rem;
 }
 
 .modtag-info p:first-of-type {
@@ -721,32 +795,46 @@ body::-webkit-scrollbar { /* All other browsers */
     color: var(--fog-blue);
     text-transform: uppercase;
     margin-bottom: 0rem;
+    letter-spacing: 0.5px;
 }
 
 .modtag-info h2 {
-    font-size: 2rem;
-    font-weight: 600;
+    font-size: 2.5rem;
+    font-weight: 700;
     color: var(--fog-blue);
-    margin: 0 0 1rem 0;
+    margin: 0.5rem 0 1.5rem 0;
     position: relative;
 }
 
 .modtag-info h2::after {
     content: "";
     display: block;
-    width: 6rem;
+    width: 8rem;
     height: 3px;
-    margin: 0.5rem auto 1rem auto;
+    margin: 0.75rem auto 1.5rem auto;
     border-bottom: 3px dotted var(--fog-blue);
     opacity: 0.6;
 }
 
 .modtag-info p:last-of-type {
-    font-size: 1rem;
+    font-size: 1.05rem;
     color: var(--project-less-black);
-    max-width: 45ch;
+    max-width: 50ch;
     margin: 0 auto;
-    line-height: 1.5;
+    line-height: 1.6;
+}
+
+.modtag-download-link {
+    color: var(--fog-blue);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.25s ease;
+}
+
+.modtag-download-link:hover {
+    text-decoration: underline;
+    opacity: 0.9;
+    color: var(--fog-blue-less);
 }
 
 

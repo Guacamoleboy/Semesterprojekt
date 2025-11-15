@@ -9,22 +9,33 @@
 */
 
 let currentStep = 0;
-const beregnSteps = [
+const beregnet = [
     {
         img: "/images/page-content/beregn/beregn-1.png",
-        placeholder: "Indtast længde i cm"
+        placeholder: "Indtast længde i cm",
+        key: "length"
     },
     {
         img: "/images/page-content/beregn/beregn-2.png",
-        placeholder: "Indtast bredde i cm"
+        placeholder: "Indtast bredde i cm",
+        key: "width"
     },
     {
         img: "/images/page-content/beregn/beregn-3.png",
-        placeholder: "Indtast højde i cm"
+        placeholder: "Indtast højde i cm",
+        key: "height"
     }
 ];
 
-// ____________________________________________________________________
+const standard = {
+    length: "600",
+    width: "320",
+    height: "210",
+    model: "Carport",
+    wood: "Trykimprægneret",
+    roof: "Plast",
+    contact: "12 34 56 78"
+};
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -39,11 +50,11 @@ document.addEventListener("DOMContentLoaded", () => {
     checkbox.checked = false;
 
     function loadStep(i) {
-        img.src = beregnSteps[i].img;
-        input.placeholder = beregnSteps[i].placeholder;
-        input.value = ""; // Clears placeholder text per step
+        img.src = beregnet[i].img;
+        input.placeholder = beregnet[i].placeholder;
+        input.value = standard[beregnet[i].key] || "";
 
-        if (i === beregnSteps.length - 1) {
+        if (i === beregnet.length - 1) {
             nextBtn.textContent = "Beregn";
         } else {
             nextBtn.textContent = "Næste";
@@ -52,15 +63,11 @@ document.addEventListener("DOMContentLoaded", () => {
         currentStep = i;
     }
 
-    // ________________________________________________________________
-
     checkbox.addEventListener("change", () => {
         if (checkbox.checked) {
             loadStep(0);
         }
     });
-
-    // ________________________________________________________________
 
     nextBtn.addEventListener("click", () => {
 
@@ -69,9 +76,25 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        if (currentStep < beregnSteps.length - 1) {
+        const stepKey = beregnet[currentStep].key;
+        localStorage.setItem(`carport_${stepKey}`, input.value.trim());
+
+        if (currentStep < beregnet.length - 1) {
             loadStep(currentStep + 1);
         } else {
+            if (!localStorage.getItem("carport_model")) {
+                localStorage.setItem("carport_model", standard.model);
+            }
+            if (!localStorage.getItem("carport_wood")) {
+                localStorage.setItem("carport_wood", standard.wood);
+            }
+            if (!localStorage.getItem("carport_roof")) {
+                localStorage.setItem("carport_roof", standard.roof);
+            }
+            if (!localStorage.getItem("carport_contact")) {
+                localStorage.setItem("carport_contact", standard.contact);
+            }
+            
             window.location.href = "/beregn/modtag";
         }
 
