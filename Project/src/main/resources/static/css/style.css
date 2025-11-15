@@ -21,6 +21,19 @@
     --project-grey: rgb(95, 95, 95);
     --project-light-grey: rgb(188, 188, 188);
 
+    /* Profile & Admin Menu */
+    --profile-background: #452929;
+    --profile-sidemenu: #332929;
+    --profile-sidemenu-border: #727272;
+    --profile-sidemenu-buttons: #452929;
+    --profile-sidemenu-buttons-text: #FFF;
+    --profile-button-hover: #331f1f;
+    --profile-orderCard-background: rgba(0, 0, 0, 0.51);
+    --profile-order-continue-btn: #00c00a;
+    --profile-order-continue-btn-hover: #00a608;
+    --profile-order-delete-btn: #a72828;
+    --profile-order-delete-btn-hover: #882121;
+
     /* FOG */
     --fog-blue: #003D76;
     --fog-blue-less: #00488b;
@@ -1712,8 +1725,6 @@ body::-webkit-scrollbar { /* All other browsers */
     transform: scale(1.05);
 }
 
-
-
 .adminMenu #priceListContent {
     display: flex;
     flex-direction: column;
@@ -1767,4 +1778,197 @@ body::-webkit-scrollbar { /* All other browsers */
 
 .adminMenu .section-space {
     gap: 1rem;
+}
+
+/* ___________________________________________ */
+
+/* Profile & Admin */
+
+/* ___________________________________________ */
+
+.profile-menu-visuals {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+}
+
+.profile-menu-visuals a:hover {
+    text-decoration: none;
+}
+
+.profile-menu-visuals > .guac-row {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    gap: 0;
+}
+
+.profile-nav {
+    background-color: var(--fog-blue);
+    color: var(--fog-white);
+    padding: 2rem 0 0 0;
+    display: flex;
+    border-right: 2px solid var(--profile-sidemenu-border);
+    flex-direction: column;
+    gap: 1rem;
+    flex: 0 0 16.6667%;
+    max-width: 16.6667%;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.profile-actual {
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    color: var(--fog-blue);
+    background-color: var(--section-1-background);
+    padding: 1rem;
+    overflow-y: auto;
+    flex: 1 1 0;
+    max-width: none;
+}
+
+.profile-actual::-webkit-scrollbar {
+    display: none;
+}
+
+.profile-title {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.profile-title h3 {
+    font-size: 1.5rem;
+    line-height: 1.2;
+}
+
+.profile-title p {
+    font-size: 0.8rem !important;
+    font-style: italic !important;
+    opacity: 0.8 !important;
+}
+
+.profile-title h3::after {
+    content: "";
+    display: block;
+    width: 4rem;
+    border-bottom: 3px dotted var(--fog-white);
+    opacity: 0.6 !important;
+    margin: 0.5rem auto 0;
+}
+
+.profile-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0rem !important;
+    align-items: stretch;
+    width: 100%;
+}
+
+.guac-btn-profile {
+    background-color: var(--fog-white);
+    color: var(--fog-blue);
+    border-bottom: 1px solid var(--project-grey);
+    border-radius: 0px !important;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0.75rem 1.25rem !important;
+    text-shadow: 0 0 1px rgba(0,0,0,0.2);
+}
+
+.guac-btn-profile:hover {
+    background-color: var(--project-less-white) !important;
+    transition: all 0.2s ease-in-out;
+}
+
+.profile-end-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+    padding-bottom: 2rem;
+}
+
+.input-group {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.input-group .guac-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+}
+
+.input-group input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.action-btn {
+    background-color: var(--fog-white);
+    color: var(--fog-blue);
+    border: 2px solid var(--fog-blue) !important;
+    padding: 0.7rem 1.5rem;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s ease;
+}
+
+.action-btn:hover {
+    background-color: var(--project-less-white);
+}
+
+.dropdown {
+    margin: 0 !important;
+    width: 100%;
+    position: relative;
+}
+
+.dropdown-content {
+    display: flex;
+    flex-direction: column;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.25s ease, opacity 0.2s ease;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.dropdown.open .dropdown-content {
+    max-height: 50rem;
+    opacity: 1;
+}
+
+.dropdown-content .guac-btn-profile {
+    opacity: 0.8 !important;
+    color: var(--fog-blue);
+}
+
+.profile-picture-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-picture-top img {
+    width: 10rem;
+    height: auto;
 }
