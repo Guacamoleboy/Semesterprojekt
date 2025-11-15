@@ -1569,11 +1569,13 @@ body::-webkit-scrollbar { /* All other browsers */
 }
 
 .adminMenu .content h1 {
-    color: var(--project-white);
+    font-size: 2rem;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.50);
+}
+
+.adminMenu .content h2 {
     margin-top: 0;
-    font-size: 1.5rem;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.4);
-    padding-bottom: 0.5rem;
+    font-size: 1.3rem;
 }
 
 .adminMenu .content p {
@@ -1597,6 +1599,12 @@ body::-webkit-scrollbar { /* All other browsers */
     gap: 1rem;
 }
 
+.adminMenu .cms-btn-container {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
 
 .adminMenu .action-btn {
     background-color: var(--fog-blue);
@@ -1617,14 +1625,26 @@ body::-webkit-scrollbar { /* All other browsers */
 }
 
 
-#priceListContent,
-#searchResults {
+
+.adminMenu #priceListContent {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
 
-.adminMenu .product-item {
+
+.adminMenu #searchResults,
+.adminMenu #CMSproducts,
+.adminMenu #CMSsearchUser{
+    display: none;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.adminMenu .product-item,
+.adminMenu .user-item{
     background: var(--am-product-card);
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
@@ -1642,4 +1662,21 @@ body::-webkit-scrollbar { /* All other browsers */
     padding: 0.5rem;
     border-radius: 0.5rem;
     border: none;
+}
+
+.adminMenu .editable {
+    background: rgba(12, 12, 12, 0.4);
+    padding: 2px 4px;
+    border-radius: 4px;
+    transition: background 0.2s;
+    cursor: text;
+}
+
+.adminMenu .editable:focus {
+    background: rgba(12, 12, 12, 0.72);
+    outline: none;
+}
+
+.adminMenu .section-space {
+    gap: 1rem;
 }

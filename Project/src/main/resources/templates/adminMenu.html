@@ -22,14 +22,15 @@
 
     <!-- Script Load -->
     <script src="/js/notification.js" defer></script>
+    <script src="/js/AdminMenu/nav-bar.js" defer></script>
+    <script src="/js/AdminMenu/priceController.js" defer></script>
+    <script src="/js/AdminMenu/CMS/Products.js" defer></script>
+    <script src="/js/AdminMenu/CMS/User.js" defer></script>
 
     <!-- Framwork load -->
     <link rel="stylesheet" href="/css/guacamoleboy-wow.css">
     <link rel="stylesheet" href="/css/guacamoleboy-framework.css">
     <script src="/js/guacamoleboy-wow.js" defer></script>
-    <script src="/js/AdminMenu/nav-bar.js" defer></script>
-    <script src="/js/AdminMenu/priceController.js" defer></script>
-    <script type="module" src="/js/Generic/generic-callback.js"></script>
 
 
 
@@ -154,14 +155,88 @@
 
                 <div class="content-section" id="CMS" style="display:none;">
                     <h1>CMS</h1>
-                    <div class="content">
-                        <h1>CMS</h1>
-                        <p>Hvad skal der lige være her?</p>
+
+                    <div class="content" id="CMSfees">
+                        <h1>Gebyrer</h1>
+
+                        <h2>Leveringsgebyr</h2>
+                        <p> 129,99 DKK</p>
+                        <div class="cms-btn-container">
+                            <button type="button" id="saveDeliveryFee" class="action-btn">Gem</button>
+                        </div>
+
+                        <h2>Opsætningsgebyr</h2>
+                        <p> 500 DKK</p>
+                        <div class="cms-btn-container">
+                            <button type="button" id="saveSetupFee" class="action-btn">Gem</button>
+                        </div>
+
+                        <h2>Administrationsgebyr</h2>
+                        <p> 12,5 DKK</p>
+                        <div class="btn-container">
+                            <button type="button" id="saveAdminFee" class="action-btn">Gem</button>
+                        </div>
+                    </div>
+
+                    <div class="content" id="CMSproductPrices">
+
+                        <h1>Priser og produkter</h1>
+                        <h2>Rediger priser eller slet vare</h2>
+
+                        <form id="CMSproductSearch">
+                            <input type="text" name="varenr" placeholder="Varenr">
+                            <input type="text" name="title" placeholder="Titel">
+                            <input type="text" name="mål" placeholder="Mål">
+                            <button type="submit" class="action-btn">Søg</button>
+                        </form>
+
+                        <div id="CMSproducts"></div>
+
+                        <div class="cms-btn-container">
+                            <button type="button" id="prevCMSProducts" class="action-btn" style="display:none";>Forrige</button>
+                            <button type="button" id="nextCMSProducts" class="action-btn" style="display:none">Næste</button>
+                        </div>
+
+                        <h2>Opret nyt produkt</h2>
+                        <form id="CMSaddProduct">
+                            <input type="text" name="title" placeholder="Titel" required>
+                            <input type="text" name="description" placeholder="Beskrivelse" required>
+                            <input type="text" name="size" placeholder="Mål" required>
+                            <input type="number" name="quantity" placeholder="Antal" required>
+                            <input type="number" step="0.01" name="price" placeholder="Pris" required>
+                            <button type="submit" class="action-btn">Opret</button>
+                        </form>
+                    </div>
+
+                    <div class="content" id="CMSroles">
+                        <h1>Brugere og roller</h1>
+
+                        <h2>Søg bruger</h2>
+                        <form id="CMSuserSearch">
+                            <input type="text" name="id" placeholder="Bruger ID">
+                            <input type="text" name="username" placeholder="Brugernavn">
+                            <input type="text" name="role" placeholder="Rolle">
+                            <button type="submit" class="action-btn">Søg</button>
+                        </form>
+
+                        <div id="CMSsearchUser"></div>
+
+                        <div class="cms-btn-container">
+                            <button type="button" id="prevCMSUsers" class="action-btn" style="display:none">Forrige</button>
+                            <button type="button" id="nextCMSUsers" class="action-btn" style="display:none">Næste</button>
+                        </div>
+
+                        <h2>Opret bruger</h2>
+                        <form id="CMScreateUser">
+                            <input type="text" name="username" placeholder="Brugernavn" required>
+                            <input type="password" name="password" placeholder="Kodeord" required>
+                            <input type="text" name="role" placeholder="Rolle" required>
+                            <button type="submit" class="action-btn">Opret</button>
+                        </form>
                     </div>
                 </div>
 
             </div>
-
 
         </div>
 

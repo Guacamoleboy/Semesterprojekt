@@ -2,7 +2,9 @@ package dk.project.server.routing;
 
 // Imports
 import dk.project.controller.AdminMenu.AdminController;
+import dk.project.controller.AdminMenu.CMSController;
 import dk.project.controller.AdminMenu.ProductController;
+import dk.project.controller.AdminMenu.UserController;
 import dk.project.controller.ErrorController;
 import dk.project.controller.Login.LoginController;
 import dk.project.controller.PageController;
@@ -20,6 +22,8 @@ public class Routing {
         LoginController.registerRoutes(app);
         AdminController.registerRoutes(app);
         ProductController.registerRoutes(app);
+        CMSController.registerRoutes(app);
+        UserController.registerRoutes(app);
 
         // Last
         //registerErrorRoutes(app);
