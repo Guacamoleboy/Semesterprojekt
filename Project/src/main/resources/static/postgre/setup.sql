@@ -5,11 +5,12 @@
     2. Semester
 
     Sidst opdateret af: Guacamoleboy
-    Dato: 14/11-2025
+    Dato: 15/11-2025
 
 */
 
 DROP TABLE IF EXISTS
+customers,
 order_materials,
 orders,
 carport_orders,
@@ -31,6 +32,19 @@ id SERIAL PRIMARY KEY,
 username VARCHAR(100) UNIQUE NOT NULL,
 password_hash TEXT NOT NULL,
 role_id INT NOT NULL REFERENCES roles(id) ON DELETE RESTRICT,
+created_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE TABLE customers (
+id SERIAL PRIMARY KEY,
+firstname VARCHAR(100) NOT NULL,
+lastname VARCHAR(100) NOT NULL,
+email VARCHAR(255) UNIQUE NOT NULL,
+phone VARCHAR(50) UNIQUE NOT NULL,
+street VARCHAR(255),
+city VARCHAR(100),
+zipcode VARCHAR(20),
+country VARCHAR(100),
 created_at TIMESTAMP DEFAULT NOW()
 );
 

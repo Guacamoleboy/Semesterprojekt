@@ -3,6 +3,7 @@ CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
 -- Resets our tables by default
 TRUNCATE TABLE
+customers,
 carport_category,
 materials,
 materials_category,
@@ -19,6 +20,13 @@ INSERT INTO roles (name) VALUES
 INSERT INTO users (username, password_hash, role_id) VALUES
 ('employee', crypt('sale', gen_salt('bf')), 1),
 ('admin', crypt('admin', gen_salt('bf')), 2);
+
+INSERT INTO customers (firstname, lastname, email, phone, street, city, zipcode, country) VALUES
+('Mads', 'Kristensen', 'mads.kristensen@example.com', '+4522334455', 'Nørrebrogade 102', 'København', '2200', 'Denmark'),
+('Sara', 'Lund', 'sara.lund@example.com', '+4520118899', 'Østerbrogade 45', 'København', '2100', 'Denmark'),
+('Jonas', 'Hansen', 'jonas.hansen@example.com', '+4544556677', 'Vestergade 12', 'Aarhus', '8000', 'Denmark'),
+('Line', 'Poulsen', 'line.poulsen@example.com', '+4533667788', 'Hovedvejen 77', 'Roskilde', '4000', 'Denmark'),
+('Emil', 'Jørgensen', 'emil.jorgensen@example.com', '+4544221133', 'Algade 5', 'Aalborg', '9000', 'Denmark');
 
 -- Needed? Imo it's "materials".
 INSERT INTO products (title, description, size, quantity, price) VALUES
