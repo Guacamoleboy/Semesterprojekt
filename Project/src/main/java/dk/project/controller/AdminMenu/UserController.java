@@ -133,9 +133,11 @@ public class UserController {
             }
 
             int id = Integer.parseInt(roleID);
+            User user = userMapper.getByUserName(username);
+            user.setUsername(username);
+            user.setRoleID(id);
 
-            System.out.println(id + " " + username);
-            //TODO: Skal lige koble backend fra userMapper på!!!
+            userMapper.updateUser(user);
 
         } catch (NumberFormatException e) {
 
@@ -152,7 +154,6 @@ public class UserController {
 
     private void deleteUser(Context ctx) {
 
-        //TODO: Skal lige tilføje rigtige notifications!
         String userID = ctx.formParam("id");
 
         try {
@@ -165,8 +166,7 @@ public class UserController {
 
             int id = Integer.parseInt(userID);
 
-            System.out.println(id);
-            //TODO: Skal lige koble backend fra userMapper på!!!
+            userMapper.deleteUser(id);
 
         } catch (NumberFormatException e) {
 

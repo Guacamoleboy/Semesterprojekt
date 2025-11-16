@@ -133,16 +133,14 @@ public class ProductController {
             Product product = productMapper.getProductByID(productID);
             System.out.println(productID + " " + title + " " +size+ " " +unitPrice);
 
-            /*
 
             product.setTitle(title);
             product.setSize(size);
             product.setUnitPrice(unitPrice);
 
-            //TODO: Vi skal lige have lavet denne metode!
             productMapper.updateProduct(product);
 
-            */
+
 
             ctx.status(200);
 
