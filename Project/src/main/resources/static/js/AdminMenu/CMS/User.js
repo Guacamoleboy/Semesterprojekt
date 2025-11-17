@@ -37,7 +37,7 @@ window.addEventListener("DOMContentLoaded", () => {
         formData.append("password", section.querySelector('input[name="password"]').value);
         formData.append("role", section.querySelector('input[name="role"]').value);
 
-        // Send til server
+
         const res = await fetch("/createUser", {
             method: "POST",
             body: formData

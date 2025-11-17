@@ -26,7 +26,6 @@
     <script src="/js/AdminMenu/priceController.js" defer></script>
     <script src="/js/AdminMenu/CMS/Products.js" defer></script>
     <script src="/js/AdminMenu/CMS/User.js" defer></script>
-    <script src="/js/admin-menu.js" defer></script>
     <script src="/js/AdminMenu/dropdown.js" defer></script>
 
     <!-- Framwork load -->
@@ -366,52 +365,68 @@
             <hr class="section-divider">
 
             <!--  Content Section -->
-            <div class="content-section" id="updateCupcakePricesAdmin">
-                <h2>Opdater cupcake pris</h2>
-                <p>Udfyld oplysningerne herunder:</p>
-                <div class="guac-row input-group">
+            <div class="content-section" id="CMSsearchProduct">
+                <h2>Søg efter produkt</h2>
+                <p>Indtast varenr, Navn eller Mål</p>
+
+                <form class="guac-row input-group" id="CMSSearchProductForm">
                     <div class="guac-col">
-                        <label>Cupcake</label>
-                        <input type="text" placeholder="Jordbærcupcake...">
+                        <label >Varenr</label>
+                        <input type="number" name="serialnumber" placeholder="1...">
                     </div>
                     <div class="guac-col">
-                        <label>ID</label>
-                        <input type="text" placeholder="ID...">
+                        <label>Navn</label>
+                        <input type="text" name="title" placeholder="Skrue...">
                     </div>
                     <div class="guac-col">
-                        <label>Ny pris</label>
-                        <input type="text" placeholder="Ny pris...">
+                        <label >Mål</label>
+                        <input type="text" name="size" placeholder="50cm...">
                     </div>
-                    <div class="guac-col">
-                        <label>Godkendelse</label>
-                        <input type="text" placeholder="Skriv dit brugernavn...">
-                    </div>
+                </form>
+
+
+                <div id="CMSproductResults"></div>
+
+
+                <div class="order-nav-row">
+                    <button type="submit" class="guac-btn action-btn" id="CMSsearchbtn">Søg</button>
+                    <button type="button" id="prevCMSProduct" class="guac-btn action-btn" style="display:none">Forrige</button>
+                    <button type="button" id="nextCMSProduct" class="guac-btn action-btn" style="display:none">Næste</button>
                 </div>
-                <button type="button" class="guac-btn action-btn">Opdater</button>
+
+
             </div>
             <!--  Content Section -->
 
             <hr class="section-divider">
 
             <!--  Content Section -->
-            <div class="content-section" id="createDiscountCodeAdmin">
-                <h2>Opret rabatkode</h2>
-                <p>Udfyld oplysningerne herunder:</p>
-                <div class="guac-row input-group">
+            <div class="content-section" id="CMSNewProduct">
+                <h2>Tilføj et nyt produkt</h2>
+                <p>Udfyld oplysninger for at oprette et nyt produkt!:</p>
+                <form class="guac-row input-group" id="addNewProduct">
                     <div class="guac-col">
-                        <label>Rabatkode</label>
-                        <input type="text" placeholder="5001-5055-6CUP-CAKE...">
+                        <label >Navn</label>
+                        <input type="text" name="title" placeholder="Skrue...">
                     </div>
                     <div class="guac-col">
-                        <label>Rabat</label>
-                        <input type="text" placeholder="Rabat (0-100)...">
+                        <label>Beskrivelse</label>
+                        <input type="text" name="description" placeholder="Dette er en skrue...">
                     </div>
                     <div class="guac-col">
-                        <label>Godkendelse</label>
-                        <input type="text" placeholder="Skriv dit brugernavn...">
+                        <label>Mål</label>
+                        <input type="text" name="size" placeholder="50x25cm...">
                     </div>
-                </div>
-                <button type="button" class="guac-btn action-btn">Opret</button>
+                    <div class="guac-col">
+                        <label>Antal</label>
+                        <input type="number" name="quantity" placeholder="25...">
+                    </div>
+                    <div class="guac-col">
+                        <label>Pris</label>
+                        <input type="number" name="price" placeholder="100...">
+                    </div>
+                </form>
+                <button type="button" id= "createNewProduct" class="guac-btn action-btn">Opret nyt produkt</button>
             </div>
             <!--  Content Section -->
 
@@ -419,6 +434,8 @@
 
         </div>
         <!-- "cms" Content End -->
+
+        <!-- ____________________________________________________________________ -->
 
         <!-- "Katalog" Content Start -->
         <div class="guac-col-auto profile-actual" id="catalog" style="display:none;">

@@ -1736,7 +1736,8 @@ body::-webkit-scrollbar { /* All other browsers */
 .adminMenu #CMSproducts,
 #searchForUserAdmin #CMSsearchUser,
 #showCatalog .catalogStyle,
-#productResults{
+#productResults,
+#CMSproductResults{
     display: none;
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -1744,6 +1745,7 @@ body::-webkit-scrollbar { /* All other browsers */
     gap: 1rem;
 }
 
+#CMSproductResults .product-item,
 #showCatalogResult .product-item,
 #productResults .product-item,
 .adminMenu .user-item{
@@ -1822,7 +1824,6 @@ body::-webkit-scrollbar { /* All other browsers */
 }
 
 .profile-actual {
-    overflow-y: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
     color: var(--fog-blue);
@@ -1831,6 +1832,9 @@ body::-webkit-scrollbar { /* All other browsers */
     overflow-y: auto;
     flex: 1 1 0;
     max-width: none;
+
+    min-height: 100vh;
+    box-sizing: border-box;
 }
 
 .profile-actual::-webkit-scrollbar {
@@ -1947,13 +1951,13 @@ body::-webkit-scrollbar { /* All other browsers */
     max-height: 0;
     overflow: hidden;
     opacity: 0;
-    transition: max-height 0.25s ease, opacity 0.2s ease;
+    transition: max-height 1.25s ease, opacity 1.2s ease;
     margin: 0;
     width: 100%;
     box-sizing: border-box;
 }
 
-.dropdown.open .dropdown-content {
+.dropdown:hover .dropdown-content {
     max-height: 50rem;
     opacity: 1;
 }

@@ -1,8 +1,11 @@
 window.addEventListener("DOMContentLoaded", () => {
+    const CMSsearchbtn = document.getElementById("CMSsearchbtn");
+    const CMSproducts = document.getElementById("CMSproductResults");
+    const prevBtn = document.getElementById("prevCMSProduct");
+    const nextBtn = document.getElementById("nextCMSProduct");
 
-    const CMSproducts = document.getElementById("CMSproducts");
-    const CMSproductSearch = document.getElementById("CMSproductSearch");
-    const CMSaddProduct = document.getElementById("CMSaddProduct");
+    const addNewProductForm = document.getElementById("addNewProduct");
+    const addNewProductbtn = document.getElementById("createNewProduct")
 
     // _________________________________________________
 
@@ -12,46 +15,58 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // _________________________________________________
 
-    CMSproductSearch.addEventListener("submit", async (e) => {
 
-        e.preventDefault();
+    let searched = false;
 
-        const form = new FormData(e.target);
+    CMSsearchbtn.addEventListener("click", async function () {
+        if(!searched) {
+            searched = true
+            CMSsearchbtn.textContent="Skjul"
+            CMSproducts.style.display ="flex"
+            const form = new FormData(document.getElementById("CMSSearchProductForm"));
 
-        const res = await fetch("/searchProducts", {
-            method: "POST",
-            body: form
-        });
+            const res = await fetch("/searchProducts", {
+                method: "POST",
+                body: form
+            });
 
-
-        CMSProducts = await res.json();
-        productPage = 0;
-        renderProducts();
+            CMSProducts = await res.json();
+            productPage = 0;
+            renderProducts();
+        } else {
+            searched = false;
+            CMSsearchbtn.textContent = "Søg";
+            CMSproducts.style.display ="none"
+            CMSproducts.innerHTML = '';
+            togglePageShift(false);
+            CMSProducts = [];
+            productPage = 0;
+        }
 
     });
 
     // _________________________________________________
 
-    CMSaddProduct.addEventListener("submit", async (e) => {
+    addNewProductbtn.addEventListener("click", async function () {
 
-        e.preventDefault();
-
-        const form = new FormData(e.target);
+        const section = addNewProductbtn.closest(".content-section");
+        const form = new FormData(addNewProductForm);
 
         const res = await fetch("/addProduct", {
             method: "POST",
             body: form
         });
 
-        e.target.reset();
+        if (res.ok) {
 
-        if (!res.ok) {
+            const inputs = section.querySelectorAll("input");
+            inputs.forEach(input => {
+                input.value = "";
+            });
 
-            console.log("Der er sket en fejl!")
-
+        } else {
+            console.log("Der er sket en fejl!");
         }
-
-
     });
 
     // _________________________________________________
@@ -65,7 +80,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
             CMSproducts.innerHTML = "<p>Ingen produkter fundet.</p>";
             togglePageShift(false);
-            addHideButton();
             return;
 
         }
@@ -82,16 +96,16 @@ window.addEventListener("DOMContentLoaded", () => {
                 <div class="product-view" id="product-view-${p.id}">
                     <p>Varenummer: ${p.id} | Vare: ${p.title}</p>
                     <p>Mål: ${p.size} | Pris: ${p.unitPrice} DKK</p>
-                    <button class="action-btn edit-btn" data-id="${p.id}">Rediger</button>
-                    <button class="action-btn delete-btn" data-id="${p.id}">Slet</button>
+                    <button class="guac-btn action-btn edit-btn" data-id="${p.id}">Rediger</button>
+                    <button class="guac-btn action-btn delete-btn" data-id="${p.id}">Slet</button>
                 </div>
                 <div class="product-edit" id="product-edit-${p.id}" style="display:none;">
                     <p>Varenummer: ${p.id} | 
                        Vare: <span contenteditable="true" id="edit-title-${p.id}" class="editable">${p.title}</span></p>
                     <p>Mål: <span contenteditable="true" id="edit-size-${p.id}" class="editable">${p.size}</span> | 
                        Pris: <span contenteditable="true" id="edit-price-${p.id}" class="editable">${p.unitPrice}</span> DKK</p>
-                    <button class="action-btn save-edit-btn" data-id="${p.id}">Gem</button>
-                    <button class="action-btn cancel-edit-btn" data-id="${p.id}">Annuller</button>
+                    <button class="guac-btn action-btn save-edit-btn" data-id="${p.id}">Gem</button>
+                    <button class="guac-btn action-btn cancel-edit-btn" data-id="${p.id}">Annuller</button>
                 </div>
             `;
 
@@ -102,7 +116,7 @@ window.addEventListener("DOMContentLoaded", () => {
         setupEditButtons();
         setupDeleteButtons();
         togglePageShift(true);
-        addHideButton();
+        //addHideButton();
 
     }
 
@@ -209,12 +223,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
     function togglePageShift(show) {
 
-        const prevBtn = document.getElementById("prevCMSProducts");
-        const nextBtn = document.getElementById("nextCMSProducts");
-
-        prevBtn.classList.add("action-btn");
-        nextBtn.classList.add("action-btn");
-
         if (!show || CMSProducts.length <= PageSize) {
 
             prevBtn.style.display = "none";
@@ -248,33 +256,6 @@ window.addEventListener("DOMContentLoaded", () => {
             }
 
         });
-
-    }
-
-    // _________________________________________________
-
-    function addHideButton() {
-
-        const container = document.querySelector("#CMSproductPrices .cms-btn-container");
-        const id = "hideProducts";
-
-        if (document.getElementById(id)) return;
-
-        const hideBtn = document.createElement("button");
-        hideBtn.textContent = "Skjul";
-        hideBtn.id = id;
-        hideBtn.classList.add("action-btn");
-
-        hideBtn.addEventListener("click", () => {
-
-            CMSproducts.innerHTML = "";
-            CMSproducts.style.display = "none";
-            togglePageShift(false);
-            hideBtn.remove();
-
-        });
-
-        container.prepend(hideBtn);
 
     }
 

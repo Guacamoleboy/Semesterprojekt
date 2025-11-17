@@ -1,13 +1,35 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const sections = document.querySelectorAll(".content-section");
-    const buttons = document.querySelectorAll(".nav-bar button");
 
+    document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+        toggle.addEventListener('click', () => {
 
-    buttons.forEach(button => {
-        button.addEventListener("click", () => {
-            const id = button.textContent.trim();
-            sections.forEach(section => section.style.display = "none");
-            document.getElementById(id).style.display = "block";
+            const targetId = toggle.dataset.section;
+
+            if (!targetId) return;
+
+            document.querySelectorAll('.profile-actual').forEach(sec => {
+                sec.style.display = "none";
+            });
+
+            const target = document.getElementById(targetId);
+            if (target) target.style.display = "block";
         });
     });
+
+
+    document.querySelectorAll('.dropdown-content a').forEach(item => {
+        item.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            const text = item.textContent.trim();
+
+            const section = Array.from(document.querySelectorAll('.content-section'))
+                .find(sec => sec.querySelector("h2")?.textContent.trim().includes(text));
+
+            if (section) {
+                section.scrollIntoView({ behavior: "smooth" });
+            }
+        });
+    });
+
 });

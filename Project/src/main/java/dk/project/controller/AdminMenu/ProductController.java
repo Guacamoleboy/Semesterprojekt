@@ -43,7 +43,6 @@ public class ProductController {
         String title = ctx.formParam("title");
         String size = ctx.formParam("size");
 
-        System.out.println(idParam +" " + title + " " +size);
         int id = 0;
         try {
 
@@ -83,9 +82,15 @@ public class ProductController {
         String stringQuantity = ctx.formParam("quantity");
         String stringUnitPrice = ctx.formParam("price");
 
-        if (stringUnitPrice == null || stringQuantity == null){
 
-            //TODO: Lav notification!
+        if (title == null || title.isEmpty() ||
+        description == null || description.isEmpty() ||
+        size == null || size.isEmpty() ||
+        stringQuantity == null || stringQuantity.isEmpty() ||
+        stringUnitPrice == null || stringUnitPrice.isEmpty()) {
+
+            // TODO: Skal have lavet notifikationer!
+            ctx.status(400);
             return;
 
         }
@@ -93,6 +98,7 @@ public class ProductController {
         try {
             int quantity = Integer.parseInt(stringQuantity);
             double unitPrice = Double.parseDouble(stringUnitPrice);
+
             Product product = new Product();
             product.setTitle(title);
             product.setDescription(description);
@@ -104,11 +110,8 @@ public class ProductController {
             ctx.status(200);
 
         } catch (Exception e) {
-
             throw new RuntimeException(e);
-
         }
-
     }
 
     // _______________________________________________
@@ -123,6 +126,7 @@ public class ProductController {
         if (id == null || stringUnitPrice == null){
 
             //TODO: Lav notification!
+            ctx.status(400);
             return;
 
         }
@@ -132,7 +136,6 @@ public class ProductController {
             int productID = Integer.parseInt(id);
             double unitPrice = Double.parseDouble(stringUnitPrice);
             Product product = productMapper.getProductByID(productID);
-            System.out.println(productID + " " + title + " " +size+ " " +unitPrice);
 
 
             product.setTitle(title);
