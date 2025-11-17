@@ -4,12 +4,12 @@
     Written by Guacamoleboy
 
     Last Updated:
-    07/11-2025
+    17/11-2025
 
 */
 
 // Attributes
-const words = ["mål", "materiale", "stil", "størrelse", "budet"];
+const words = ["mål", "materiale", "stil", "størrelse", "budget"];
 const dynamicWord = document.getElementById("dynamic-word");
 let currentWord = 0;
 let currentLetter = 0;

@@ -24,6 +24,7 @@
 
     <!-- Script Load -->
     <script src="/js/notification.js" defer></script>
+    <script src="/js/status/status-search.js" defer></script>
 
     <!-- Framwork load -->
     <link rel="stylesheet" href="/css/guacamoleboy-wow.css">
@@ -40,55 +41,27 @@
 <body>
 
 <!-- Navbar -->
-<div id="navbar2-component" data-backlink="/status"></div>
+<div id="navbar2-component"></div>
 <!-- Navbar -->
 
-<!-- Status Page -->
-<section class="status-section">
+<!-- Status Search Page -->
+<section class="status-section guac-d-flex guac-align-center guac-justify-center">
     <div class="guac-container">
-
-        <!-- Icons Row -->
-        <div class="guac-row guac-justify-center guac-align-center guac-gap-3">
-
-            <!-- STEP 1 -->
-            <div class="guac-col-3 guac-d-flex guac-flex-column guac-align-center status-line">
-                <div class="status-circle guac-d-flex guac-align-center guac-justify-center">
-                    <i class="fa fa-envelope-o"></i>
-                </div>
-            </div>
-
-            <!-- STEP 2 -->
-            <div class="guac-col-3 guac-d-flex guac-flex-column guac-align-center guac-locked">
-                <div class="status-circle guac-d-flex guac-align-center guac-justify-center">
-                    <i class="fa fa-calculator"></i>
-                </div>
-            </div>
-
-            <!-- STEP 3 -->
-            <div class="guac-col-3 guac-d-flex guac-flex-column guac-align-center guac-locked">
-                <div class="status-circle guac-d-flex guac-align-center guac-justify-center">
-                    <i class="fa fa-check"></i>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Info -->
-        <div class="guac-row guac-justify-center guac-mt-4">
-            <div class="guac-col-9">
-                <div class="status-info-card">
-                    <h2>Mail afsendt til os</h2>
-                    <p>
-                        Din mail er blevet afsendt og afventer at blive kigget på af en medarbejder.
-                        Vi forsøger så vidt som muligt at svare tilbage inden 24 timer.
-                        <br><br>Følg status her på siden.
-                    </p>
+        <div class="guac-row guac-justify-center guac-align-center">
+            <div class="status-search-box">
+                <div class="guac-text-center">
+                    <h2>Se Status</h2>
+                    <p>Indtast dit ID herunder for at tjekke status på dit tilbud</p>
+                    <div class="status-search-wrapper">
+                        <input type="text" id="status-id" class="status-search-input" placeholder="Indtast ID">
+                        <button class="status-search-btn" id="status-search-btn">Søg</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- Status Page -->
+<!-- Status Search Page -->
 
 <!-- Notifications -->
 <div id="guac-notification-container"></div>
