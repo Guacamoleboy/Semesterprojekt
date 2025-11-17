@@ -111,6 +111,8 @@ function renderSearchResults() {
     if (hasResults) {
         prevSearch.style.display = searchCurrentPage > 0 ? 'inline-block' : 'none';
         nextSearch.style.display = (searchCurrentPage + 1) * PageSize < searchProducts.length ? 'inline-block' : 'none';
+    } else {
+        searchResults.innerHTML = "<p>Ingen produkter fundet.</p>";
     }
 }
 
@@ -134,7 +136,6 @@ searchProductbtn.addEventListener("click", async function (e) {
             renderSearchResults();
         } catch (err) {
             console.error(err);
-            searchResults.innerHTML = 'Fejl ved søgning af produkter';
         }
     } else {
         searched = false;
