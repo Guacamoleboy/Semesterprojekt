@@ -12,8 +12,8 @@ public class MailSetup {
     // Attributes
     private static final String SMTP_HOST = "send.one.com";
     private static final int SMTP_PORT = 465;
-    private static final String OUR_EMAIL = "cupcake@travlr.dk";
-    private static final String OUR_PASSWORD = "Nyepasswordssuttermax123!";
+    private static final String OUR_EMAIL = "fog@travlr.dk";
+    private static final String OUR_PASSWORD = "Fogpassword123!";
 
     // _________________________________________________
 

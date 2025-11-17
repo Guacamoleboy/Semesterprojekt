@@ -24,9 +24,7 @@
 
     <!-- Script Load -->
     <script src="/js/notification.js" defer></script>
-    <script src="/js/dynamic-text.js" defer></script>
-    <script src="/js/button-to-top.js" defer></script>
-    <script src="/js/modtag.js" defer></script>
+    <!--<script src="/js/modtag.js" defer></script>-->
 
     <!-- Framwork load -->
     <link rel="stylesheet" href="/css/guacamoleboy-wow.css">
@@ -54,7 +52,11 @@
         <div class="modtag-info">
             <p>Overblik</p>
             <h2>Overblik for din carport</h2>
-            <p><a href="#" class="modtag-download-link">(Download .pdf)</a></p>
+            <p>
+                <a href="/pdf/modtag/1.pdf" class="modtag-download-link" download>
+                    (Download .pdf)
+                </a>
+            </p>
         </div>
 
         <div class="modtag-content-wrapper">
@@ -65,32 +67,32 @@
                     <h2 class="guac-card-title">Kontaktoplysninger</h2>
                     <p class="card-p-dotted"></p>
 
-                    <form class="modtag-form">
+                    <form class="modtag-form" action="/beregn/modtag" method="POST">
                         <div class="modtag-form-row">
                             <div class="modtag-form-group">
                                 <label class="modtag-label">Fornavn(e)</label>
-                                <input type="text" class="modtag-input" value="Bo">
+                                <input type="text" class="modtag-input" name="fornavn" value="Bo">
                             </div>
                             <div class="modtag-form-group">
                                 <label class="modtag-label">Efternavn</label>
-                                <input type="text" class="modtag-input" value="Leif">
+                                <input type="text" class="modtag-input" name="efternavn" value="Leif">
                             </div>
                         </div>
 
                         <div class="modtag-form-row">
                             <div class="modtag-form-group">
                                 <label class="modtag-label">Email</label>
-                                <input type="email" class="modtag-input" value="bo@leif.dk">
+                                <input type="email" class="modtag-input" name="email" value="bo@leif.dk">
                             </div>
                             <div class="modtag-form-group">
                                 <label class="modtag-label">Tlf. nr.</label>
-                                <input type="tel" class="modtag-input" value="25 69 64 20">
+                                <input type="tel" class="modtag-input" name="telefon" value="25 69 64 20">
                             </div>
                         </div>
 
                         <div class="modtag-form-actions">
                             <a href="#" class="modtag-terms-link">Læs mere om vores vilkår og hvordan vi behandler dine oplysninger</a>
-                            <a href="#" class="guac-btn guac-btn-fog modtag-submit-btn">Modtag tilbud</a>
+                            <button type="submit" class="guac-btn guac-btn-fog modtag-submit-btn">Modtag tilbud</button>
                         </div>
                     </form>
                 </div>
