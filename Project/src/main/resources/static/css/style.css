@@ -1734,7 +1734,7 @@ body::-webkit-scrollbar { /* All other browsers */
 
 .adminMenu #searchResults,
 .adminMenu #CMSproducts,
-.adminMenu #CMSsearchUser{
+#searchForUserAdmin #CMSsearchUser{
     display: none;
     margin-top: 1rem;
     margin-bottom: 1rem;

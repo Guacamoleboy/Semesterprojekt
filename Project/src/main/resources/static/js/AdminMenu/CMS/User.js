@@ -1,6 +1,6 @@
 window.addEventListener("DOMContentLoaded", () => {
-    const CMSuserSearch = document.getElementById("CMSuserSearch");
-    const CMScreateUser = document.getElementById("CMScreateUser");
+    const CMSuserSearch = document.getElementById("searchUserbtn");
+    const CMScreateUserBtn = document.getElementById("createUser");
     const CMSsearchUserDiv = document.getElementById("CMSsearchUser");
 
     // _________________________________________________
@@ -11,10 +11,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // _________________________________________________
 
-    CMSuserSearch.addEventListener("submit", async (e) => {
+    CMSuserSearch.addEventListener("click", async function () {
 
-        e.preventDefault();
-        const form = new FormData(e.target);
+        const form = new FormData(document.getElementById("CMSuserSearch"));
 
         const res = await fetch("/searchUsers", {
             method: "POST",
@@ -29,21 +28,28 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // _________________________________________________
 
-    CMScreateUser.addEventListener("submit", async (e) => {
+    CMScreateUserBtn.addEventListener("click", async (e) => {
 
-        e.preventDefault();
-        const formData = new FormData(e.target);
+        const section = CMScreateUserBtn.closest(".content-section");
+
+        const formData = new FormData();
+        formData.append("username", section.querySelector('input[name="username"]').value);
+        formData.append("password", section.querySelector('input[name="password"]').value);
+        formData.append("role", section.querySelector('input[name="role"]').value);
+
+        // Send til server
         const res = await fetch("/createUser", {
             method: "POST",
             body: formData
         });
 
-        if (res.ok){
-
-            e.target.reset();
-
+        if (res.ok) {
+            section.querySelector('input[name="username"]').value = "";
+            section.querySelector('input[name="password"]').value = "";
+            section.querySelector('input[name="role"]').value = "";
+        } else {
+            console.log("Noget gik galt. Prøv igen.");
         }
-
     });
 
     // _________________________________________________
@@ -74,15 +80,15 @@ window.addEventListener("DOMContentLoaded", () => {
 
                 <div class="user-view" id="user-view-${u.id}">
                     <p>Navn: ${u.username} — Rolle: ${u.roleID}</p>
-                    <button class="action-btn edit-user-btn" data-id="${u.id}">Rediger</button>
-                    <button class="action-btn delete-user-btn" data-id="${u.id}">Slet</button>
+                    <button class="action-btn edit-user-btn guac-btn" data-id="${u.id}">Rediger</button>
+                    <button class="action-btn delete-user-btn guac-btn" data-id="${u.id}">Slet</button>
                 </div>
                 
                 <div class="user-edit" id="user-edit-${u.id}" style="display:none;">
                     <p>Navn: <span contenteditable="true" id="edit-username-${u.id}" class="editable">${u.username}</span> — 
                        Rolle: <span contenteditable="true" id="edit-role-${u.id}" class="editable">${u.roleID}</span></p>
-                    <button class="action-btn save-user-btn" data-id="${u.id}">Gem</button>
-                    <button class="action-btn cancel-user-btn" data-id="${u.id}">Annuller</button>
+                    <button class="action-btn save-user-btn guac-btn" data-id="${u.id}">Gem</button>
+                    <button class="action-btn cancel-user-btn guac-btn" data-id="${u.id}">Annuller</button>
                 </div>
                 
             `;
@@ -103,36 +109,26 @@ window.addEventListener("DOMContentLoaded", () => {
     function setupEditButtons() {
 
         document.querySelectorAll(".edit-user-btn").forEach(btn => {
-
             btn.addEventListener("click", () => {
-
                 const id = btn.dataset.id;
                 document.getElementById(`user-view-${id}`).style.display = "none";
                 document.getElementById(`user-edit-${id}`).style.display = "block";
-
             });
-
         });
 
         document.querySelectorAll(".cancel-user-btn").forEach(btn => {
-
             btn.addEventListener("click", () => {
-
                 const id = btn.dataset.id;
                 document.getElementById(`user-view-${id}`).style.display = "block";
                 document.getElementById(`user-edit-${id}`).style.display = "none";
-
             });
-
         });
 
         document.querySelectorAll(".save-user-btn").forEach(btn => {
-
             btn.addEventListener("click", async () => {
-
                 const id = btn.dataset.id;
-                const username = document.getElementById(`edit-username-${id}`).textContent;
-                const roleID = document.getElementById(`edit-role-${id}`).textContent;
+                const username = document.getElementById(`edit-username-${id}`).textContent.trim();
+                const roleID = document.getElementById(`edit-role-${id}`).textContent.trim();
 
                 const formData = new FormData();
                 formData.append("id", id);
@@ -145,18 +141,16 @@ window.addEventListener("DOMContentLoaded", () => {
                 });
 
                 if (res.ok) {
-
                     const i = CMSUsers.findIndex(u => u.id == id);
-                    if (i !== -1) CMSUsers[i] = { ...CMSUsers[i], ...updatedUser };
+                    if (i !== -1) CMSUsers[i] = { ...CMSUsers[i], username, roleID };
+
                     renderUsers();
-
                 }
-
             });
-
         });
 
     }
+
 
     // _________________________________________________
 
@@ -243,7 +237,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     function addHideButton() {
 
-        const container = document.querySelector("#CMSroles .cms-btn-container");
+        const container = document.querySelector("#searchForUserAdmin .order-nav-row");
         const id = "hideUsers";
 
         if (document.getElementById(id)) return;
@@ -252,6 +246,7 @@ window.addEventListener("DOMContentLoaded", () => {
         hideBtn.textContent = "Skjul";
         hideBtn.id = id;
         hideBtn.classList.add("action-btn");
+        hideBtn.classList.add("guac-btn");
         hideBtn.addEventListener("click", () => {
 
             CMSsearchUserDiv.innerHTML = "";

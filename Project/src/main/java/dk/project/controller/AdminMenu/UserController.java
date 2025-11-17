@@ -132,13 +132,15 @@ public class UserController {
 
             }
 
+            System.out.println(roleID + " " +username);
             int id = Integer.parseInt(roleID);
+            System.out.println(id);
+            /*
             User user = userMapper.getByUserName(username);
             user.setUsername(username);
             user.setRoleID(id);
-
             userMapper.updateUser(user);
-
+            */
         } catch (NumberFormatException e) {
 
             ctx.status(400).result("Skal være et tal!");
