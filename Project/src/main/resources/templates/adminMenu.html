@@ -331,8 +331,6 @@
             </div>
             <!--  Content Section -->
 
-            <hr class="section-divider">
-
             <hr class="section-divider"> <!-- Important to have in the end for sticky UI feel -->
 
         </div>
@@ -430,7 +428,7 @@
                 <h2>Prisliste</h2>
                 <p>Her kan du se alle produkterne</p>
 
-                <div id="showCatalogResult"></div>
+                <div id="showCatalogResult" class="catalogStyle"></div>
 
 
                 <div class="order-nav-row">
@@ -450,7 +448,7 @@
                 <h2>Søg efter produkt</h2>
                 <p>Indtast varenr, Navn eller Mål</p>
 
-                <div class="guac-row input-group">
+                <form class="guac-row input-group" id="searchProductForm">
                     <div class="guac-col">
                         <label >Varenr</label>
                         <input type="number" name="serialnumber" placeholder="1...">
@@ -463,14 +461,15 @@
                         <label >Mål</label>
                         <input type="text" name="size" placeholder="50cm...">
                     </div>
-                </div>
+                </form>
 
 
                 <div id="productResults"></div>
 
 
-                <div class="order-nav-row">
+                <div class="order-nav-row" id="searchNavigation">
                     <button type="submit" class="guac-btn action-btn" id="ShowProductsBtn">Søg</button>
+                    <button type="button" id="hideSearchResults" class="guac-btn action-btn" style="display:none">Skjul</button>
                     <button type="button" id="prevProduct" class="guac-btn action-btn" style="display:none">Forrige</button>
                     <button type="button" id="nextProduct" class="guac-btn action-btn" style="display:none">Næste</button>
                 </div>

@@ -39,10 +39,11 @@ public class ProductController {
     private void searchProducts(Context ctx) throws DatabaseException {
 
         List<Product> result = new ArrayList<>();
-        String idParam = ctx.formParam("varenr");
+        String idParam = ctx.formParam("serialnumber");
         String title = ctx.formParam("title");
-        String size = ctx.formParam("mål");
+        String size = ctx.formParam("size");
 
+        System.out.println(idParam +" " + title + " " +size);
         int id = 0;
         try {
 

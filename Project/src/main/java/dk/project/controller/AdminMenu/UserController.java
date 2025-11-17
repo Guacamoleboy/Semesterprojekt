@@ -120,27 +120,30 @@ public class UserController {
 
     private void updateUser(Context ctx) {
 
-        String username = ctx.formParam("username");
-        String roleID = ctx.formParam("role");
-
+        String stringuserid = ctx.formParam("id");
+        String newusername = ctx.formParam("username");
+        String stringroleID = ctx.formParam("role");
         try {
 
-            if (username == null || roleID == null) {
+            if (newusername == null || stringroleID == null || stringuserid == null) {
 
                 ctx.redirect("/menu?error=missingFields");
                 return;
 
             }
 
-            System.out.println(roleID + " " +username);
-            int id = Integer.parseInt(roleID);
-            System.out.println(id);
-            /*
-            User user = userMapper.getByUserName(username);
-            user.setUsername(username);
-            user.setRoleID(id);
+            int roleID = Integer.parseInt(stringroleID);
+            int userID = Integer.parseInt(stringuserid);
+
+
+            User user = userMapper.getById(userID);
+            user.setUsername(newusername);
+            user.setRoleID(roleID);
+
+
             userMapper.updateUser(user);
-            */
+
+
         } catch (NumberFormatException e) {
 
             ctx.status(400).result("Skal være et tal!");

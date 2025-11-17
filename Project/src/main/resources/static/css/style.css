@@ -51,7 +51,7 @@
     --am-top-container: #426c93;
     --am-nav-bar: #0e5ba8;
     --am-action-btn-hover: #0074e0;
-    --am-product-card: #FFFFFF33;
+    --am-product-card: #00000040;
 
 }
 
@@ -1734,7 +1734,9 @@ body::-webkit-scrollbar { /* All other browsers */
 
 .adminMenu #searchResults,
 .adminMenu #CMSproducts,
-#searchForUserAdmin #CMSsearchUser{
+#searchForUserAdmin #CMSsearchUser,
+#showCatalog .catalogStyle,
+#productResults{
     display: none;
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -1742,12 +1744,14 @@ body::-webkit-scrollbar { /* All other browsers */
     gap: 1rem;
 }
 
-.adminMenu .product-item,
+#showCatalogResult .product-item,
+#productResults .product-item,
 .adminMenu .user-item{
     background: var(--am-product-card);
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
-    color: var(--project-white);
+    color: var(--fog-blue);
+    gap: 1rem;
 }
 
 
@@ -1763,7 +1767,7 @@ body::-webkit-scrollbar { /* All other browsers */
     border: none;
 }
 
-.adminMenu .editable {
+#CMSsearchUser .editable {
     background: rgba(12, 12, 12, 0.4);
     padding: 2px 4px;
     border-radius: 4px;
@@ -1771,14 +1775,11 @@ body::-webkit-scrollbar { /* All other browsers */
     cursor: text;
 }
 
-.adminMenu .editable:focus {
+#CMSsearchUser .editable:focus {
     background: rgba(12, 12, 12, 0.72);
     outline: none;
 }
 
-.adminMenu .section-space {
-    gap: 1rem;
-}
 
 /* ___________________________________________ */
 
