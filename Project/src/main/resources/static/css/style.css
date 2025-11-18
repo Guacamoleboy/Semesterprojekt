@@ -1835,7 +1835,6 @@ body::-webkit-scrollbar { /* All other browsers */
     max-width: none;
 
     min-height: 100vh;
-    box-sizing: border-box;
 }
 
 .profile-actual::-webkit-scrollbar {
