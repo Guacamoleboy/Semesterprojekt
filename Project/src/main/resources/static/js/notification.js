@@ -102,6 +102,9 @@ document.addEventListener("DOMContentLoaded", function() {
             case "wrongInfo":
                 showNotification("Forkert brugernavn eller adgangskode...", "red");
                 break;
+            case "pdfError":
+                showNotification("Kan ikke oprette .pdf - kontakt en developer", "red");
+                break;
             case "wrongPassword":
                 showNotification("Forkert adgangskode...", "orange");
                 break;

@@ -6,7 +6,6 @@ import dk.project.exception.DatabaseException;
 import dk.project.mapper.OrderMapper;
 import dk.project.server.ThymeleafSetup;
 import io.javalin.Javalin;
-
 import java.util.Map;
 
 public class StatusController {
