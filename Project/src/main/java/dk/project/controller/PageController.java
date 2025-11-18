@@ -17,7 +17,10 @@ public class PageController {
         app.get("/beregn", ctx -> ctx.html(ThymeleafSetup.render("beregn-intro.html", null)));
         app.get("/beregn/app", ctx -> ctx.html(ThymeleafSetup.render("beregn.html", null)));
         app.get("/beregn/modtag", ctx -> ctx.html(ThymeleafSetup.render("modtag.html", null)));
+        app.get("/tak", ctx -> ctx.html(ThymeleafSetup.render("tak.html", null)));
         app.get("/error", ctx -> ctx.html(ThymeleafSetup.render("error.html", null)));
+        app.get("/status", ctx -> ctx.html(ThymeleafSetup.render("status-search.html", null)));
+        app.get("/status/id", ctx -> ctx.html(ThymeleafSetup.render("status.html", null)));
 
     }
 

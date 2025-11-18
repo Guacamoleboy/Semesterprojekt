@@ -40,6 +40,7 @@
     --fog-blue-2: #0056a7;
     --fog-brighter: #407bb5;
     --fog-white: #FFF;
+    --fog-white-less: #efefef;
     --fog-white-dim: rgba(255, 255, 255, 0.2);
     --fog-blue-dim: rgba(0, 61, 118, 0.1);
 
@@ -1976,4 +1977,186 @@ body::-webkit-scrollbar { /* All other browsers */
 .profile-picture-top img {
     width: 10rem;
     height: auto;
+}
+
+/* ___________________________________________ */
+
+/* Status */
+
+/* ___________________________________________ */
+
+.status-section {
+    height: 100vh;
+    background-color: var(--fog-blue);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.status-circle {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    color: var(--fog-white);
+    border: 2px solid var(--fog-white);
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem !important;
+}
+
+.status-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.status-line::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3rem;
+    border-left: 4px dotted var(--fog-white);
+}
+
+.status-info-card {
+    margin-top: 3rem !important;
+    background-color: var(--fog-white);
+    border-radius: 1rem;
+    padding: 2rem 2.5rem;
+    text-align: center;
+    box-shadow: 0 8px 3px rgba(0, 0, 0, 0.4);
+}
+
+.status-info-card h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+    color: var(--fog-blue);
+}
+
+.status-info-card h2::after {
+    content: "";
+    display: block;
+    width: 8rem;
+    border-bottom: 3px solid var(--fog-blue);
+    opacity: 0.75 !important;
+    margin: 1rem auto 0;
+}
+
+.status-info-card p {
+    font-size: 1rem;
+    color: var(--project-less-black);
+    line-height: 1.5;
+}
+
+.status-action-buttons {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--fog-blue-dim);
+}
+
+.status-action-buttons .guac-btn {
+    margin: 0 0.5rem;
+    padding: 0.75rem 1.5rem;
+}
+
+.status-action-buttons .status-btn-accept {
+    background-color: var(--project-green);
+    color: var(--project-white);
+    border: 2px solid var(--project-green);
+}
+
+.status-action-buttons .status-btn-accept:hover {
+    background-color: var(--project-green);
+    opacity: 0.85;
+}
+
+.status-action-buttons .status-btn-decline {
+    background-color: var(--project-red);
+    color: var(--project-white);
+    border: 2px solid var(--project-red);
+}
+
+.status-action-buttons .status-btn-decline:hover {
+    background-color: var(--project-red);
+    opacity: 0.85;
+}
+
+.status-search-box {
+    background-color: var(--fog-white);
+    padding: 2rem 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 8px 3px rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+.status-search-box h2 {
+    color: var(--fog-blue);
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+.status-search-box h2::after {
+    content: "";
+    display: block;
+    width: 7rem;
+    border-bottom: 3px solid var(--fog-blue);
+    opacity: 0.75 !important;
+    margin: 1rem auto 0;
+}
+
+.status-search-box p {
+    color: var(--project-less-black);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.status-search-wrapper {
+    display: flex;
+    width: 100%;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    margin-top: 1rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.status-search-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 2px solid var(--fog-blue);
+    border-radius: 0.5rem 0 0 0.5rem;
+    outline: none;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+}
+
+.status-search-input:focus {
+    background-color: var(--fog-white-less);
+}
+
+.status-search-btn {
+    background-color: var(--fog-blue);
+    color: var(--fog-white);
+    border: none;
+    padding: 0 1.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.status-search-btn:hover {
+    background-color: var(--fog-blue-2);
+}
+
+.status-search-input:focus {
+    outline: none;
+    border-color: var(--fog-blue-2);
+    box-shadow: 0 0 0 3px rgba(0,61,118,0.2);
 }
