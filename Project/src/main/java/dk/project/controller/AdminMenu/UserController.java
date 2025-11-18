@@ -120,22 +120,29 @@ public class UserController {
 
     private void updateUser(Context ctx) {
 
-        String username = ctx.formParam("username");
-        String roleID = ctx.formParam("role");
-
+        String stringuserid = ctx.formParam("id");
+        String newusername = ctx.formParam("username");
+        String stringroleID = ctx.formParam("role");
         try {
 
-            if (username == null || roleID == null) {
+            if (newusername == null || stringroleID == null || stringuserid == null) {
 
                 ctx.redirect("/menu?error=missingFields");
                 return;
 
             }
 
-            int id = Integer.parseInt(roleID);
+            int roleID = Integer.parseInt(stringroleID);
+            int userID = Integer.parseInt(stringuserid);
 
-            System.out.println(id + " " + username);
-            //TODO: Skal lige koble backend fra userMapper på!!!
+
+            User user = userMapper.getById(userID);
+            user.setUsername(newusername);
+            user.setRoleID(roleID);
+
+
+            userMapper.updateUser(user);
+
 
         } catch (NumberFormatException e) {
 
@@ -152,7 +159,6 @@ public class UserController {
 
     private void deleteUser(Context ctx) {
 
-        //TODO: Skal lige tilføje rigtige notifications!
         String userID = ctx.formParam("id");
 
         try {
@@ -165,8 +171,7 @@ public class UserController {
 
             int id = Integer.parseInt(userID);
 
-            System.out.println(id);
-            //TODO: Skal lige koble backend fra userMapper på!!!
+            userMapper.deleteUser(id);
 
         } catch (NumberFormatException e) {
 

@@ -59,10 +59,10 @@ public class UserMapper {
     // _____________________________________________________________________
 
     public User getByUserName(String username) throws SQLException {
-        String sql = "SELECT * FROM users WHERE LOWER(username) = LOWER(?)";
+        String sql = "SELECT * FROM users WHERE LOWER(username) = ?";
         try (Connection conn = Database.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, username);
+            stmt.setString(1, username.toLowerCase());
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 return toUser(rs);

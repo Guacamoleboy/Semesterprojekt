@@ -10,34 +10,6 @@ import java.sql.*;
 
 public class ProductMapper {
 
-    public List<Product> getProducts() throws DatabaseException {
-
-        List<Product> products = new ArrayList<>();
-        String sql = "SELECT * FROM products";
-
-        try (Connection conn = Database.getConnection();
-
-             PreparedStatement stmt = conn.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
-
-            while (rs.next()) {
-
-                Product p = toProduct(rs);
-                products.add(p);
-
-            }
-
-        } catch (SQLException e) {
-
-            throw new DatabaseException("Fejl ved hentning af produkter", e);
-            
-        }
-
-        return products;
-    }
-
-    // _____________________________________________________________________
-
     public void newProduct(Product product) throws DatabaseException {
 
         String sql = "INSERT INTO products (title, description, size, quantity, price) VALUES (?, ?, ?, ?, ?)";
@@ -70,6 +42,34 @@ public class ProductMapper {
         }
     }
 
+    // _____________________________________________________________________
+
+    public List<Product> getProducts() throws DatabaseException {
+
+        List<Product> products = new ArrayList<>();
+        String sql = "SELECT * FROM products";
+
+        try (Connection conn = Database.getConnection();
+
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+
+                Product p = toProduct(rs);
+                products.add(p);
+
+            }
+
+        } catch (SQLException e) {
+
+            throw new DatabaseException("Fejl ved hentning af produkter", e);
+
+        }
+
+        return products;
+    }
+
     // ________________________________________________________________________________
 
     public Product getProductByID(int id) throws DatabaseException {
@@ -100,6 +100,27 @@ public class ProductMapper {
         return null;
     }
 
+    // ________________________________________________________________________________
+
+    public void updateProduct(Product product) {
+        String sql = "UPDATE products SET title = ?, description = ?, size = ?, quantity = ?, price = ? WHERE id = ?";
+        try (Connection conn = Database.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, product.getTitle());
+            stmt.setString(2, product.getDescription());
+            stmt.setString(3, product.getSize());
+            stmt.setInt(4, product.getQuantity());
+            stmt.setDouble(5, product.getUnitPrice());
+            stmt.setInt(6, product.getId());
+
+            int rows = stmt.executeUpdate();
+            if (rows == 0) {
+                throw new SQLException("Product not found with ID: " + product.getId());
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     // ________________________________________________________________________________
 
