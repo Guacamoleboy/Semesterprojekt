@@ -89,7 +89,7 @@ id SERIAL PRIMARY KEY,
 user_id INT REFERENCES users(id) ON DELETE SET NULL,
 carport_order_id INT NOT NULL REFERENCES carport_orders(id) ON DELETE CASCADE,
 total_price DECIMAL(10, 2) NOT NULL,
-status VARCHAR(50) DEFAULT 'pending', /* Pending, Open, Closed */
+status VARCHAR(50) DEFAULT 'pending', /* pending, calculating, offer */
 created_at TIMESTAMP DEFAULT NOW()
 );
 

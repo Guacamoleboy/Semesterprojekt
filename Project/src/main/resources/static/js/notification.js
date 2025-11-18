@@ -105,6 +105,12 @@ document.addEventListener("DOMContentLoaded", function() {
             case "wrongPassword":
                 showNotification("Forkert adgangskode...", "orange");
                 break;
+            case "idNotFound":
+                showNotification("ID findes ikke", "fog");
+                break;
+            case "NumberFormatException":
+                showNotification("Indtast venligst kun tal", "fog");
+                break;
             case "wrongPassMatch":
                 showNotification("Adgangskoderne matcher ikke...", "red");
                 break;
