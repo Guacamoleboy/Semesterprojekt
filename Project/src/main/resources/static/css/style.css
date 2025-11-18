@@ -2062,9 +2062,9 @@ body::-webkit-scrollbar { /* All other browsers */
 }
 
 .status-action-buttons .status-btn-accept {
-    background-color: var(--project-green);
+    background-color: var(--fog-blue);
     color: var(--project-white);
-    border: 2px solid var(--project-green);
+    border-radius: 0.5rem !important;
 }
 
 .status-action-buttons .status-btn-accept:hover {
@@ -2073,9 +2073,9 @@ body::-webkit-scrollbar { /* All other browsers */
 }
 
 .status-action-buttons .status-btn-decline {
-    background-color: var(--project-red);
+    background-color: var(--project-grey);
     color: var(--project-white);
-    border: 2px solid var(--project-red);
+    border-radius: 0.5rem !important;
 }
 
 .status-action-buttons .status-btn-decline:hover {

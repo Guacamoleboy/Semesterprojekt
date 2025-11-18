@@ -1,8 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     /* Content */
+    const statusMap = {
+        pending: 1,
+        calculating: 2,
+        offer: 3
+    };
     const urlParams = new URLSearchParams(window.location.search);
-    const step = parseInt(urlParams.get("status")) || 1;
+    const urlStatus = urlParams.get("status") || "pending";
+    const step = statusMap[urlStatus] || 1;
     const title = document.getElementById("status-title");
     const text = document.getElementById("status-text");
 
@@ -46,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
             title: "Du har modtaget et tilbud",
             text: `Vi har afsendt et tilbud til dig.
                    Du har nu mulighed for at godkende vores tilbud. Prisen er fast og ændres ikke selv om priserne på materialer stiger fra vores side af.
-                   <br><br>Dit tilbud består af PRIS`,
+                   <br><br>PRIS`,
             showButtons: true,
         }
     ];
@@ -67,10 +73,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // __________________________________________________________
 
+    // TODO Download .pdf file from pdf/final/{id}.pdf
+
     /* EventListener | Accept */
     if (acceptBtn) {
         acceptBtn.addEventListener("click", function() {
-            showNotification("Tilbud godkendt! Vi kontakter dig snarest.", "fog");
+            showNotification("Tilbud godkendt", "fog");
+            actionButtons.style.display = "none";
+            title.innerHTML = "Du har godkendt vores tilbud";
+            text.innerHTML = `Vi har afsendt dit endelige tilbud til din mail.
+                          <br><br>Download .pdf`;
         });
     }
 
@@ -78,7 +90,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (declineBtn) {
          declineBtn.addEventListener("click", function() {
              if (confirm("Er du sikker på at du vil afvise tilbuddet?")) {
-                showNotification("Tilbud afvist. Vi beklager at vi ikke kunne hjælpe dig denne gang.", "green");
+                 showNotification("Tilbud afvist", "fog");
+                 actionButtons.style.display = "none";
+                 title.innerHTML = "Du har afvist tilbuddet";
+                 text.innerHTML = `Du er altid velkommen til at komme ned i en af vores forretninger og få snakket mere om et tilbud.`;
              }
          });
     }

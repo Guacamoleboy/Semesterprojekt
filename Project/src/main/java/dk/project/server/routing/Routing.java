@@ -9,6 +9,7 @@ import dk.project.controller.ErrorController;
 import dk.project.controller.Login.LoginController;
 import dk.project.controller.Modtag.MailController;
 import dk.project.controller.PageController;
+import dk.project.controller.Status.StatusController;
 import io.javalin.Javalin;
 
 public class Routing {
@@ -26,6 +27,7 @@ public class Routing {
         CMSController.registerRoutes(app);
         UserController.registerRoutes(app);
         MailController.registerRoutes(app);
+        StatusController.registerRoutes(app);
 
         // Last
         //registerErrorRoutes(app);
