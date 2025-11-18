@@ -2050,6 +2050,39 @@ body::-webkit-scrollbar { /* All other browsers */
     line-height: 1.5;
 }
 
+.status-action-buttons {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--fog-blue-dim);
+}
+
+.status-action-buttons .guac-btn {
+    margin: 0 0.5rem;
+    padding: 0.75rem 1.5rem;
+}
+
+.status-action-buttons .status-btn-accept {
+    background-color: var(--project-green);
+    color: var(--project-white);
+    border: 2px solid var(--project-green);
+}
+
+.status-action-buttons .status-btn-accept:hover {
+    background-color: var(--project-green);
+    opacity: 0.85;
+}
+
+.status-action-buttons .status-btn-decline {
+    background-color: var(--project-red);
+    color: var(--project-white);
+    border: 2px solid var(--project-red);
+}
+
+.status-action-buttons .status-btn-decline:hover {
+    background-color: var(--project-red);
+    opacity: 0.85;
+}
+
 .status-search-box {
     background-color: var(--fog-white);
     padding: 2rem 2.5rem;
