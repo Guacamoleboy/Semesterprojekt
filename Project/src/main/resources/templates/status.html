@@ -51,27 +51,26 @@
         <!-- Icons Row -->
         <div class="guac-row guac-justify-center guac-align-center guac-gap-3">
 
-            <!-- STEP 1 -->
+            <!-- Pending -->
             <div class="guac-col-3 guac-d-flex guac-flex-column guac-align-center status-line" id="status-step-1">
                 <div class="status-circle guac-d-flex guac-align-center guac-justify-center">
                     <i class="fa fa-envelope-o"></i>
                 </div>
             </div>
 
-            <!-- STEP 2 -->
+            <!-- Calculating -->
             <div class="guac-col-3 guac-d-flex guac-flex-column guac-align-center guac-locked" id="status-step-2">
                 <div class="status-circle guac-d-flex guac-align-center guac-justify-center">
                     <i class="fa fa-calculator"></i>
                 </div>
             </div>
 
-            <!-- STEP 3 -->
+            <!-- Offer Received -->
             <div class="guac-col-3 guac-d-flex guac-flex-column guac-align-center guac-locked" id="status-step-3">
                 <div class="status-circle guac-d-flex guac-align-center guac-justify-center">
                     <i class="fa fa-check"></i>
                 </div>
             </div>
-
         </div>
 
         <!-- Info -->
@@ -84,6 +83,14 @@
                         Vi forsøger så vidt som muligt at svare tilbage inden 24 timer.
                         <br><br>Følg status her på siden.
                     </p>
+                    <div id="status-action-buttons" class="status-action-buttons" style="display: none;">
+                        <button type="button" class="guac-btn status-btn-accept" id="status-accept-btn">
+                            Godkend tilbud
+                        </button>
+                        <button type="button" class="guac-btn status-btn-decline" id="status-decline-btn">
+                            Afslå tilbud
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
