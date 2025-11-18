@@ -9,9 +9,9 @@ document.getElementById("status-search-btn").addEventListener("click", async() =
         return;
     }
     try {
-        const response = await fetch(`/status/id/${id}/status`);
+        const response = await fetch(`/status/${id}/status`);
         const data = await response.json();
-        window.location.href = `/status/id/${id}?status=${data.status}`;
+        window.location.href = `/status/${id}?status=${data.status}`;
     } catch (err) {
         showNotification("ID eksisterer ikke", "fog");
     }

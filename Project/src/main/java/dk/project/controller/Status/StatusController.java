@@ -21,7 +21,7 @@ public class StatusController {
 
         // _________________________________________________________
 
-        app.get("/status/id/{id}", ctx -> {
+        app.get("/status/{id}", ctx -> {
             try {
                 int id = Integer.parseInt(ctx.pathParam("id"));
                 OrderMapper orderMapper = new OrderMapper();
@@ -38,7 +38,7 @@ public class StatusController {
 
         // _____________________________________________________________
 
-        app.get("/status/id/{id}/status", ctx -> {
+        app.get("/status/{id}/status", ctx -> {
             try {
                 int id = Integer.parseInt(ctx.pathParam("id"));
                 OrderMapper orderMapper = new OrderMapper();
