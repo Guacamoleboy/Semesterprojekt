@@ -1,35 +1,104 @@
-document.addEventListener("DOMContentLoaded", () => {
+function hideAll() {
 
-    document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
-        toggle.addEventListener('click', () => {
+    document.querySelectorAll('.profile-actual').forEach(section => {
 
-            const targetId = toggle.dataset.section;
+        section.style.display = "none"
 
-            if (!targetId) return;
-
-            document.querySelectorAll('.profile-actual').forEach(sec => {
-                sec.style.display = "none";
-            });
-
-            const target = document.getElementById(targetId);
-            if (target) target.style.display = "block";
-        });
     });
 
+}
 
-    document.querySelectorAll('.dropdown-content a').forEach(item => {
-        item.addEventListener("click", (e) => {
-            e.preventDefault();
+function show(id) {
 
-            const text = item.textContent.trim();
+    const element = document.getElementById(id);
 
-            const section = Array.from(document.querySelectorAll('.content-section'))
-                .find(sec => sec.querySelector("h2")?.textContent.trim().includes(text));
+    if (element){
 
-            if (section) {
-                section.scrollIntoView({ behavior: "smooth" });
+        element.style.display = "block";
+
+    }
+}
+
+document.querySelectorAll('.dropdown-toggle').forEach(element => {
+
+    element.addEventListener('click', () => {
+
+        const next = element.nextElementSibling;
+        if(next) {
+            next.classList.toggle("show");
+            const id = element.dataset.section;
+
+            if (id) {
+
+                hideAll();
+                show(id);
+
             }
+        }
+
+    });
+
+});
+
+document.querySelectorAll('.dropdown-content a').forEach(item => {
+
+    item.addEventListener('click', e => {
+
+        e.preventDefault();
+
+        const dropdown = item.closest('.dropdown');
+        let id = null;
+
+        if (dropdown) {
+
+            const toggle = dropdown.querySelector('.dropdown-toggle');
+            if (toggle && toggle.dataset.section) {
+
+                id = toggle.dataset.section;
+
+            }
+
+        }
+
+        if (id) {
+
+            hideAll();
+            show(id);
+
+        }
+
+        if (dropdown) {
+
+            const content = dropdown.querySelector('.dropdown-content');
+
+            if (content) {
+
+                content.classList.remove("show");
+
+            }
+
+        }
+
+        const text = item.textContent.trim();
+        let section = null;
+
+        document.querySelectorAll('.content-section').forEach(sec => {
+
+            const heading = sec.querySelector("h2");
+            if (heading && heading.textContent.includes(text)) {
+
+                section = sec;
+
+            }
+
         });
+
+        if (section) {
+
+            section.scrollIntoView({ behavior: "smooth" });
+
+        }
+
     });
 
 });
