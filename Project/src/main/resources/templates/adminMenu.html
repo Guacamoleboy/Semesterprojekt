@@ -23,9 +23,9 @@
     <!-- Script Load -->
     <script src="/js/notification.js" defer></script>
     <script src="/js/AdminMenu/nav-bar.js" defer></script>
-    <script src="/js/AdminMenu/priceController.js" defer></script>
-    <script src="/js/AdminMenu/CMS/Products.js" defer></script>
-    <script src="/js/AdminMenu/CMS/User.js" defer></script>
+    <script src="/js/AdminMenu/catalog.js" defer></script>
+    <script src="/js/AdminMenu/CMS/materials.js" defer></script>
+    <script src="/js/AdminMenu/CMS/user.js" defer></script>
     <script src="/js/AdminMenu/dropdown.js" defer></script>
 
     <!-- Framwork load -->
@@ -367,35 +367,32 @@
             <!--  Content Section -->
             <div class="content-section" id="CMSsearchProduct">
                 <h2>Søg efter produkt</h2>
-                <p>Indtast varenr, Navn eller Mål</p>
+                <p>Indtast varenr, Navn, Kategori ID eller Mål</p>
 
                 <form class="guac-row input-group" id="CMSSearchProductForm">
                     <div class="guac-col">
-                        <label >Varenr</label>
+                        <label>Varenr</label>
                         <input type="number" name="serialnumber" placeholder="1...">
                     </div>
                     <div class="guac-col">
                         <label>Navn</label>
-                        <input type="text" name="title" placeholder="Skrue...">
+                        <input type="text" name="name" placeholder="Skrue...">
                     </div>
                     <div class="guac-col">
-                        <label >Mål</label>
-                        <input type="text" name="size" placeholder="50cm...">
+                        <label>Kategori ID</label>
+                        <input type="number" name="category_id" placeholder="1...">
                     </div>
                 </form>
 
-
                 <div id="CMSproductResults"></div>
-
 
                 <div class="order-nav-row">
                     <button type="submit" class="guac-btn action-btn" id="CMSsearchbtn">Søg</button>
                     <button type="button" id="prevCMSProduct" class="guac-btn action-btn" style="display:none">Forrige</button>
                     <button type="button" id="nextCMSProduct" class="guac-btn action-btn" style="display:none">Næste</button>
                 </div>
-
-
             </div>
+
             <!--  Content Section -->
 
             <hr class="section-divider">
@@ -403,31 +400,44 @@
             <!--  Content Section -->
             <div class="content-section" id="CMSNewProduct">
                 <h2>Tilføj et nyt produkt</h2>
-                <p>Udfyld oplysninger for at oprette et nyt produkt!:</p>
+                <p>Udfyld oplysninger for at oprette et nyt produkt:</p>
                 <form class="guac-row input-group" id="addNewProduct">
                     <div class="guac-col">
-                        <label >Navn</label>
-                        <input type="text" name="title" placeholder="Skrue...">
+                        <label>Kategori ID</label>
+                        <input type="number" name="category_id" placeholder="1...">
+                    </div>
+                    <div class="guac-col">
+                        <label>Navn</label>
+                        <input type="text" name="name" placeholder="Skrue...">
                     </div>
                     <div class="guac-col">
                         <label>Beskrivelse</label>
                         <input type="text" name="description" placeholder="Dette er en skrue...">
                     </div>
                     <div class="guac-col">
-                        <label>Mål</label>
-                        <input type="text" name="size" placeholder="50x25cm...">
+                        <label>Enhed</label>
+                        <input type="text" name="unit" placeholder="stk, sæt, m...">
                     </div>
                     <div class="guac-col">
-                        <label>Antal</label>
-                        <input type="number" name="quantity" placeholder="25...">
+                        <label>Længde</label>
+                        <input type="number" name="length" placeholder="50...">
+                    </div>
+                    <div class="guac-col">
+                        <label>Bredde</label>
+                        <input type="number" name="width" placeholder="25...">
+                    </div>
+                    <div class="guac-col">
+                        <label>Højde</label>
+                        <input type="number" name="height" placeholder="10...">
                     </div>
                     <div class="guac-col">
                         <label>Pris</label>
                         <input type="number" name="price" placeholder="100...">
                     </div>
                 </form>
-                <button type="button" id= "createNewProduct" class="guac-btn action-btn">Opret nyt produkt</button>
+                <button type="button" id="createNewProduct" class="guac-btn action-btn">Opret nyt produkt</button>
             </div>
+
             <!--  Content Section -->
 
             <hr class="section-divider">
@@ -472,11 +482,11 @@
                     </div>
                     <div class="guac-col">
                         <label>Navn</label>
-                        <input type="text" name="title" placeholder="Skrue...">
+                        <input type="text" name="name" placeholder="Skrue...">
                     </div>
                     <div class="guac-col">
-                        <label >Mål</label>
-                        <input type="text" name="size" placeholder="50cm...">
+                        <label >Kategori ID</label>
+                        <input type="text" name="category_id" placeholder="1...">
                     </div>
                 </form>
 

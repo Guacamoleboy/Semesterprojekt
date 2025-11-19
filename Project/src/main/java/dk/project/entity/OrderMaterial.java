@@ -1,5 +1,7 @@
 package dk.project.entity;
 
+import dk.project.entity.AdminMenu.Material;
+
 public class OrderMaterial {
 
     // Attributes
