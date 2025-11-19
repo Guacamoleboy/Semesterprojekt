@@ -34,8 +34,18 @@ function renderAllProducts() {
 
     pageProducts.forEach(p => {
         const div = document.createElement('div');
-        div.classList.add('product-item');
-        div.textContent = `${p.id} - ${p.title} - ${p.size} - ${p.unitPrice} DKK`;
+        div.innerHTML = `
+            <div class="product-item">
+                <p>ID: ${p.id}</p>
+                <p>Navn: ${p.name}</p>
+                <p>Beskrivelse: ${p.description}</p>
+                <p>Enhed: ${p.unit}</p>
+                <p>Mål: ${p.length ?? 'N/A'} x ${p.width ?? 'N/A'} x ${p.height ?? 'N/A'}</p>
+                <p>Pris: ${p.price} DKK</p>
+                <p>Kategori: ${p.category_name}</p>
+            </div>`
+        ;
+
         priceListContent.appendChild(div);
     });
 
@@ -51,7 +61,7 @@ showCatalogbtn.addEventListener("click", async function () {
         showCatalogbtn.textContent = "Skjul katalog";
         priceListContent.style.display = "inline-flex";
         try {
-            const res = await fetch('/getProducts', {method: 'POST'});
+            const res = await fetch('/getMaterials', {method: 'POST'});
             allProducts = await res.json();
             allCurrentPage = 0;
             renderAllProducts();
@@ -100,8 +110,18 @@ function renderSearchResults() {
 
     pageProducts.forEach(p => {
         const div = document.createElement('div');
-        div.classList.add('product-item');
-        div.textContent = `${p.id} - ${p.title} - ${p.size} - ${p.unitPrice} DKK`;
+        div.innerHTML = `
+            <div class="product-item">
+                <p>ID: ${p.id}</p>
+                <p>Navn: ${p.name}</p>
+                <p>Beskrivelse: ${p.description}</p>
+                <p>Enhed: ${p.unit}</p>
+                <p>Mål: ${p.length ?? 'N/A'} x ${p.width ?? 'N/A'} x ${p.height ?? 'N/A'}</p>
+                <p>Pris: ${p.price} DKK</p>
+                <p>Kategori: ${p.category_name}</p>
+            </div>
+        `;
+
         searchResults.appendChild(div);
     });
 
@@ -126,7 +146,7 @@ searchProductbtn.addEventListener("click", async function (e) {
         const form = new FormData(searchForm);
 
         try {
-            const res = await fetch('/searchProducts', {
+            const res = await fetch('/searchMaterials', {
                 method: 'POST',
                 body: form
             });
