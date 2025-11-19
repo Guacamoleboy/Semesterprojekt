@@ -741,6 +741,18 @@ body::-webkit-scrollbar { /* All other browsers */
     cursor: pointer !important;
 }
 
+.beregn-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: none !important;
+    color: var(--fog-white) !important;
+}
+
+.beregn-select option {
+    color: var(--fog-blue) !important;
+}
+
 /* ___________________________________________ */
 
 /* Modtag */
