@@ -24,9 +24,8 @@
 
     <!-- Script Load -->
     <script src="/js/notification.js" defer></script>
-    <script src="/js/dynamic-text.js" defer></script>
-    <script src="/js/button-to-top.js" defer></script>
     <script src="/js/slideshow.js" defer></script>
+    <script src="/js/beregn/beregn-intro.js" defer></script>
 
     <!-- Framwork load -->
     <link rel="stylesheet" href="/css/guacamoleboy-wow.css">
@@ -49,35 +48,56 @@
 <!-- Beregn Intro Start -->
 <section class="beregn-intro">
     <div class="guac-container">
-        <div class="guac-row guac-justify-center">
-            <div class="beregn-intro-wrapper guac-animate guac-zoom-in">
+        <div class="guac-row guac-justify-center guac-animate guac-fade-in">
+            <div class="beregn-intro-wrapper">
 
                 <!-- Left -->
                 <div class="guac-col-7 beregn-intro-image">
                     <img id="slideshow-img" src="/images/page-content/beregn-intro/carport-1.png"alt="Carport Showcase"class="beregn-img guac-w-100"/>
                 </div>
 
-                <!-- Right -->
-                <div class="guac-col-5 beregn-intro-text">
+                <!-- Right Step 1 -->
+                <div class="guac-col-5 beregn-intro-text" id="step-1-bi">
+                    <h2>Vælg Hældning på taget</h2>
+                    <p>
+                        Vores beregner giver dig en <strong>prisidé</strong> på din carport.
+                        Det er ikke et endeligt tilbud, men en hjælp til at forstå prisniveauet for dit projekt.
+                    </p>
+                    <form class="beregn-form">
+                        <select id="Taghældning" class="guac-text-center" required>
+                            <option value="" disabled selected hidden>Vælg hældning</option>
+                            <option value="træ">Hældning</option>
+                            <option value="stål">Ingen hældning</option>
+                        </select>
+                        <button id="btn-step-1" class="guac-btn guac-btn-fog">
+                            Gå videre
+                        </button>
+                    </form>
+                </div>
+                <!-- Right Step 1 -->
+
+                <!-- Right Step 2 -->
+                <div class="guac-col-5 beregn-intro-text" id="step-2-bi">
                     <h2>Vælg Materiale</h2>
                     <p>
                         Vores beregner giver dig en <strong>prisidé</strong> på din carport.
                         Det er ikke et endeligt tilbud, men en hjælp til at forstå prisniveauet for dit projekt.
                     </p>
-                    <form class="beregn-form" action="/beregn/app" method="#">
+                    <form class="beregn-form">
                         <select id="materiale" class="guac-text-center" required>
                             <option value="" disabled selected hidden>Vælg materiale</option>
-                            <option value="træ">Træ</option>
-                            <option value="stål">Plastik</option>
-                            <option value="mere1">Mere</option>
-                            <option value="mere2">Mere</option>
-                            <option value="mere3">Mere</option>
+                            <option value="tree">Træ</option>
+                            <option value="plastic">Plastik</option>
                         </select>
-                        <button type="submit" class="guac-btn guac-btn-fog">
+                        <button id="intro-back-roof" class="guac-btn guac-btn-fog">
+                            Tilbage
+                        </button>
+                        <button id="btn-step-2" class="guac-btn guac-btn-fog">
                             Gå videre
                         </button>
                     </form>
                 </div>
+                <!-- Right Step 2 -->
 
             </div>
         </div>

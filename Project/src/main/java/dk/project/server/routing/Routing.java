@@ -1,8 +1,13 @@
 package dk.project.server.routing;
 
 // Imports
+import dk.project.controller.AdminMenu.*;
 import dk.project.controller.ErrorController;
+import dk.project.controller.Login.LoginController;
+import dk.project.controller.Modtag.MailController;
+import dk.project.controller.Modtag.ModtagController;
 import dk.project.controller.PageController;
+import dk.project.controller.Status.StatusController;
 import io.javalin.Javalin;
 
 public class Routing {
@@ -14,9 +19,18 @@ public class Routing {
     public static void registerRoutes(Javalin app) {
 
         PageController.registerRoutes(app);
+        LoginController.registerRoutes(app);
+        AdminController.registerRoutes(app);
+        MaterialController.registerRoutes(app);
+        MaterialCategoryController.registerRoutes(app);
+        CMSController.registerRoutes(app);
+        UserController.registerRoutes(app);
+        MailController.registerRoutes(app);
+        StatusController.registerRoutes(app);
+        ModtagController.registerRoutes(app);
 
         // Last
-        registerErrorRoutes(app);
+        //registerErrorRoutes(app);
 
     }
 

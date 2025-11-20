@@ -1,3 +1,11 @@
+/*
+
+    Index.html last section
+
+    - Guac
+
+*/
+
 const checkboxes = document.querySelectorAll('.section-3 .check-input');
 const submitBtn = document.getElementById('submitBtn');
 

@@ -5,6 +5,8 @@ import dk.project.DTO.UserDTO;
 import dk.project.db.Database;
 import dk.project.exception.DatabaseException;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserMapper {
 
@@ -44,13 +46,7 @@ public class UserMapper {
             stmt.setInt(1, id);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                    return new User(
-                            rs.getInt("id"),
-                            rs.getString("username"),
-                            rs.getInt("role_id"),
-                            rs.getString("password_hash"),
-                            rs.getTimestamp("created_at")
-                    );
+                    return toUser(rs);
                 } else {
                     return null;
                 }
@@ -58,6 +54,157 @@ public class UserMapper {
             } catch (SQLException e) {
                 throw new DatabaseException("Fejl ved hentning af bruger", e);
             }
+    }
+
+    // _____________________________________________________________________
+
+    public User getByUserName(String username) throws SQLException {
+        String sql = "SELECT * FROM users WHERE LOWER(username) = ?";
+        try (Connection conn = Database.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, username.toLowerCase());
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return toUser(rs);
+            }
+            return null;
+        }
+    }
+
+    // ________________________________________________________________________________
+
+    public List<User> getAll() throws DatabaseException {
+        String sql = "SELECT * FROM users ORDER BY id";
+        List<User> users = new ArrayList<>();
+
+        try (Connection conn = Database.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                users.add(toUser(rs));
+            }
+
+        } catch (SQLException e) {
+            throw new DatabaseException("Fejl ved hentning af alle brugere", e);
+        }
+
+        return users;
+    }
+
+    // ________________________________________________________________________________
+
+    public List<User> getByRole(int roleId) throws DatabaseException {
+        String sql = "SELECT * FROM users WHERE role_id = ? ORDER BY id";
+        List<User> users = new ArrayList<>();
+
+        try (Connection conn = Database.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, roleId);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    users.add(toUser(rs));
+                }
+            }
+
+        } catch (SQLException e) {
+            throw new DatabaseException("Fejl ved hentning af brugere med rolle ID: " + roleId, e);
+        }
+
+        return users;
+    }
+
+    // ________________________________________________________________________________
+
+    public void updateUser(User user) {
+        String sql = "UPDATE users SET username = ?, password_hash = ?, role_id = ? WHERE id = ?";
+        try (Connection conn = Database.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, user.getUsername());
+            stmt.setString(2, user.getPassword_hash());
+            stmt.setInt(3, user.getRoleID());
+            stmt.setInt(4, user.getId());
+
+            int rows = stmt.executeUpdate();
+            if (rows == 0) {
+                throw new SQLException("User not found with ID: " + user.getId());
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    // ________________________________________________________________________________
+
+    public void updateUser(int ID) throws DatabaseException {
+        User user = getById(ID);
+        String sql = "UPDATE users SET username = ?, password_hash = ?, role_id = ? WHERE id = ?";
+        try (Connection conn = Database.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, user.getUsername());
+            stmt.setString(2, user.getPassword_hash());
+            stmt.setInt(3, user.getRoleID());
+            stmt.setInt(4, user.getId());
+
+            int rows = stmt.executeUpdate();
+            if (rows == 0) {
+                throw new SQLException("User not found with ID: " + user.getId());
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    // ________________________________________________________________________________
+
+    public User toUser(ResultSet rs) throws SQLException {
+        return new User(
+                rs.getInt("id"),
+                rs.getString("username"),
+                rs.getInt("role_id"),
+                rs.getString("password_hash"),
+                rs.getTimestamp("created_at")
+        );
+    }
+
+    // ________________________________________________________________________________
+
+    public void deleteUser(int userId) {
+        String sql = "DELETE FROM users WHERE id = ?";
+
+        try (Connection conn = Database.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, userId);
+            int rows = stmt.executeUpdate();
+
+            if (rows == 0) {
+                throw new SQLException("No user found with ID: " + userId);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error deleting user with ID " + userId, e);
+        }
+    }
+
+    // ________________________________________________________________________________
+
+    public void deleteUser(User user) {
+        String sql = "DELETE FROM users WHERE id = ?";
+
+        try (Connection conn = Database.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, user.getId());
+            int rows = stmt.executeUpdate();
+
+            if (rows == 0) {
+                throw new SQLException("No user found with ID: " + user.getId());
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error deleting user with ID " + user.getId(), e);
+        }
     }
 
     // ________________________________________________________________________________

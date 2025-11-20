@@ -16,7 +16,7 @@ export function loadNavbar() {
     <nav class="guac-navbar-overlay navbar-row">
         <!-- Left -->
         <div class="navbar-left">
-            <a href="https://www.johannesfog.dk" class="navbar-logo guac-animate guac-slide-left">
+            <a href="/" class="navbar-logo guac-animate guac-slide-left">
                 <img src="/images/logo/fog.svg" alt="FOG Logo" class="fog-logo-nav">
             </a>
             <h2 class="navbar-text guac-animate guac-fade-in">Holder i længden</h2>

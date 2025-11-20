@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="da">
+<html lang="da" xmlns:th="http://www.thymeleaf.org">
+
 <head>
 
     <!-- Meta -->
@@ -10,17 +11,22 @@
     <meta name="author" content="Guacamoleboy"> <!-- Author of Website -->
 
     <!-- Visuals -->
-    <title>Title</title>
+    <title>Fog - Menu</title>
 
     <!-- Icon -->
-    <link rel="icon" href="#" type="image/x-icon">
-    <link rel="apple-touch-icon" href="#">
+    <link rel="icon" href="/images/logo/fog.svg" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/images/logo/fog.svg">
 
     <!-- CSS Load -->
     <link rel="stylesheet" href="/css/style.css">
 
     <!-- Script Load -->
     <script src="/js/notification.js" defer></script>
+    <script src="/js/AdminMenu/nav-bar.js" defer></script>
+    <script src="/js/AdminMenu/catalog.js" defer></script>
+    <script src="/js/AdminMenu/CMS/materials.js" defer></script>
+    <script src="/js/AdminMenu/CMS/user.js" defer></script>
+    <script src="/js/AdminMenu/dropdown.js" defer></script>
 
     <!-- Framwork load -->
     <link rel="stylesheet" href="/css/guacamoleboy-wow.css">
@@ -31,112 +37,486 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
-<body>
+<body class="profile-initial">
 
-    <div class="adminMenu">
+<!-- Profile Menu Start -->
+<section class="profile-menu-visuals">
+    <div class="guac-row">
 
-        <div class="left-contaier">
-
-            <div class="top-container">
-                <img class="profile-picture" src="/images/profile.png">
-                <h2>{Name}</h2>
+        <!-- Side Menu Start -->
+        <div class="guac-col-2 profile-nav">
+            <div class="profile-picture-top guac-justify-center guac-align-center">
+                <img src="/images/page-content/menu/pp-1.png" alt="Profile picture">
             </div>
+            <div class="profile-title">
+                <h3>Jonas Larsen</h3>
+                <p>Sælger</p>
+            </div>
+            <div class="profile-buttons">
+                <div class="dropdown">
+                    <a class="guac-btn guac-btn-profile dropdown-toggle" data-section="brugere">Brugere</a>
+                    <div class="dropdown-content">
+                        <a class="guac-btn guac-btn-profile" href="#">Søg efter bruger</a>
+                        <a class="guac-btn guac-btn-profile" href="#">Tilføj ny bruger</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a class="guac-btn guac-btn-profile dropdown-toggle" data-section="ordre">Ordre</a>
+                    <div class="dropdown-content">
+                        <a class="guac-btn guac-btn-profile" href="#">Søg efter ordre</a>
+                        <a class="guac-btn guac-btn-profile" href="#">Søg efter brugers ordre</a>
+                        <a class="guac-btn guac-btn-profile" href="#">Se alle ordre</a>
+                        <a class="guac-btn guac-btn-profile" href="#">Refusion</a>
+                        <a class="guac-btn guac-btn-profile" href="#">Retur</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a class="guac-btn guac-btn-profile dropdown-toggle" data-section="requests">Forespørgelser</a>
+                    <div class="dropdown-content">
+                        <a class="guac-btn guac-btn-profile" href="#">Søg efter brugers forespørgelse</a>
+                        <a class="guac-btn guac-btn-profile" href="#">Se alle forespørgelser</a>
+                        <a class="guac-btn guac-btn-profile" href="#">Behandel forespørgelse</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a class="guac-btn guac-btn-profile dropdown-toggle" data-section="cms">CMS</a>
+                    <div class="dropdown-content">
+                        <a class="guac-btn guac-btn-profile" href="#">Gebyre</a>
+                        <a class="guac-btn guac-btn-profile" href="#">Administrer produkter</a>
+                        <a class="guac-btn guac-btn-profile" href="#">Tilføj produkt</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a class="guac-btn guac-btn-profile dropdown-toggle" data-section="catalog">Katalog</a>
+                    <div class="dropdown-content">
+                        <a class="guac-btn guac-btn-profile" href="#">Prisliste</a>
+                        <a class="guac-btn guac-btn-profile" href="#">Søg</a>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-end-logo guac-justify-center guac-align-center">
+                <img src="/images/logo/fog.svg" alt="FOG Logo" class="fog-logo-medium">
+            </div>
+        </div>
+        <!-- Side Menu End -->
 
-            <div class="bottom-container">
+        <!-- ____________________________________________________________________ -->
 
-                <button type="button" class="backToHomePage" id="backToHomePage">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 181 181" fill="currentColor">
-                        <path d="M42.62 111.91h8.89V83.05h12.77V74.9H51.51V53.49h14.32v-8.06H42.62zm44.36-53.32c-8.89 0-14.26 5.19-14.26 14.27v25.59c0 9.07 5.37 14.27 14.26 14.27s14.26-5.2 14.26-14.27V72.86c0-9.08-5.38-14.27-14.26-14.27m5.48 39.35c0 4.69-2.18 6.93-5.48 6.93s-5.48-2.24-5.48-6.93V73.37c0-4.69 2.17-6.93 5.48-6.93s5.48 2.24 5.48 6.93zm37.27-35.08c-1-2.65-4.54-4.28-7.75-4.28-8.37 0-12.29 5.09-12.29 14.27v25.59c0 9.17 3.92 14.27 12.29 14.27 3 0 6.51-1.73 7.44-4.08v8.36c0 4.69-2.06 6.94-5.37 6.94s-5.37-2.25-5.37-6.94v-.91h-8.75v1.42c0 9.08 5.27 14.28 14.15 14.28s14.15-5.2 14.15-14.28V59.4h-8.5zm-.31 35.07c0 4.69-2.17 6.93-5.47 6.93s-5.48-2.24-5.48-6.93V73.37c0-4.69 2.17-6.93 5.48-6.93s5.47 2.24 5.47 6.93zm20.51-33.07a2 2 0 0 0-.5-.79 1.77 1.77 0 0 0-.63-.38 2 2 0 0 0 1-.51 1.45 1.45 0 0 0 .36-1 1.72 1.72 0 0 0-.15-.74 1.33 1.33 0 0 0-.45-.52 2.29 2.29 0 0 0-.74-.31 5.55 5.55 0 0 0-1-.09h-1.62a.6.6 0 0 0-.46.17.7.7 0 0 0-.16.48v5c0 .095.06.18.15.21.189.03.381.03.57 0 .185.03.375.03.56 0a.21.21 0 0 0 .12-.21v-2h.38a1 1 0 0 1 .69.2c.198.196.34.44.41.71l.29 1a.38.38 0 0 0 .08.17.21.21 0 0 0 .14.1h1.28c.06 0 .1 0 .11-.07a.21.21 0 0 0 0-.11 1.8 1.8 0 0 0-.1-.4zm-1.53-2a1.16 1.16 0 0 1-.81.22h-.66v-1.5h.65a2 2 0 0 1 .48.06.63.63 0 0 1 .32.15.51.51 0 0 1 .16.25.93.93 0 0 1 0 .29.78.78 0 0 1-.23.58"/>
-                        <path d="M152.87 61.4a5.12 5.12 0 0 0-2.86-2.82 5.93 5.93 0 0 0-2.21-.4 5.59 5.59 0 0 0-2.17.42 5.25 5.25 0 0 0-2.92 2.86 5.16 5.16 0 0 0-.43 2.12c-.01.74.13 1.475.41 2.16a5 5 0 0 0 1.13 1.7 5.23 5.23 0 0 0 1.73 1.13 5.91 5.91 0 0 0 2.2.4 5.51 5.51 0 0 0 2.16-.42 5.42 5.42 0 0 0 1.76-1.15 5.38 5.38 0 0 0 1.6-3.85 5.62 5.62 0 0 0-.4-2.15m-1.16 3.88a4.21 4.21 0 0 1-.86 1.34 4.11 4.11 0 0 1-1.34.92 4.72 4.72 0 0 1-3.43 0 3.88 3.88 0 0 1-1.34-.89 4.27 4.27 0 0 1-.88-1.38 4.91 4.91 0 0 1-.31-1.78 4.58 4.58 0 0 1 .3-1.64 4 4 0 0 1 .86-1.36c.381-.39.837-.7 1.34-.91a4.39 4.39 0 0 1 1.75-.33 4.84 4.84 0 0 1 1.68.3 3.89 3.89 0 0 1 2.21 2.31c.22.57.33 1.178.32 1.79a4.68 4.68 0 0 1-.3 1.65"/>
-                    </svg>
-                </button>
+        <!-- "Brugere" Content Start -->
+        <div class="guac-col-auto profile-actual" id="brugere">
+
+            <!--  Content Section -->
+            <div class="content-section" id="searchForUserAdmin">
+                <h2>Søg efter bruger</h2>
+                <p>Indtast brugerens ID og/eller brugernavn:</p>
+                <form class="guac-row input-group" id="CMSuserSearch">
+                    <div class="guac-col">
+                        <label>ID</label>
+                        <input type="text" name="id" placeholder="1...">
+                    </div>
+                    <div class="guac-col">
+                        <label>Brugernavn</label>
+                        <input type="text" name="username" placeholder="Employee...">
+                    </div>
+                    <div class="guac-col">
+                        <label>Rolle ID</label>
+                        <input type="text" name="role" placeholder="1...">
+                    </div>
+                </form>
+
+                <div id="CMSsearchUser"></div>
+
+
+                <div class="order-nav-row">
+                    <button type="submit" class="guac-btn action-btn" id="searchUserbtn">Søg bruger</button>
+                    <button type="button" id="prevCMSUsers" class="guac-btn action-btn" style="display:none">Forrige</button>
+                    <button type="button" id="nextCMSUsers" class="guac-btn action-btn" style="display:none">Næste</button>
+                </div>
 
             </div>
+            <!--  Content Section -->
 
+            <hr class="section-divider">
+
+            <!--  Content Section -->
+            <div class="content-section" id="addNewUserAdmin">
+                <h2>Tilføj ny bruger</h2>
+                <p>Udfyld oplysninger for at oprette en ny bruger:</p>
+                <div class="guac-row input-group">
+                    <div class="guac-col">
+                        <label >Brugernavn</label>
+                        <input type="text" name="username" placeholder="Brugernavn...">
+                    </div>
+                    <div class="guac-col">
+                        <label>Password</label>
+                        <input type="password" name="password" placeholder="Password...">
+                    </div>
+                    <div class="guac-col">
+                        <label>rolle ID</label>
+                        <input type="email" name="role" placeholder="1...">
+                    </div>
+                </div>
+                <button type="button" id= "createUser" class="guac-btn action-btn">Opret bruger</button>
+            </div>
+            <!--  Content Section -->
+
+            <hr class="section-divider"> <!-- Important to have in the end for sticky UI feel -->
 
         </div>
+        <!-- "Brugere" Content End -->
 
-        <div class="right-container">
+        <!-- ____________________________________________________________________ -->
 
-            <div class="top-container">
+        <!-- "ordre" Content Start -->
+        <div class="guac-col-auto profile-actual" id="ordre" style="display:none;">
 
-                <div class="nav-bar">
-
-
-                    <button type="button" id="showrequests">Forespørgelser</button>
-                    <button type="button" id="showorders">Ordre</button>
-                    <button type="button" id="showpriceList">Prisliste</button>
-                    <button type="button" id="showCMS">CMS</button>
-
-
-                </div>
-
-                <button type="button" id="exit">&#10006;</button>
-
-
-            </div>
-
-            <div class="bottom-container">
-
-                <div class="content-section" id="Forespørgelser">
-                    <h1>Forespørgelser</h1>
-                    <div class="content">
-                        <p>Hvad skal der lige være her?</p>
+            <!--  Content Section -->
+            <div class="content-section" id="searchOrderSection">
+                <h2>Søg efter ordre</h2>
+                <p>Indtast dine oplysninger herunder:</p>
+                <div class="guac-row input-group">
+                    <div class="guac-col">
+                        <label>Ordre ID</label>
+                        <input type="text" id="orderIdInput" placeholder="41414...">
                     </div>
                 </div>
 
-                <div class="content-section" id="Ordre">
-                    <h1>Ordre</h1>
-                    <div class="content">
-                        <p>Søg ordre ID</p>
-                        <form>
+                <div id="orderResult"></div>
 
-                            <input type="number" name="ordreID" placeholder="Ordre ID" required>
-
-
-                        </form>
-
-
-                        <div id="searchOrder"></div>
-
-                        <div class="btn-container">
-
-                            <button type="button" class="hide-btn" id="hide" >Skjul</button>
-                            <button type="submit" class="search-btn" id="searchOrderbtn" >Søg</button>
-
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="content-section" id="Prisliste">
-                    <h1>Prisliste</h1>
-                    <div class="content">
-                        <p>Hvad skal der lige være her?</p>
-                    </div>
-                </div>
-
-
-                <div class="content-section" id="CMS">
-                    <h1>CMS</h1>
-                    <div class="content">
-                        <p>Hvad skal der lige være her?</p>
-                    </div>
+                <div class="guac-pt-2">
+                    <button type="button" class="guac-btn action-btn" id="searchOrderBtn">Søg efter ordre</button>
+                    <button type="button" class="guac-btn action-btn" id="hideOrderBtn" style="display:none;" >Skjul ordre</button>
                 </div>
 
             </div>
+            <!--  Content Section -->
 
+            <hr class="section-divider">
+
+            <!--  Content Section -->
+            <div class="content-section" id="searchOrderAdmin">
+                <h2>Søg efter brugers ordre</h2>
+                <p>Indtast brugerens tlf nr, email eller fulde navn:</p>
+
+                <div class="guac-row input-group">
+                    <div class="guac-col">
+                        <label >Fulde navn</label>
+                        <input type="text" name="name" placeholder="Andreas Rovelt...">
+                    </div>
+                    <div class="guac-col">
+                        <label>Telefon nr</label>
+                        <input type="number" name="phone" placeholder="20202020...">
+                    </div>
+                    <div class="guac-col">
+                        <label >email</label>
+                        <input type="email" name="email" placeholder="test@test.com...">
+                    </div>
+                </div>
+
+
+                <div id="userOrdersContainer"></div>
+
+                <div class="order-nav-row">
+                    <button type="button" class="guac-btn action-btn" id="searchUserOrdersBtn">Søg ordrer</button>
+                    <button type="button" class="guac-btn action-btn" id="hideUserOrdersBtn" style="display:none;">Skjul ordrer</button>
+
+                    <div id="userNextAndPrevNav" style="display:none;">
+                        <button id="prevUserOrderBtn" class="guac-btn action-btn">Forrige ordre</button>
+                        <button id="nextUserOrderBtn" class="guac-btn action-btn">Næste ordre</button>
+                    </div>
+                </div>
+
+
+            </div>
+            <!--  Content Section -->
+
+            <hr class="section-divider">
+
+            <!--  Content Section -->
+            <div class="content-section" id="seeAllOrdersAdmin">
+                <h2>Se alle ordre</h2>
+                <p>Her kan du se alle ordre</p>
+
+                <div id="ShowAllOrdersContainer"></div>
+
+                <div class="order-nav-row">
+                    <button type="button" class="guac-btn action-btn" id="ShowAllOrdersBtn">Søg ordrer</button>
+                    <button type="button" class="guac-btn action-btn" id="hideAllOrdersBtn" style="display:none;">Skjul ordrer</button>
+
+                    <div id="ShowAllNextAndPrevNav" style="display:none;">
+                        <button id="prevShowAllOrderBtn" class="guac-btn action-btn">Forrige ordre</button>
+                        <button id="nextShowAllOrderBtn" class="guac-btn action-btn">Næste ordre</button>
+                    </div>
+                </div>
+
+            </div>
+            <!--  Content Section -->
+
+            <hr class="section-divider">
+
+            <!--  Content Section -->
+            <div class="content-section" id="refundAdmin">
+                <h2>Refusion</h2>
+                <p>Behandl refusionsanmodninger her:</p>
+                <button type="button" class="guac-btn action-btn">Start refusion</button>
+            </div>
+            <!--  Content Section -->
+
+            <hr class="section-divider">
+
+            <!--  Content Section -->
+            <div class="content-section" id="returnAdmin">
+                <h2>Retur</h2>
+                <p>Administrér returordrer:</p>
+                <div class="guac-row input-group">
+                    <div class="guac-col">
+                        <label>Retur ID</label>
+                        <input type="text" id="returnIdInput" placeholder="123...">
+                    </div>
+                </div>
+
+                <div id="returnContainer"></div>
+
+                <div class="order-nav-row">
+                    <button type="button" class="guac-btn action-btn" id="searchReturnBtn">Søg retur</button>
+                    <button type="button" class="guac-btn action-btn" id="showAllReturnsBtn">Vis alle returneringer</button>
+                    <button type="button" class="guac-btn action-btn" id="hideReturnsBtn" style="display:none;">Skjul</button>
+                    <div id="returnNav" style="display:none;">
+                        <button id="prevReturnBtn" class="guac-btn action-btn">Forrige</button>
+                        <button id="nextReturnBtn" class="guac-btn action-btn">Næste</button>
+                    </div>
+                </div>
+            </div>
+            <!--  Content Section -->
+
+            <hr class="section-divider">
 
         </div>
+        <!-- "Ordre" Content End -->
+
+        <!-- ____________________________________________________________________ -->
+
+        <!-- "Requests" Content Start -->
+        <div class="guac-col-auto profile-actual" id="requests" style="display:none;">
+
+            <!--  Content Section -->
+            <div class="content-section" id="searchRequest">
+                <h2>Søg efter indsendt tilbud</h2>
+                <p>Indtast Navn, telefonnr eller Email:</p>
+                <form class="guac-row input-group">
+                    <div class="guac-col">
+                        <label>Navn</label>
+                        <input type="text" name="id" placeholder="Andreas Rovelt...">
+                    </div>
+                    <div class="guac-col">
+                        <label>Telefon nummer</label>
+                        <input type="number" name="phone" placeholder="20202020...">
+                    </div>
+                    <div class="guac-col">
+                        <label>Email</label>
+                        <input type="email" name="email" placeholder="test@test.com...">
+                    </div>
+                </form>
+
+                <div id="searchRequestResults"></div>
 
 
+                <div class="order-nav-row">
+                    <button type="submit" class="guac-btn action-btn" id="searchRequestbtn">Søg</button>
+                    <button type="button" id="prevRequest" class="guac-btn action-btn" style="display:none">Forrige</button>
+                    <button type="button" id="nextRequest" class="guac-btn action-btn" style="display:none">Næste</button>
+                </div>
+
+            </div>
+            <!--  Content Section -->
+
+            <hr class="section-divider"> <!-- Important to have in the end for sticky UI feel -->
+
+        </div>
+        <!-- "Brugere" Content End -->
+
+        <!-- ____________________________________________________________________ -->
+
+        <!-- "cms" Content Start -->
+        <div class="guac-col-auto profile-actual" id="cms" style="display:none;">
+
+            <!--  Content Section -->
+            <div class="content-section" id="updateDeliveryPricesAdmin">
+                <h2>Opdater leveringspriser</h2>
+                <p>Udfyld oplysningerne herunder:</p>
+                <div class="guac-row input-group">
+                    <div class="guac-col">
+                        <label>Leveringsmetode</label>
+                        <input type="text" placeholder="Fx GLS...">
+                    </div>
+                    <div class="guac-col">
+                        <label>Ny pris</label>
+                        <input type="text" placeholder="Ny pris...">
+                    </div>
+                    <div class="guac-col">
+                        <label>Godkendelse</label>
+                        <input type="text" placeholder="Skriv dit brugernavn...">
+                    </div>
+                </div>
+                <button type="button" class="guac-btn action-btn">Opdater</button>
+            </div>
+            <!--  Content Section -->
+
+            <hr class="section-divider">
+
+            <!--  Content Section -->
+            <div class="content-section" id="CMSsearchProduct">
+                <h2>Søg efter produkt</h2>
+                <p>Indtast varenr, Navn, Kategori ID eller Mål</p>
+
+                <form class="guac-row input-group" id="CMSSearchProductForm">
+                    <div class="guac-col">
+                        <label>Varenr</label>
+                        <input type="number" name="serialnumber" placeholder="1...">
+                    </div>
+                    <div class="guac-col">
+                        <label>Navn</label>
+                        <input type="text" name="name" placeholder="Skrue...">
+                    </div>
+                    <div class="guac-col">
+                        <label>Kategori ID</label>
+                        <input type="number" name="category_id" placeholder="1...">
+                    </div>
+                </form>
+
+                <div id="CMSproductResults"></div>
+
+                <div class="order-nav-row">
+                    <button type="submit" class="guac-btn action-btn" id="CMSsearchbtn">Søg</button>
+                    <button type="button" id="prevCMSProduct" class="guac-btn action-btn" style="display:none">Forrige</button>
+                    <button type="button" id="nextCMSProduct" class="guac-btn action-btn" style="display:none">Næste</button>
+                </div>
+            </div>
+
+            <!--  Content Section -->
+
+            <hr class="section-divider">
+
+            <!--  Content Section -->
+            <div class="content-section" id="CMSNewProduct">
+                <h2>Tilføj et nyt produkt</h2>
+                <p>Udfyld oplysninger for at oprette et nyt produkt:</p>
+                <form class="guac-row input-group" id="addNewProduct">
+                    <div class="guac-col">
+                        <label>Kategori ID</label>
+                        <input type="number" name="category_id" placeholder="1...">
+                    </div>
+                    <div class="guac-col">
+                        <label>Navn</label>
+                        <input type="text" name="name" placeholder="Skrue...">
+                    </div>
+                    <div class="guac-col">
+                        <label>Beskrivelse</label>
+                        <input type="text" name="description" placeholder="Dette er en skrue...">
+                    </div>
+                    <div class="guac-col">
+                        <label>Enhed</label>
+                        <input type="text" name="unit" placeholder="stk, sæt, m...">
+                    </div>
+                    <div class="guac-col">
+                        <label>Længde</label>
+                        <input type="number" name="length" placeholder="50...">
+                    </div>
+                    <div class="guac-col">
+                        <label>Bredde</label>
+                        <input type="number" name="width" placeholder="25...">
+                    </div>
+                    <div class="guac-col">
+                        <label>Højde</label>
+                        <input type="number" name="height" placeholder="10...">
+                    </div>
+                    <div class="guac-col">
+                        <label>Pris</label>
+                        <input type="number" name="price" placeholder="100...">
+                    </div>
+                </form>
+                <button type="button" id="createNewProduct" class="guac-btn action-btn">Opret nyt produkt</button>
+            </div>
+
+            <!--  Content Section -->
+
+            <hr class="section-divider">
+
+        </div>
+        <!-- "cms" Content End -->
+
+        <!-- ____________________________________________________________________ -->
+
+        <!-- "Katalog" Content Start -->
+        <div class="guac-col-auto profile-actual" id="catalog" style="display:none;">
+
+            <!--  Content Section -->
+            <div class="content-section" id="showCatalog">
+                <h2>Prisliste</h2>
+                <p>Her kan du se alle produkterne</p>
+
+                <div id="showCatalogResult" class="catalogStyle"></div>
+
+
+                <div class="order-nav-row">
+                    <button type="submit" class="guac-btn action-btn" id="ShowAllProductsBtn">Vis katalog</button>
+                    <button type="button" id="prevCatalog" class="guac-btn action-btn" style="display:none">Forrige</button>
+                    <button type="button" id="nextCatalog" class="guac-btn action-btn" style="display:none">Næste</button>
+                </div>
+
+
+            </div>
+            <!--  Content Section -->
+
+            <hr class="section-divider">
+
+            <!--  Content Section -->
+            <div class="content-section" id="searchProduct">
+                <h2>Søg efter produkt</h2>
+                <p>Indtast varenr, Navn eller Mål</p>
+
+                <form class="guac-row input-group" id="searchProductForm">
+                    <div class="guac-col">
+                        <label >Varenr</label>
+                        <input type="number" name="serialnumber" placeholder="1...">
+                    </div>
+                    <div class="guac-col">
+                        <label>Navn</label>
+                        <input type="text" name="name" placeholder="Skrue...">
+                    </div>
+                    <div class="guac-col">
+                        <label >Kategori ID</label>
+                        <input type="text" name="category_id" placeholder="1...">
+                    </div>
+                </form>
+
+
+                <div id="productResults"></div>
+
+
+                <div class="order-nav-row" id="searchNavigation">
+                    <button type="submit" class="guac-btn action-btn" id="ShowProductsBtn">Søg</button>
+                    <button type="button" id="hideSearchResults" class="guac-btn action-btn" style="display:none">Skjul</button>
+                    <button type="button" id="prevProduct" class="guac-btn action-btn" style="display:none">Forrige</button>
+                    <button type="button" id="nextProduct" class="guac-btn action-btn" style="display:none">Næste</button>
+                </div>
+
+
+            </div>
+            <!--  Content Section -->
+
+            <hr class="section-divider">
+
+        </div>
+        <!-- "Ordre" Content End -->
 
     </div>
+</section>
+<!-- Profile Menu End -->
 
-
-<!-- Notifications -->
+<!-- Notification -->
 <div id="guac-notification-container"></div>
-<!-- Notifications -->
+<!-- Notification -->
 
 </body>
 </html>

@@ -44,10 +44,9 @@
                         <div class="login-form-wrapper">
                             <h2>Log Ind</h2>
 
-                            <!-- TODO Skal laves til POST når vi laver validation -->
-                            <form action="/menu" method="get">
-                                <input type="text" id="username" placeholder="Indtast brugernavn" required>
-                                <input type="password" id="password" placeholder="Indtast password" required>
+                            <form action="/login" method="post">
+                                <input type="text" name="username" placeholder="Indtast brugernavn" required>
+                                <input type="password" name="password" placeholder="Indtast password" required>
                                 <div class="button-wrapper-login">
                                     <a href="/">
                                         <button type="button" class="guac-btn-fog">Tilbage</button>
