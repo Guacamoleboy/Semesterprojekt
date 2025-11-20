@@ -19,11 +19,11 @@ import java.sql.SQLException;
 public class Database {
 
     // Attributes
-    private static String databaseName = System.getenv().getOrDefault("DB_NAME", "postgres");
+    private static String databaseName = System.getenv().getOrDefault("DB_NAME", "fog");
     private static String host = System.getenv().getOrDefault("DB_HOST", "localhost");
     private static String port = System.getenv().getOrDefault("DB_PORT", "5432");
     private static String user = System.getenv().getOrDefault("DB_USER", "postgres");
-    private static String password = System.getenv().getOrDefault("DB_PASSWORD", "1234");
+    private static String password = System.getenv().getOrDefault("DB_PASSWORD", "postgres");
     private static final String URL_TEMPLATE = "jdbc:postgresql://%s:%s/%s";
 
     // ________________________________________________________________
