@@ -291,24 +291,51 @@ body::-webkit-scrollbar { /* All other browsers */
     align-items: center;
 }
 
-.modtag-content-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4.5rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
+.modtag-info-overview {
+    color: var(--fog-blue);
+    margin-bottom: 0;
+    letter-spacing: 0.5px;
 }
 
-.modtag-form-wrapper,
-.modtag-resume-wrapper {
-    display: flex;
-    flex-direction: column;
+.modtag-info-title {
+    color: var(--fog-blue);
+    margin: 0.5rem 0 1.5rem 0;
+    position: relative;
+}
+
+.modtag-info-title::after {
+    content: "";
+    display: block;
+    width: 8rem;
+    height: 3px;
+    margin: 0.75rem auto 1.5rem auto;
+    border-bottom: 3px dotted var(--fog-blue);
+    opacity: 0.6;
+}
+
+.modtag-info-text {
+    max-width: 50ch;
+    margin: 0 auto;
+    line-height: 1.6;
+    color: var(--project-less-black);
+}
+
+.modtag-download-link {
+    color: var(--fog-blue);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.25s ease;
+}
+
+.modtag-download-link:hover {
+    text-decoration: underline;
+    opacity: 0.9;
+    color: var(--fog-blue-less);
 }
 
 .modtag-card-form,
-.modtag-card-resume {
-    height: 100%;
+.modtag-card-resume,
+.modtag-card-price {
     display: flex;
     flex-direction: column;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
@@ -318,31 +345,52 @@ body::-webkit-scrollbar { /* All other browsers */
 }
 
 .modtag-card-form {
-    text-align: left !important;
+    height: 100%;
+    flex: 1;
 }
 
-.modtag-card-form .guac-card-title {
-    text-align: center !important;
+.modtag-card-resume {
+    height: 100%;
+    flex: 1;
 }
 
-.modtag-form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
+.modtag-card-price .guac-card-title {
+    margin: -2.5rem -2rem 1rem -2rem;
 }
 
-.modtag-form-group {
-    display: flex;
-    flex-direction: column;
+.modtag-form {
+    flex: 1;
 }
 
-.modtag-form-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-    margin-top: 2rem;
+.modtag-label {
+    color: var(--fog-blue-2);
+}
+
+.modtag-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    min-height: 2.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: left;
+    border: 0.125rem solid var(--project-less-white);
+    border-radius: 1rem;
+    box-sizing: border-box;
+    transition: all 0.25s ease-in-out;
+    background-color: var(--fog-white);
+    color: var(--project-less-black);
+}
+
+.modtag-input:focus {
+    outline: none;
+    border-color: var(--fog-blue);
+    box-shadow: 0 0 0 3px var(--fog-blue-dim);
+}
+
+.modtag-terms-link {
+    color: var(--fog-blue);
+    text-decoration: none;
+    transition: all 0.25s ease-in-out;
 }
 
 .modtag-submit-btn {
@@ -358,18 +406,7 @@ body::-webkit-scrollbar { /* All other browsers */
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3) !important;
 }
 
-.modtag-resume-content {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    padding: 0.5rem 0;
-}
-
 .modtag-resume-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.75rem 0;
     border-bottom: 1px solid var(--fog-blue-dim);
 }
 
@@ -378,16 +415,16 @@ body::-webkit-scrollbar { /* All other browsers */
 }
 
 .modtag-resume-label {
-    font-weight: 600;
     color: var(--fog-blue-2);
-    font-size: 1rem;
 }
 
 .modtag-resume-value {
-    font-weight: 500;
     color: var(--project-less-black);
-    font-size: 1rem;
-    text-align: right;
+}
+
+
+.modtag-price-value {
+    color: var(--fog-blue);
 }
 
 
@@ -754,113 +791,6 @@ body::-webkit-scrollbar { /* All other browsers */
 /* ___________________________________________ */
 
 /* Modtag */
-
-/* ___________________________________________ */
-
-
-.modtag-form { 
-    margin-top: 0.5rem; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.modtag-label {
-    display: block;
-    font-weight: 600;
-    color: var(--fog-blue-2);
-    margin-bottom: 0.5rem;
-}
-
-.modtag-input {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    min-height: 2.75rem;
-    font-size: 1rem;
-    font-weight: 600;
-    text-align: left;
-    border: 0.125rem solid var(--project-less-white);
-    border-radius: 1rem;
-    box-sizing: border-box;
-    transition: all 0.25s ease-in-out;
-    background-color: var(--fog-white);
-    color: var(--project-less-black);
-}
-
-.modtag-input:focus {
-    outline: none;
-    border-color: var(--fog-blue);
-    box-shadow: 0 0 0 3px var(--fog-blue-dim);
-}
-
-.modtag-terms-link {
-    color: var(--fog-blue);
-    text-decoration: none;
-    font-size: 0.9rem;
-    text-align: center;
-    transition: all 0.25s ease-in-out;
-}
-
-.modtag-terms-link:hover {
-    text-decoration: underline;
-    opacity: 0.9;
-}
-
-
-.modtag-info {
-    text-align: center;
-    margin-bottom: 4rem;
-    padding: 0 1rem;
-}
-
-.modtag-info p:first-of-type {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--fog-blue);
-    text-transform: uppercase;
-    margin-bottom: 0rem;
-    letter-spacing: 0.5px;
-}
-
-.modtag-info h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--fog-blue);
-    margin: 0.5rem 0 1.5rem 0;
-    position: relative;
-}
-
-.modtag-info h2::after {
-    content: "";
-    display: block;
-    width: 8rem;
-    height: 3px;
-    margin: 0.75rem auto 1.5rem auto;
-    border-bottom: 3px dotted var(--fog-blue);
-    opacity: 0.6;
-}
-
-.modtag-info p:last-of-type {
-    font-size: 1.05rem;
-    color: var(--project-less-black);
-    max-width: 50ch;
-    margin: 0 auto;
-    line-height: 1.6;
-}
-
-.modtag-download-link {
-    color: var(--fog-blue);
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.25s ease;
-}
-
-.modtag-download-link:hover {
-    text-decoration: underline;
-    opacity: 0.9;
-    color: var(--fog-blue-less);
-}
-
 
 /* ___________________________________________ */
 
