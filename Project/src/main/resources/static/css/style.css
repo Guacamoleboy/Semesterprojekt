@@ -173,6 +173,7 @@ body::-webkit-scrollbar { /* All other browsers */
 }
 
 .guac-btn-fog {
+    box-shadow: 0 4px 2px rgba(0, 0, 0, 0.6);
     background-color: var(--fog-blue);
     color: var(--project-white);
     border-radius: 16px !important;
@@ -180,7 +181,9 @@ body::-webkit-scrollbar { /* All other browsers */
 }
 
 .guac-btn-fog:hover {
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.6);
     text-decoration: none !important;
+    transform: translateY(2px);
 }
 
 /* ___________________________________________ */
@@ -280,14 +283,12 @@ body::-webkit-scrollbar { /* All other browsers */
 /* ___________________________________________ */
 
 .section-modtag {
-    background: url("../images/page-content/modtag/bg.png") center center no-repeat;
-    background-size: contain;
-    background-color: var(--section-1-background);
+    background: url("../images/page-content/modtag/modtag-background.png") center center no-repeat;
+    background-size: cover;
     position: relative;
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 4rem 0;
 }
 
 .modtag-content-wrapper {
@@ -311,7 +312,6 @@ body::-webkit-scrollbar { /* All other browsers */
     display: flex;
     flex-direction: column;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     max-width: none;
     width: 100%;
     padding: 2.5rem 2rem;
@@ -323,12 +323,6 @@ body::-webkit-scrollbar { /* All other browsers */
 
 .modtag-card-form .guac-card-title {
     text-align: center !important;
-}
-
-.modtag-card-form:hover,
-.modtag-card-resume:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
 }
 
 .modtag-form-row {
@@ -355,9 +349,13 @@ body::-webkit-scrollbar { /* All other browsers */
     width: 100%;
     max-width: 300px;
     padding: 1rem 2rem;
+    outline: none !important;
+    border: none !important;
+    border-radius: 0.5rem !important;
     font-size: 1.1rem;
     font-weight: 600;
     text-align: center;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3) !important;
 }
 
 .modtag-resume-content {
@@ -883,8 +881,11 @@ body::-webkit-scrollbar { /* All other browsers */
 }
 
 .hero-2-visual img {
-    max-width: 90%;
+    width: 90%;
+    max-width: none;
     height: auto;
+    transform: translateY(15%) !important;
+    transform: translateX(-10%);
 }
 
 .hero-2-visual .floating-card {
@@ -975,6 +976,7 @@ body::-webkit-scrollbar { /* All other browsers */
 }
 
 .guac-btn-hero-left {
+    box-shadow: 0 6px 2px rgba(0, 0, 0, 0.3);
     text-decoration: none !important;
     background-color: var(--fog-blue-2);
     color: var(--fog-white);
@@ -983,6 +985,7 @@ body::-webkit-scrollbar { /* All other browsers */
 }
 
 .guac-btn-hero-right {
+    box-shadow: 0 6px 2px rgba(0, 0, 0, 0.3);
     text-decoration: none !important;
     background-color: var(--project-white);
     color: var(--fog-blue);
@@ -993,6 +996,8 @@ body::-webkit-scrollbar { /* All other browsers */
 .guac-btn-hero-right:hover,
 .guac-btn-hero-left:hover {
     opacity: 0.6 !important;
+    box-shadow: 0 4px 2px rgba(0, 0, 0, 0.3);
+    transform: translateY(2px);
 }
 
 /* ___________________________________________ */
@@ -1161,7 +1166,7 @@ body::-webkit-scrollbar { /* All other browsers */
     width: 100%;
     padding: 0.75rem;
     border: 1px solid var(--project-less-white);
-    border-radius: 0.5rem;
+    border-radius: 0.5rem !important;
     font-size: 1rem;
     margin-bottom: 1.5rem;
     background-color: var(--fog-white);
@@ -1186,6 +1191,14 @@ body::-webkit-scrollbar { /* All other browsers */
 .beregn-form button:hover {
     opacity: 0.85;
     transform: translateY(2px);
+}
+
+.beregn-intro guac-btn-fog {
+    box-shadow: 0 4px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+.beregn-intro guac-btn-fog:hover {
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3) !important;
 }
 
 /* ___________________________________________ */
@@ -1268,7 +1281,7 @@ body::-webkit-scrollbar { /* All other browsers */
 
 .slideshow-index-card .guac-btn:hover {
     transform: translateY(2px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.6);
 }
 
 .guac-btn-slideshow,
@@ -1277,7 +1290,7 @@ body::-webkit-scrollbar { /* All other browsers */
     background-color: var(--fog-blue);
     color: var(--fog-white);
     border-radius: 0.5rem !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 2px rgba(0, 0, 0, 0.6);
 }
 
 .guac-btn-slideshow2 {
