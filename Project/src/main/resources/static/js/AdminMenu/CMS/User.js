@@ -5,7 +5,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // _________________________________________________
 
-    const PageSize = 5;
+    let PageSize = 5;
     let CMSUsers = [];
     let userPage = 0;
 

@@ -81,7 +81,7 @@ public class ModtagController {
                 );
 
                 CarportOrderMapper carportOrderMapper = new CarportOrderMapper();
-                carportOrderMapper.newCarportOrder(carportOrder);
+                carportOrderMapper.newOrder(carportOrder);
 
                 double totalPrice = 20000.0;
                 

@@ -3,9 +3,9 @@ window.addEventListener("DOMContentLoaded", async () => {
     const cmsProductsContainer = document.getElementById("CMSproductResults");
     const prevBtn = document.getElementById("prevCMSProduct");
     const nextBtn = document.getElementById("nextCMSProduct");
-
     const addNewProductForm = document.getElementById("addNewProduct");
     const addNewMaterialbtn = document.getElementById("createNewProduct");
+    // _________________________________________________
 
     const PageSize = 5;
     let cmsProductsData = [];
