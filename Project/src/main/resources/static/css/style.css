@@ -285,7 +285,7 @@ body::-webkit-scrollbar { /* All other browsers */
 .section-modtag {
     background: url("../images/page-content/modtag/modtag-background.png") center center no-repeat;
     background-size: cover;
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
@@ -293,7 +293,7 @@ body::-webkit-scrollbar { /* All other browsers */
     min-height: 100vh;
     display: flex;
     align-items: flex-start;
-    overflow-y: auto;
+    overflow-y: hidden;
     overflow-x: hidden;
     scrollbar-width: none; 
     -ms-overflow-style: none; /* Old Browsers. Just for safety. */
@@ -301,6 +301,10 @@ body::-webkit-scrollbar { /* All other browsers */
 
 .section-modtag::-webkit-scrollbar {
     display: none;
+}
+
+.modtag-info {
+    margin-top: 6rem !important;
 }
 
 .modtag-info-overview {
@@ -353,15 +357,12 @@ body::-webkit-scrollbar { /* All other browsers */
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
     max-width: none;
     width: 100%;
-    padding-top: 1.5rem;
-    padding-right: 1.5rem;
-    padding-bottom: 1.5rem;
-    padding-left: 1.5rem;
+    padding: 1.5rem !important;
 }
 
 .modtag-card-form {
-    height: 100%;
-    flex: 1;
+    height: auto;
+    align-self: flex-start;
 }
 
 .modtag-card-resume {
@@ -442,12 +443,20 @@ body::-webkit-scrollbar { /* All other browsers */
     color: var(--project-less-black);
 }
 
-
 .modtag-price-value {
     color: var(--fog-blue);
 }
 
+/* ___________________________________________ */
 
+/* Section Estimate */
+
+/* ___________________________________________ */
+
+.section-estimate {
+    min-height: 100vh;
+    background: var(--section-1-background);
+}
 
 /* ___________________________________________ */
 
