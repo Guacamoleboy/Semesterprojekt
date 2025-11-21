@@ -15,7 +15,7 @@ public class CarportOrderMapper {
 
     // _____________________________________________________________________
 
-    public CarportOrder newOrder(CarportOrder order) throws DatabaseException {
+    public void newOrder(CarportOrder order) throws DatabaseException {
         String sql = "INSERT INTO carport_orders (user_id, carport_category_id, width, length, height, angle, roof,"+
         "has_tool_shed, tool_shed_width, tool_shed_length, has_trapez) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id";
 
@@ -43,7 +43,6 @@ public class CarportOrderMapper {
                 if (rs.next()) {
 
                     order.setId(rs.getInt("id"));
-                    return order;
 
                 }
 
@@ -54,8 +53,6 @@ public class CarportOrderMapper {
             throw new DatabaseException("Fejl ved oprettelse af carport ordre", e);
 
         }
-
-        return null;
     }
 
     // _____________________________________________________________________
