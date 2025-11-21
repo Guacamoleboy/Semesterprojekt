@@ -1750,7 +1750,8 @@ body::-webkit-scrollbar { /* All other browsers */
 #searchForUserAdmin #CMSsearchUser,
 #showCatalog .catalogStyle,
 #productResults,
-#CMSproductResults{
+#CMSproductResults,
+#searchRequestResults{
     display: none;
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -1761,6 +1762,7 @@ body::-webkit-scrollbar { /* All other browsers */
 #CMSproductResults .product-item,
 #showCatalogResult .product-item,
 #productResults .product-item,
+#searchRequestResults .request-item,
 .adminMenu .user-item{
     background: var(--am-product-card);
     padding: 0.5rem 1rem;

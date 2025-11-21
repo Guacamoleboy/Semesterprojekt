@@ -26,7 +26,7 @@
     <script src="/js/AdminMenu/catalog.js" defer></script>
     <script src="/js/AdminMenu/CMS/materials.js" defer></script>
     <script src="/js/AdminMenu/CMS/user.js" defer></script>
-    <script src="/js/AdminMenu/dropdown.js" defer></script>
+    <script src="/js/AdminMenu/CMS/requests.js" defer></script>
 
     <!-- Framwork load -->
     <link rel="stylesheet" href="/css/guacamoleboy-wow.css">
@@ -300,13 +300,37 @@
         <div class="guac-col-auto profile-actual" id="requests" style="display:none;">
 
             <!--  Content Section -->
+            <div class="content-section" id="showRequests">
+                <h2>Indsendte tilbud</h2>
+                <p>Her kan du se alle indsendte tilbud</p>
+
+                <div id="showRequestsResult"></div>
+
+
+                <div class="order-nav-row">
+                    <button type="submit" class="guac-btn action-btn" id="ShowAllRequestsBtn">Vis</button>
+                    <button type="button" id="prevAllRequest" class="guac-btn action-btn" style="display:none">Forrige</button>
+                    <button type="button" id="nextAllRequest" class="guac-btn action-btn" style="display:none">Næste</button>
+                </div>
+
+
+            </div>
+            <!--  Content Section -->
+
+            <hr class="section-divider">
+
+            <!--  Content Section -->
             <div class="content-section" id="searchRequest">
                 <h2>Søg efter indsendt tilbud</h2>
                 <p>Indtast Navn, telefonnr eller Email:</p>
                 <form class="guac-row input-group">
                     <div class="guac-col">
+                        <label>Ordre ID</label>
+                        <input type="number" name="order_id" placeholder="1...">
+                    </div>
+                    <div class="guac-col">
                         <label>Navn</label>
-                        <input type="text" name="id" placeholder="Andreas Rovelt...">
+                        <input type="text" name="firstname" placeholder="Andreas Rovelt...">
                     </div>
                     <div class="guac-col">
                         <label>Telefon nummer</label>
