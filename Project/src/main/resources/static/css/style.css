@@ -173,6 +173,7 @@ body::-webkit-scrollbar { /* All other browsers */
 }
 
 .guac-btn-fog {
+    box-shadow: 0 4px 2px rgba(0, 0, 0, 0.6);
     background-color: var(--fog-blue);
     color: var(--project-white);
     border-radius: 16px !important;
@@ -180,7 +181,9 @@ body::-webkit-scrollbar { /* All other browsers */
 }
 
 .guac-btn-fog:hover {
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.6);
     text-decoration: none !important;
+    transform: translateY(2px);
 }
 
 /* ___________________________________________ */
@@ -280,98 +283,151 @@ body::-webkit-scrollbar { /* All other browsers */
 /* ___________________________________________ */
 
 .section-modtag {
-    background: url("../images/page-content/modtag/bg.png") center center no-repeat;
-    background-size: contain;
-    background-color: var(--section-1-background);
+    background: url("../images/page-content/modtag/modtag-background.png") center center no-repeat;
+    background-size: cover;
     position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
     min-height: 100vh;
     display: flex;
-    align-items: center;
-    padding: 4rem 0;
+    align-items: flex-start;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    scrollbar-width: none; 
+    -ms-overflow-style: none; /* Old Browsers. Just for safety. */
 }
 
-.modtag-content-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4.5rem;
-    max-width: 1200px;
+.section-modtag::-webkit-scrollbar {
+    display: none;
+}
+
+.modtag-info {
+    margin-top: 6rem !important;
+}
+
+.modtag-info-overview {
+    color: var(--fog-blue);
+    margin-bottom: 0;
+    letter-spacing: 0.5px;
+}
+
+.modtag-info-title {
+    color: var(--fog-blue);
+    margin: 0.5rem 0 1.5rem 0;
+    position: relative;
+}
+
+.modtag-info-title::after {
+    content: "";
+    display: block;
+    width: 8rem;
+    height: 3px;
+    margin: 0.75rem auto 1.5rem auto;
+    border-bottom: 3px dotted var(--fog-blue);
+    opacity: 0.6;
+}
+
+.modtag-info-text {
+    max-width: 50ch;
     margin: 0 auto;
-    width: 100%;
+    line-height: 1.6;
+    color: var(--project-less-black);
 }
 
-.modtag-form-wrapper,
-.modtag-resume-wrapper {
-    display: flex;
-    flex-direction: column;
+.modtag-download-link {
+    color: var(--fog-blue);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.25s ease;
+}
+
+.modtag-download-link:hover {
+    text-decoration: underline;
+    opacity: 0.9;
+    color: var(--fog-blue-less);
 }
 
 .modtag-card-form,
-.modtag-card-resume {
-    height: 100%;
+.modtag-card-resume,
+.modtag-card-price {
     display: flex;
     flex-direction: column;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     max-width: none;
     width: 100%;
-    padding: 2.5rem 2rem;
+    padding: 1.5rem !important;
 }
 
 .modtag-card-form {
-    text-align: left !important;
+    height: auto;
+    align-self: flex-start;
 }
 
-.modtag-card-form .guac-card-title {
-    text-align: center !important;
+.modtag-card-resume {
+    height: 100%;
+    flex: 1;
 }
 
-.modtag-card-form:hover,
-.modtag-card-resume:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
+.modtag-card-price .guac-card-title {
+    background-color: transparent;
+    color: var(--fog-blue);
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    text-decoration: underline;
 }
 
-.modtag-form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
+.modtag-form {
+    flex: 1;
 }
 
-.modtag-form-group {
-    display: flex;
-    flex-direction: column;
+.modtag-label {
+    color: var(--fog-blue-2);
 }
 
-.modtag-form-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-    margin-top: 2rem;
+.modtag-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    min-height: 2.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: left;
+    border: 0.125rem solid var(--project-less-white);
+    border-radius: 1rem;
+    box-sizing: border-box;
+    transition: all 0.25s ease-in-out;
+    background-color: var(--fog-white);
+    color: var(--project-less-black);
+}
+
+.modtag-input:focus {
+    outline: none;
+    border-color: var(--fog-blue);
+    box-shadow: 0 0 0 3px var(--fog-blue-dim);
+}
+
+.modtag-terms-link {
+    color: var(--fog-blue);
+    text-decoration: none;
+    transition: all 0.25s ease-in-out;
 }
 
 .modtag-submit-btn {
     width: 100%;
     max-width: 300px;
     padding: 1rem 2rem;
+    outline: none !important;
+    border: none !important;
+    border-radius: 0.5rem !important;
     font-size: 1.1rem;
     font-weight: 600;
     text-align: center;
-}
-
-.modtag-resume-content {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    padding: 0.5rem 0;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3) !important;
 }
 
 .modtag-resume-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.75rem 0;
     border-bottom: 1px solid var(--fog-blue-dim);
 }
 
@@ -380,19 +436,27 @@ body::-webkit-scrollbar { /* All other browsers */
 }
 
 .modtag-resume-label {
-    font-weight: 600;
     color: var(--fog-blue-2);
-    font-size: 1rem;
 }
 
 .modtag-resume-value {
-    font-weight: 500;
     color: var(--project-less-black);
-    font-size: 1rem;
-    text-align: right;
 }
 
+.modtag-price-value {
+    color: var(--fog-blue);
+}
 
+/* ___________________________________________ */
+
+/* Section Estimate */
+
+/* ___________________________________________ */
+
+.section-estimate {
+    min-height: 100vh;
+    background: var(--section-1-background);
+}
 
 /* ___________________________________________ */
 
@@ -759,113 +823,6 @@ body::-webkit-scrollbar { /* All other browsers */
 
 /* ___________________________________________ */
 
-
-.modtag-form { 
-    margin-top: 0.5rem; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.modtag-label {
-    display: block;
-    font-weight: 600;
-    color: var(--fog-blue-2);
-    margin-bottom: 0.5rem;
-}
-
-.modtag-input {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    min-height: 2.75rem;
-    font-size: 1rem;
-    font-weight: 600;
-    text-align: left;
-    border: 0.125rem solid var(--project-less-white);
-    border-radius: 1rem;
-    box-sizing: border-box;
-    transition: all 0.25s ease-in-out;
-    background-color: var(--fog-white);
-    color: var(--project-less-black);
-}
-
-.modtag-input:focus {
-    outline: none;
-    border-color: var(--fog-blue);
-    box-shadow: 0 0 0 3px var(--fog-blue-dim);
-}
-
-.modtag-terms-link {
-    color: var(--fog-blue);
-    text-decoration: none;
-    font-size: 0.9rem;
-    text-align: center;
-    transition: all 0.25s ease-in-out;
-}
-
-.modtag-terms-link:hover {
-    text-decoration: underline;
-    opacity: 0.9;
-}
-
-
-.modtag-info {
-    text-align: center;
-    margin-bottom: 4rem;
-    padding: 0 1rem;
-}
-
-.modtag-info p:first-of-type {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--fog-blue);
-    text-transform: uppercase;
-    margin-bottom: 0rem;
-    letter-spacing: 0.5px;
-}
-
-.modtag-info h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--fog-blue);
-    margin: 0.5rem 0 1.5rem 0;
-    position: relative;
-}
-
-.modtag-info h2::after {
-    content: "";
-    display: block;
-    width: 8rem;
-    height: 3px;
-    margin: 0.75rem auto 1.5rem auto;
-    border-bottom: 3px dotted var(--fog-blue);
-    opacity: 0.6;
-}
-
-.modtag-info p:last-of-type {
-    font-size: 1.05rem;
-    color: var(--project-less-black);
-    max-width: 50ch;
-    margin: 0 auto;
-    line-height: 1.6;
-}
-
-.modtag-download-link {
-    color: var(--fog-blue);
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.25s ease;
-}
-
-.modtag-download-link:hover {
-    text-decoration: underline;
-    opacity: 0.9;
-    color: var(--fog-blue-less);
-}
-
-
-/* ___________________________________________ */
-
 /* Hero 2 */
 
 /* ___________________________________________ */
@@ -883,8 +840,11 @@ body::-webkit-scrollbar { /* All other browsers */
 }
 
 .hero-2-visual img {
-    max-width: 90%;
+    width: 90%;
+    max-width: none;
     height: auto;
+    transform: translateY(15%) !important;
+    transform: translateX(-10%);
 }
 
 .hero-2-visual .floating-card {
@@ -975,6 +935,7 @@ body::-webkit-scrollbar { /* All other browsers */
 }
 
 .guac-btn-hero-left {
+    box-shadow: 0 6px 2px rgba(0, 0, 0, 0.3);
     text-decoration: none !important;
     background-color: var(--fog-blue-2);
     color: var(--fog-white);
@@ -983,6 +944,7 @@ body::-webkit-scrollbar { /* All other browsers */
 }
 
 .guac-btn-hero-right {
+    box-shadow: 0 6px 2px rgba(0, 0, 0, 0.3);
     text-decoration: none !important;
     background-color: var(--project-white);
     color: var(--fog-blue);
@@ -993,6 +955,8 @@ body::-webkit-scrollbar { /* All other browsers */
 .guac-btn-hero-right:hover,
 .guac-btn-hero-left:hover {
     opacity: 0.6 !important;
+    box-shadow: 0 4px 2px rgba(0, 0, 0, 0.3);
+    transform: translateY(2px);
 }
 
 /* ___________________________________________ */
@@ -1161,7 +1125,7 @@ body::-webkit-scrollbar { /* All other browsers */
     width: 100%;
     padding: 0.75rem;
     border: 1px solid var(--project-less-white);
-    border-radius: 0.5rem;
+    border-radius: 0.5rem !important;
     font-size: 1rem;
     margin-bottom: 1.5rem;
     background-color: var(--fog-white);
@@ -1186,6 +1150,14 @@ body::-webkit-scrollbar { /* All other browsers */
 .beregn-form button:hover {
     opacity: 0.85;
     transform: translateY(2px);
+}
+
+.beregn-intro guac-btn-fog {
+    box-shadow: 0 4px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+.beregn-intro guac-btn-fog:hover {
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3) !important;
 }
 
 /* ___________________________________________ */
@@ -1228,8 +1200,10 @@ body::-webkit-scrollbar { /* All other browsers */
 }
 
 .index-slideshow {
-    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
-    url("../images/page-content/beregn-intro/carport-1.png") center center no-repeat;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    url("../images/page-content/beregn-intro/carport-1.png");
+    background-position: center center;
+    background-repeat: no-repeat;
     background-size: cover;
     width: 100vw;
     min-height: 100vh;
@@ -1268,7 +1242,7 @@ body::-webkit-scrollbar { /* All other browsers */
 
 .slideshow-index-card .guac-btn:hover {
     transform: translateY(2px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.6);
 }
 
 .guac-btn-slideshow,
@@ -1277,7 +1251,7 @@ body::-webkit-scrollbar { /* All other browsers */
     background-color: var(--fog-blue);
     color: var(--fog-white);
     border-radius: 0.5rem !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 2px rgba(0, 0, 0, 0.6);
 }
 
 .guac-btn-slideshow2 {
