@@ -293,7 +293,7 @@ body::-webkit-scrollbar { /* All other browsers */
     min-height: 100vh;
     display: flex;
     align-items: flex-start;
-    overflow-y: hidden;
+    overflow-y: auto;
     overflow-x: hidden;
     scrollbar-width: none; 
     -ms-overflow-style: none; /* Old Browsers. Just for safety. */
@@ -304,7 +304,7 @@ body::-webkit-scrollbar { /* All other browsers */
 }
 
 .modtag-info {
-    margin-top: 6rem !important;
+    margin-top: 5rem !important;
 }
 
 .modtag-info-overview {
@@ -361,8 +361,16 @@ body::-webkit-scrollbar { /* All other browsers */
 }
 
 .modtag-card-form {
-    height: auto;
-    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 1.5rem;
+}
+
+.modtag-card-form > :not(.guac-card-title) {
+    align-self: center;
+    width: 100%;
+    max-width: 36rem;
 }
 
 .modtag-card-resume {
@@ -447,15 +455,41 @@ body::-webkit-scrollbar { /* All other browsers */
     color: var(--fog-blue);
 }
 
-/* ___________________________________________ */
+.section-modtag .guac-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 1fr -> 1 fraction -> 1 part */
+    gap: 5rem;
+    align-items: stretch;
+}
 
-/* Section Estimate */
+.modtag-left-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    height: 100%;
+}
 
-/* ___________________________________________ */
+.modtag-left-wrapper > .guac-col {
+    flex: 1;
+}
 
-.section-estimate {
-    min-height: 100vh;
-    background: var(--section-1-background);
+.modtag-card-resume {
+    height: 100%;
+    flex: 1;
+}
+
+.modtag-price-estimate-intro {
+    margin-bottom: -1rem !important;
+}
+
+.modtag-price-estimate {
+    font-size: 2.0rem !important;
+    font-weight: 600 !important;
+    color: var(--fog-blue);
+}
+
+.modtag-btn-final {
+    border-radius: 0.5rem !important;
 }
 
 /* ___________________________________________ */

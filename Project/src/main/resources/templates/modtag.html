@@ -24,8 +24,8 @@
 
     <!-- Script Load -->
     <script src="/js/notification.js" defer></script>
-    <script src="/js/modtag.js" defer></script>
-    <script src="/js/index/button-to-top.js" defer></script>
+    <script src="/js/beregn/modtag.js" defer></script>
+    <script src="/js/beregn/offer.js" defer></script>
 
     <!-- Framwork load -->
     <link rel="stylesheet" href="/css/guacamoleboy-wow.css">
@@ -45,19 +45,17 @@
 <div id="navbar2-component" data-backlink="/beregn/app"></div>
 <!-- Navbar -->
 
-<!-- Scroll Button Start -->
-<button id="scrollToTopBtn" class="scroll-btn" onclick="scrollToSection()"><i class="fa fa-arrow-up"></i></button>
-<!--<button id="scrollDownBtn" class="scroll-btn"><i class="fa fa-arrow-down"></i></button>-->
-<!-- Scroll Button End -->
-
 <!-- Modtag Start -->
 <section class="section-modtag" id="modtag">
     <div class="guac-container">
 
         <!-- Information -->
-        <div class="guac-text-center guac-mb-5 guac-p-3 modtag-info">
+        <div class="guac-text-center guac-mb-3 guac-p-3 modtag-info">
             <p class="guac-fs-2 guac-fw-bold guac-text-uppercase modtag-info-overview">Overblik</p>
-            <h2 class="guac-fs-6 guac-fw-bold modtag-info-title">Overblik for din carport</h2>
+            <h2 class="guac-fs-6 guac-fw-bold modtag-info-title">Din estimerede pris</h2>
+            <p class="modtag-info-text guac-mb-3">
+                Ønsker du fast tilbud med faste priser, levering og kontakt til en sælger? Benyt knappen længere nede.
+            </p>
             <!--
             <p class="guac-fs-4 modtag-info-text">
                 <a th:href="'/pdf/modtag/' + ${orderId} + '.pdf'" class="modtag-download-link guac-hover-underline" download>
@@ -69,16 +67,27 @@
 
         <div class="guac-row guac-gap-5">
 
-            <!-- Left Column - Form -->
-            <div class="guac-col guac-d-flex guac-flex-column guac-animate guac-slide-left">
-                <div class="guac-card modtag-card-form guac-d-flex guac-flex-column">
-                    <h2 class="guac-card-title guac-text-center">Kontaktoplysninger</h2>
-                    <form class="modtag-form guac-d-flex guac-flex-column guac-mt-3" action="/beregn/modtag" method="POST">
+            <!-- Left Wrapper Start -->
+            <div class="guac-col modtag-left-wrapper">
 
+                <!-- Left Column 2 -->
+                <div class="guac-col guac-d-flex guac-flex-column guac-animate guac-slide-left">
+                    <div class="guac-card modtag-card-form guac-d-flex guac-flex-column">
+                        <h2 class="guac-card-title guac-text-center">Pris</h2>
+                        <p class="modtag-price-estimate-intro">Prisen er vejledende</p>
+                        <p class="modtag-price-estimate">20.000 kr</p>
+                    </div>
+                </div>
+                <!-- Left Column 2 -->
+
+                <!-- Left Column - Form -->
+                <div class="guac-col guac-d-flex guac-flex-column guac-animate guac-slide-left">
+                    <div class="guac-card modtag-card-form guac-d-flex guac-flex-column">
+                        <h2 class="guac-card-title guac-text-center">Kontaktoplysninger</h2>
                         <!-- Row 1 -->
-                        <div class="guac-row guac-gap-3 guac-mb-3 guac-w-100">
+                        <div class="guac-row guac-gap-3 guac-mb-3 guac-mt-3 guac-w-100">
                             <div class="guac-col guac-d-flex guac-flex-column">
-                                <label class="guac-fw-bold guac-mb-2 modtag-label">Fornavn(e)</label>
+                                <label class="guac-fw-bold guac-mb-2 modtag-label">Fornavn</label>
                                 <input type="text" class="modtag-input" name="fornavn" placeholder="Bo">
                             </div>
                             <div class="guac-col guac-d-flex guac-flex-column">
@@ -109,10 +118,11 @@
                         </div>
                         -->
                         <!-- Info + Button -->
-
-                    </form>
+                    </div>
                 </div>
+
             </div>
+            <!-- Left Wrapper End -->
             
             <!-- Resume area -->
             <div class="guac-col guac-d-flex guac-flex-column guac-gap-2 guac-animate guac-slide-right">
@@ -122,24 +132,29 @@
                     <!-- Resume Load -->
                     <div class="guac-d-flex guac-flex-column guac-gap-3">
                         <div class="guac-d-flex guac-justify-between guac-align-center guac-pt-3 guac-pb-3 modtag-resume-item">
-                            <span class="guac-fw-bold guac-fs-3 modtag-resume-label">Model:</span>
-                            <span class="guac-fw-normal guac-text-right guac-fs-3 modtag-resume-value">Carport</span>
-                        </div>
-                        <div class="guac-d-flex guac-justify-between guac-align-center guac-pt-3 guac-pb-3 modtag-resume-item">
                             <span class="guac-fw-bold guac-fs-3 modtag-resume-label">Mål:</span>
-                            <span class="guac-fw-normal guac-text-right guac-fs-3 modtag-resume-value">320 x 600 cm</span>
+                            <span class="guac-fw-normal guac-text-right guac-fs-3 modtag-resume-value">320 x 600 x 210 cm</span>
                         </div>
                         <div class="guac-d-flex guac-justify-between guac-align-center guac-pt-3 guac-pb-3 modtag-resume-item">
                             <span class="guac-fw-bold guac-fs-3 modtag-resume-label">Taghældning:</span>
                             <span class="guac-fw-normal guac-text-right guac-fs-3 modtag-resume-value">Ja</span>
                         </div>
                         <div class="guac-d-flex guac-justify-between guac-align-center guac-pt-3 guac-pb-3 modtag-resume-item">
-                            <span class="guac-fw-bold guac-fs-3 modtag-resume-label">Tag:</span>
+                            <span class="guac-fw-bold guac-fs-3 modtag-resume-label">Tag materiale:</span>
                             <span class="guac-fw-normal guac-text-right guac-fs-3 modtag-resume-value">Plast</span>
                         </div>
                         <div class="guac-d-flex guac-justify-between guac-align-center guac-pt-3 guac-pb-3 modtag-resume-item">
                             <span class="guac-fw-bold guac-fs-3 modtag-resume-label">Redskabsskur:</span>
-                            <span class="guac-fw-normal guac-text-right guac-fs-3 modtag-resume-value">Nej</span>
+                            <span class="guac-fw-normal guac-text-right guac-fs-3 modtag-resume-value">Ja</span>
+                        </div>
+                        <div class="guac-d-flex guac-justify-between guac-align-center guac-pt-3 guac-pb-3 modtag-resume-item">
+                            <span class="guac-fw-bold guac-fs-3 modtag-resume-label">Redskabsskur mål:</span>
+                            <span class="guac-fw-normal guac-text-right guac-fs-3 modtag-resume-value">210 x 510 x 210 cm</span>
+                        </div>
+                        <div class="modtag-btn-wrapper guac-d-flex guac-justify-center guac-mt-3 guac-tooltip" data-tooltip="Indtast kundeoplysninger">
+                            <a href="#" id="modtagBtn" class="guac-btn guac-btn-fog modtag-btn-final guac-btn-lg guac-locked">
+                                Modtag fast tilbud
+                            </a>
                         </div>
                     </div>
                     <!-- Resume Load -->
@@ -149,24 +164,9 @@
 
         </div>
 
-        <!-- Skal være inaktiv før kontaktoplysningerne er udfyldt -->
-        <div class="guac-d-flex guac-justify-center guac-mt-5">
-            <a href="#modtag-estimate" class="guac-btn guac-btn-fog">Se din pris</a>
-        </div>
-
     </div>
 </section>
 <!-- Modtag End -->
-
-<!-- Price Estimate Start -->
-<section class="section-estimate" id="modtag-estimate">
-    <div class="guac-container">
-        <div class="guac-row guac-align-center guac-justify-center">
-            <h2>Pris estimate og .pdf download her + modtag tilbud</h2>
-        </div>
-    </div>
-</section>
-<!-- Price Estimate Start -->
 
 <!-- Notifications -->
 <div id="guac-notification-container"></div>

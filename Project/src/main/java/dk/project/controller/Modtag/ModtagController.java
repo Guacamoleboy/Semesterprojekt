@@ -26,6 +26,9 @@ public class ModtagController {
 
     public static void registerRoutes(Javalin app) {
 
+        app.get("/beregn/modtag", ctx -> ctx.html(ThymeleafSetup.render("modtag.html", null)));
+
+        /*
         app.get("/beregn/modtag", ctx -> {
 
             try {
@@ -127,6 +130,7 @@ public class ModtagController {
             }
 
         });
+        */
 
     }
 
