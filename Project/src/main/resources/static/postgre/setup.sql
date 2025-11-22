@@ -81,7 +81,7 @@ name VARCHAR(100) NOT NULL UNIQUE
 
 CREATE TABLE carport_orders (
 id SERIAL PRIMARY KEY,
-user_id INT REFERENCES users(id) ON DELETE SET NULL,
+customer_id INT REFERENCES users(id) ON DELETE SET NULL,
 carport_category_id INT NOT NULL REFERENCES carport_category(id) ON DELETE RESTRICT,
 width DECIMAL(10, 2) NOT NULL,
 length DECIMAL(10, 2) NOT NULL,
@@ -97,7 +97,7 @@ created_at TIMESTAMP DEFAULT NOW()
 
 CREATE TABLE orders (
 id SERIAL PRIMARY KEY,
-user_id INT REFERENCES users(id) ON DELETE SET NULL,
+customer_id INT REFERENCES users(id) ON DELETE SET NULL,
 carport_order_id INT NOT NULL REFERENCES carport_orders(id) ON DELETE CASCADE,
 total_price DECIMAL(10, 2) NOT NULL,
 status VARCHAR(50) DEFAULT 'pending', /* pending, calculating, offer */

@@ -1,8 +1,7 @@
 /*
 
     Dynamic content load "index-slideshow" on "/"
-
-    - Guac
+    Written by: Guacamoleboy
 
 */
 
@@ -36,6 +35,51 @@ const slideSteps = [
         specTwo: "Rød beton tagsten",
         specThree: "3,90 X 7,80 m",
         link: "https://www.johannesfog.dk/have-fritid/carporte/enkelt-carporte/carport-cp01hr-roed-01164"
+    },
+    {
+        img: "/images/carports/4.png",
+        title: "CARPORT CP02HXL RØD DOBBELT 6,0 X 9,9M",
+        description: "Bred byg selv-carport 6,00 x 9,90 m. med høj rejsning og plads til 2 biler. Stort redskabsrum bagerst i carporten.",
+        specOne: "Kan lukkes efter ønske",
+        specTwo: "Rød beton tagsten",
+        specThree: "6,00 x 9,90 m",
+        link: "https://www.johannesfog.dk/have-fritid/carporte/dobbelt-carporte/carport-cp02hxl-roed-01166"
+    },
+    {
+        img: "/images/carports/5.png",
+        title: "ENKELT CARPORT 3,00 X 6,20 M",
+        description: "Enkelt byg selv-carport 3,00 x 6,20 m. med plads til 1 bil samt skur bagerst i carporten. Carporten er åben på siderne, men kan lukkes efter ønske.",
+        specOne: "Åben Carport",
+        specTwo: "blåtonet PVC",
+        specThree: "3,00 x 6,20 m",
+        link: "https://www.johannesfog.dk/have-fritid/carporte/enkelt-carporte/enkelt-carport-3-00x6-20-m-car01r-00820"
+    },
+    {
+        img: "/images/carports/6.png",
+        title: "ENKELT CARPORT 3,00 X 4,80 M",
+        description: "Enkelt byg selv-carport 3,00 x 4,80 m. med plads til 1 bil. Carporten er åben på alle siderne, men kan lukkes efter ønske.",
+        specOne: "Åben Carport",
+        specTwo: "blåtonet PVC",
+        specThree: "3,00 x 4,80 m",
+        link: "https://www.johannesfog.dk/have-fritid/carporte/enkelt-carporte/enkelt-carport-3-00x4-80-m-car01-00816"
+    },
+    {
+        img: "/images/carports/7.png",
+        title: "CARPORT CRXL1HR ENKELT 3,6 X 9,1M",
+        description: "Enkelt byg selv-carport 3,60 x 9,10 m. med høj rejsning og plads til 1 bil, samt skur bagerst i carporten.",
+        specOne: "Åben Carport",
+        specTwo: "Sort beton tagsten",
+        specThree: "3,60 x 9,10 m",
+        link: "https://www.johannesfog.dk/have-fritid/carporte/enkelt-carporte/carport-crxl1hr-01161"
+    },
+    {
+        img: "/images/carports/8.png",
+        title: "CARPORT CAR01H ENKELT 3,6 X 5,4M",
+        description: "Enkelt byg selv-carport 3,60 x 5,40 m. med høj rejsning og plads til 1 bil. Carporten er åben på alle siderne, men kan lukkes efter ønske.",
+        specOne: "Åben Carport",
+        specTwo: "Sort beton tagsten",
+        specThree: "3,60 x 5,40 m",
+        link: "https://www.johannesfog.dk/have-fritid/carporte/enkelt-carporte/carport-crxl1hr-01161"
     }
 ];
 
