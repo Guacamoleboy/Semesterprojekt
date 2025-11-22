@@ -371,6 +371,7 @@ body::-webkit-scrollbar { /* All other browsers */
     align-self: center;
     width: 100%;
     max-width: 36rem;
+    gap: 1rem !important;
 }
 
 .modtag-card-resume {
@@ -2091,22 +2092,26 @@ body::-webkit-scrollbar { /* All other browsers */
     background-color: var(--fog-blue);
     color: var(--project-white);
     border-radius: 0.5rem !important;
+    border: 2px solid var(--fog-blue);
 }
 
 .status-action-buttons .status-btn-accept:hover {
     background-color: var(--project-green);
     opacity: 0.85;
+    border: 2px solid var(--project-green);
 }
 
 .status-action-buttons .status-btn-decline {
     background-color: var(--project-grey);
     color: var(--project-white);
     border-radius: 0.5rem !important;
+    border: 2px solid var(--project-grey);
 }
 
 .status-action-buttons .status-btn-decline:hover {
     background-color: var(--project-red);
     opacity: 0.85;
+    border: 2px solid var(--project-red);
 }
 
 .status-search-box {
@@ -2180,4 +2185,19 @@ body::-webkit-scrollbar { /* All other browsers */
     outline: none;
     border-color: var(--fog-blue-2);
     box-shadow: 0 0 0 3px rgba(0,61,118,0.2);
+}
+
+/* ___________________________________________ */
+
+/* Bubbles */
+
+/* ___________________________________________ */
+
+.bubble {
+    position: fixed;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+    z-index: 1;
+    animation: fadeOut 3s ease-out forwards;
 }

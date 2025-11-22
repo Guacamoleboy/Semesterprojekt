@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
             title: "Du har modtaget et tilbud",
             text: `Vi har afsendt et tilbud til dig.
                    Du har nu mulighed for at godkende vores tilbud. Prisen er fast og ændres ikke selv om priserne på materialer stiger fra vores side af.
-                   <br><br>PRIS`,
+                   <br><br>20.000 kr`,
             showButtons: true,
         }
     ];
