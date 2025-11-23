@@ -2,6 +2,7 @@ package dk.project.server.routing;
 
 // Imports
 import dk.project.controller.AdminMenu.*;
+import dk.project.controller.Calculator.CalculatorController;
 import dk.project.controller.ErrorController;
 import dk.project.controller.Login.LoginController;
 import dk.project.controller.Modtag.MailController;
@@ -28,6 +29,8 @@ public class Routing {
         MailController.registerRoutes(app);
         StatusController.registerRoutes(app);
         ModtagController.registerRoutes(app);
+        CalculatorController.registerRoutes(app);
+        RequestController.registerRoutes(app);
 
         // Last
         //registerErrorRoutes(app);

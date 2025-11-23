@@ -65,12 +65,35 @@ window.addEventListener("DOMContentLoaded", async () => {
 
         document.querySelectorAll(".calculate-btn").forEach(btn => {
 
-            btn.addEventListener("click", () => {
+            btn.addEventListener("click", async () => {
 
-                console.log("Beregner skal lige laves!")
-                //TODO: Her skal den navigere en hen til hvor man skal kunne ændrer i prisen og give en final price.
+                const length = btn.dataset.length;
+                const width = btn.dataset.width;
+                const height = btn.dataset.height;
+                const roofType = btn.dataset.rooftype;
+                const hasToolShed = btn.dataset.hastoolshed;
+
+                const formData = new FormData();
+                formData.append("length", length);
+                formData.append("width", width);
+                formData.append("height", height);
+                formData.append("roofType", roofType);
+
+                if (hasToolShed === "on") {
+                    formData.append("hasToolShed", "on");
+                }
+
+                const res = await fetch("/calculate", {
+                    method: "POST",
+                    body: formData
+                });
+
+                if (!res.ok) {
+                    console.log("Noget gik galt. Prøv igen.");
+                }
 
             });
+
         });
     }
 

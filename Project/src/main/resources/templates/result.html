@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Stykliste</title>
+</head>
+<body>
+<h1>Stykliste (MIDLERTIDIG UDEN FRONTEND!)</h1>
+<p>Vi skal gøre det muligt at redigere følgende værdier og gemme dem til databasen!</p>
+<p>Længde: [[${length}]] cm — Bredde: [[${width}]] cm — Højde: [[${height}]] cm — Tagtype: [[${roofType}]]</p>
+<table border="1">
+  <thead>
+  <tr><th>Materiale</th><th>Beskrivelse</th><th>Antal</th><th>Enhedspris</th><th>Total</th></tr>
+  </thead>
+  <tbody>
+    <tr th:each="m : ${materials}">
+      <td th:text="${m.material.name}">Navn</td>
+      <td th:text="${m.material.description}">Desc</td>
+      <td th:text="${m.amount}">0</td>
+      <td th:text="${m.material.price}">0.0</td>
+      <td th:text="${m.totalPrice}">0.0</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Total pris: </strong> [[${total}]]</p>
+
+</body>
+</html>

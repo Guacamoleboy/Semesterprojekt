@@ -22,7 +22,8 @@ public class CarportOrderMapper {
         try (Connection conn = Database.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setInt(1, order.getUser().getId());
+
+            setNullableInt(stmt, 1, order.getUser().getId());
             stmt.setInt(2, order.getCategory().getId());
             stmt.setDouble(3, order.getWidth());
             stmt.setDouble(4, order.getLength());
@@ -239,6 +240,23 @@ public class CarportOrderMapper {
             stmt.setDouble(index, value);
         } else {
             stmt.setNull(index, Types.DOUBLE);
+        }
+    }
+
+
+
+    // ________________________________________________________________________________
+
+    private void setNullableInt(PreparedStatement stmt, int index, Integer value) throws SQLException {
+
+        if (value != null) {
+
+            stmt.setInt(index, value);
+
+        } else {
+
+            stmt.setNull(index, java.sql.Types.INTEGER);
+
         }
     }
 
