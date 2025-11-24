@@ -73,8 +73,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // __________________________________________________________
 
-    // TODO Download .pdf file from pdf/final/{id}.pdf
-
     /* EventListener | Accept */
     if (acceptBtn) {
         acceptBtn.addEventListener("click", function() {

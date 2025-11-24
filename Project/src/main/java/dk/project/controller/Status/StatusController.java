@@ -12,7 +12,6 @@ import dk.project.mapper.OrderMapper;
 import dk.project.server.PdfGenerator;
 import dk.project.server.ThymeleafSetup;
 import io.javalin.Javalin;
-
 import java.io.FileOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -68,17 +67,47 @@ public class StatusController {
 
             try {
 
-                Path targetDir = Path.of("target/classes/static/pdf/modtag");
-                String outputPath = targetDir.resolve(1 + ".pdf").toString();
-                String page1 = "pdf/content/frontpage.png";
-                String page2 = "pdf/content/stykliste.png";
-                String page3 = "pdf/content/tegning.png";
-                String page4 = "pdf/content/vejledning.png";
+                // TODO getId instead of hardcoded - {id}
+                int orderNumber = 1;
+
+                // Setup
+                Path modtagDir = Path.of("src/main/resources/static/pdf/modtag");
+                Path backupDir = Path.of("src/main/resources/static/pdf/backup");
+
+                // Naming
+                Path outputPath = modtagDir.resolve(orderNumber + ".pdf");
+                Path backupPath = backupDir.resolve(orderNumber + ".pdf");
+
+                // Moves the existing file -> /backup before generating a new
+                // If a file already exists in /backup name it _1 | +1 | per attempt. All offers are saved.
+                if (Files.exists(outputPath)) {
+
+                    int counter = 1;
+
+                    while (Files.exists(backupPath)) {
+                        String newName = orderNumber + "_" + counter + ".pdf";
+                        backupPath = backupDir.resolve(newName);
+                        counter++;
+                    }
+
+                    Files.move(outputPath, backupPath, java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+
+                }
+                
+                // Content
+                String page1 = "src/main/resources/static/pdf/content/frontpage.png";
+                String page2 = "src/main/resources/static/pdf/content/stykliste.png";
+                String page3 = "src/main/resources/static/pdf/content/tegning.png";
+                String page4 = "src/main/resources/static/pdf/content/vejledning.png";
+
+                // Stykliste content
                 String textPage2 = "Stykliste her";
 
+                // Initial .pdf setup
                 Document document = new Document(PageSize.A4);
-                PdfWriter.getInstance(document, new FileOutputStream(outputPath));
+                PdfWriter.getInstance(document, new FileOutputStream(outputPath.toFile())); // Overwrites pr automatic. No need for validation.
 
+                // Generate
                 document.open();
                 PdfGenerator.addFullPageImage(document, page1);
                 Font page2Font = FontFactory.getFont(FontFactory.HELVETICA, 16);
