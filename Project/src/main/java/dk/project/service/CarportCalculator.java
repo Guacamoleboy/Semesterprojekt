@@ -4,7 +4,8 @@ import dk.project.config.CalculatorConfig;
 
 public class CarportCalculator {
 
-    private final CalculatorConfig config = new CalculatorConfig();
+    // Attributes
+    private final CalculatorConfig calculatorConfig = new CalculatorConfig();
 
     // _____________________________________________________________________
 
@@ -16,19 +17,20 @@ public class CarportCalculator {
     // _____________________________________________________________________
 
     public int calculateRafters(double length) {
-        return (int) Math.ceil(length / config.getRafterSpacingCm());
+        return (int) Math.ceil(length / calculatorConfig.getRafterSpacingCm());
     }
 
     // _____________________________________________________________________
 
     public int calculateRems(double length) {
-        int perRem = (int) Math.ceil(length / config.getRemLength());
+        int perRem = (int) Math.ceil(length / calculatorConfig.getRemLength());
         return perRem * 2;
     }
 
-    //TODO: Vi skal lave følgende:
+    //TODO: Make following:
     // Sternbredderne (Over og under)
     // vandbrædt
     // Tagplader
     // Beslag og skruer
+
 }

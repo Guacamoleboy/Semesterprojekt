@@ -104,7 +104,7 @@ public class ModtagController {
 
                 PdfGenerator.generateOfferPdf(
                         outputPath,
-                        "src/main/resources/static/pdf/content/forside.png",
+                        "src/main/resources/static/pdf/content/frontpage.png",
                         String.valueOf(orderId),
                         carportOrder.getWidth(),
                         carportOrder.getLength(),
@@ -114,8 +114,9 @@ public class ModtagController {
                         carportOrder.isHasToolShed(),
                         carportOrder.getToolShedWidth(),
                         carportOrder.getToolShedLength(),
-                        "src/main/resources/static/pdf/content/2.png",
-                        "src/main/resources/static/pdf/content/3.png"
+                        "src/main/resources/static/pdf/content/stykliste.png",
+                        "src/main/resources/static/pdf/content/tegning.png",
+                        "src/main/resources/static/pdf/content/vejledning.png"
                 );
 
                 Map<String, Object> variables = new HashMap<>();

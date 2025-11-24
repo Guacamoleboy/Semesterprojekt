@@ -2,6 +2,7 @@ package dk.project.entity.AdminMenu;
 
 public class Material {
 
+    // Attributes
     private int id;
     private int category_id;
     private String name;
@@ -134,4 +135,5 @@ public class Material {
     public void setPrice(Double price) {
         this.price = price;
     }
+
 }
