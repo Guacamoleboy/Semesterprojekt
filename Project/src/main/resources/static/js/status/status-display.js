@@ -73,16 +73,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // __________________________________________________________
 
-    // TODO Download .pdf file from pdf/final/{id}.pdf
-
     /* EventListener | Accept */
     if (acceptBtn) {
         acceptBtn.addEventListener("click", function() {
-            showNotification("Tilbud godkendt", "fog");
-            actionButtons.style.display = "none";
-            title.innerHTML = "Du har godkendt vores tilbud";
-            text.innerHTML = `Vi har afsendt dit endelige tilbud til din mail.
-                          <br><br>Download .pdf`;
+            fetch("/status/pdfgenerator", { method: "POST" })
+                .then(() => {
+                    showNotification("Tilbud godkendt", "fog");
+                    actionButtons.style.display = "none";
+                    title.innerHTML = "Du har godkendt vores tilbud";
+                    text.innerHTML = `
+                    Vi har afsendt dit endelige tilbud til din mail.
+                    <br><br>
+                    <a href="/pdf/modtag/1.pdf" download>Download .pdf</a>
+                `;
+                })
+                .catch(err => {
+                    showNotification("Fejl ved generering af PDF", "error");
+                });
         });
     }
 

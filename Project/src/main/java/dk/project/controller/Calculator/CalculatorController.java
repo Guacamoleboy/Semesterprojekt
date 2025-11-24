@@ -11,8 +11,11 @@ import java.util.Map;
 
 public class CalculatorController {
 
+    // Attributes
     private static final CalculatorController controller = new CalculatorController();
     private final CarportCalculationService service = new CarportCalculationService();
+
+    // _________________________________________________________________________
 
     public static void registerRoutes(Javalin app) {
 
@@ -20,18 +23,23 @@ public class CalculatorController {
 
     }
 
+    // _________________________________________________________________________
+
     private void startCalculate(Context ctx) {
 
         try {
 
+            // Initial
             String lengthStr = ctx.formParam("length");
             String widthStr  = ctx.formParam("width");
             String heightStr = ctx.formParam("height");
             String roofType  = ctx.formParam("roofType");
             String shedStr   = ctx.formParam("hasToolShed");
 
+            // Validation
             if (lengthStr == null || widthStr == null || heightStr == null) {
                 //TODO: Notification!
+                // Where is this being triggered? /Status step 3? Surely.
                 ctx.status(400);
                 return;
             }
@@ -39,9 +47,7 @@ public class CalculatorController {
             double length = Double.parseDouble(lengthStr);
             double width  = Double.parseDouble(widthStr);
             double height = Double.parseDouble(heightStr);
-
             boolean hasToolShed = "on".equalsIgnoreCase(shedStr);
-
             List<MaterialUsage> materials = service.calculate(length, width, height, hasToolShed, roofType);
 
             double total = materials.stream()
@@ -61,6 +67,7 @@ public class CalculatorController {
             ctx.status(500);
             e.printStackTrace();
         }
+
     }
 
 }

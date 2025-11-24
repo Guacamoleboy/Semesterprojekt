@@ -60,20 +60,17 @@ public class PdfGenerator {
 
     // _________________________________________________________________
 
-    private static void addFullPageImage(Document doc, String path) throws Exception {
+    public static void addFullPageImage(Document doc, String path) throws Exception {
         doc.newPage();
         Image img = Image.getInstance(path);
         img.scaleToFit(PageSize.A4.getWidth(), PageSize.A4.getHeight());
-        img.setAbsolutePosition(
-                    (PageSize.A4.getWidth() - img.getScaledWidth()) / 2,
-                    (PageSize.A4.getHeight() - img.getScaledHeight()) / 2
-        );
+        img.setAbsolutePosition((PageSize.A4.getWidth() - img.getScaledWidth()) / 2, (PageSize.A4.getHeight() - img.getScaledHeight()) / 2);
         doc.add(img);
     }
 
     // _________________________________________________________________
 
-    private static void addTextPage(Document doc, String text) throws Exception {
+    public static void addTextPage(Document doc, String text) throws Exception {
         doc.newPage();
         Font font = FontFactory.getFont(FontFactory.HELVETICA, 16);
         Paragraph p = new Paragraph(text, font);
@@ -144,5 +141,26 @@ public class PdfGenerator {
         note.setSpacingBefore(20);
         doc.add(note);
     }
+
+    // _________________________________________________________________
+
+    public static void addPageWithBackgroundAndText(Document doc, String backgroundImagePath, String text, Font textFont) throws Exception {
+        doc.newPage();
+
+        Image bg = Image.getInstance(backgroundImagePath);
+        bg.scaleToFit(PageSize.A4.getWidth(), PageSize.A4.getHeight());
+        bg.setAbsolutePosition(
+                (PageSize.A4.getWidth() - bg.getScaledWidth()) / 2,
+                (PageSize.A4.getHeight() - bg.getScaledHeight()) / 2
+        );
+        doc.add(bg);
+
+        Paragraph p = new Paragraph(text, textFont);
+        p.setAlignment(Element.ALIGN_LEFT);
+        p.setSpacingBefore(100);
+        doc.add(p);
+
+    }
+
 
 } // PdfGenerator end

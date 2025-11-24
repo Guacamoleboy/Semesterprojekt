@@ -2,6 +2,7 @@ package dk.project.entity.AdminMenu;
 
 public class MaterialCategory {
 
+    // Attributes
     private int id;
     private String name;
 
@@ -23,4 +24,5 @@ public class MaterialCategory {
     public String getName() {
         return name;
     }
+
 }

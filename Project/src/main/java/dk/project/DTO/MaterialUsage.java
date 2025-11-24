@@ -4,6 +4,7 @@ import dk.project.entity.AdminMenu.Material;
 
 public class MaterialUsage {
 
+    // Attributes
     private final Material material;
     private final int amount;
 

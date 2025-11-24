@@ -48,15 +48,6 @@ country VARCHAR(100),
 created_at TIMESTAMP DEFAULT NOW()
 );
 
-CREATE TABLE products (
-id SERIAL PRIMARY KEY,
-title VARCHAR(100) NOT NULL,
-description VARCHAR(255),
-size VARCHAR(50),
-quantity INT NOT NULL,
-price DECIMAL(10, 2) NOT NULL
-);
-
 CREATE TABLE materials_category (
 id SERIAL PRIMARY KEY,
 name VARCHAR(100) NOT NULL UNIQUE /* Træ & Tagplader | Beslag & Skruer */
