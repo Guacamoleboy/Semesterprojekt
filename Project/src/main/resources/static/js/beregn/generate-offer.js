@@ -73,7 +73,7 @@ document.getElementById("modtagBtn")?.addEventListener("click", async () => {
 
         // Redirect + access + status
         await fetch(`/status/${data.orderId}/authorize`, { method: "POST" });
-        window.location.href = `/status/${data.orderId}?status=pending`;
+        window.location.href = `/status/${data.orderId}?status=pending&success=offerCreated`;
     } catch (err) {
         // Error notification
         showNotification("Fejl: " + err, "error");

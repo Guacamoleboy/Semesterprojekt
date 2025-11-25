@@ -38,6 +38,7 @@
     --fog-blue: #003D76;
     --fog-blue-less: #00488b;
     --fog-blue-2: #0056a7;
+    --fog-blue-tilbud: #002c69;
     --fog-brighter: #407bb5;
     --fog-white: #FFF;
     --fog-white-less: #efefef;
@@ -2200,4 +2201,195 @@ body::-webkit-scrollbar { /* All other browsers */
     pointer-events: none;
     z-index: 1;
     animation: fadeOut 3s ease-out forwards;
+}
+
+/* ___________________________________________ */
+
+/* Section Tilbud */
+
+/* ___________________________________________ */
+
+.section-tilbud {
+    overflow-y: auto !important;
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background: var(--fog-blue-tilbud);
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.section-tilbud::-webkit-scrollbar {
+    display: none;
+}
+
+/* TODO: Fix hardcoded margin-top value */
+.tilbud-box-top {
+    position: relative;
+    background-color: var(--guac-white);
+    padding: 2rem 1rem 0rem 1rem;
+    border-radius: 15px 15px 0 0;
+    overflow: visible;
+    height: 25rem !important;
+    color: var(--fog-blue);
+    margin-top: 65rem !important;
+    z-index: 1000 !important;
+}
+
+.fog-logo-tilbud {
+    position: absolute;
+    top: -2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.visual-dot1-tilbud,
+.visual-dot2-tilbud {
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: var(--fog-blue);
+    border-radius: 10px;
+    top: 1.5rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.75);
+}
+
+.visual-dot1-tilbud {
+    left: 1.5rem;
+}
+
+.visual-dot2-tilbud {
+    right: 1.5rem;
+}
+
+.tilbud-box-top h2 {
+    margin-top: 0 !important;
+}
+
+.tilbud-box-top h2::after {
+    content: "";
+    display: block;
+    width: 10rem;
+    border-bottom: 3px solid var(--fog-blue);
+    opacity: 0.4 !important;
+    margin: 0.5rem auto 0;
+}
+
+.tilbud-box-top p:first-of-type {
+    padding-top: 2rem !important;
+    opacity: 0.75 !important;
+    font-weight: 600 !important;
+    margin-bottom: 0 !important;
+}
+
+.tilbud-wave {
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+}
+
+.tilbud-wave img {
+    width: 100%;
+    display: block;
+    pointer-events: none;
+}
+
+.tilbud-input-field {
+    width: 50%;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    box-shadow: 0 4px 2px rgba(0,0,0,0.25);
+}
+
+.tilbud-box-bottom {
+    position: relative;
+    padding: 2rem 1rem;
+    background-color: var(--fog-blue);
+    color: var(--fog-white);
+    overflow: hidden;
+    height: 25rem !important;
+    z-index: 1000 !important;
+}
+
+.tilbud-box-bottom .guac-col-6 p::after {
+    content: "";
+    display: block;
+    width: 2.5rem;
+    border-bottom: 2px solid var(--fog-white);
+    opacity: 1 !important;
+    margin: 0.5rem auto 2rem;
+}
+
+.tilbud-box-bottom h2::after {
+    content: "";
+    display: block;
+    width: 7.5rem;
+    border-bottom: 3px solid var(--fog-white);
+    opacity: 1 !important;
+    margin: 1rem auto 0 !important;
+}
+
+.tilbud-box-bottom .guac-row {
+    margin-bottom: 1.5rem;
+}
+
+.tilbud-box-bottom .guac-col-6 {
+    text-align: center;
+}
+
+.tilbud-box-bottom .tilbud-input-field {
+    text-align: center !important;
+    display: block;
+    margin: 0.5rem auto;
+}
+
+/* TODO: Fix hardcoded margin-bottom value */
+.tilbud-box-end {
+    position: relative;
+    padding-top: 15rem;
+    background-color: var(--fog-white);
+    color: var(--fog-blue);
+    border-radius: 0 0 15px 15px;
+    overflow: hidden;
+    height: 25rem !important;
+    margin-bottom: 5rem !important;
+    z-index: 1000 !important;
+}
+
+.tilbud-wave-bottom {
+    position: absolute;
+    top: -5px;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.tilbud-wave-bottom img {
+    width: 100%;
+    display: block;
+    pointer-events: none;
+    transform: rotate(180deg);
+}
+
+.tilbud-box-end h2::after {
+    content: "";
+    display: block;
+    width: 10rem;
+    border-bottom: 3px solid var(--fog-blue);
+    opacity: 0.4 !important;
+    margin: 0.5rem auto 0 !important;
+}
+
+.tilbud-box-bottom p:first-child {
+    margin-bottom: -1rem !important;
+}
+
+.tilbud-box-end button {
+    outline: none !important;
+    border: 2px solid var(--fog-blue);
 }

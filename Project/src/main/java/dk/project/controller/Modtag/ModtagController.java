@@ -12,7 +12,6 @@ import dk.project.mapper.CustomerMapper;
 import dk.project.mapper.OrderMapper;
 import dk.project.server.ThymeleafSetup;
 import io.javalin.Javalin;
-
 import java.util.Map;
 
 public class ModtagController {
@@ -75,8 +74,6 @@ public class ModtagController {
                 );
 
                 OrderMapper orderMapper = new OrderMapper();
-                orderMapper.newOrder(order);
-
                 int orderId = orderMapper.newOrder(order);
                 ctx.json(Map.of("success", true, "orderId", orderId));
             } catch (Exception e) {
