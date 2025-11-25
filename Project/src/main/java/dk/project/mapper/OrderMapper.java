@@ -16,6 +16,7 @@ import java.sql.Statement;
 import java.sql.Timestamp;
 import java.sql.Types;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 public class OrderMapper {
 
@@ -81,6 +82,47 @@ public class OrderMapper {
             }
         } catch (SQLException e) {
             throw new DatabaseException("Fejl ved hentning af ordre", e);
+        }
+    }
+
+    // __________________________________________________________________
+    // TODO Test method | DO NOT REMOVE
+
+    public Object getOrderFieldById(String field, int id) throws DatabaseException {
+
+        // Only allow these
+        Set<String> allowedFields = Set.of(
+                "customer_id",
+                "carport_order_id",
+                "total_price",
+                "status",
+                "created_at"
+        );
+
+        // Checks
+        if (!allowedFields.contains(field)) {
+            throw new DatabaseException("Field not found: " + field);
+        }
+
+        // Query
+        String sql = "SELECT " + field + " FROM orders WHERE id = ?";
+
+        // Try-catch for that query
+        try (Connection conn = Database.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, id);
+
+            // Makes sure we only hit the field and type we want
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getObject(field);
+                } else {
+                    return null;
+                }
+            }
+        } catch (SQLException e) {
+            throw new DatabaseException("Error | " + field + " | "+ e);
         }
     }
 
