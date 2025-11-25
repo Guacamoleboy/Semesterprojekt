@@ -65,34 +65,32 @@ window.addEventListener("DOMContentLoaded", async () => {
 
         document.querySelectorAll(".calculate-btn").forEach(btn => {
 
-            btn.addEventListener("click", async () => {
+            btn.addEventListener("click", () => {
+                // Opret midlertidig form
+                const form = document.createElement("form");
+                form.method = "POST";
+                form.action = "/calculate";
 
-                const length = btn.dataset.length;
-                const width = btn.dataset.width;
-                const height = btn.dataset.height;
-                const roofType = btn.dataset.rooftype;
-                const hasToolShed = btn.dataset.hastoolshed;
+                const fields = {
+                    length: btn.dataset.length,
+                    width: btn.dataset.width,
+                    height: btn.dataset.height,
+                    roofType: btn.dataset.rooftype,
+                    hasToolShed: btn.dataset.hastoolshed === "on" ? "on" : ""
+                };
 
-                const formData = new FormData();
-                formData.append("length", length);
-                formData.append("width", width);
-                formData.append("height", height);
-                formData.append("roofType", roofType);
-
-                if (hasToolShed === "on") {
-                    formData.append("hasToolShed", "on");
+                for (const name in fields) {
+                    const input = document.createElement("input");
+                    input.type = "hidden";
+                    input.name = name;
+                    input.value = fields[name];
+                    form.appendChild(input);
                 }
 
-                const res = await fetch("/calculate", {
-                    method: "POST",
-                    body: formData
-                });
-
-                if (!res.ok) {
-                    console.log("Noget gik galt. Prøv igen.");
-                }
-
+                document.body.appendChild(form);
+                form.submit(); // sender POST til /calculate
             });
+
 
         });
     }
