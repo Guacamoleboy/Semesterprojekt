@@ -16,27 +16,22 @@ public class CarportOrderMapper {
     // _____________________________________________________________________
 
     public void newOrder(CarportOrder order) throws DatabaseException {
-        String sql = "INSERT INTO carport_orders (user_id, carport_category_id, width, length, height, angle, roof,"+
+        String sql = "INSERT INTO carport_orders (customer_id, carport_category_id, width, length, height, angle, roof,"+
                 "has_tool_shed, tool_shed_width, tool_shed_length, has_trapez) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id";
 
         try (Connection conn = Database.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-
-            setNullableInt(stmt, 1, order.getUser().getId());
+            setNullableInt(stmt, 1, order.getCustomer().getId());
             stmt.setInt(2, order.getCategory().getId());
             stmt.setDouble(3, order.getWidth());
             stmt.setDouble(4, order.getLength());
             stmt.setDouble(5, order.getHeight());
-
             setNullableDouble(stmt, 6, order.getAngle());
-
             stmt.setString(7, order.getRoof());
             stmt.setBoolean(8, order.isHasToolShed());
-
             setNullableDouble(stmt, 9, order.getToolShedWidth());
             setNullableDouble(stmt, 10, order.getToolShedLength());
-
             stmt.setBoolean(11, order.isHasTrapez());
 
             try (ResultSet rs = stmt.executeQuery()) {
@@ -88,7 +83,7 @@ public class CarportOrderMapper {
         try (Connection conn = Database.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setInt(1, order.getUser().getId());
+            stmt.setInt(1, order.getCustomer().getId());
             stmt.setInt(2, order.getCategory().getId());
             stmt.setDouble(3, order.getWidth());
             stmt.setDouble(4, order.getLength());

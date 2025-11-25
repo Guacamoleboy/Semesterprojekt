@@ -63,9 +63,9 @@ public class RequestController {
             }
         } else {
             for (CarportOrder order : orders) {
-                boolean matchesName = (name == null || name.isEmpty() || order.getUser().getFirstName().equalsIgnoreCase(name));
-                boolean matchesPhone = (phone == null || phone.isEmpty() || order.getUser().getPhone().equals(phone));
-                boolean matchesEmail = (email == null || email.isEmpty() || order.getUser().getEmail().equalsIgnoreCase(email));
+                boolean matchesName = (name == null || name.isEmpty() || order.getCustomer().getFirstName().equalsIgnoreCase(name));
+                boolean matchesPhone = (phone == null || phone.isEmpty() || order.getCustomer().getPhone().equals(phone));
+                boolean matchesEmail = (email == null || email.isEmpty() || order.getCustomer().getEmail().equalsIgnoreCase(email));
 
                 if (matchesName && matchesPhone && matchesEmail) {
                     result.add(order);

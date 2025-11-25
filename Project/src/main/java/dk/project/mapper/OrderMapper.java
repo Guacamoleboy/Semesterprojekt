@@ -24,24 +24,26 @@ public class OrderMapper {
 
     // __________________________________________________________________
 
-    public void newOrder(Order order) throws DatabaseException {
-        String sql = "INSERT INTO orders (user_id, carport_order_id, total_price, status, created_at) VALUES (?, ?, ?, ?, ?)";
-        try (Connection conn = Database.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+    public int newOrder(Order order) throws DatabaseException {
+        String sql = "INSERT INTO orders (customer_id, carport_order_id, total_price, status) " +
+                "VALUES (?, ?, ?, ?) RETURNING id";
 
-            stmt.setObject(1, order.getUser() != null ? order.getUser().getId() : null, Types.INTEGER);
+        try (Connection conn = Database.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, order.getCustomer().getId());
             stmt.setInt(2, order.getCarportOrder().getId());
             stmt.setDouble(3, order.getTotalPrice());
-            stmt.setString(4, order.getStatus() != null ? order.getStatus() : "pending");
-            stmt.setTimestamp(5, order.getCreatedAt() != null ? Timestamp.valueOf(order.getCreatedAt()) : Timestamp.valueOf(LocalDateTime.now()));
-            stmt.executeUpdate();
+            stmt.setString(4, order.getStatus());
 
-            try (ResultSet keys = stmt.getGeneratedKeys()) {
-                if (keys.next()) {
-                    order.setId(keys.getInt(1));
-                }
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                int id = rs.getInt("id");
+                order.setId(id);
+                return id;
+            } else {
+                throw new DatabaseException("Failed to create order");
             }
-
         } catch (SQLException e) {
             throw new DatabaseException("Fejl ved oprettelse af ordre", e);
         }
@@ -123,6 +125,26 @@ public class OrderMapper {
             }
         } catch (SQLException e) {
             throw new DatabaseException("Error | " + field + " | "+ e);
+        }
+    }
+
+    // __________________________________________________________________
+
+    public void updateStatus(int id, String status) throws DatabaseException {
+        String sql = "UPDATE orders SET status = ? WHERE id = ?";
+        try (Connection conn = Database.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, status);
+            stmt.setInt(2, id);
+
+            int rows = stmt.executeUpdate();
+            if (rows == 0) {
+                throw new DatabaseException("Ingen ordre fundet med ID " + id);
+            }
+
+        } catch (SQLException e) {
+            throw new DatabaseException("Kunne ikke opdatere status", e);
         }
     }
 
