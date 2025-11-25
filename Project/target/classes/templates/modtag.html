@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+
+    <!-- Meta -->
+    <meta charset="UTF-8"> <!-- ÆØÅ -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- In case some nerd uses Internet Explorer -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Mobile Responsiveness -->
+    <meta name="description" content="Beregn prisen på din carport i dag på få minutter"> <!-- SEO / Google -->
+    <meta name="author" content="Guacamoleboy"> <!-- Author of Website -->
+
+    <!-- Visuals -->
+    <title>Fog - Modtag tilbud</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&family=Montserrat:wght@400;700&family=Lato:wght@400;700&family=Poppins:wght@400;700&family=Raleway:wght@400;700&family=Nunito:wght@400;700&family=Work+Sans:wght@400;700&family=Exo+2:wght@400;700&family=Fira+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Icon -->
+    <link rel="icon" href="/images/logo/fog.svg" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/images/logo/fog.svg">
+
+    <!-- CSS Load -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Script Load -->
+    <script src="/js/notification.js" defer></script>
+    <script src="/js/beregn/modtag.js" defer></script>
+    <script src="/js/beregn/offer.js" defer></script>
+    <script src="/js/beregn/generate-offer.js" defer></script>
+
+    <!-- Framwork load -->
+    <link rel="stylesheet" href="/css/guacamoleboy-wow.css">
+    <link rel="stylesheet" href="/css/guacamoleboy-framework.css">
+    <script src="/js/guacamoleboy-wow.js" defer></script>
+
+    <!-- Font Awesome Load -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Modules -->
+    <script type="module" src="/js/components/navbar2.js" defer></script>
+
+</head>
+<body>
+
+<!-- Navbar -->
+<div id="navbar2-component" data-backlink="/beregn/app"></div>
+<!-- Navbar -->
+
+<!-- Modtag Start -->
+<section class="section-modtag" id="modtag">
+    <div class="guac-container">
+
+        <!-- Information -->
+        <div class="guac-text-center guac-mb-3 guac-p-3 modtag-info">
+            <p class="guac-fs-2 guac-fw-bold guac-text-uppercase modtag-info-overview">Overblik</p>
+            <h2 class="guac-fs-6 guac-fw-bold modtag-info-title">Din estimerede pris</h2>
+            <p class="modtag-info-text guac-mb-3">
+                Ønsker du fast tilbud med faste priser, levering og kontakt til en sælger? Modtag et fast tilbud.
+            </p>
+            <!--
+            <p class="guac-fs-4 modtag-info-text">
+                <a th:href="'/pdf/modtag/' + ${orderId} + '.pdf'" class="modtag-download-link guac-hover-underline" download>
+                    (Download .pdf)
+                </a>
+            </p>
+            -->
+        </div>
+
+        <div class="guac-row guac-gap-5">
+
+            <!-- Left Wrapper Start -->
+            <div class="guac-col modtag-left-wrapper">
+
+                <!-- Left Column 2 -->
+                <div class="guac-col guac-d-flex guac-flex-column guac-animate guac-slide-left">
+                    <div class="guac-card modtag-card-form guac-d-flex guac-flex-column">
+                        <h2 class="guac-card-title guac-text-center">Pris</h2>
+                        <p class="modtag-price-estimate-intro">Prisen er vejledende</p>
+                        <p class="modtag-price-estimate">20.000 kr</p>
+                    </div>
+                </div>
+                <!-- Left Column 2 -->
+
+                <!-- Left Column - Form -->
+                <div class="guac-col guac-d-flex guac-flex-column guac-animate guac-slide-left">
+                    <div class="guac-card modtag-card-form guac-d-flex guac-flex-column">
+                        <h2 class="guac-card-title guac-text-center">Kontaktoplysninger</h2>
+                        <!-- Row 1 -->
+                        <div class="guac-row guac-gap-3 guac-mb-3 guac-mt-3 guac-w-100">
+                            <div class="guac-col guac-d-flex guac-flex-column">
+                                <label class="guac-fw-bold guac-mb-2 modtag-label">Fornavn</label>
+                                <input type="text" class="modtag-input" name="fornavn" placeholder="Bo">
+                            </div>
+                            <div class="guac-col guac-d-flex guac-flex-column">
+                                <label class="guac-fw-bold guac-mb-2 modtag-label">Efternavn</label>
+                                <input type="text" class="modtag-input" name="efternavn" placeholder="Leif">
+                            </div>
+                        </div>
+                        <!-- Row 1 -->
+
+                        <!-- Row 2 -->
+                        <div class="guac-row guac-gap-3 guac-mb-3 guac-w-100">
+                            <div class="guac-col guac-d-flex guac-flex-column">
+                                <label class="guac-fw-bold guac-mb-2 modtag-label">Email</label>
+                                <input type="email" class="modtag-input" name="email" placeholder="bo@leif.dk">
+                            </div>
+                            <div class="guac-col guac-d-flex guac-flex-column">
+                                <label class="guac-fw-bold guac-mb-2 modtag-label">Tlf. nr.</label>
+                                <input type="tel" class="modtag-input" name="telefon" placeholder="25 69 64 20">
+                            </div>
+                        </div>
+                        <!-- Row 2 -->
+
+                        <!-- Info + Button -->
+                        <!--
+                        <div class="guac-d-flex guac-flex-column guac-gap-2 guac-align-center guac-mt-4">
+                            <a href="#" class="guac-fs-2 guac-text-center guac-hover-underline modtag-terms-link">Læs mere om vores vilkår og hvordan vi behandler dine oplysninger</a>
+                            <button type="submit" class="guac-btn guac-btn-fog modtag-submit-btn">Modtag tilbud</button>
+                        </div>
+                        -->
+                        <!-- Info + Button -->
+                    </div>
+                </div>
+
+            </div>
+            <!-- Left Wrapper End -->
+            
+            <!-- Resume area -->
+            <div class="guac-col guac-d-flex guac-flex-column guac-gap-2 guac-animate guac-slide-right">
+          
+                <div class="guac-card modtag-card-resume guac-d-flex guac-flex-column">
+                    <h2 class="guac-card-title">Resumé</h2>
+                    <!-- Resume Load -->
+                    <div class="guac-d-flex guac-flex-column guac-gap-3">
+                        <div class="guac-d-flex guac-justify-between guac-align-center guac-pt-3 guac-pb-3 modtag-resume-item">
+                            <span class="guac-fw-bold guac-fs-3 modtag-resume-label">Mål:</span>
+                            <span class="guac-fw-normal guac-text-right guac-fs-3 modtag-resume-value">320 x 600 x 210 cm</span>
+                        </div>
+                        <div class="guac-d-flex guac-justify-between guac-align-center guac-pt-3 guac-pb-3 modtag-resume-item">
+                            <span class="guac-fw-bold guac-fs-3 modtag-resume-label">Taghældning:</span>
+                            <span class="guac-fw-normal guac-text-right guac-fs-3 modtag-resume-value">Ja</span>
+                        </div>
+                        <div class="guac-d-flex guac-justify-between guac-align-center guac-pt-3 guac-pb-3 modtag-resume-item">
+                            <span class="guac-fw-bold guac-fs-3 modtag-resume-label">Tag materiale:</span>
+                            <span class="guac-fw-normal guac-text-right guac-fs-3 modtag-resume-value">Plast</span>
+                        </div>
+                        <div class="guac-d-flex guac-justify-between guac-align-center guac-pt-3 guac-pb-3 modtag-resume-item">
+                            <span class="guac-fw-bold guac-fs-3 modtag-resume-label">Redskabsskur:</span>
+                            <span class="guac-fw-normal guac-text-right guac-fs-3 modtag-resume-value">Ja</span>
+                        </div>
+                        <div class="guac-d-flex guac-justify-between guac-align-center guac-pt-3 guac-pb-3 modtag-resume-item">
+                            <span class="guac-fw-bold guac-fs-3 modtag-resume-label">Redskabsskur mål:</span>
+                            <span class="guac-fw-normal guac-text-right guac-fs-3 modtag-resume-value">210 x 510 x 210 cm</span>
+                        </div>
+                        <div class="modtag-btn-wrapper guac-d-flex guac-justify-center guac-mt-3 guac-tooltip" data-tooltip="Indtast kontaktoplysninger">
+                            <a href="#" id="modtagBtn" class="guac-btn guac-btn-fog modtag-btn-final guac-btn-lg guac-locked">
+                                Modtag fast tilbud
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Resume Load -->
+                </div>
+            </div>
+            <!-- Resume area -->
+
+        </div>
+
+    </div>
+</section>
+<!-- Modtag End -->
+
+<!-- Notifications -->
+<div id="guac-notification-container"></div>
+<!-- Notifications -->
+
+</body>
+</html>
