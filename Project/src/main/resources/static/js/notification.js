@@ -90,6 +90,9 @@ document.addEventListener("DOMContentLoaded", function() {
             case "accountCreated":
                 showNotification("Konto oprettet! Log venligst ind.", "green");
                 break;
+            case "offerCreated":
+                showNotification("Tilbud oprettet.\nFølg status her på siden!", "fog");
+                break;
             case "mailAfsendt":
                 showNotification("Mail afsendt!", "fog");
                 break;

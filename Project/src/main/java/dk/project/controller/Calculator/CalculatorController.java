@@ -1,11 +1,12 @@
+// Package
 package dk.project.controller.Calculator;
 
+// Imports
 import dk.project.DTO.MaterialUsage;
 import dk.project.server.ThymeleafSetup;
 import dk.project.service.CarportCalculationService;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
-
 import java.util.List;
 import java.util.Map;
 
@@ -38,8 +39,11 @@ public class CalculatorController {
 
             // Validation
             if (lengthStr == null || widthStr == null || heightStr == null) {
-                //TODO: Notification!
-                // Where is this being triggered? /Status step 3? Surely.
+                // TODO | Andreas comment N/A
+                // TODO | Notification!
+
+                // TODO | Jonas comment 25-11
+                // TODO | Where is this being triggered? /Status step 3? Surely.
                 ctx.status(400);
                 return;
             }
