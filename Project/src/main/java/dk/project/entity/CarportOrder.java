@@ -65,13 +65,13 @@ public class CarportOrder {
 
     // _________________________________________________________________
 
-    public Customer getUser() {
+    public Customer getCustomer() {
         return customer;
     }
 
     // _________________________________________________________________
 
-    public void setUser(Customer customer) {
+    public void setCustomer(Customer customer) {
         this.customer = customer;
     }
 

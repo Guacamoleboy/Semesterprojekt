@@ -4,12 +4,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const statusMap = {
         pending: 1,
         calculating: 2,
-        offer: 3
+        offer: 3,
+        accepted: 4,
+        declined: 5
     };
 
     const urlParams = new URLSearchParams(window.location.search);
     const urlStatus = urlParams.get("status");
-    const step = statusMap[urlStatus] || 1;
+    const step = statusMap[urlStatus];
+    let visualStep = step;
     const title = document.getElementById("status-title");
     const text = document.getElementById("status-text");
 
@@ -18,12 +21,26 @@ document.addEventListener("DOMContentLoaded", function () {
     const acceptBtn = document.getElementById("status-accept-btn");
     const declineBtn = document.getElementById("status-decline-btn");
 
+    // Gets ID from pathing
+    const pathParts = window.location.pathname.split("/");
+    const order_id = pathParts[2];
+
+    // Validation
+    if (!order_id) {
+        showNotification("Kan ikke finde ordre-ID", "error");
+    }
+
+    // (4) && (5) fix
+    if (step >= 4) {
+        visualStep = 3;
+    }
+
     // __________________________________________________________
 
     for (let i = 1; i <= 3; i++) {
         const e = document.getElementById(`status-step-${i}`);
         e.classList.remove("status-line", "guac-locked");
-        if (i === step) {
+        if (i === visualStep) {
             e.classList.add("status-line");
         } else {
             e.classList.add("guac-locked");
@@ -55,6 +72,18 @@ document.addEventListener("DOMContentLoaded", function () {
                    Du har nu mulighed for at godkende vores tilbud. Prisen er fast og ændres ikke selv om priserne på materialer stiger fra vores side af.
                    <br><br>20.000 kr`,
             showButtons: true,
+        },
+        {
+            title: "Du har godkendt vores tilbud",
+            text: `Vi har afsendt dit endelige tilbud til din mail<br>Du kan også downloade dit tilbud herunder..
+                    <br><br>
+                    <a href="/pdf/modtag/${order_id}.pdf" download>Download .pdf</a>`,
+            showButtons: false,
+        },
+        {
+            title: "Du har afvist tilbuddet",
+            text: `Du er altid velkommen til at komme ned i en af vores forretninger og få snakket mere om et tilbud.`,
+            showButtons: false,
         }
     ];
 
@@ -75,35 +104,83 @@ document.addEventListener("DOMContentLoaded", function () {
     // __________________________________________________________
 
     /* EventListener | Accept */
+
     if (acceptBtn) {
-        acceptBtn.addEventListener("click", function() {
-            fetch("/status/pdfgenerator", { method: "POST" })
-                .then(() => {
-                    showNotification("Tilbud godkendt", "fog");
-                    actionButtons.style.display = "none";
-                    title.innerHTML = "Du har godkendt vores tilbud";
-                    text.innerHTML = `
-                    Vi har afsendt dit endelige tilbud til din mail.
-                    <br><br>
-                    <a href="/pdf/modtag/1.pdf" download>Download .pdf</a>
-                `;
-                })
-                .catch(err => {
-                    showNotification("Fejl ved generering af PDF", "error");
+        acceptBtn.addEventListener("click", async function() {
+            try {
+
+                const pdfRes = await fetch(`/status/${order_id}/pdfgenerator`, { method: "POST" });
+                const pdfData = await pdfRes.json();
+
+                if (!pdfData.success) {
+                    showNotification("Fejl ved generering af PDF: " + pdfData.error, "error");
+                    return;
+                }
+
+                const statusRes = await fetch(`/status/${order_id}/update`, {
+                    method: "POST",
+                    body: `status=accepted`
                 });
+                const statusData = await statusRes.json();
+
+                if (!statusData.success) {
+                    showNotification("Fejl ved opdatering af status: " + statusData.error, "error");
+                    return;
+                }
+
+                // URL fix
+                const newStatus = "accepted";
+                const newUrl = `/status/${order_id}?status=${newStatus}`;
+                window.history.replaceState(null, "", newUrl);
+
+                showNotification("Tilbud godkendt", "fog");
+                actionButtons.style.display = "none";
+                title.innerHTML = "Du har godkendt vores tilbud";
+                text.innerHTML = `
+                Vi har afsendt dit endelige tilbud til din mail.
+                <br><br>
+                <a href="/pdf/modtag/${order_id}.pdf" download>Download .pdf</a>
+            `;
+
+            } catch (err) {
+                showNotification("Fejl ved forespørgsel: " + err, "error");
+            }
         });
     }
 
-    /* EventListener | Deny */
+    // __________________________________________________________
+
+    /* EventListener | Decline */
     if (declineBtn) {
-         declineBtn.addEventListener("click", function() {
-             if (confirm("Er du sikker på at du vil afvise tilbuddet?")) {
-                 showNotification("Tilbud afvist", "fog");
-                 actionButtons.style.display = "none";
-                 title.innerHTML = "Du har afvist tilbuddet";
-                 text.innerHTML = `Du er altid velkommen til at komme ned i en af vores forretninger og få snakket mere om et tilbud.`;
-             }
-         });
+        declineBtn.addEventListener("click", async function() {
+            try {
+
+                const statusRes = await fetch(`/status/${order_id}/update`, {
+                    method: "POST",
+                    body: `status=declined`
+                });
+
+                const statusData = await statusRes.json();
+
+                if (!statusData.success) {
+                    showNotification("Fejl ved opdatering af status: " + statusData.error, "error");
+                    return;
+                }
+
+                // URL fix
+                const newStatus = "declined";
+                const newUrl = `/status/${order_id}?status=${newStatus}`;
+                window.history.replaceState(null, "", newUrl);
+
+                showNotification("Tilbud afvist", "fog");
+                actionButtons.style.display = "none";
+                title.innerHTML = "Du har afvist tilbuddet";
+                text.innerHTML = `Du er altid velkommen til at komme ned i en af vores forretninger og få snakket mere om et tilbud.`;
+
+            } catch (err) {
+                showNotification("Fejl ved forespørgsel: " + err, "error");
+            }
+        });
     }
 
 });

@@ -17,6 +17,8 @@ document.getElementById("status-search-btn").addEventListener("click", async() =
             return;
         }
 
+        await fetch(`/status/${id}/authorize`, { method: "POST" });
+
         window.location.href = `/status/${id}?status=${data.status}`;
     } catch (err) {
         showNotification("Fejl | " + err, "fog");

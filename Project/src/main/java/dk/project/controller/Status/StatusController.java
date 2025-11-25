@@ -30,19 +30,22 @@ public class StatusController {
 
         // _________________________________________________________
 
-        app.get("/status/{id}", ctx -> { /* Render */
-            try {
-                int id = Integer.parseInt(ctx.pathParam("id"));
-                OrderMapper orderMapper = new OrderMapper();
-                String status = orderMapper.getStatusById(id);
-                if (status != null) {
-                    ctx.html(ThymeleafSetup.render("status.html", Map.of("status", status)));
-                }
-            } catch (NumberFormatException e) {
-                ctx.redirect("/status/?error=invalidId");
-            } catch (DatabaseException e) {
-                ctx.redirect("/status/?error=dbError");
+        app.get("/status/{id}", ctx -> {
+
+            // Can't access /status/{id} without using the search tool
+            if (ctx.sessionAttribute("canViewStatus") == null) {
+                ctx.redirect("/status?error=noAccess");
+                return;
             }
+
+            ctx.html(ThymeleafSetup.render("status.html", null));
+        });
+
+        // _________________________________________________________
+
+        app.post("/status/{id}/authorize", ctx -> { /* ALLOW */
+            ctx.sessionAttribute("canViewStatus", true);
+            ctx.json(Map.of("success", true));
         });
 
         // _____________________________________________________________
@@ -76,12 +79,35 @@ public class StatusController {
 
         // _____________________________________________________________
 
-        app.post("/status/pdfgenerator", ctx -> {
+        app.post("/status/{id}/update", ctx -> {
+            try {
+
+                // Assert
+                int id = Integer.parseInt(ctx.pathParam("id"));
+                String status = ctx.formParam("status");
+
+                // Act
+                OrderMapper orderMapper = new OrderMapper();
+                orderMapper.updateStatus(id, status);
+
+                // Handle
+                ctx.json(Map.of("success", true));
+            } catch (Exception e) {
+                ctx.json(Map.of("success", false, "error", e.getMessage()));
+            }
+        });
+
+        // _____________________________________________________________
+
+        app.post("/status/{id}/pdfgenerator", ctx -> {
 
             try {
 
-                // TODO getId instead of hardcoded - {id}
-                int orderNumber = 1;
+                // Gets our ID
+                int orderNumber = Integer.parseInt(ctx.pathParam("id"));
+
+                // Debug
+                System.out.println(orderNumber);
 
                 // Setup
                 Path modtagDir = Path.of("src/main/resources/static/pdf/modtag");
@@ -118,19 +144,29 @@ public class StatusController {
 
                 // Initial .pdf setup
                 Document document = new Document(PageSize.A4);
-                PdfWriter.getInstance(document, new FileOutputStream(outputPath.toFile())); // Overwrites pr automatic. No need for validation.
+                PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(outputPath.toFile())); // Overwrites pr automatic. No need for validation.
 
                 // Generate
                 document.open();
                 PdfGenerator.addFullPageImage(document, page1);
                 Font page2Font = FontFactory.getFont(FontFactory.HELVETICA, 16);
-                PdfGenerator.addPageWithBackgroundAndText(document, page2, textPage2, page2Font);
+                String[][] rowsPage2 = {
+                        {"Beskrivelse 1", "200 cm", "2", "stk", "Kommentar 1"},
+                        {"Beskrivelse 2", "150 cm", "1", "stk", "Kommentar 2"},
+                        {"Beskrivelse 3", "100 cm", "4", "stk", "Kommentar 3"}
+                };
+
+                PdfGenerator.addPageWithBackgroundAndRows(document, writer, page2, "Træ & Tagplader", rowsPage2);
                 PdfGenerator.addFullPageImage(document, page3);
                 PdfGenerator.addFullPageImage(document, page4);
                 document.close();
 
+                // JSON
+                ctx.json(Map.of("success", true));
+
             } catch (Exception e) {
                 e.printStackTrace();
+                ctx.json(Map.of("success", false, "error", e.getMessage()));
             }
 
         });

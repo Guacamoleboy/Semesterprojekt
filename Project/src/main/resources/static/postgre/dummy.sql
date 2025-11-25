@@ -10,8 +10,7 @@ carport_category,
 materials,
 materials_category,
 users,
-roles,
-products
+roles
 RESTART IDENTITY CASCADE;
 
 INSERT INTO roles (name) VALUES
@@ -71,12 +70,12 @@ INSERT INTO carport_category (name) VALUES
 ('Fladt tag'),
 ('Høj rejsning');
 
-INSERT INTO carport_orders (user_id, carport_category_id, width, length, height, angle, roof, has_tool_shed, tool_shed_width, tool_shed_length, has_trapez) VALUES
+INSERT INTO carport_orders (customer_id, carport_category_id, width, length, height, angle, roof, has_tool_shed, tool_shed_width, tool_shed_length, has_trapez) VALUES
 (1, 1, 500.00, 600.00, 250.00, 15.00, 'Fladt tag', FALSE, NULL, NULL, FALSE),
 (2, 2, 400.00, 500.00, 240.00, 20.00, 'Rejsning', TRUE, 150.00, 200.00, TRUE),
 (1, 1, 450.00, 550.00, 245.00, 18.00, 'Fladt tag', FALSE, NULL, NULL, FALSE);
 
-INSERT INTO orders (user_id, carport_order_id, total_price, status) VALUES
+INSERT INTO orders (customer_id, carport_order_id, total_price, status) VALUES
 (1, 1, 15000.00, 'pending'),
 (2, 2, 22000.00, 'calculating'),
 (1, 3, 30000.00, 'offer');

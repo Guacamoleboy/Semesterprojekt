@@ -10,7 +10,10 @@ import java.util.List;
 public class CustomerMapper {
 
     public Customer newCustomer(Customer customer) throws DatabaseException {
-
+        Customer existing = getCustomerByEmail(customer.getEmail());
+        if (existing != null) {
+            return existing;
+        }
         String sql = "INSERT INTO customers (firstname, lastname, email, phone, street, city, zipcode, country) VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING id";
 
         try (Connection conn = Database.getConnection();
@@ -164,6 +167,26 @@ public class CustomerMapper {
 
         return customers;
     }
+
+    // _____________________________________________________________________
+
+    public Customer getCustomerByEmail(String email) throws DatabaseException {
+        String sql = "SELECT * FROM customers WHERE email = ?";
+        try (Connection conn = Database.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, email);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return toCustomer(rs);
+                } else {
+                    return null;
+                }
+            }
+        } catch (SQLException e) {
+            throw new DatabaseException("Fejl ved hentning af kunde", e);
+        }
+    }
+
 
     // _____________________________________________________________________
 

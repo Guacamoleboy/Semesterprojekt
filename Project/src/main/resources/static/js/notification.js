@@ -145,6 +145,9 @@ document.addEventListener("DOMContentLoaded", function() {
             case "dbError":
                 showNotification("Database fejl. Prøv igen.", "red");
                 break;
+            case "noAccess":
+                showNotification("Ingen adgang", "red");
+                break;
         }
     }
 
