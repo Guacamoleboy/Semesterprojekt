@@ -4,6 +4,7 @@ import dk.project.entity.AdminMenu.Material;
 
 public class MaterialDTO {
 
+    // Attributes
     public int id;
     public String name;
     public String description;
@@ -149,5 +150,5 @@ public class MaterialDTO {
     public void setCategory_name(String category_name) {
         this.category_name = category_name;
     }
-}
 
+}

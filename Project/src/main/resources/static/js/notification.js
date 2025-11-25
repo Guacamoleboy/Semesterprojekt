@@ -90,6 +90,9 @@ document.addEventListener("DOMContentLoaded", function() {
             case "accountCreated":
                 showNotification("Konto oprettet! Log venligst ind.", "green");
                 break;
+            case "offerCreated":
+                showNotification("Tilbud oprettet.\nFølg status her på siden!", "fog");
+                break;
             case "mailAfsendt":
                 showNotification("Mail afsendt!", "fog");
                 break;
@@ -144,6 +147,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 break;
             case "dbError":
                 showNotification("Database fejl. Prøv igen.", "red");
+                break;
+            case "noAccess":
+                showNotification("Ingen adgang", "red");
                 break;
         }
     }

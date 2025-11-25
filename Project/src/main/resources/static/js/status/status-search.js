@@ -11,8 +11,16 @@ document.getElementById("status-search-btn").addEventListener("click", async() =
     try {
         const response = await fetch(`/status/${id}/status`);
         const data = await response.json();
+
+        if (data.status === null) {
+            showNotification("ID eksisterer ikke", "fog");
+            return;
+        }
+
+        await fetch(`/status/${id}/authorize`, { method: "POST" });
+
         window.location.href = `/status/${id}?status=${data.status}`;
     } catch (err) {
-        showNotification("ID eksisterer ikke", "fog");
+        showNotification("Fejl | " + err, "fog");
     }
 });

@@ -10,8 +10,7 @@ carport_category,
 materials,
 materials_category,
 users,
-roles,
-products
+roles
 RESTART IDENTITY CASCADE;
 
 INSERT INTO roles (name) VALUES
@@ -29,29 +28,6 @@ INSERT INTO customers (firstname, lastname, email, phone, street, city, zipcode,
 ('Jonas', 'Hansen', 'jonas.hansen@example.com', '+4544556677', 'Vestergade 12', 'Aarhus', '8000', 'Denmark'),
 ('Line', 'Poulsen', 'line.poulsen@example.com', '+4533667788', 'Hovedvejen 77', 'Roskilde', '4000', 'Denmark'),
 ('Emil', 'Jørgensen', 'emil.jorgensen@example.com', '+4544221133', 'Algade 5', 'Aalborg', '9000', 'Denmark');
-
--- Needed? Imo it's "materials".
-INSERT INTO products (title, description, size, quantity, price) VALUES
-('Skrue1', 'Rustfri skrue', '100cm', 100, 5.50),
-('Skrue2', 'Sort skrue', '50cm', 150, 4.00),
-('Skrue3', 'Galvaniseret skrue', '50cm', 200, 6.20),
-('Skrue3', 'Galvaniseret skrue', '100cm', 50, 8.00),
-('Møtrik1', 'Rustfri møtrik', 'M5', 300, 1.50),
-('Møtrik2', 'Sort møtrik', 'M6', 200, 2.00),
-('Bolt1', 'Rustfri bolt', '10cm', 50, 7.00),
-('Bolt2', 'Sort bolt', '15cm', 100, 9.00),
-('Plade1', 'Metalplade', '2x2m', 20, 50.00),
-('Plade2', 'Metalplade', '1x1m', 40, 25.00),
-('Skive1', 'Rustfri skive', 'M5', 300, 0.50),
-('Skive2', 'Sort skive', 'M6', 200, 0.80),
-('Hjul1', 'Plastik hjul', '10cm', 50, 15.00),
-('Hjul2', 'Gummi hjul', '15cm', 40, 20.00),
-('Bøjle1', 'Metal bøjle', '50cm', 100, 12.00),
-('Bøjle2', 'Rustfri bøjle', '100cm', 60, 18.00),
-('Rør1', 'Stålrør', '1m', 30, 22.00),
-('Rør2', 'Aluminium rør', '2m', 25, 28.00),
-('Skruetrækker', 'Torx skruetrækker', '20cm', 150, 10.00),
-('Hammer', 'Stålhammer', '35cm', 80, 15.00);
 
 INSERT INTO materials_category (name) VALUES
 ('Træ & Tagplader'),
@@ -94,12 +70,12 @@ INSERT INTO carport_category (name) VALUES
 ('Fladt tag'),
 ('Høj rejsning');
 
-INSERT INTO carport_orders (user_id, carport_category_id, width, length, height, angle, roof, has_tool_shed, tool_shed_width, tool_shed_length, has_trapez) VALUES
+INSERT INTO carport_orders (customer_id, carport_category_id, width, length, height, angle, roof, has_tool_shed, tool_shed_width, tool_shed_length, has_trapez) VALUES
 (1, 1, 500.00, 600.00, 250.00, 15.00, 'Fladt tag', FALSE, NULL, NULL, FALSE),
 (2, 2, 400.00, 500.00, 240.00, 20.00, 'Rejsning', TRUE, 150.00, 200.00, TRUE),
 (1, 1, 450.00, 550.00, 245.00, 18.00, 'Fladt tag', FALSE, NULL, NULL, FALSE);
 
-INSERT INTO orders (user_id, carport_order_id, total_price, status) VALUES
+INSERT INTO orders (customer_id, carport_order_id, total_price, status) VALUES
 (1, 1, 15000.00, 'pending'),
 (2, 2, 22000.00, 'calculating'),
 (1, 3, 30000.00, 'offer');

@@ -7,7 +7,7 @@ public class Order {
 
     // Attributes
     private int id;
-    private User user;
+    private Customer customer;
     private CarportOrder carportOrder;
     private double totalPrice;
     private String status;
@@ -16,9 +16,9 @@ public class Order {
 
     // ________________________________________________________________
 
-    public Order(int id, User user, CarportOrder carportOrder, double totalPrice, String status, LocalDateTime createdAt, List<OrderMaterial> orderMaterials) {
+    public Order(int id, Customer customer, CarportOrder carportOrder, double totalPrice, String status, LocalDateTime createdAt, List<OrderMaterial> orderMaterials) {
         this.id = id;
-        this.user = user;
+        this.customer = customer;
         this.carportOrder = carportOrder;
         this.totalPrice = totalPrice;
         this.status = status;
@@ -52,14 +52,14 @@ public class Order {
 
     // ________________________________________________________________
 
-    public User getUser() {
-        return user;
+    public Customer getCustomer() {
+        return customer;
     }
 
     // ________________________________________________________________
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     // ________________________________________________________________

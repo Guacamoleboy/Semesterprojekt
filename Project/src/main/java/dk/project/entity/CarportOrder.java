@@ -6,7 +6,7 @@ public class CarportOrder {
 
     // Attributes
     private int id;
-    private User user;
+    private Customer customer;
     private CarportCategory category;
     private double width;
     private double length;
@@ -21,11 +21,11 @@ public class CarportOrder {
 
     // _________________________________________________________________
 
-    public CarportOrder(int id, User user, CarportCategory category, double width, double length,
+    public CarportOrder(int id, Customer customer, CarportCategory category, double width, double length,
     double height, Double angle, String roof, boolean hasToolShed,
     Double toolShedWidth, Double toolShedLength, boolean hasTrapez, LocalDateTime createdAt) {
         this.id = id;
-        this.user = user;
+        this.customer = customer;
         this.category = category;
         this.width = width;
         this.length = length;
@@ -65,14 +65,14 @@ public class CarportOrder {
 
     // _________________________________________________________________
 
-    public User getUser() {
-        return user;
+    public Customer getCustomer() {
+        return customer;
     }
 
     // _________________________________________________________________
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     // _________________________________________________________________

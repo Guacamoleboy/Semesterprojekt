@@ -2,11 +2,17 @@
 package dk.project.controller.Modtag;
 
 // Imports
-import dk.project.server.PdfGenerator;
+import dk.project.entity.CarportCategory;
+import dk.project.entity.CarportOrder;
+import dk.project.entity.Customer;
+import dk.project.entity.Order;
+import dk.project.mapper.CarportCategoryMapper;
+import dk.project.mapper.CarportOrderMapper;
+import dk.project.mapper.CustomerMapper;
+import dk.project.mapper.OrderMapper;
 import dk.project.server.ThymeleafSetup;
 import io.javalin.Javalin;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.util.Map;
 
 public class ModtagController {
 
@@ -16,35 +22,64 @@ public class ModtagController {
 
     public static void registerRoutes(Javalin app) {
 
-        app.get("/beregn/modtag", ctx -> {
+        app.get("/beregn/modtag", ctx -> ctx.html(ThymeleafSetup.render("modtag.html", null)));
 
-            // Apparently has to have full path instead of /static/ pathing from Server.java
-            Path outDir = Path.of("src/main/resources/static/pdf/modtag");
+        // _____________________________________________________________________
 
-            // If /modtag isnt found -> Generate it
-            if (!Files.exists(outDir)) {
-                Files.createDirectories(outDir);
-            }
+        app.post("/generate-offer", ctx -> {
 
-            // Name of our file. Will be changed with ID later.
-            String outputPath = outDir.resolve("1.pdf").toString();
+            // TODO | change from ChatGPT to our actual solution
+            // TODO | Works now, but I don't fully understand it.
+            // TODO | - Jonas
 
-            // Generate .pdf with content as follows
             try {
-                PdfGenerator.generateBrochure(
-                        outputPath,
-                        "src/main/resources/static/pdf/content/forside.png",
-                        "Tilbud på carport\nPris: 12.999 kr\nMateriale: Trykimprægneret træ...",
-                        "src/main/resources/static/pdf/content/2.png",
-                        "src/main/resources/static/pdf/content/3.png"
+
+                var json = ctx.bodyAsClass(Map.class);
+
+                CustomerMapper customerMapper = new CustomerMapper();
+                String email = (String) json.get("email");
+                Customer customer = customerMapper.getCustomerByEmail(email);
+
+                if (customer == null) {
+                    customer = new Customer();
+                    customer.setFirstName((String) json.get("firstname"));
+                    customer.setLastName((String) json.get("lastname"));
+                    customer.setEmail(email);
+                    customer.setPhone((String) json.get("phone"));
+                    customerMapper.newCustomer(customer);
+                }
+
+                CarportCategoryMapper categoryMapper = new CarportCategoryMapper();
+                CarportCategory category = categoryMapper.getFirstCategory();
+                CarportOrder carportOrder = new CarportOrder(
+                        0, customer, category,
+                        ((Number) json.get("width")).doubleValue(),
+                        ((Number) json.get("length")).doubleValue(),
+                        ((Number) json.get("height")).doubleValue(),
+                        ((Number) json.get("angle")).doubleValue(),
+                        (String) json.get("roof"),
+                        (Boolean) json.get("hasToolShed"),
+                        ((Number) json.get("toolShedWidth")).doubleValue(),
+                        ((Number) json.get("toolShedLength")).doubleValue(),
+                        (Boolean) json.get("hasTrapez"),
+                        java.time.LocalDateTime.now()
                 );
+
+                CarportOrderMapper carportOrderMapper = new CarportOrderMapper();
+                carportOrderMapper.newOrder(carportOrder);
+
+                Order order = new Order(
+                        0, customer, carportOrder, 0.0, "pending",
+                        java.time.LocalDateTime.now(), null
+                );
+
+                OrderMapper orderMapper = new OrderMapper();
+                int orderId = orderMapper.newOrder(order);
+                ctx.json(Map.of("success", true, "orderId", orderId));
             } catch (Exception e) {
-                ctx.redirect("/beregn/?error=pdfError");
+                e.printStackTrace();
+                ctx.json(Map.of("success", false, "error", e.getMessage()));
             }
-
-            // Load modtag.html as /beregn/modtag
-            ctx.html(ThymeleafSetup.render("modtag.html", null));
-
         });
 
     }

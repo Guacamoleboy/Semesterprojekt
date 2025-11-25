@@ -24,9 +24,10 @@
 
     <!-- Script Load -->
     <script src="/js/notification.js" defer></script>
-    <script src="/js/dynamic-text.js" defer></script>
-    <script src="/js/button-to-top.js" defer></script>
-    <script src="/js/pre-beregner.js" defer></script>
+    <script src="/js/index/dynamic-text.js" defer></script>
+    <script src="/js/index/button-to-top.js" defer></script>
+    <script src="/js/index/pre-beregner.js" defer></script>
+    <script src="/js/index/index-slideshow.js" defer></script>
 
     <!-- Framwork load -->
     <link rel="stylesheet" href="/css/guacamoleboy-wow.css">
@@ -50,7 +51,6 @@
 
 <!-- Scroll Button Start -->
 <button id="scrollToTopBtn" class="scroll-btn" onclick="scrollToSection()"><i class="fa fa-arrow-up"></i></button>
-<!--<button id="scrollDownBtn" class="scroll-btn"><i class="fa fa-arrow-down"></i></button>-->
 <!-- Scroll Button End -->
 
 <!-- Navbar -->
@@ -158,7 +158,7 @@
 
             <!-- Left -->
             <div class="guac-col-auto guac-w-50 guac-animate guac-slide-left">
-                <img src="/images/blobs/blob-done-1.png" alt="imgText here bby girl" class="guac-w-100">
+                <img src="/images/blobs/blob-fix-index.png" alt="imgText here bby girl" class="guac-w-100">
             </div>
 
             <!-- Right -->
@@ -225,18 +225,18 @@
 <!-- Section Slideshow -->
 <section class="index-slideshow" id="showcase-index">
     <div class="guac-container">
-        <div class="guac-row guac-align-center">
 
-            <!-- Info Box - Slideshow -->
+        <!-- Info Box - Slideshow -->
+        <div class="guac-row guac-align-center">
             <div class="guac-col-6 slideshow-index-card animate-fade-in">
 
                 <!-- Carport title + Visuals -->
                 <div class="blue-header">
-                    <h2 class="slideshow-title">Carport Title 1</h2>
+                    <h2 class="slideshow-title" id="i-s-title">Carport Title 1</h2>
                 </div>
 
                 <!-- Carport Information -->
-                <p class="slideshow-text">
+                <p class="slideshow-text" id="i-s-description">
                     Vores carporte kombinerer moderne æstetik med holdbare materialer,
                     så du får et stilrent udtryk og lang levetid. Tilpas størrelse, tagtype
                     og farve, så den matcher dit hjem perfekt.
@@ -246,26 +246,29 @@
                 <div class="guac-row specs-row">
                     <div class="spec-card">
                         <i class="fa fa-home" aria-hidden="true"></i>
-                        <span>Åben carport</span>
+                        <span id="i-s-specOne">Åben carport</span>
                     </div>
                     <div class="spec-card">
                         <i class="fa fa-building-o" aria-hidden="true"></i>
-                        <span>Fladt tag i plastik</span>
+                        <span id="i-s-specTwo">Fladt tag i plastik</span>
                     </div>
                     <div class="spec-card">
                         <i class="fa fa-arrows-h" aria-hidden="true"></i>
-                        <span>6 x 4,8 meter</span>
+                        <span id="i-s-specThree">6 x 4,8 meter</span>
                     </div>
                 </div>
+                <!-- Spec Cards -->
+
             </div>
         </div>
+        <!-- Info Box - Slideshow -->
 
         <!-- Button guac-col-6 menu -->
         <div class="guac-row guac-align-center guac-mt-4">
             <div class="guac-col-6 slideshow-index-card">
                 <div class="button-card-row">
                     <div class="button-group">
-                        <a href="https://www.johannesfog.dk/have-fritid/carporte/dobbelt-carporte/dobbelt-carport-6-00x4-80-m-car01du-00821" class="guac-btn guac-btn-slideshow guac-btn-mdlg">Læs mere</a>
+                        <a href="https://www.johannesfog.dk/have-fritid/carporte/dobbelt-carporte/dobbelt-carport-6-00x4-80-m-car01du-00821" class="guac-btn guac-btn-slideshow guac-btn-mdlg" target="_blank" id="i-s-link">Læs mere</a>
                         <a href="#pre-beregner" class="guac-btn guac-btn-slideshow2 guac-btn-mdlg">Beregn selv</a>
                     </div>
                     <div class="button-logo">
@@ -274,6 +277,7 @@
                 </div>
             </div>
         </div>
+        <!-- Button guac-col-6 menu -->
 
     </div>
 </section>
@@ -290,7 +294,7 @@
             <p>Dine mål er afgørende for pris og vejledning. Sørg for at du har målt op korrekt inden du går videre</p>
         </div>
 
-        <div class="guac-grid guac-grid-auto guac-gap-3 guac-mt-4 checklist">
+        <div class="guac-grid guac-grid-auto guac-gap-3 guac-mt-4 checklist guac-pb-5">
 
             <!-- Card -->
             <div class="guac-col-auto">
@@ -338,8 +342,8 @@
         </div>
 
         <!-- Validation -->
-        <div class="guac-text-center guac-pt-5">
-            <a href="/beregn" class="guac-btn guac-btn-fog guac-locked" id="submitBtn">Jeg har målt op</a>
+        <div class="guac-text-center guac-mt-5">
+            <a href="/beregn" class="guac-btn guac-btn-fog guac-btn-lg guac-locked" id="submitBtn">Jeg har målt op</a>
         </div>
 
     </div>

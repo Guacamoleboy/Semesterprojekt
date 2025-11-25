@@ -38,6 +38,7 @@
     --fog-blue: #003D76;
     --fog-blue-less: #00488b;
     --fog-blue-2: #0056a7;
+    --fog-blue-tilbud: #002c69;
     --fog-brighter: #407bb5;
     --fog-white: #FFF;
     --fog-white-less: #efefef;
@@ -286,63 +287,141 @@ body::-webkit-scrollbar { /* All other browsers */
     background: url("../images/page-content/modtag/modtag-background.png") center center no-repeat;
     background-size: cover;
     position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
     min-height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none; 
+    -ms-overflow-style: none; /* Old Browsers. Just for safety. */
 }
 
-.modtag-content-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4.5rem;
-    max-width: 1200px;
+.section-modtag::-webkit-scrollbar {
+    display: none;
+}
+
+.modtag-info {
+    margin-top: 5rem !important;
+}
+
+.modtag-info-overview {
+    color: var(--fog-blue);
+    margin-bottom: 0;
+    letter-spacing: 0.5px;
+}
+
+.modtag-info-title {
+    color: var(--fog-blue);
+    margin: 0.5rem 0 1.5rem 0;
+    position: relative;
+}
+
+.modtag-info-title::after {
+    content: "";
+    display: block;
+    width: 8rem;
+    height: 3px;
+    margin: 0.75rem auto 1.5rem auto;
+    border-bottom: 3px dotted var(--fog-blue);
+    opacity: 0.6;
+}
+
+.modtag-info-text {
+    max-width: 50ch;
     margin: 0 auto;
-    width: 100%;
+    line-height: 1.6;
+    color: var(--project-less-black);
 }
 
-.modtag-form-wrapper,
-.modtag-resume-wrapper {
-    display: flex;
-    flex-direction: column;
+.modtag-download-link {
+    color: var(--fog-blue);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.25s ease;
+}
+
+.modtag-download-link:hover {
+    text-decoration: underline;
+    opacity: 0.9;
+    color: var(--fog-blue-less);
 }
 
 .modtag-card-form,
-.modtag-card-resume {
-    height: 100%;
+.modtag-card-resume,
+.modtag-card-price {
     display: flex;
     flex-direction: column;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
     max-width: none;
     width: 100%;
-    padding: 2.5rem 2rem;
+    padding: 1.5rem !important;
 }
 
 .modtag-card-form {
-    text-align: left !important;
-}
-
-.modtag-card-form .guac-card-title {
-    text-align: center !important;
-}
-
-.modtag-form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.modtag-form-group {
     display: flex;
     flex-direction: column;
+    align-items: stretch;
+    padding: 0 1.5rem;
 }
 
-.modtag-form-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-    margin-top: 2rem;
+.modtag-card-form > :not(.guac-card-title) {
+    align-self: center;
+    width: 100%;
+    max-width: 36rem;
+    gap: 1rem !important;
+}
+
+.modtag-card-resume {
+    height: 100%;
+    flex: 1;
+}
+
+.modtag-card-price .guac-card-title {
+    background-color: transparent;
+    color: var(--fog-blue);
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    text-decoration: underline;
+}
+
+.modtag-form {
+    flex: 1;
+}
+
+.modtag-label {
+    color: var(--fog-blue-2);
+}
+
+.modtag-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    min-height: 2.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: left;
+    border: 0.125rem solid var(--project-less-white);
+    border-radius: 1rem;
+    box-sizing: border-box;
+    transition: all 0.25s ease-in-out;
+    background-color: var(--fog-white);
+    color: var(--project-less-black);
+}
+
+.modtag-input:focus {
+    outline: none;
+    border-color: var(--fog-blue);
+    box-shadow: 0 0 0 3px var(--fog-blue-dim);
+}
+
+.modtag-terms-link {
+    color: var(--fog-blue);
+    text-decoration: none;
+    transition: all 0.25s ease-in-out;
 }
 
 .modtag-submit-btn {
@@ -358,18 +437,7 @@ body::-webkit-scrollbar { /* All other browsers */
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3) !important;
 }
 
-.modtag-resume-content {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    padding: 0.5rem 0;
-}
-
 .modtag-resume-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.75rem 0;
     border-bottom: 1px solid var(--fog-blue-dim);
 }
 
@@ -378,19 +446,53 @@ body::-webkit-scrollbar { /* All other browsers */
 }
 
 .modtag-resume-label {
-    font-weight: 600;
     color: var(--fog-blue-2);
-    font-size: 1rem;
 }
 
 .modtag-resume-value {
-    font-weight: 500;
     color: var(--project-less-black);
-    font-size: 1rem;
-    text-align: right;
 }
 
+.modtag-price-value {
+    color: var(--fog-blue);
+}
 
+.section-modtag .guac-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 1fr -> 1 fraction -> 1 part */
+    gap: 5rem;
+    align-items: stretch;
+}
+
+.modtag-left-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    height: 100%;
+}
+
+.modtag-left-wrapper > .guac-col {
+    flex: 1;
+}
+
+.modtag-card-resume {
+    height: 100%;
+    flex: 1;
+}
+
+.modtag-price-estimate-intro {
+    margin-bottom: -1rem !important;
+}
+
+.modtag-price-estimate {
+    font-size: 2.0rem !important;
+    font-weight: 600 !important;
+    color: var(--fog-blue);
+}
+
+.modtag-btn-final {
+    border-radius: 0.5rem !important;
+}
 
 /* ___________________________________________ */
 
@@ -754,113 +856,6 @@ body::-webkit-scrollbar { /* All other browsers */
 /* ___________________________________________ */
 
 /* Modtag */
-
-/* ___________________________________________ */
-
-
-.modtag-form { 
-    margin-top: 0.5rem; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.modtag-label {
-    display: block;
-    font-weight: 600;
-    color: var(--fog-blue-2);
-    margin-bottom: 0.5rem;
-}
-
-.modtag-input {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    min-height: 2.75rem;
-    font-size: 1rem;
-    font-weight: 600;
-    text-align: left;
-    border: 0.125rem solid var(--project-less-white);
-    border-radius: 1rem;
-    box-sizing: border-box;
-    transition: all 0.25s ease-in-out;
-    background-color: var(--fog-white);
-    color: var(--project-less-black);
-}
-
-.modtag-input:focus {
-    outline: none;
-    border-color: var(--fog-blue);
-    box-shadow: 0 0 0 3px var(--fog-blue-dim);
-}
-
-.modtag-terms-link {
-    color: var(--fog-blue);
-    text-decoration: none;
-    font-size: 0.9rem;
-    text-align: center;
-    transition: all 0.25s ease-in-out;
-}
-
-.modtag-terms-link:hover {
-    text-decoration: underline;
-    opacity: 0.9;
-}
-
-
-.modtag-info {
-    text-align: center;
-    margin-bottom: 4rem;
-    padding: 0 1rem;
-}
-
-.modtag-info p:first-of-type {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--fog-blue);
-    text-transform: uppercase;
-    margin-bottom: 0rem;
-    letter-spacing: 0.5px;
-}
-
-.modtag-info h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--fog-blue);
-    margin: 0.5rem 0 1.5rem 0;
-    position: relative;
-}
-
-.modtag-info h2::after {
-    content: "";
-    display: block;
-    width: 8rem;
-    height: 3px;
-    margin: 0.75rem auto 1.5rem auto;
-    border-bottom: 3px dotted var(--fog-blue);
-    opacity: 0.6;
-}
-
-.modtag-info p:last-of-type {
-    font-size: 1.05rem;
-    color: var(--project-less-black);
-    max-width: 50ch;
-    margin: 0 auto;
-    line-height: 1.6;
-}
-
-.modtag-download-link {
-    color: var(--fog-blue);
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.25s ease;
-}
-
-.modtag-download-link:hover {
-    text-decoration: underline;
-    opacity: 0.9;
-    color: var(--fog-blue-less);
-}
-
 
 /* ___________________________________________ */
 
@@ -1241,8 +1236,10 @@ body::-webkit-scrollbar { /* All other browsers */
 }
 
 .index-slideshow {
-    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
-    url("../images/page-content/beregn-intro/carport-1.png") center center no-repeat;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    url("../images/page-content/beregn-intro/carport-1.png");
+    background-position: center center;
+    background-repeat: no-repeat;
     background-size: cover;
     width: 100vw;
     min-height: 100vh;
@@ -1763,7 +1760,8 @@ body::-webkit-scrollbar { /* All other browsers */
 #searchForUserAdmin #CMSsearchUser,
 #showCatalog .catalogStyle,
 #productResults,
-#CMSproductResults{
+#CMSproductResults,
+#searchRequestResults{
     display: none;
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -1774,6 +1772,7 @@ body::-webkit-scrollbar { /* All other browsers */
 #CMSproductResults .product-item,
 #showCatalogResult .product-item,
 #productResults .product-item,
+#searchRequestResults .request-item,
 .adminMenu .user-item{
     background: var(--am-product-card);
     padding: 0.5rem 1rem;
@@ -2094,22 +2093,26 @@ body::-webkit-scrollbar { /* All other browsers */
     background-color: var(--fog-blue);
     color: var(--project-white);
     border-radius: 0.5rem !important;
+    border: 2px solid var(--fog-blue);
 }
 
 .status-action-buttons .status-btn-accept:hover {
     background-color: var(--project-green);
     opacity: 0.85;
+    border: 2px solid var(--project-green);
 }
 
 .status-action-buttons .status-btn-decline {
     background-color: var(--project-grey);
     color: var(--project-white);
     border-radius: 0.5rem !important;
+    border: 2px solid var(--project-grey);
 }
 
 .status-action-buttons .status-btn-decline:hover {
     background-color: var(--project-red);
     opacity: 0.85;
+    border: 2px solid var(--project-red);
 }
 
 .status-search-box {
@@ -2183,4 +2186,210 @@ body::-webkit-scrollbar { /* All other browsers */
     outline: none;
     border-color: var(--fog-blue-2);
     box-shadow: 0 0 0 3px rgba(0,61,118,0.2);
+}
+
+/* ___________________________________________ */
+
+/* Bubbles */
+
+/* ___________________________________________ */
+
+.bubble {
+    position: fixed;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+    z-index: 1;
+    animation: fadeOut 3s ease-out forwards;
+}
+
+/* ___________________________________________ */
+
+/* Section Tilbud */
+
+/* ___________________________________________ */
+
+.section-tilbud {
+    overflow-y: auto !important;
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background: var(--fog-blue-tilbud);
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.section-tilbud::-webkit-scrollbar {
+    display: none;
+}
+
+/* TODO: Fix hardcoded margin-top value */
+.tilbud-box-top {
+    position: relative;
+    background-color: var(--guac-white);
+    padding: 2rem 1rem 0rem 1rem;
+    border-radius: 15px 15px 0 0;
+    overflow: visible;
+    height: 25rem !important;
+    color: var(--fog-blue);
+    margin-top: 65rem !important;
+    z-index: 1000 !important;
+}
+
+.fog-logo-tilbud {
+    position: absolute;
+    top: -2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.visual-dot1-tilbud,
+.visual-dot2-tilbud {
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: var(--fog-blue);
+    border-radius: 10px;
+    top: 1.5rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.75);
+}
+
+.visual-dot1-tilbud {
+    left: 1.5rem;
+}
+
+.visual-dot2-tilbud {
+    right: 1.5rem;
+}
+
+.tilbud-box-top h2 {
+    margin-top: 0 !important;
+}
+
+.tilbud-box-top h2::after {
+    content: "";
+    display: block;
+    width: 10rem;
+    border-bottom: 3px solid var(--fog-blue);
+    opacity: 0.4 !important;
+    margin: 0.5rem auto 0;
+}
+
+.tilbud-box-top p:first-of-type {
+    padding-top: 2rem !important;
+    opacity: 0.75 !important;
+    font-weight: 600 !important;
+    margin-bottom: 0 !important;
+}
+
+.tilbud-wave {
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+}
+
+.tilbud-wave img {
+    width: 100%;
+    display: block;
+    pointer-events: none;
+}
+
+.tilbud-input-field {
+    width: 50%;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    box-shadow: 0 4px 2px rgba(0,0,0,0.25);
+}
+
+.tilbud-box-bottom {
+    position: relative;
+    padding: 2rem 1rem;
+    background-color: var(--fog-blue);
+    color: var(--fog-white);
+    overflow: hidden;
+    height: 25rem !important;
+    z-index: 1000 !important;
+}
+
+.tilbud-box-bottom .guac-col-6 p::after {
+    content: "";
+    display: block;
+    width: 2.5rem;
+    border-bottom: 2px solid var(--fog-white);
+    opacity: 1 !important;
+    margin: 0.5rem auto 2rem;
+}
+
+.tilbud-box-bottom h2::after {
+    content: "";
+    display: block;
+    width: 7.5rem;
+    border-bottom: 3px solid var(--fog-white);
+    opacity: 1 !important;
+    margin: 1rem auto 0 !important;
+}
+
+.tilbud-box-bottom .guac-row {
+    margin-bottom: 1.5rem;
+}
+
+.tilbud-box-bottom .guac-col-6 {
+    text-align: center;
+}
+
+.tilbud-box-bottom .tilbud-input-field {
+    text-align: center !important;
+    display: block;
+    margin: 0.5rem auto;
+}
+
+/* TODO: Fix hardcoded margin-bottom value */
+.tilbud-box-end {
+    position: relative;
+    padding-top: 15rem;
+    background-color: var(--fog-white);
+    color: var(--fog-blue);
+    border-radius: 0 0 15px 15px;
+    overflow: hidden;
+    height: 25rem !important;
+    margin-bottom: 5rem !important;
+    z-index: 1000 !important;
+}
+
+.tilbud-wave-bottom {
+    position: absolute;
+    top: -5px;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.tilbud-wave-bottom img {
+    width: 100%;
+    display: block;
+    pointer-events: none;
+    transform: rotate(180deg);
+}
+
+.tilbud-box-end h2::after {
+    content: "";
+    display: block;
+    width: 10rem;
+    border-bottom: 3px solid var(--fog-blue);
+    opacity: 0.4 !important;
+    margin: 0.5rem auto 0 !important;
+}
+
+.tilbud-box-bottom p:first-child {
+    margin-bottom: -1rem !important;
+}
+
+.tilbud-box-end button {
+    outline: none !important;
+    border: 2px solid var(--fog-blue);
 }

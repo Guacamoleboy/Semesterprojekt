@@ -1,0 +1,90 @@
+###########################################
+dbdiagram.io
+
+0....1
+1 ... mange
+
+Sættes selv af programmet!
+###########################################
+
+Table roles {
+  id SERIAL [pk]
+  name VARCHAR(50) [unique, not null]
+}
+
+Table users {
+  id SERIAL [pk]
+  username VARCHAR(100) [unique, not null]
+  password_hash TEXT [not null]
+  role_id INT [not null, ref: > roles.id]
+  created_at TIMESTAMP
+}
+
+Table customers {
+  id SERIAL [pk]
+  firstname VARCHAR(100) [not null]
+  lastname VARCHAR(100) [not null]
+  email VARCHAR(255) [unique, not null]
+  phone VARCHAR(50) [unique, not null]
+  street VARCHAR(255)
+  city VARCHAR(100)
+  zipcode VARCHAR(20)
+  country VARCHAR(100)
+  created_at TIMESTAMP
+}
+
+Table materials_category {
+  id SERIAL [pk]
+  name VARCHAR(100) [unique, not null]
+}
+
+Table materials {
+  id SERIAL [pk]
+  category_id INT [not null, ref: > materials_category.id]
+  name VARCHAR(150) [not null]
+  description TEXT
+  unit VARCHAR(20) [not null]
+  length DECIMAL(10,2)
+  width DECIMAL(10,2)
+  height DECIMAL(10,2)
+  price DECIMAL(10,2) [not null]
+}
+
+Table carport_category {
+  id SERIAL [pk]
+  name VARCHAR(100) [unique, not null]
+}
+
+Table carport_orders {
+  id SERIAL [pk]
+  customer_id INT [ref: > users.id]
+  carport_category_id INT [not null, ref: > carport_category.id]
+  width DECIMAL(10,2) [not null]
+  length DECIMAL(10,2) [not null]
+  height DECIMAL(10,2) [not null]
+  angle DECIMAL(10,2)
+  roof VARCHAR(100)
+  has_tool_shed BOOLEAN
+  tool_shed_width DECIMAL(10,2)
+  tool_shed_length DECIMAL(10,2)
+  has_trapez BOOLEAN
+  created_at TIMESTAMP
+}
+
+Table orders {
+  id SERIAL [pk]
+  customer_id INT [ref: > users.id]
+  carport_order_id INT [not null, ref: > carport_orders.id]
+  total_price DECIMAL(10,2) [not null]
+  status VARCHAR(50)
+  created_at TIMESTAMP
+}
+
+Table order_materials {
+  id SERIAL [pk]
+  order_id INT [not null, ref: > orders.id]
+  material_id INT [not null, ref: > materials.id]
+  quantity DECIMAL(10,2) [not null]
+  unit_price DECIMAL(10,2) [not null]
+  total_price DECIMAL(10,2) [not null]
+}

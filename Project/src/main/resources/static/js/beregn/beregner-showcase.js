@@ -125,17 +125,44 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // If "nej" -> /beregn/modtag
-        if (step.label.toLowerCase().includes("redskabsskur") && select.value === "Nej") {
-            window.location.href = "/beregn/modtag";
-            return;
+        if (currentStep === 0) {
+            localStorage.setItem("carport_length", select.value);
+        } else if (currentStep === 1) {
+            localStorage.setItem("carport_width", select.value);
+        } else if (currentStep === 2) {
+            localStorage.setItem("carport_height", select.value);
+        } else if (currentStep === 3) {
+            localStorage.setItem("carport_has_toolshed", select.value === "Ja" ? "true" : "false");
+            if (select.value === "Nej") {
+                const length = localStorage.getItem("carport_length") || "600";
+                const width = localStorage.getItem("carport_width") || "320";
+                const height = localStorage.getItem("carport_height") || "240";
+                const roof = localStorage.getItem("carport_roof") || "Fladt tag";
+                window.location.href = `/beregn/modtag?width=${width}&length=${length}&height=${height}&roof=${roof}`;
+                return;
+            }
+        } else if (currentStep === 4) {
+            localStorage.setItem("carport_toolshed_length", select.value);
+        } else if (currentStep === 5) {
+            localStorage.setItem("carport_toolshed_width", select.value);
         }
 
-        // Loads our step unless we are on the last one
         if (currentStep < beregnet.length - 1) {
             loadStep(currentStep + 1);
         } else {
-            window.location.href = "/beregn/modtag";
+            const length = localStorage.getItem("carport_length") || "600";
+            const width = localStorage.getItem("carport_width") || "320";
+            const height = localStorage.getItem("carport_height") || "240";
+            const roof = localStorage.getItem("carport_roof") || "Fladt tag";
+            const hasToolShed = localStorage.getItem("carport_has_toolshed") === "true";
+            const toolShedLength = localStorage.getItem("carport_toolshed_length");
+            const toolShedWidth = localStorage.getItem("carport_toolshed_width");
+            
+            let url = `/beregn/modtag?width=${width}&length=${length}&height=${height}&roof=${roof}`;
+            if (hasToolShed && toolShedLength && toolShedWidth) {
+                url += `&hasToolShed=true&toolShedLength=${toolShedLength}&toolShedWidth=${toolShedWidth}`;
+            }
+            window.location.href = url;
         }
 
     });
