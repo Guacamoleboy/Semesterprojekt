@@ -15,6 +15,7 @@ import io.javalin.Javalin;
 import java.io.FileOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Collections;
 import java.util.Map;
 
 public class StatusController {
@@ -29,7 +30,7 @@ public class StatusController {
 
         // _________________________________________________________
 
-        app.get("/status/{id}", ctx -> {
+        app.get("/status/{id}", ctx -> { /* Render */
             try {
                 int id = Integer.parseInt(ctx.pathParam("id"));
                 OrderMapper orderMapper = new OrderMapper();
@@ -46,18 +47,30 @@ public class StatusController {
 
         // _____________________________________________________________
 
-        app.get("/status/{id}/status", ctx -> {
+        app.get("/status/{id}/status", ctx -> { /* API */
             try {
+
+                // Initial
                 int id = Integer.parseInt(ctx.pathParam("id"));
                 OrderMapper orderMapper = new OrderMapper();
-                String status = orderMapper.getStatusById(id);
-                if (status != null) {
-                    ctx.json(Map.of("status", status));
+
+                // Assert
+                Object value = orderMapper.getOrderFieldById("status", id);
+
+                // Validation for null
+                if (value == null) {
+                    ctx.json(Collections.singletonMap("status", null));
+                    return;
                 }
-            }  catch (NumberFormatException e) {
-                ctx.redirect("/status/?error=invalidId");
+
+                // Collect
+                String status = (String) value;
+                ctx.json(Map.of("status", status));
+
+            } catch (NumberFormatException e) {
+                ctx.json(Collections.singletonMap("status", null));
             } catch (DatabaseException e) {
-                ctx.redirect("/status/?error=dbError");
+                ctx.json(Collections.singletonMap("status", null));
             }
         });
 

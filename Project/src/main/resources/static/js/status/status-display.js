@@ -6,8 +6,9 @@ document.addEventListener("DOMContentLoaded", function () {
         calculating: 2,
         offer: 3
     };
+
     const urlParams = new URLSearchParams(window.location.search);
-    const urlStatus = urlParams.get("status") || "pending";
+    const urlStatus = urlParams.get("status");
     const step = statusMap[urlStatus] || 1;
     const title = document.getElementById("status-title");
     const text = document.getElementById("status-text");
