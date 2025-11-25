@@ -27,12 +27,12 @@ public class CarportCalculationService {
 
         // Remme
         int rems = carportCalculator.calculateRems(lengthCm);
-        Material remMat = materialMapper.getMaterialByID(MaterialConfig.ID_SPAER_600);
+        Material remMat = materialMapper.getMaterialByID(MaterialConfig.ID_SPAER_600_REM);
         results.add(new MaterialUsage(remMat, rems));
 
         // Spær
         int rafters = carportCalculator.calculateRafters(lengthCm);
-        Material rafterMat = materialMapper.getMaterialByID(MaterialConfig.ID_SPAER_600);
+        Material rafterMat = materialMapper.getMaterialByID(MaterialConfig.ID_SPAER_600_RAFTER);
         results.add(new MaterialUsage(rafterMat, rafters));
 
         return results;
