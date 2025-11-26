@@ -53,5 +53,4 @@ Find our deployment here
 
 ## Thank you
 
-Thank you for downloading and using our Application. We've spent a lot of time developing it and 
-learned a few things during so.
+Thank you for downloading and using our Application. We've spent a lot of time developing it.
