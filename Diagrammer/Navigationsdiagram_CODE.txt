@@ -1,0 +1,47 @@
+@startuml
+
+title Navigationsdiagram – Fog
+
+skinparam rectangle {
+    BorderColor #000
+    RoundCorner 15
+    FontSize 12
+}
+
+package "Customer – General Information" {
+    rectangle "Forside" #B0E0E6
+}
+
+package "Customer – Beregner Flow" {
+    rectangle "/beregn" #e6dcb0ff
+    rectangle "/beregn/app" #e6dcb0ff
+    rectangle "/beregn/modtag" #e6dcb0ff
+}
+
+package "Customer – Status" {
+    rectangle "/status" #FFD580
+    rectangle "/status/{id}" #FFD580
+}
+
+package "Admin – Auth" {
+    rectangle "Login" #90EE90
+}
+
+package "Admin – Menu" {
+    rectangle "/menu" #98FB98
+}
+
+package "Admin – Handle" {
+    rectangle "/tilbud" #FFB6C1
+}
+
+"Forside" --> "/beregn" : Go to program
+"/beregn" --> "/beregn/app" : Start program
+"/beregn/app" --> "/beregn/modtag" : Accept / Deny Offer
+"/beregn/modtag" --> "/status/{id}" : Order Status
+"Forside" --> "/status" : Search order
+"Login" --> "/menu" : Login succes
+"/menu" --> "/tilbud" : Handle order
+"/tilbud" --> "/menu" : Return
+
+@enduml

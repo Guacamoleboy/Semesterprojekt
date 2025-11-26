@@ -1,0 +1,97 @@
+@startuml
+
+title Domænemodel – Fog
+
+class User {
+    - int id
+    - String username
+    - int roleID
+    - String password_hash
+    - Timestamp createdAt
+}
+
+class Role {
+    - int id
+    - String name
+}
+
+class OrderMaterial {
+    - int id
+    - Order order
+    - Material material
+    - double quantity
+    - double unitPrice
+    - double totalPrice
+}
+
+class Order {
+    - int id
+    - Customer customer
+    - CarportOrder carportOrder
+    - double totalPrice
+    - String status
+    - LocalDateTime createdAt
+    - List<OrderMaterial> orderMaterials
+}
+
+class Customer {
+    - int id
+    - String firstName
+    - String lastName
+    - String email
+    - String phone
+    - String street
+    - String city
+    - String zipcode
+    - String country
+    - LocalDateTime createdAt
+}
+
+class CarportOrder {
+    - int id
+    - Customer customer
+    - CarportCategory category
+    - double width
+    - double length
+    - double height
+    - Double angle
+    - String roof
+    - boolean hasToolShed
+    - Double toolShedWidth
+    - Double toolShedLength
+    - boolean hasTrapez
+    - LocalDateTime createdAt
+}
+
+class CarportCategory {
+    - int id
+    - String name
+}
+
+class MaterialCategory {
+    - int id
+    - String name
+}
+
+class Material {
+    - int id
+    - int category_id
+    - String name
+    - String description
+    - String unit
+    - Integer length
+    - Integer height
+    - Integer width
+    - double price
+}
+
+User --> Role : roleID
+Order --> Customer
+Order --> CarportOrder
+Order --> OrderMaterial : contains *
+OrderMaterial --> Material
+CarportOrder --> Customer
+CarportOrder --> CarportCategory
+Material --> MaterialCategory : category_id
+
+@enduml
