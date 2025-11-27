@@ -34,8 +34,8 @@ window.addEventListener("DOMContentLoaded", async () => {
             div.innerHTML = `
                 <div class="request-item">
                     <p><strong>Ordre ID:</strong> ${r.id}</p>
-                    <p><strong>Bruger:</strong> ${r.user.firstName} ${r.user.lastName}</p>
-                    <p><strong>Email:</strong> ${r.user.email} | <strong>Telefon:</strong> ${r.user.phone}</p>
+                    <p><strong>Bruger:</strong> ${r.customer.firstName} ${r.customer.lastName}</p>
+                    <p><strong>Email:</strong> ${r.customer.email} | <strong>Telefon:</strong> ${r.customer.phone}</p>
                     <p><strong>Mål:</strong> L:${r.length} W:${r.width} H:${r.height}</p>
                     <p><strong>Tagtype:</strong> ${roofType}</p>
                     <p><strong>Skur:</strong> ${r.hasToolShed ? "Ja" : "Nej"}</p>
