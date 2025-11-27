@@ -2,6 +2,7 @@
 package dk.project.config;
 
 // Imports
+import java.util.List;
 import java.util.Map;
 
 public class MaterialConfig {
@@ -42,8 +43,41 @@ public class MaterialConfig {
     public static final int ID_VINKELBESLAG_35 = 29;      // Vinkelbeslag 35
 
 
-    // TODO | Andreas Comments - 23/11
-    // TODO | Flere materialer skal tilføjes. Har bare lavet for stolper, Remme og Spær.
-    // TODO | (Af hvad jeg forstår bruger vi samme dimensioner i spær og remme, derfor ser styklisten lidt sjov ud - Måske vi skal finde en løsning til det)
+    public Map<String, Integer> getConfig(String type) {
+        switch (type) {
+            case "Fladt tag" -> {
+                return Map.of(
+                        "underStern360", ID_UNDERSTERN_360,
+                        "underStern540", ID_UNDERSTERN_540,
+                        "overStern360", ID_OVERSTERN_360,
+                        "overStern540", ID_OVERSTERN_360,
+                        "spær", ID_SPAER_600_REM,
+                        "rafter", ID_SPAER_600_RAFTER,
+                        "stolpe", ID_STOLPE_300,
+                        "vandbrædt360", ID_VANDBRAEDT_360,
+                        "vandbrædt540", ID_VANDBRAEDT_540,
+                        "tag", ID_PLASTMO_600
+                );
+            }
+
+            case "Høj rejsning" -> {
+                return Map.of(
+                        "underStern360", ID_UNDERSTERN_360,
+                        "underStern540", ID_UNDERSTERN_540,
+                        "overStern360", ID_OVERSTERN_360,
+                        "overStern540", ID_OVERSTERN_360,
+                        "spær", ID_SPAER_600_REM,
+                        "rafter", ID_SPAER_600_RAFTER,
+                        "stolpe", ID_STOLPE_300,
+                        "vandbrædt360", ID_VANDBRAEDT_360,
+                        "vandbrædt540", ID_VANDBRAEDT_540,
+                        "tag", ID_PLASTMO_360
+                );
+            }
+        }
+        return Map.of();
+    }
+
+
 
 }
