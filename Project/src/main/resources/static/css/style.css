@@ -2393,3 +2393,39 @@ body::-webkit-scrollbar { /* All other browsers */
     outline: none !important;
     border: 2px solid var(--fog-blue);
 }
+
+/* ___________________________________________ */
+
+/* SVG Render */
+
+/* ___________________________________________ */
+
+.section-tutorial {
+    align-items: center;
+    background-color: var(--project-white);
+    height: 100vh !important;
+}
+
+.svg-render {
+    width: 50%;
+    height: auto;
+    stroke: var(--project-black) !important;
+    fill: var(--project-white) !important;
+}
+
+#beginArrow {
+    fill: var(--project-black);
+}
+
+#endArrow {
+    fill: var(--project-black);
+}
+
+.arrow-visuals {
+    fill: var(--project-black);
+}
+
+.svg-cross {
+    stroke: var(--project-black) !important;
+    stroke-dasharray: 5 5 !important;
+}

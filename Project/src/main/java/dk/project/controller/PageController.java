@@ -19,6 +19,7 @@ public class PageController {
         app.get("/tak", ctx -> ctx.html(ThymeleafSetup.render("tak.html", null)));
         app.get("/error", ctx -> ctx.html(ThymeleafSetup.render("error.html", null)));
         app.get("/tilbud", ctx -> ctx.html(ThymeleafSetup.render("tilbud.html", null)));
+        app.get("/template", ctx -> ctx.html(ThymeleafSetup.render("svg-tutorial.html", null)));
 
     }
 
