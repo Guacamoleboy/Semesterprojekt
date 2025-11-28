@@ -25,6 +25,7 @@
     <!-- Script Load -->
     <script src="/js/notification.js" defer></script>
     <script src="/js/bubble-spawn.js" defer></script>
+    <script src="/js/AdminMenu/CMS/requests.js" defer></script>
 
     <!-- Framwork load -->
     <link rel="stylesheet" href="/css/guacamoleboy-wow.css">
@@ -57,7 +58,7 @@
             <div class="visual-dot2-tilbud"></div>
 
             <!-- Intro Text -->
-            <p>#501015</p>
+            <p>#<span th:text="${orderId}"></span></p>
             <h2>Carport Tilbud</h2>
             <p>Se, rediger & afsend tilbud her på siden!</p>
 
@@ -79,13 +80,23 @@
             <div class="guac-row">
                 <div class="guac-col-6">
                     <p>Pris</p>
-                    <input type="text" id="tilbud-pris" value="20.000 kr" class="tilbud-input-field">
+                    <input type="text" id="tilbud-pris" th:value="${total}" class="tilbud-input-field">
                 </div>
 
                 <div class="guac-col-6">
                     <p>Avance</p>
-                    <input type="text" id="tilbud-avance" value="25%" class="tilbud-input-field">
+                    <select id="tilbud-avance" class="tilbud-input-field">
+                        <option value="" disabled selected hidden>Vælg avance</option>
+                        <option value="5">5%</option>
+                        <option value="10">10%</option>
+                        <option value="15">15%</option>
+                        <option value="20">20%</option>
+                        <option value="25">25%</option>
+                        <option value="30">30%</option>
+                        <option value="35">35%</option>
+                    </select>
                 </div>
+
             </div>
 
             <div class="guac-row">
@@ -96,8 +107,13 @@
 
                 <div class="guac-col-6">
                     <p>Type</p>
-                    <input type="text" id="tilbud-type" value="Fast" class="tilbud-input-field">
+                    <select id="tilbud-type" class="tilbud-input-field">
+                        <option value="" disabled selected hidden>Vælg type</option>
+                        <option value="FAST">Fast</option>
+                        <option value="VARIABEL">Variabel</option>
+                    </select>
                 </div>
+
             </div>
 
         </div>
@@ -114,13 +130,39 @@
             <!-- Intro -->
             <p>Step 2</p>
             <h2 class="guac-text-center">Stykliste & Materialer</h2>
-            <p>Noget tekst her</p>
+            <p>Hva fuck skriver vi her?</p>
 
-            <!-- Stykliste Showcase + Edit -->
-            <h3 class="guac-mb-5 guac-mt-5">Stykliste skal ind her i grid format</h3>
+            <!-- Stykliste wrapper -->
+            <div class="stykliste-wrapper">
+
+                <table class="stykliste-table">
+                    <thead>
+                    <tr>
+                        <th>Materiale</th>
+                        <th>Beskrivelse</th>
+                        <th>Antal</th>
+                        <th>Enhedspris</th>
+                        <th>Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="m : ${materials}">
+                        <td th:text="${m.material.name}">Navn</td>
+                        <td th:text="${m.material.description}">Desc</td>
+                        <td th:text="${m.amount}">0</td>
+                        <td th:text="${m.material.price}">0.0</td>
+                        <td th:text="${m.totalPrice}">0.0</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <!-- Stykliste wrapper -->
 
             <!-- Final button -->
-            <button class="guac-btn-fog guac-btn-lg">Afsend tilbud</button>
+            <button class="guac-btn-fog guac-btn-lg guac-mb-5" id="sendOfferBtn" th:attr="data-order-id=${orderId}">
+                Afsend tilbud
+            </button>
 
         </div>
         <!-- Final box -->
