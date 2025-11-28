@@ -20,24 +20,23 @@ function show(id) {
 }
 
 document.querySelectorAll('.dropdown-toggle').forEach(element => {
-
     element.addEventListener('click', () => {
-
         const next = element.nextElementSibling;
         if(next) {
+
+            document.querySelectorAll('.dropdown-content').forEach(dc => {
+                if(dc !== next) dc.classList.remove("show");
+            });
+
             next.classList.toggle("show");
+
             const id = element.dataset.section;
-
             if (id) {
-
                 hideAll();
                 show(id);
-
             }
         }
-
     });
-
 });
 
 document.querySelectorAll('.dropdown-content a').forEach(item => {

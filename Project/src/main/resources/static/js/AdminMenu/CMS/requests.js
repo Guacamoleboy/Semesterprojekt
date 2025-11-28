@@ -66,17 +66,21 @@ window.addEventListener("DOMContentLoaded", async () => {
         document.querySelectorAll(".calculate-btn").forEach(btn => {
 
             btn.addEventListener("click", () => {
-                // Opret midlertidig form
+
                 const form = document.createElement("form");
                 form.method = "POST";
                 form.action = "/calculate";
+
+                const orderIdInput = document.querySelector("input[name='order_id']");
+                const orderId = orderIdInput ? orderIdInput.value : "";
 
                 const fields = {
                     length: btn.dataset.length,
                     width: btn.dataset.width,
                     height: btn.dataset.height,
                     roofType: btn.dataset.rooftype,
-                    hasToolShed: btn.dataset.hastoolshed === "on" ? "on" : ""
+                    hasToolShed: btn.dataset.hastoolshed === "on" ? "on" : "",
+                    orderId: orderId
                 };
 
                 for (const name in fields) {
@@ -176,5 +180,36 @@ window.addEventListener("DOMContentLoaded", async () => {
         }
 
     });
+
+    // _______________________________________________
+
+});
+
+document.addEventListener("click", async (e) => {
+    const target = e.target.closest("#sendOfferBtn");
+    if (!target) return;
+
+    const orderId = target.dataset.orderId;
+
+    if (!orderId || orderId === "${orderId}") {
+        showNotification("Intet gyldigt ID fundet", "fog");
+        return;
+    }
+
+    try {
+        const res = await fetch("/sendOffer", {
+            method: "POST",
+            body: new URLSearchParams({ orderId: orderId })
+        });
+
+        if (res.ok) {
+            window.location.href = "/menu?success=offerCreatedAdmin";
+        } else {
+            showNotification("Kunne ikke afsende tilbud", "fog");
+        }
+    } catch (err) {
+        console.error(err);
+        showNotification("Fejl " + err, "fog");
+    }
 
 });
