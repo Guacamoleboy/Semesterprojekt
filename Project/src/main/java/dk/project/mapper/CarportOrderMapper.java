@@ -204,7 +204,7 @@ public class CarportOrderMapper {
     // _____________________________________________________________________
 
     private CarportOrder toOrder(ResultSet rs) throws SQLException, DatabaseException {
-        Customer customer = customerMapper.getCustomerByID(rs.getInt("user_id"));
+        Customer customer = customerMapper.getCustomerByID(rs.getInt("customer_id"));
 
         CarportCategory category = new CarportCategory();
         category.setId(rs.getInt("carport_category_id"));
