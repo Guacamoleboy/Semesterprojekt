@@ -96,6 +96,9 @@ document.addEventListener("DOMContentLoaded", function() {
             case "mailAfsendt":
                 showNotification("Mail afsendt!", "fog");
                 break;
+            case "offerCreatedAdmin":
+                showNotification("Tilbud afsendt", "green");
+                break;
         }
     }
 
