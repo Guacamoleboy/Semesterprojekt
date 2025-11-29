@@ -1,6 +1,5 @@
 package dk.project.controller.Modtag;
 
-import dk.project.server.ThymeleafSetup;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 import javax.mail.*;

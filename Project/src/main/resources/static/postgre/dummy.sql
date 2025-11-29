@@ -27,6 +27,7 @@ INSERT INTO customers (firstname, lastname, email, phone, street, city, zipcode,
 ('Sara', 'Lund', 'sara.lund@example.com', '+4520118899', 'Østerbrogade 45', 'København', '2100', 'Denmark'),
 ('Jonas', 'Hansen', 'jonas.hansen@example.com', '+4544556677', 'Vestergade 12', 'Aarhus', '8000', 'Denmark'),
 ('Line', 'Poulsen', 'line.poulsen@example.com', '+4533667788', 'Hovedvejen 77', 'Roskilde', '4000', 'Denmark'),
+('Jonas', 'Larsen', 'jonas68@live.dk', '+4520204175', 'Hovedvejen 77', 'Roskilde', '4000', 'Denmark'),
 ('Emil', 'Jørgensen', 'emil.jorgensen@example.com', '+4544221133', 'Algade 5', 'Aalborg', '9000', 'Denmark');
 
 INSERT INTO materials_category (name) VALUES
@@ -66,7 +67,6 @@ INSERT INTO materials (category_id, name, description, unit, length, width, heig
 (2, 'Hængsel 390mm', '2 stk til skurdør', 'stk', 390, NULL, NULL, 65.00),
 (2, 'Vinkelbeslag 35', '32 stk til montering af løsholter i skur', 'stk', 35, NULL, NULL, 5.00);
 
-
 INSERT INTO carport_category (name) VALUES
 ('Fladt tag'),
 ('Høj rejsning');
@@ -74,9 +74,9 @@ INSERT INTO carport_category (name) VALUES
 INSERT INTO carport_orders (customer_id, carport_category_id, width, length, height, angle, roof, has_tool_shed, tool_shed_width, tool_shed_length, has_trapez) VALUES
 (1, 1, 500.00, 600.00, 250.00, 15.00, 'Fladt tag', FALSE, NULL, NULL, FALSE),
 (2, 2, 400.00, 500.00, 240.00, 20.00, 'Rejsning', TRUE, 150.00, 200.00, TRUE),
-(1, 1, 450.00, 550.00, 245.00, 18.00, 'Fladt tag', FALSE, NULL, NULL, FALSE);
+(5, 1, 450.00, 550.00, 245.00, 18.00, 'Fladt tag', FALSE, NULL, NULL, FALSE);
 
 INSERT INTO orders (customer_id, carport_order_id, total_price, status) VALUES
-(1, 1, 15000.00, 'pending'),
+(1, 1, 15000.00, 'offer'),
 (2, 2, 22000.00, 'calculating'),
-(1, 3, 30000.00, 'offer');
+(1, 3, 30000.00, 'pending');

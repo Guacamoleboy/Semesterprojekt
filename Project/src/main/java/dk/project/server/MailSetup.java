@@ -24,6 +24,7 @@ public class MailSetup {
         props.put("mail.smtp.host", SMTP_HOST);
         props.put("mail.smtp.port", String.valueOf(SMTP_PORT));
         props.put("mail.smtp.ssl.enable", "true"); // Important
+        props.put("mail.debug", "true");
 
         return Session.getInstance(props, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
@@ -45,7 +46,10 @@ public class MailSetup {
             message.setSubject(subject);
             message.setText(body);
 
+            System.out.println("Sender mail til: " + to);
             Transport.send(message);
+            System.out.println("Mail sendt!");
+
             return true;
 
         } catch (MessagingException e) {
