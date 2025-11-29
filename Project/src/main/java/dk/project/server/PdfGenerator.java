@@ -203,7 +203,7 @@ public class PdfGenerator {
         canvas.lineTo(leftMargin + lineWidth, lineY);
         canvas.stroke();
 
-        String[] headers = {"Beskrivelse", "Længde", "Antal", "Enhed", "Kommentar"};
+        String[] headers = {"Beskrivelse", "Mål (cm)", "Antal", "Enhed"};
         Font headerFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12);
         int columns = headers.length;
         float columnWidth = usableWidth / columns;

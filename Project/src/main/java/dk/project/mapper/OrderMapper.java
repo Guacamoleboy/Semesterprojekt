@@ -150,7 +150,7 @@ public class OrderMapper {
 
     // __________________________________________________________________
 
-    public Order toOrder(ResultSet rs) throws SQLException {
+    /*public Order toOrder(ResultSet rs) throws SQLException {
         Timestamp createdAt = rs.getTimestamp("created_at");
         
         CarportCategory category = new CarportCategory();
@@ -177,6 +177,23 @@ public class OrderMapper {
                 createdAt != null ? createdAt.toLocalDateTime() : null,
                 null
         );
+    }*/
+
+    public Order toOrder(ResultSet rs) throws SQLException, DatabaseException {
+        Timestamp createdAt = rs.getTimestamp("created_at");
+        int carportOrderId = rs.getInt("carport_order_id");
+        CarportOrder carportOrder = new CarportOrderMapper().getOrderByID(carportOrderId);
+
+        return new Order(
+                rs.getInt("id"),
+                null,
+                carportOrder,
+                rs.getDouble("total_price"),
+                rs.getString("status"),
+                createdAt != null ? createdAt.toLocalDateTime() : null,
+                null
+        );
     }
+
 
 } // OrderMapper end
