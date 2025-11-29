@@ -7,20 +7,28 @@ import com.lowagie.text.Font;
 import com.lowagie.text.FontFactory;
 import com.lowagie.text.PageSize;
 import com.lowagie.text.pdf.PdfWriter;
+import dk.project.DTO.MaterialUsage;
+import dk.project.controller.Calculator.CalculatorController;
+import dk.project.entity.CarportOrder;
+import dk.project.entity.Order;
 import dk.project.exception.DatabaseException;
 import dk.project.mapper.OrderMapper;
 import dk.project.server.PdfGenerator;
 import dk.project.server.ThymeleafSetup;
+import dk.project.service.CarportCalculationService;
 import io.javalin.Javalin;
 import java.io.FileOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 public class StatusController {
 
     // Attributes
+    private static final OrderMapper orderMapper = new OrderMapper();
+    private static final CarportCalculationService carportCalculationService = new CarportCalculationService();
 
     // __________________________________________________________________
 
@@ -107,7 +115,18 @@ public class StatusController {
                 int orderNumber = Integer.parseInt(ctx.pathParam("id"));
 
                 // Debug
-                System.out.println(orderNumber);
+                /*System.out.println(orderNumber);*/
+
+                /* Stykliste | Step 1 */
+                Order order = orderMapper.getById(orderNumber);
+                CarportOrder c = order.getCarportOrder();
+                List<MaterialUsage> materials = carportCalculationService.calculate(
+                        c.getLength(),
+                        c.getWidth(),
+                        c.getHeight(),
+                        c.isHasToolShed(),
+                        c.getRoof()
+                );
 
                 // Setup
                 Path modtagDir = Path.of("src/main/resources/static/pdf/modtag");
@@ -150,11 +169,38 @@ public class StatusController {
                 document.open();
                 PdfGenerator.addFullPageImage(document, page1);
                 Font page2Font = FontFactory.getFont(FontFactory.HELVETICA, 16);
-                String[][] rowsPage2 = {
-                        {"Beskrivelse 1", "200 cm", "2", "stk", "Kommentar 1"},
-                        {"Beskrivelse 2", "150 cm", "1", "stk", "Kommentar 2"},
-                        {"Beskrivelse 3", "100 cm", "4", "stk", "Kommentar 3"}
-                };
+
+                /* Stykliste | Step 2 */
+                String[][] rowsPage2 = new String[materials.size()][4];
+                for (int i = 0; i < materials.size(); i++) {
+                    MaterialUsage m = materials.get(i);
+
+                    rowsPage2[i][0] = m.getMaterial().getName();
+                    Integer length = m.getMaterial().getLength();
+                    Integer width = m.getMaterial().getWidth();
+                    Integer height = m.getMaterial().getHeight();
+                    StringBuilder dimensions = new StringBuilder();
+                    boolean first = true;
+
+                    if (length != null) {
+                        dimensions.append(length);
+                        first = false;
+                    }
+                    if (width != null) {
+                        if (!first) dimensions.append(" x ");
+                        dimensions.append(width);
+                        first = false;
+                    }
+                    if (height != null) {
+                        if (!first) dimensions.append(" x ");
+                        dimensions.append(height);
+                    }
+
+                    rowsPage2[i][1] = dimensions.toString();
+                    rowsPage2[i][2] = String.valueOf(m.getAmount());
+                    rowsPage2[i][3] = m.getMaterial().getUnit() != null ? m.getMaterial().getUnit() : "stk";
+
+                }
 
                 PdfGenerator.addPageWithBackgroundAndRows(document, writer, page2, "Træ & Tagplader", rowsPage2);
                 PdfGenerator.addFullPageImage(document, page3);

@@ -75,9 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         {
             title: "Du har godkendt vores tilbud",
-            text: `Vi har afsendt dit endelige tilbud til din mail<br>Du kan også downloade dit tilbud herunder..
-                    <br><br>
-                    <a href="/pdf/modtag/${order_id}.pdf" download>Download .pdf</a>`,
+            text: `Vi har afsendt dit endelige tilbud til din mail<br><br><a href="/pdf/modtag/${order_id}.pdf" download>Download .pdf</a>`,
             showButtons: false,
         },
         {
@@ -104,11 +102,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // __________________________________________________________
 
     /* EventListener | Accept */
-
     if (acceptBtn) {
         acceptBtn.addEventListener("click", async function() {
             try {
 
+                // Generate .pdf for order_id
                 const pdfRes = await fetch(`/status/${order_id}/pdfgenerator`, { method: "POST" });
                 const pdfData = await pdfRes.json();
 
@@ -117,8 +115,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     return;
                 }
 
+                /* Status update */
                 const statusRes = await fetch(`/status/${order_id}/update`, {
                     method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
                     body: `status=accepted`
                 });
                 const statusData = await statusRes.json();
@@ -128,18 +128,19 @@ document.addEventListener("DOMContentLoaded", function () {
                     return;
                 }
 
-                // URL fix
+                /* Bug fix where bypass was allowed */
                 const newStatus = "accepted";
                 const newUrl = `/status/${order_id}?status=${newStatus}`;
                 window.history.replaceState(null, "", newUrl);
 
+                /* If all worked out */
                 showNotification("Tilbud godkendt", "fog");
                 actionButtons.style.display = "none";
                 title.innerHTML = "Du har godkendt vores tilbud";
                 text.innerHTML = `
                 Vi har afsendt dit endelige tilbud til din mail.
                 <br><br>
-                <a href="/pdf/modtag/${order_id}.pdf" download>Download .pdf</a>
+                <a href="/pdf/modtag/${order_id}.pdf" target="_blank">Åben dit tilbud (.pdf)</a>
             `;
 
             } catch (err) {
