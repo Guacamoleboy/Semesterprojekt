@@ -150,6 +150,26 @@ public class OrderMapper {
 
     // __________________________________________________________________
 
+    public void updateTotalPrice(int id, double totalPrice) throws DatabaseException {
+        String sql = "UPDATE orders SET total_price = ? WHERE id = ?";
+        try (Connection conn = Database.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setDouble(1, totalPrice);
+            stmt.setInt(2, id);
+
+            int rows = stmt.executeUpdate();
+            if (rows == 0) {
+                throw new DatabaseException("Ingen ordre fundet med ID " + id);
+            }
+
+        } catch (SQLException e) {
+            throw new DatabaseException("Kunne ikke opdatere total_price", e);
+        }
+    }
+
+    // __________________________________________________________________
+
     /*public Order toOrder(ResultSet rs) throws SQLException {
         Timestamp createdAt = rs.getTimestamp("created_at");
         

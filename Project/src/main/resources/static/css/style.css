@@ -2091,12 +2091,13 @@ body::-webkit-scrollbar { /* All other browsers */
     color: var(--project-white);
     border-radius: 0.5rem !important;
     border: 2px solid var(--fog-blue);
+    box-shadow: 0 4px 1px rgba(0,0,0,0.5);
 }
 
 .status-action-buttons .status-btn-accept:hover {
-    background-color: var(--project-green);
     opacity: 0.85;
-    border: 2px solid var(--project-green);
+    border: 2px solid var(--fog-blue);
+    box-shadow: 0 2px 1px rgba(0,0,0,0.5);
 }
 
 .status-action-buttons .status-btn-decline {
@@ -2104,12 +2105,13 @@ body::-webkit-scrollbar { /* All other browsers */
     color: var(--project-white);
     border-radius: 0.5rem !important;
     border: 2px solid var(--project-grey);
+    box-shadow: 0 4px 1px rgba(0,0,0,0.5);
 }
 
 .status-action-buttons .status-btn-decline:hover {
-    background-color: var(--project-red);
     opacity: 0.85;
-    border: 2px solid var(--project-red);
+    border: 2px solid var(--project-grey);
+    box-shadow: 0 2px 1px rgba(0,0,0,0.5);
 }
 
 .status-search-box {
@@ -2185,6 +2187,12 @@ body::-webkit-scrollbar { /* All other browsers */
     box-shadow: 0 0 0 3px rgba(0,61,118,0.2);
 }
 
+.status-final-price {
+    color: var(--fog-blue);
+    font-size: 1.25rem !important;
+    font-weight: 600 !important;
+}
+
 /* ___________________________________________ */
 
 /* Bubbles */
@@ -2229,7 +2237,7 @@ body::-webkit-scrollbar { /* All other browsers */
     overflow: visible;
     height: 25rem !important;
     color: var(--fog-blue);
-    margin-top: 100rem !important;
+    margin-top: 110rem !important;
     z-index: 1000 !important;
 }
 
@@ -2436,12 +2444,31 @@ body::-webkit-scrollbar { /* All other browsers */
 
 #tilbud-avance,
 #tilbud-type {
-    width: 54% !important; /* TODO: Fix hardcoded value here | Issue is due to <select> tag sizing */
+    width: 54% !important; /* TODO: Fix hardcoded value here | Issue is due to <select> tag default sizing */
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     background: #fff;
     padding-right: 1rem;
+}
+
+.tilbud-price-display {
+    color: var(--fog-blue);
+    font-weight: 600 !important;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.tilbud-price-display p {
+    font-size: 1.25rem !important;
+}
+
+.tilbud-price-display span {
+    font-size: 1.2rem;
+    font-weight: 600 !important;
+    color: var(--project-less-black);
 }
 
 /* ___________________________________________ */

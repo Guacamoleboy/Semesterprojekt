@@ -98,6 +98,20 @@
             <version>2.15.2</version>
         </dependency>
 
+        <!-- .svg -> .png render -->
+        <dependency>
+            <groupId>org.apache.xmlgraphics</groupId>
+            <artifactId>batik-transcoder</artifactId>
+            <version>1.16</version>
+        </dependency>
+
+        <!-- .svg -> .png render -->
+        <dependency>
+            <groupId>org.apache.xmlgraphics</groupId>
+            <artifactId>batik-codec</artifactId>
+            <version>1.16</version>
+        </dependency>
+
 
     </dependencies>
 

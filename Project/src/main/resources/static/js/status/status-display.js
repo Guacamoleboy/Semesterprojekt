@@ -90,6 +90,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // __________________________________________________________
 
+    /* Gets totalPrice & Displays it */
+    if (step === 3) {
+        fetch(`/status/${order_id}/totalPrice`)
+            .then(res => res.json())
+            .then(data => {
+                const price = data.totalPrice.toFixed(0);
+                text.innerHTML = `
+                Vi har afsendt et tilbud til dig.<br>
+                Prisen er <strong>fast</strong> og ændres ikke selv om priserne på materialer stiger fra vores side.
+                <br><br><span class="status-final-price">${price} kr</span>
+            `;
+            })
+            .catch(err => {
+                console.error(err);
+            });
+    } else {
+        text.innerHTML = content[step].text;
+    }
+
+    // __________________________________________________________
+
     /* Step 3 Buttons */
     if (actionButtons) {
         if (content[step].showButtons) {
