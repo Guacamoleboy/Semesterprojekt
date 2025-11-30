@@ -25,7 +25,8 @@
     <!-- Script Load -->
     <script src="/js/notification.js" defer></script>
     <script src="/js/bubble-spawn.js" defer></script>
-    <script src="/js/AdminMenu/CMS/requests.js" defer></script>
+    <script src="/js/tilbud/tilbud.js" defer></script>
+    <script src="/js/tilbud/update-price.js" defer></script>
 
     <!-- Framwork load -->
     <link rel="stylesheet" href="/css/guacamoleboy-wow.css">
@@ -60,7 +61,7 @@
             <!-- Intro Text -->
             <p>#<span th:text="${orderId}"></span></p>
             <h2>Carport Tilbud</h2>
-            <p>Se, rediger & afsend tilbud her på siden!</p>
+            <p>Se, rediger & afsend tilbud her</p>
 
             <!-- Wave -->
             <div class="tilbud-wave">
@@ -74,13 +75,13 @@
         <div class="tilbud-box-bottom guac-text-center">
             <p>Step 1</p>
             <h2>Fortjeneste</h2>
-            <p>Noget tekst her</p>
+            <p>Normal avanace er 25%</p>
 
             <!-- Input Row -->
             <div class="guac-row">
                 <div class="guac-col-6">
                     <p>Pris</p>
-                    <input type="text" id="tilbud-pris" th:value="${total}" class="tilbud-input-field">
+                    <input type="text" id="tilbud-pris" th:value="${total}" class="tilbud-input-field" readonly>
                 </div>
 
                 <div class="guac-col-6">
@@ -102,7 +103,7 @@
             <div class="guac-row">
                 <div class="guac-col-6">
                     <p>Levering</p>
-                    <input type="text" id="tilbud-levering" value="2.500 kr" class="tilbud-input-field">
+                    <input type="text" id="tilbud-levering" value="2500" class="tilbud-input-field">
                 </div>
 
                 <div class="guac-col-6">
@@ -130,7 +131,7 @@
             <!-- Intro -->
             <p>Step 2</p>
             <h2 class="guac-text-center">Stykliste & Materialer</h2>
-            <p>Hva fuck skriver vi her?</p>
+            <p>Brug for en custom løsning?</p>
 
             <!-- Stykliste wrapper -->
             <div class="stykliste-wrapper">
@@ -158,6 +159,18 @@
 
             </div>
             <!-- Stykliste wrapper -->
+
+            <!-- Final Price Display -->
+            <div class="tilbud-price-display guac-text-center guac-d-flex guac-flex-row guac-justify-evenly guac-align-center guac-p-3">
+                <p>Original Pris<br>
+                    <span id="tilbud-original-price" th:text="${total}"></span>
+                </p>
+
+                <p>Tilbuds pris<br>
+                    <span id="tilbud-final-price" th:text="${total}"></span>
+                </p>
+            </div>
+            <!-- Final Price Display -->
 
             <!-- Final button -->
             <button class="guac-btn-fog guac-btn-lg guac-mb-5" id="sendOfferBtn" th:attr="data-order-id=${orderId}">
