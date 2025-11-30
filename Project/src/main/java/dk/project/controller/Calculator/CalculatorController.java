@@ -3,10 +3,6 @@ package dk.project.controller.Calculator;
 
 // Imports
 import dk.project.DTO.MaterialUsage;
-import dk.project.entity.Order;
-import dk.project.exception.DatabaseException;
-import dk.project.mapper.OrderMapper;
-import dk.project.server.MailSetup;
 import dk.project.server.ThymeleafSetup;
 import dk.project.service.CarportCalculationService;
 import io.javalin.Javalin;
@@ -25,55 +21,6 @@ public class CalculatorController {
     public static void registerRoutes(Javalin app) {
 
         app.post("/calculate", controller::startCalculate);
-
-        // _____________________________________________________________________
-
-        app.post("/sendOffer", ctx -> {
-
-            String orderIdStr = ctx.formParam("orderId");
-
-            if (orderIdStr == null) {
-                ctx.status(400).result("Order ID mangler");
-                return;
-            }
-
-            int orderId = Integer.parseInt(orderIdStr);
-
-            try {
-
-                OrderMapper orderMapper = new OrderMapper();
-                orderMapper.updateStatus(orderId, "offer");
-                Order order = orderMapper.getById(orderId);
-
-                if (order == null || order.getCustomer() == null) {
-                    ctx.status(404).result("Kunde ikke fundet til ordren");
-                    return;
-                }
-
-                String customerEmail = order.getCustomer().getEmail();
-                String subject = "Dit tilbud fra Fog";
-                String body = String.format("""
-                Hej %s,
-
-                Vi har lavet et tilbud til dig på din carport. Du kan se dit tilbud og følge status her:
-                %s/status/%d?status=offer
-
-                Venlig hilsen
-                Fog
-                """, order.getCustomer().getFirstName(), "https://fog.guacamoleboy.dk", orderId);
-
-                /* Debug */
-                System.out.println("Forsøger at sende til: " + customerEmail);
-
-                /* If all worked out -> send mail */
-                MailSetup.sendMail(customerEmail, subject, body);
-
-            } catch (DatabaseException e) {
-                ctx.status(500).result("Kunne ikke opdatere ordre: " + e.getMessage());
-                e.printStackTrace();
-            }
-
-        });
 
     }
 

@@ -14,6 +14,8 @@ import dk.project.entity.Order;
 import dk.project.exception.DatabaseException;
 import dk.project.mapper.OrderMapper;
 import dk.project.server.PdfGenerator;
+import dk.project.server.SvgGenerator;
+import dk.project.server.SvgConverter;
 import dk.project.server.ThymeleafSetup;
 import dk.project.service.CarportCalculationService;
 import io.javalin.Javalin;
@@ -47,6 +49,22 @@ public class StatusController {
             }
 
             ctx.html(ThymeleafSetup.render("status.html", null));
+        });
+
+        // _________________________________________________________
+
+        app.get("/status/{id}/totalPrice", ctx -> {
+            try {
+                int orderId = Integer.parseInt(ctx.pathParam("id"));
+                Order order = orderMapper.getById(orderId);
+                if (order != null) {
+                    ctx.json(Map.of("totalPrice", order.getTotalPrice()));
+                } else {
+                    ctx.status(404).json(Map.of("error", "Order not found"));
+                }
+            } catch (NumberFormatException | DatabaseException e) {
+                ctx.status(500).json(Map.of("error", e.getMessage()));
+            }
         });
 
         // _________________________________________________________
@@ -151,7 +169,7 @@ public class StatusController {
                     Files.move(outputPath, backupPath, java.nio.file.StandardCopyOption.REPLACE_EXISTING);
 
                 }
-                
+
                 // Content
                 String page1 = "src/main/resources/static/pdf/content/frontpage.png";
                 String page2 = "src/main/resources/static/pdf/content/stykliste.png";
@@ -203,6 +221,7 @@ public class StatusController {
                 }
 
                 PdfGenerator.addPageWithBackgroundAndRows(document, writer, page2, "Træ & Tagplader", rowsPage2);
+
                 PdfGenerator.addFullPageImage(document, page3);
                 PdfGenerator.addFullPageImage(document, page4);
                 document.close();

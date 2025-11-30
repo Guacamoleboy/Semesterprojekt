@@ -184,32 +184,3 @@ window.addEventListener("DOMContentLoaded", async () => {
     // _______________________________________________
 
 });
-
-document.addEventListener("click", async (e) => {
-    const target = e.target.closest("#sendOfferBtn");
-    if (!target) return;
-
-    const orderId = target.dataset.orderId;
-
-    if (!orderId || orderId === "${orderId}") {
-        showNotification("Intet gyldigt ID fundet", "fog");
-        return;
-    }
-
-    try {
-        const res = await fetch("/sendOffer", {
-            method: "POST",
-            body: new URLSearchParams({ orderId: orderId })
-        });
-
-        if (res.ok) {
-            window.location.href = "/menu?success=offerCreatedAdmin";
-        } else {
-            showNotification("Kunne ikke afsende tilbud", "fog");
-        }
-    } catch (err) {
-        console.error(err);
-        showNotification("Fejl " + err, "fog");
-    }
-
-});
