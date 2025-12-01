@@ -1,3 +1,14 @@
+/*
+
+Lavet af Gruppe D
+Semesterprojekt
+2. Semester
+
+Sidst opdateret af: Guacamoleboy
+Dato: 01/12-2025
+
+*/
+
 DROP TABLE IF EXISTS
 customers,
 order_materials,

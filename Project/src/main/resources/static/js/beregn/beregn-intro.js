@@ -1,11 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    // localStorage values (why? @Ebou)
-    localStorage.setItem("carport_model", "Carport");
-    localStorage.setItem("carport_wood", "Trykimprægneret");
-    localStorage.setItem("carport_roof", "Plast");
-    localStorage.setItem("carport_contact", "12 34 56 78");
-
     // Attributes
     const step1Form = document.querySelector("#step-1-bi .beregn-form");
     const step2Form = document.querySelector("#step-2-bi .beregn-form");
@@ -18,6 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     step1Form.addEventListener("submit", (e) => {
         e.preventDefault();
+        const taghældning = document.getElementById("Taghældning").value;
+        localStorage.setItem("carport_roof", taghældning);
         step1Container.style.display = "none";
         step2Container.style.display = "flex";
     });
@@ -27,13 +23,12 @@ document.addEventListener("DOMContentLoaded", () => {
     step2Form.addEventListener("submit", (e) => {
         e.preventDefault();
         const materiale = materialeValgt.value;
-        if (materiale === "træ") {
-            localStorage.setItem("carport_wood", "Trykimprægneret");
-        } else if (materiale === "stål") {
-            localStorage.setItem("carport_roof", "Plast");
-        }
+        const materialText = materiale === "tree" ? "Træ" : "Plast";
+        localStorage.setItem("carport_material", materialText);
+
         window.location.href = "/beregn/app";
     });
+
 
     //  _______________________________________________________
 

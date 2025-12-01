@@ -134,11 +134,13 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (currentStep === 3) {
             localStorage.setItem("carport_has_toolshed", select.value === "Ja" ? "true" : "false");
             if (select.value === "Nej") {
-                const length = localStorage.getItem("carport_length") || "600";
-                const width = localStorage.getItem("carport_width") || "320";
-                const height = localStorage.getItem("carport_height") || "240";
-                const roof = localStorage.getItem("carport_roof") || "Fladt tag";
-                window.location.href = `/beregn/modtag?width=${width}&length=${length}&height=${height}&roof=${roof}`;
+                const length = localStorage.getItem("carport_length");
+                const width = localStorage.getItem("carport_width");
+                const height = localStorage.getItem("carport_height");
+                const roof = localStorage.getItem("carport_roof");
+                const material = localStorage.getItem("carport_material");
+                let url = `/beregn/modtag?width=${width}&length=${length}&height=${height}&roof=${roof}&material=${material}`;
+                window.location.href = url;
                 return;
             }
         } else if (currentStep === 4) {
@@ -150,18 +152,22 @@ document.addEventListener("DOMContentLoaded", () => {
         if (currentStep < beregnet.length - 1) {
             loadStep(currentStep + 1);
         } else {
-            const length = localStorage.getItem("carport_length") || "600";
-            const width = localStorage.getItem("carport_width") || "320";
-            const height = localStorage.getItem("carport_height") || "240";
-            const roof = localStorage.getItem("carport_roof") || "Fladt tag";
+            const length = localStorage.getItem("carport_length");
+            const width = localStorage.getItem("carport_width");
+            const height = localStorage.getItem("carport_height");
+            const roof = localStorage.getItem("carport_roof");
+            const material = localStorage.getItem("carport_material");
             const hasToolShed = localStorage.getItem("carport_has_toolshed") === "true";
             const toolShedLength = localStorage.getItem("carport_toolshed_length");
             const toolShedWidth = localStorage.getItem("carport_toolshed_width");
-            
-            let url = `/beregn/modtag?width=${width}&length=${length}&height=${height}&roof=${roof}`;
+
+            // URL Pathing
+            let url = `/beregn/modtag?width=${width}&length=${length}&height=${height}&roof=${roof}&material=${material}`;
+
             if (hasToolShed && toolShedLength && toolShedWidth) {
                 url += `&hasToolShed=true&toolShedLength=${toolShedLength}&toolShedWidth=${toolShedWidth}`;
             }
+
             window.location.href = url;
         }
 

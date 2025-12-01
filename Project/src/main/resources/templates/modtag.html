@@ -24,7 +24,7 @@
 
     <!-- Script Load -->
     <script src="/js/notification.js" defer></script>
-    <script src="/js/beregn/modtag.js" defer></script>
+    <!-- <script src="/js/beregn/modtag.js" defer></script>-->
     <script src="/js/beregn/offer.js" defer></script>
     <script src="/js/beregn/generate-offer.js" defer></script>
 
@@ -76,7 +76,7 @@
                     <div class="guac-card modtag-card-form guac-d-flex guac-flex-column">
                         <h2 class="guac-card-title guac-text-center">Pris</h2>
                         <p class="modtag-price-estimate-intro">Prisen er vejledende</p>
-                        <p class="modtag-price-estimate">20.000 kr</p>
+                        <p class="modtag-price-estimate" th:text="${total} + ' kr'">20.000 kr</p>
                     </div>
                 </div>
                 <!-- Left Column 2 -->
@@ -134,23 +134,33 @@
                     <div class="guac-d-flex guac-flex-column guac-gap-3">
                         <div class="guac-d-flex guac-justify-between guac-align-center guac-pt-3 guac-pb-3 modtag-resume-item">
                             <span class="guac-fw-bold guac-fs-3 modtag-resume-label">Mål:</span>
-                            <span class="guac-fw-normal guac-text-right guac-fs-3 modtag-resume-value">320 x 600 x 210 cm</span>
+                            <span class="guac-fw-normal guac-text-right guac-fs-3 modtag-resume-value" th:text="${width} + ' x ' + ${length} + ' x ' + ${height} + ' cm'">
+                                320 x 600 x 210 cm
+                            </span>
                         </div>
                         <div class="guac-d-flex guac-justify-between guac-align-center guac-pt-3 guac-pb-3 modtag-resume-item">
                             <span class="guac-fw-bold guac-fs-3 modtag-resume-label">Taghældning:</span>
-                            <span class="guac-fw-normal guac-text-right guac-fs-3 modtag-resume-value">Ja</span>
+                            <span class="guac-fw-normal guac-text-right guac-fs-3 modtag-resume-value" th:text="${roofSlope}">
+                                Ja
+                            </span>
                         </div>
                         <div class="guac-d-flex guac-justify-between guac-align-center guac-pt-3 guac-pb-3 modtag-resume-item">
                             <span class="guac-fw-bold guac-fs-3 modtag-resume-label">Tag materiale:</span>
-                            <span class="guac-fw-normal guac-text-right guac-fs-3 modtag-resume-value">Plast</span>
+                            <span class="guac-fw-normal guac-text-right guac-fs-3 modtag-resume-value" th:text="${roofType}">
+                                Plast
+                            </span>
                         </div>
                         <div class="guac-d-flex guac-justify-between guac-align-center guac-pt-3 guac-pb-3 modtag-resume-item">
                             <span class="guac-fw-bold guac-fs-3 modtag-resume-label">Redskabsskur:</span>
-                            <span class="guac-fw-normal guac-text-right guac-fs-3 modtag-resume-value">Ja</span>
+                            <span class="guac-fw-normal guac-text-right guac-fs-3 modtag-resume-value" th:text="${hasToolShed} ? 'Ja' : 'Nej'">
+                                Ja
+                            </span>
                         </div>
                         <div class="guac-d-flex guac-justify-between guac-align-center guac-pt-3 guac-pb-3 modtag-resume-item">
                             <span class="guac-fw-bold guac-fs-3 modtag-resume-label">Redskabsskur mål:</span>
-                            <span class="guac-fw-normal guac-text-right guac-fs-3 modtag-resume-value">210 x 510 x 210 cm</span>
+                            <span class="guac-fw-normal guac-text-right guac-fs-3 modtag-resume-value" th:text="${hasToolShed} ? ${toolShedWidth} + ' x ' + ${toolShedLength} + ' x ' + ${height} + ' cm' : 'N/A'">
+                                210 x 510 x 210 cm
+                            </span>
                         </div>
                         <div class="modtag-btn-wrapper guac-d-flex guac-justify-center guac-mt-3 guac-tooltip" data-tooltip="Indtast kontaktoplysninger">
                             <a href="#" id="modtagBtn" class="guac-btn guac-btn-fog modtag-btn-final guac-btn-lg guac-locked">

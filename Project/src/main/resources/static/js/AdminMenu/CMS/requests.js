@@ -13,7 +13,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
 // _______________________________________________
 
-    function renderRequests() {
+    async function renderRequests() {
 
         resultsContainer.innerHTML = "";
 
@@ -26,10 +26,40 @@ window.addEventListener("DOMContentLoaded", async () => {
         const start = currentPage * PageSize;
         const pageItems = requestsData.slice(start, start + PageSize);
 
-        pageItems.forEach(r => {
-            const div = document.createElement("div");
+        // _________________________________________________________________
 
+        const pageItemsWithStatus = await Promise.all(
+            pageItems.map(async r => {
+
+                // API call to backend to get status for specific order
+                const res = await fetch("/searchRequest/status", {
+                    method: "POST",
+                    body: new URLSearchParams({ order_id: r.id })
+                });
+
+                const data = await res.json();
+                r.status = data.status;
+                return r;
+            })
+        );
+
+        // _________________________________________________________________
+
+        pageItemsWithStatus.forEach(r => {
+            const div = document.createElement("div");
             const roofType = r.roof;
+
+            // Status colors from our DB accepted values
+            const statusColors = {
+                pending: "orange",
+                calculating: "blue",
+                offer: "fog-blue",
+                accepted: "green",
+                declined: "red"
+            };
+
+            // Sets status color
+            const statusColor = statusColors[r.status];
 
             div.innerHTML = `
                 <div class="request-item">
@@ -39,6 +69,7 @@ window.addEventListener("DOMContentLoaded", async () => {
                     <p><strong>Mål:</strong> L:${r.length} W:${r.width} H:${r.height}</p>
                     <p><strong>Tagtype:</strong> ${roofType}</p>
                     <p><strong>Skur:</strong> ${r.hasToolShed ? "Ja" : "Nej"}</p>
+                    <p><strong>Status: <span style="color:${statusColor}">${r.status}</span></strong></p>
                     <button class="guac-btn action-btn calculate-btn"
                         data-length="${r.length}"
                         data-width="${r.width}"

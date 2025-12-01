@@ -1,16 +1,20 @@
+// Package
 package dk.project.controller.AdminMenu;
 
+// Imports
 import dk.project.entity.CarportOrder;
 import dk.project.exception.DatabaseException;
 import dk.project.mapper.CarportOrderMapper;
+import dk.project.mapper.OrderMapper;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class RequestController {
 
+    // Attributes
     private final CarportOrderMapper carportOrderMapper = new CarportOrderMapper();
     private static final RequestController controller = new RequestController();
 
@@ -20,6 +24,15 @@ public class RequestController {
 
         app.post("/getAllRequests", controller::getAllRequests);
         app.post("/searchRequest", controller::searchRequest);
+
+        // ________________________________________________________________________
+
+        app.post("/searchRequest/status", ctx -> {
+            int orderId = Integer.parseInt(ctx.formParam("order_id"));
+            String status = new OrderMapper().getStatusById(orderId);
+            ctx.json(Map.of("order_id", orderId, "status", status));
+        });
+
     }
 
     // _________________________________________________

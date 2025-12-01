@@ -20,11 +20,15 @@ const trapezOverhang = 5;
 const pole = 10;
 const poleSpacing = 310;
 
+// _______________________________________________________
+
 const raftersCalc = Array.from({ length: rafterAmount }, (_, i) => {
     const x = i === rafterAmount - 1 ? width - woodWidth : i * raftersMargin;
 
     return `<rect x="${x}" y="0" width="${woodWidth}" height="${length}" />`;
 }).join("\n");
+
+// _______________________________________________________
 
 const polesCalc = Array.from({ length: polesAmount }, (_, i) => {
     const x = i * poleSpacing;
@@ -35,6 +39,7 @@ const polesCalc = Array.from({ length: polesAmount }, (_, i) => {
     `;
 }).join("\n");
 
+// _______________________________________________________
 
 const topSvg = `
     <!-- Total SVG Render -->
@@ -93,6 +98,8 @@ const topSvg = `
     
 `;
 
+// _______________________________________________________
+
 /* no "export" of the function since it's not a module unlike navbar */
 function loadTopSvg(containerId = "top-svg-render") {
 
@@ -106,5 +113,7 @@ function loadTopSvg(containerId = "top-svg-render") {
     container.innerHTML = topSvg;
 
 }
+
+// _______________________________________________________
 
 loadTopSvg();

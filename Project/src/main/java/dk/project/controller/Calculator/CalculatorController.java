@@ -31,6 +31,7 @@ public class CalculatorController {
         try {
 
             // Initial
+            String page = ctx.formParam("targetPage");
             String lengthStr = ctx.formParam("length");
             String widthStr  = ctx.formParam("width");
             String heightStr = ctx.formParam("height");
@@ -38,13 +39,13 @@ public class CalculatorController {
             String shedStr   = ctx.formParam("hasToolShed");
             String orderId   = ctx.formParam("orderId");
 
+            // Validation + Default for targetPage
+            if (page == null || page.isEmpty()) {
+                page = "tilbud";
+            }
+
             // Validation
             if (lengthStr == null || widthStr == null || heightStr == null) {
-                // TODO | Andreas comment N/A
-                // TODO | Notification!
-
-                // TODO | Jonas comment 25-11
-                // TODO | Where is this being triggered? /Status step 3? Surely.
                 ctx.status(400);
                 return;
             }
@@ -59,13 +60,13 @@ public class CalculatorController {
             .mapToDouble(MaterialUsage::getTotalPrice)
             .sum();
 
-            ctx.html(ThymeleafSetup.render("tilbud.html", Map.of(
+            ctx.html(ThymeleafSetup.render(page + ".html", Map.of(
+                    "total", total,
                     "materials", materials,
                     "length", length,
                     "width", width,
                     "height", height,
                     "roofType", roofType,
-                    "total", total,
                     "orderId", orderId
             )));
 
