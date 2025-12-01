@@ -146,6 +146,14 @@ public class StatusController {
                         c.getRoof()
                 );
 
+                /* Svg initial setup */
+                String svg = SvgGenerator.generateTopViewSvg(600, 780, 15, 6);
+                SvgGenerator.saveSvgFile(svg, orderNumber + "_render.svg");
+
+                /* Render to -> .png */
+                Path pngPath = Path.of("src/main/resources/static/pdf/modtag/" + orderNumber + "_render.png");
+                SvgConverter.convertSvgToPng(svg, pngPath);
+
                 // Setup
                 Path modtagDir = Path.of("src/main/resources/static/pdf/modtag");
                 Path backupDir = Path.of("src/main/resources/static/pdf/backup");
@@ -175,6 +183,7 @@ public class StatusController {
                 String page2 = "src/main/resources/static/pdf/content/stykliste.png";
                 String page3 = "src/main/resources/static/pdf/content/tegning.png";
                 String page4 = "src/main/resources/static/pdf/content/vejledning.png";
+                String renderPage3 = "src/main/resources/static/pdf/modtag/" + orderNumber + "_render.png";
 
                 // Stykliste content
                 String textPage2 = "Stykliste her";
@@ -221,8 +230,7 @@ public class StatusController {
                 }
 
                 PdfGenerator.addPageWithBackgroundAndRows(document, writer, page2, "Træ & Tagplader", rowsPage2);
-
-                PdfGenerator.addFullPageImage(document, page3);
+                PdfGenerator.addImageOverBackground(document, page3, renderPage3);
                 PdfGenerator.addFullPageImage(document, page4);
                 document.close();
 
