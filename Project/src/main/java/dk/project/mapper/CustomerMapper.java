@@ -187,6 +187,28 @@ public class CustomerMapper {
         }
     }
 
+    // _____________________________________________________________________
+
+    public String getEmailById(int id) throws DatabaseException {
+        String sql = "SELECT email FROM customers WHERE id = ?";
+
+        try (Connection conn = Database.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, id);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getString("email");
+                }
+            }
+
+            return null;
+
+        } catch (SQLException e) {
+            throw new DatabaseException("Fejl ved hentning af email for customer med ID " + id, e);
+        }
+    }
 
     // _____________________________________________________________________
 
