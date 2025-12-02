@@ -1,5 +1,8 @@
+// Package
 package dk.project.controller.Modtag;
 
+// Imports
+import dk.project.server.ThymeleafSetup;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 import javax.mail.*;
@@ -14,6 +17,7 @@ public class MailController {
 
     public static void registerRoutes(Javalin app) {
         app.post("/beregn/modtag", controller::contactUs);
+        app.get("/tak", ctx -> ctx.html(ThymeleafSetup.render("tak.html", null)));
     }
 
     // ___________________________________________________________
@@ -35,7 +39,7 @@ public class MailController {
                 Du kan se status på dit tilbud her:
                 fog.guacamoleboy.dk/status
 
-                Din oplysninger
+                Dine oplysninger
                 _______________
                 
                 Navn:
@@ -49,10 +53,10 @@ public class MailController {
 
                 """, firstname, lastname, email, phone);
 
-        boolean sent = MailSetup.sendMail(email, "Fog - Carport", mailBody);
-        boolean toUs = MailSetup.sendMail("fog@travlr.dk", "Carport - Tilbud", mailBody);
+        String recipients = email + ",fog@travlr.dk";
+        boolean sent = MailSetup.sendMail(recipients, "Fog - Carport", mailBody);
 
-        if (sent && toUs) {
+        if (sent) {
             ctx.redirect("/tak");
         } else {
             ctx.redirect("/beregn/modtag?error=contactError");

@@ -71,6 +71,18 @@ document.getElementById("modtagBtn")?.addEventListener("click", async () => {
             return;
         }
 
+        // Send mail to Customer + Fog
+        await fetch("/beregn/modtag", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams({
+                fornavn: firstname,
+                efternavn: lastname,
+                email: email,
+                telefon: phone
+            })
+        });
+
         // Redirect + access + status
         await fetch(`/status/${data.orderId}/authorize`, { method: "POST" });
         window.location.href = `/status/${data.orderId}?status=pending&success=offerCreated`;
