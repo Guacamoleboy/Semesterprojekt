@@ -24,6 +24,8 @@ public class MailSetup {
         props.put("mail.smtp.host", SMTP_HOST);
         props.put("mail.smtp.port", String.valueOf(SMTP_PORT));
         props.put("mail.smtp.ssl.enable", "true"); // Important
+        props.put("mail.smtp.socketFactory.port", "465"); // Issue #223 fix
+        props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory"); // Issue #223 fix
         props.put("mail.debug", "true");
 
         return Session.getInstance(props, new Authenticator() {
@@ -46,9 +48,9 @@ public class MailSetup {
             message.setSubject(subject);
             message.setText(body);
 
-            System.out.println("Sender mail til: " + to);
+            System.out.println("Sender mail til: " + to); // DEBUG
             Transport.send(message);
-            System.out.println("Mail sendt!");
+            System.out.println("Mail sendt!"); // DEBUG
 
             return true;
 

@@ -79,4 +79,4 @@ INSERT INTO carport_orders (customer_id, carport_category_id, width, length, hei
 INSERT INTO orders (customer_id, carport_order_id, total_price, status) VALUES
 (1, 1, 15000.00, 'offer'),
 (2, 2, 22000.00, 'calculating'),
-(1, 3, 30000.00, 'pending');
+(5, 3, 30000.00, 'pending');
