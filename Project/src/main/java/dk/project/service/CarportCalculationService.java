@@ -72,9 +72,16 @@ public class CarportCalculationService {
         }
 
         // Tag
-        int roofPlates = carportCalculator.calculateRoofPlate600(lengthCm, widthCm);
-        Material roofPlatesMat = materialMapper.getMaterialByID(MaterialConfig.ID_PLASTMO_600);
-        results.add(new MaterialUsage(roofPlatesMat, roofPlates));
+        int[] roofPlates = carportCalculator.calculateRoofPlate(lengthCm, widthCm);
+        if (roofPlates[0] > 0) {
+            Material roofMat = materialMapper.getMaterialByID(MaterialConfig.ID_PLASTMO_360);
+            results.add(new MaterialUsage(roofMat, roofPlates[0]));
+        }
+
+        if (roofPlates[1] > 0) {
+            Material roofMat = materialMapper.getMaterialByID(MaterialConfig.ID_PLASTMO_600);
+            results.add(new MaterialUsage(roofMat, roofPlates[1]));
+        }
 
 
 
