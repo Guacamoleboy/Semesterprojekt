@@ -3,10 +3,7 @@ package dk.project.mapper;
 
 // Imports
 import dk.project.db.Database;
-import dk.project.entity.Order;
-import dk.project.entity.CarportOrder;
-import dk.project.entity.CarportCategory;
-import dk.project.entity.User;
+import dk.project.entity.*;
 import dk.project.exception.DatabaseException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -199,6 +196,27 @@ public class OrderMapper {
         );
     }*/
 
+    // __________________________________________________________________
+
+    public Order getByIdTilbud(int id) throws DatabaseException {
+        String sql = "SELECT * FROM orders WHERE id = ?";
+        try (Connection conn = Database.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return toOrderTilbud(rs);
+                } else {
+                    return null;
+                }
+            }
+        } catch (SQLException e) {
+            throw new DatabaseException("Fejl ved hentning af ordre", e);
+        }
+    }
+
+    // __________________________________________________________________
+
     public Order toOrder(ResultSet rs) throws SQLException, DatabaseException {
         Timestamp createdAt = rs.getTimestamp("created_at");
         int carportOrderId = rs.getInt("carport_order_id");
@@ -215,5 +233,34 @@ public class OrderMapper {
         );
     }
 
+    // __________________________________________________________________
+
+    public Order toOrderTilbud(ResultSet rs) throws SQLException, DatabaseException {
+
+        // Initial
+        Timestamp createdAt = rs.getTimestamp("created_at");
+        int carportOrderId = rs.getInt("carport_order_id");
+        int customerId = rs.getInt("customer_id");
+
+        CarportOrder carportOrder = new CarportOrderMapper().getOrderByID(carportOrderId);
+
+        Customer customer = null;
+
+        if (customerId > 0) {
+            customer = new CustomerMapper().getCustomerByID(customerId);
+        }
+
+        // Creates new order
+        return new Order(
+                rs.getInt("id"),
+                customer,
+                carportOrder,
+                rs.getDouble("total_price"),
+                rs.getString("status"),
+                createdAt != null ? createdAt.toLocalDateTime() : null,
+                null
+        );
+
+    }
 
 } // OrderMapper end

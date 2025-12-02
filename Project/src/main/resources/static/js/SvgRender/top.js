@@ -37,6 +37,7 @@ const polesCalc = Array.from({ length: polesAmount }, (_, i) => {
         <rect x="${x}" y=${32} width="${pole}" height="${pole}" />
         <rect x="${x}" y=${562} width="${pole}" height="${pole}" />
     `;
+
 }).join("\n");
 
 // _______________________________________________________
