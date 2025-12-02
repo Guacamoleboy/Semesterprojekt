@@ -10,7 +10,7 @@ public class CarportCalculator {
     // _____________________________________________________________________
 
     public int calculatePosts(double length) {
-        int postsAlong = (int) (2 * (2 + length / calculatorConfig.getPoleSpacingCm()));
+        int postsAlong = (int) (2 + length / calculatorConfig.getPoleSpacingCm());
         return postsAlong * 2;
     }
 
