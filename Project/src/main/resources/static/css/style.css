@@ -2516,3 +2516,486 @@ body::-webkit-scrollbar { /* All other browsers */
     stroke: var(--project-black) !important;
     stroke-dasharray: 5 5 !important;
 }
+
+/* ___________________________________________ */
+
+/* Responsive Website - Portrait - Normal View */
+
+/* ___________________________________________ */
+
+
+@media screen and (max-width: 390px) and (orientation: portrait){
+
+    /* ########################################################### */
+    /*                           DEFAULT                           */
+    /* ########################################################### */
+
+    /* Overall Settings */
+    html, body {
+        overflow-y: auto !important;
+    }
+
+    /* ########################################################### */
+    /*                            INDEX                            */
+    /* ########################################################### */
+
+    /* Hero Section */
+    .floating-card {
+        display: none !important;
+    }
+
+    .hero-2 img {
+        display: none !important;
+    }
+
+    .hero-2 .dynamic-responsive {
+        font-size: 1.5rem !important;
+    }
+
+    .hero-2 .guac-col-6 {
+        flex: 0 0 90% !important;
+        max-width: 90% !important;
+        padding-right: 1.0rem !important;
+    }
+
+    .hero-2 .guac-btn-hero-left,
+    .hero-2 .guac-btn-hero-right {
+        padding: 0.5rem 1.25rem;
+        font-size: 1rem;
+        border-radius: 0.35rem;
+    }
+
+    .hero-2 {
+        margin-top: 7rem !important;
+        padding-bottom: 2rem !important;
+        height: auto !important;
+    }
+
+    /* Section 3 */
+    .section-3 {
+        padding-top: 3rem !important;
+        background: var(--section-1-background) !important;
+    }
+
+    .section-3 .btn-responsive-s3 {
+        padding-bottom: 3rem !important;
+    }
+
+    /* Section 1 */
+    .section-1 {
+        background: var(--section-1-background) !important;
+        padding-top: 1.0rem !important;
+        min-height: auto !important;
+    }
+
+    .section-1 .dynamic-responsive h2 {
+        font-size: 1.5rem;
+    }
+
+    .section-1 .dynamic-responsive p {
+        font-size: 0.75rem;
+    }
+
+    .section-1 .guac-row {
+        padding-top: 1.0rem !important;
+        display: flex;
+        flex-direction: column !important;
+    }
+
+    .section-1 .guac-col-auto {
+        flex: 0 0 90% !important;
+        max-width: 90% !important;
+        width: 100% !important;
+    }
+
+    .section-1 .btn-responsive-s1 {
+        margin-top: 1.0rem !important;
+    }
+
+    .section-1 .guac-mt-4 {
+        margin-top: 0 !important;
+    }
+
+    .section-1 .guac-gap-5 {
+        gap: 0 !important;
+    }
+
+    /* Section 2 */
+    .section-2 {
+        padding-top: 2.0rem !important;
+        height: auto !important;
+    }
+
+    .section-2 .guac-row {
+        display: flex;
+        flex-direction: column !important;
+    }
+
+    .section-2 .guac-col-3 {
+        flex: 0 0 70% !important;
+        max-width: 70% !important;
+        margin: 0 auto !important;
+    }
+
+    .section-2 .guac-col-3:first-child {
+        animation-delay: 0.0s !important;
+    }
+
+    .section-2 .guac-col-3:nth-child(2) {
+        animation-delay: 0.5s !important;
+    }
+
+    .section-2 .guac-col-3:last-child {
+        animation-delay: 1.0s !important;
+    }
+
+    .section-2 .btn-responsive-s2 {
+        margin-bottom: 3.0rem !important;
+    }
+
+    /* Index slideshow */
+    .index-slideshow {
+        min-height: auto !important;
+        padding: 3rem 0 3rem 1rem !important;
+    }
+
+    .index-slideshow .guac-col-6 {
+        flex: 0 0 75% !important;
+        max-width: 75% !important;
+    }
+
+    .index-slideshow .slideshow-title {
+        font-size: 0.75rem !important;
+    }
+
+    .index-slideshow .slideshow-text {
+        font-size: 0.75rem !important;
+        margin-bottom: -1.5rem !important;
+    }
+
+    .index-slideshow .button-card-row {
+        display: block !important;
+        gap: 0 !important;
+    }
+
+    .index-slideshow .guac-btn-mdlg {
+        font-size: 0.8rem;
+        border-radius: 0.35rem;
+        margin: 0 auto !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .index-slideshow .button-logo .fog-logo-showcase {
+        display: none !important;
+    }
+
+    .index-slideshow .spec-card {
+        display: none !important;
+    }
+
+    /* ########################################################### */
+    /*                           BEREGN                            */
+    /* ########################################################### */
+
+    /* Navbar */
+    #navbar2-component .navbar-text {
+        line-height: 1.0 !important;
+        font-size: 0.75rem !important;
+    }
+
+    #navbar2-component .navbar-right-link {
+        font-size: 0.75rem !important;
+    }
+
+    #navbar2-component .navbar-right-link:first-child {
+        display: none !important;
+    }
+
+    /* ################## /BEREGN ################## */
+    .beregn-intro-wrapper {
+        z-index: 99999 !important;
+        height: 100% !important;
+        display: flex;
+        flex-direction: column !important;
+    }
+
+    .beregn-intro .guac-container {
+        padding-left: 2.0rem !important;
+        padding-right: 2.0rem !important;
+    }
+
+    .beregn-intro-wrapper .guac-col-5 {
+        max-width: 100% !important;
+    }
+
+    .beregn-intro-wrapper .guac-col-7 {
+        max-width: 100% !important;
+        max-height: 35%;
+    }
+
+    .beregn-intro-text h2 {
+        margin-top: 2.0rem !important;
+        font-size: 1.4rem !important;
+    }
+
+    .beregn-intro-text p {
+        margin-top: 1.5rem !important;
+        font-size: 0.9rem !important;
+    }
+
+    .beregn-form {
+        margin-bottom: 2.0rem !important;
+    }
+
+    #intro-back-roof {
+        margin-bottom: 1.0rem !important;
+    }
+
+    /* ################## /BEREGN/app ################## */
+    .section-beregn img {
+        width: 85%;
+    }
+
+    /* ################## /BEREGN/modtag ################## */
+    .section-modtag .guac-row {
+        display: flex;
+        flex-direction: column !important;
+        margin: 0 auto !important;
+    }
+
+    .section-modtag .guac-animate {
+        opacity: 1 !important;
+    }
+
+    .modtag-card-form, .modtag-card-resume, .modtag-card-price {
+        width: 80%;
+    }
+
+    .section-modtag .guac-col {
+        padding-right: 0;
+    }
+
+    .modtag-card-resume {
+        margin-left: 0.85rem !important;
+        width: 75% !important;
+    }
+
+    /* ########################################################### */
+    /*                           STATUS                            */
+    /* ########################################################### */
+
+    .status-section .status-search-box {
+        padding: 1rem 1rem !important;
+    }
+
+    .status-section .status-line::after {
+        top: 80%;
+        left: 50%;
+        height: 5rem;
+    }
+
+    .status-section .status-circle {
+        width: 4rem;
+        height: 4rem;
+        font-size: 1.9rem;
+    }
+
+    .status-section .status-info-card h2 {
+        font-size: 1.35rem;
+    }
+    .status-section .status-info-card p {
+        font-size: 0.9rem;
+    }
+
+    .status-section .status-btn-accept,
+    .status-section .status-btn-decline {
+        padding: 0.5rem 1.25rem;
+        font-size: 1rem;
+        border-radius: 0.35rem;
+    }
+
+    .status-section .status-btn-accept {
+        margin-bottom: 1.0rem !important;
+    }
+
+}
+
+/* ___________________________________________ */
+
+/* Responsive Website - Landscape - Side View */
+
+/* ___________________________________________ */
+
+@media screen and (max-width: 844px) and (orientation: landscape){
+
+
+    /* ########################################################### */
+    /*                          DEFAULT                            */
+    /* ########################################################### */
+
+    /* Overall Settings */
+    html, body {
+        overflow-y: auto !important;
+    }
+
+    /* ########################################################### */
+    /*                            INDEX                            */
+    /* ########################################################### */
+
+    /* Hero Section */
+    .floating-card {
+        display: none !important;
+    }
+
+    .hero-2 img {
+        display: none !important;
+    }
+
+    .hero-2 .dynamic-responsive {
+        font-size: 1.5rem !important;
+    }
+
+    .hero-2 .guac-col-6 {
+        flex: 0 0 90% !important;
+        max-width: 90% !important;
+        padding-right: 1.0rem !important;
+    }
+
+    .hero-2 .guac-btn-hero-left,
+    .hero-2 .guac-btn-hero-right {
+        padding: 0.5rem 1.25rem;
+        font-size: 1rem;
+        border-radius: 0.35rem;
+    }
+
+    .hero-2 {
+        margin-top: 7rem !important;
+        padding-bottom: 2rem !important;
+        height: auto !important;
+    }
+
+    /* Section 3 */
+    .section-3 {
+        padding-top: 3rem !important;
+        background: var(--section-1-background) !important;
+    }
+
+    .section-3 .btn-responsive-s3 {
+        padding-bottom: 3rem !important;
+    }
+
+    /* Section 1 */
+    .section-1 {
+        background: var(--section-1-background) !important;
+        padding-top: 1.0rem !important;
+        min-height: auto !important;
+    }
+
+    .section-1 .dynamic-responsive h2 {
+        font-size: 1.5rem;
+    }
+
+    .section-1 .dynamic-responsive p {
+        font-size: 0.75rem;
+    }
+
+    .section-1 .guac-row {
+        padding-top: 1.0rem !important;
+        display: flex;
+        flex-direction: column !important;
+    }
+
+    .section-1 .guac-col-auto {
+        flex: 0 0 90% !important;
+        max-width: 90% !important;
+        width: 100% !important;
+    }
+
+    .section-1 .btn-responsive-s1 {
+        margin-top: 1.0rem !important;
+    }
+
+    .section-1 .guac-mt-4 {
+        margin-top: 0 !important;
+    }
+
+    .section-1 .guac-gap-5 {
+        gap: 0 !important;
+    }
+
+    /* Section 2 */
+    .section-2 {
+        padding-top: 2.0rem !important;
+        height: auto !important;
+    }
+
+    .section-2 .guac-row {
+        display: flex;
+        flex-direction: column !important;
+    }
+
+    .section-2 .guac-col-3 {
+        flex: 0 0 70% !important;
+        max-width: 70% !important;
+        margin: 0 auto !important;
+    }
+
+    .section-2 .guac-col-3:first-child {
+        animation-delay: 0.0s !important;
+    }
+
+    .section-2 .guac-col-3:nth-child(2) {
+        animation-delay: 0.5s !important;
+    }
+
+    .section-2 .guac-col-3:last-child {
+        animation-delay: 1.0s !important;
+    }
+
+    .section-2 .btn-responsive-s2 {
+        margin-bottom: 3.0rem !important;
+    }
+
+    /* Index slideshow */
+    .index-slideshow {
+        min-height: auto !important;
+        padding: 3rem 0 3rem 1rem !important;
+    }
+
+    .index-slideshow .guac-col-6 {
+        flex: 0 0 75% !important;
+        max-width: 75% !important;
+    }
+
+    .index-slideshow .slideshow-title {
+        font-size: 0.75rem !important;
+    }
+
+    .index-slideshow .slideshow-text {
+        font-size: 0.75rem !important;
+        margin-bottom: -1.5rem !important;
+    }
+
+    .index-slideshow .button-card-row {
+        display: block !important;
+        gap: 0 !important;
+    }
+
+    .index-slideshow .guac-btn-mdlg {
+        font-size: 0.8rem;
+        border-radius: 0.35rem;
+        margin: 0 auto !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .index-slideshow .button-logo .fog-logo-showcase {
+        display: none !important;
+    }
+
+    .index-slideshow .spec-card {
+        display: none !important;
+    }
+
+}

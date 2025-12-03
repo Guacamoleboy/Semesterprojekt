@@ -28,7 +28,7 @@ const slideSteps = [
     },
     {
         img: "/images/carports/3.png",
-        title: "CARPORT CP01HR RØD ENKELT 3,9 X 7,8M",
+        title: "CP01HR RØD ENKELT 3,9 X 7,8M",
         description: "Ekstra bred model!\n" +
             "Enkelt byg selv-carport 3,90X 7,80 m. med høj rejsning og plads til 1 bil samt skur bagerst i carporten.",
         specOne: "Åben Carport",
@@ -38,7 +38,7 @@ const slideSteps = [
     },
     {
         img: "/images/carports/4.png",
-        title: "CARPORT CP02HXL RØD DOBBELT 6,0 X 9,9M",
+        title: "CP02HXL RØD DOBBELT 6,0 X 9,9M",
         description: "Bred byg selv-carport 6,00 x 9,90 m. med høj rejsning og plads til 2 biler. Stort redskabsrum bagerst i carporten.",
         specOne: "Kan lukkes efter ønske",
         specTwo: "Rød beton tagsten",
@@ -65,7 +65,7 @@ const slideSteps = [
     },
     {
         img: "/images/carports/7.png",
-        title: "CARPORT CRXL1HR ENKELT 3,6 X 9,1M",
+        title: "CRXL1HR ENKELT 3,6 X 9,1M",
         description: "Enkelt byg selv-carport 3,60 x 9,10 m. med høj rejsning og plads til 1 bil, samt skur bagerst i carporten.",
         specOne: "Åben Carport",
         specTwo: "Sort beton tagsten",
@@ -74,7 +74,7 @@ const slideSteps = [
     },
     {
         img: "/images/carports/8.png",
-        title: "CARPORT CAR01H ENKELT 3,6 X 5,4M",
+        title: "CAR01H ENKELT 3,6 X 5,4M",
         description: "Enkelt byg selv-carport 3,60 x 5,40 m. med høj rejsning og plads til 1 bil. Carporten er åben på alle siderne, men kan lukkes efter ønske.",
         specOne: "Åben Carport",
         specTwo: "Sort beton tagsten",
