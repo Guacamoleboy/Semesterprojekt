@@ -140,8 +140,8 @@
                     <thead>
                     <tr>
                         <th>Materiale</th>
-                        <th>Beskrivelse</th>
                         <th>Antal</th>
+                        <th>Enhed</th>
                         <th>Enhedspris</th>
                         <th>Total</th>
                     </tr>
@@ -149,8 +149,8 @@
                     <tbody>
                     <tr th:each="m : ${materials}">
                         <td th:text="${m.material.name}">Navn</td>
-                        <td th:text="${m.material.description}">Desc</td>
-                        <td th:text="${m.amount}">0</td>
+                        <td th:text="${m.amount}">Antal</td>
+                        <td th:text="${m.material.unit}">Enhed</td>
                         <td th:text="${m.material.price}">0.0</td>
                         <td th:text="${m.totalPrice}">0.0</td>
                     </tr>

@@ -1,5 +1,7 @@
+// Package
 package dk.project.DTO;
 
+// Import
 import dk.project.entity.AdminMenu.Material;
 
 public class MaterialUsage {
