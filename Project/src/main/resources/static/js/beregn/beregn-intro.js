@@ -8,6 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const materialeValgt = document.getElementById("materiale");
     const backBtn = document.getElementById("intro-back-roof");
 
+    /* Responsive fix */
+    step2Container.style.display = "none";
+
     //  _______________________________________________________
 
     step1Form.addEventListener("submit", (e) => {
