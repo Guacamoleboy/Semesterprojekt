@@ -10,7 +10,7 @@ public class CarportCalculator {
     // _____________________________________________________________________
 
     public int calculatePosts(double length) {
-        int postsAlong = (int) (2 * (2 + length / 340));
+        int postsAlong = (int) (2 + length / calculatorConfig.getPoleSpacingCm());
         return postsAlong * 2;
     }
 
@@ -47,20 +47,8 @@ public class CarportCalculator {
 
     // _____________________________________________________________________
 
-    public int calculateRoofPlate600(double lengthCm, double widthCm) {
-        int across = (int) Math.ceil(widthCm / 76);
-        int along = (int) (lengthCm / 600);
-        return across * along;
-    }
-
-    public int calculateRoofPlate360(double lengthCm, double widthCm) {
-        int across = (int) Math.ceil(widthCm / 76);
-        int remainder = (int) (lengthCm % 600);
-
-        if (remainder == 0) return 0;
-
-        int along360 = remainder <= 360 ? 1 : 0;
-        return across * along360;
+    public int[] calculateRoofPlate(double lengthCm, double widthCm) {
+        return checkWaste(lengthCm, widthCm, 360, 600);
     }
 
     // _____________________________________________________________________
@@ -94,6 +82,44 @@ public class CarportCalculator {
 
         return new int[]{Small, Large};
     }
+
+    public int[] checkWaste(double targetLengthCm, double targetWidthCm, int smallCm, int largeCm) {
+
+        int columns = (int) Math.ceil(targetWidthCm / 109.0);
+
+        int smallPerColumn = (int) Math.ceil(targetLengthCm / smallCm);
+        int largePerColumn = (int) Math.ceil(targetLengthCm / largeCm);
+
+        int bestSmall = 0;
+        int bestLarge = 0;
+        int bestWaste = Integer.MAX_VALUE;
+
+        for (int largeColumns = 0; largeColumns <= columns; largeColumns++) {
+            for (int smallColumns = 0; smallColumns <= columns; smallColumns++) {
+
+                if (largeColumns + smallColumns != columns) continue;
+
+                int totalLarge = largeColumns * largePerColumn;
+                int totalSmall = smallColumns * smallPerColumn;
+
+                int wasteLarge = largeColumns * ((largePerColumn * largeCm) - (int) targetLengthCm);
+                int wasteSmall = smallColumns * ((smallPerColumn * smallCm) - (int) targetLengthCm);
+
+                int totalWaste = wasteLarge + wasteSmall;
+
+                if (totalWaste < bestWaste) {
+                    bestWaste = totalWaste;
+                    bestSmall = totalSmall;
+                    bestLarge = totalLarge;
+                }
+            }
+        }
+
+        return new int[]{bestSmall, bestLarge};
+    }
+
+
+
 
 
     //TODO: Make following:

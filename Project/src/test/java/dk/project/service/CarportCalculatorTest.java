@@ -10,8 +10,8 @@ class CarportCalculatorTest {
 
     @Test
     void calculatePosts() {
-        int poles = calculator.calculatePosts(600);
-        assertEquals(14, poles);
+        int poles = calculator.calculatePosts(780);
+        assertEquals(8, poles);
     }
 
     @Test
