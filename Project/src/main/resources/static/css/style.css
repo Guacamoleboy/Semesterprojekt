@@ -2247,7 +2247,7 @@ body::-webkit-scrollbar { /* All other browsers */
     overflow: visible;
     height: 25rem !important;
     color: var(--fog-blue);
-    margin-top: 110rem !important;
+    margin-top: 140rem !important;
     z-index: 1000 !important;
 }
 

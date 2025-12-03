@@ -1,5 +1,7 @@
+// Package
 package dk.project.mapper;
 
+// Imports
 import dk.project.db.Database;
 import dk.project.entity.User;
 import dk.project.exception.DatabaseException;
@@ -41,8 +43,6 @@ class UserMapperTest {
     }
 
     // ______________________________________________________________________
-
-    // Workflow test review
 
     @Test
     void shouldInsertAndRetrieveUser() throws SQLException, DatabaseException {
