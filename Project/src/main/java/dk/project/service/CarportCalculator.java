@@ -1,5 +1,7 @@
+// Package
 package dk.project.service;
 
+// Import
 import dk.project.config.CalculatorConfig;
 
 public class CarportCalculator {
@@ -28,21 +30,72 @@ public class CarportCalculator {
     }
 
     // _____________________________________________________________________
-    // Theese can be used to the following, because they have the same size (360 & 540):
-    // Sternbredderne (Over og under)
-    // vandbrædt
-
 
     public int[] calculateUnderStern(double lengthCm) {
         return checkWaste((int) lengthCm, 360, 540);
     }
 
+    // _____________________________________________________________________
+
     public int[] calculateOverStern(double lengthCm) {
         return checkWaste((int) lengthCm, 360, 540);
     }
 
+    // _____________________________________________________________________
+
     public int[] calculateWaterboard(double lengthCm) {
         return checkWaste((int) lengthCm, 360, 540);
+    }
+
+    // _____________________________________________________________________
+
+    public int calculateUniversalMounts(int rafters) {
+        return rafters * calculatorConfig.getUniversalMountsPerRafter();
+    }
+
+    // _____________________________________________________________________
+
+    public int calculateScrewsForUniversalMounts(int rafters) {
+        int mounts = calculateUniversalMounts(rafters);
+        return mounts * calculatorConfig.getScrewsPerUniversalMount();
+    }
+
+    // _____________________________________________________________________
+
+    public int calculateBraceBandScrews(int rafters) {
+        return (int) Math.ceil(rafters * calculatorConfig.getBraceBandScrewsPerRafter());
+    }
+
+    // _____________________________________________________________________
+
+    public int calculateBraceBandRolls(double lengthCm, double widthCm) {
+        double diagonal = Math.sqrt(lengthCm * lengthCm + widthCm * widthCm);
+        double totalMeters = (diagonal * 2) / 100.0;
+        return (int) Math.ceil(totalMeters / calculatorConfig.getBraceBandRollLengthM());
+    }
+
+    // _____________________________________________________________________
+
+    public int calculateBolts(int posts) {
+        return posts * calculatorConfig.getBoltsPerPost();
+    }
+
+    // _____________________________________________________________________
+
+    public int calculateWashers(int posts) {
+        return posts * calculatorConfig.getWashersPerPost();
+    }
+
+    // _____________________________________________________________________
+
+    public int calculateRoofScrews(int totalRoofPlates) {
+        return totalRoofPlates * calculatorConfig.getScrewsPerRoofPlate();
+    }
+
+    // _____________________________________________________________________
+
+    public int calculateScrewPacks(int totalScrews, int packSize) {
+        return (int) Math.ceil((double) totalScrews / packSize);
     }
 
     // _____________________________________________________________________
@@ -52,8 +105,6 @@ public class CarportCalculator {
     }
 
     // _____________________________________________________________________
-
-
 
     public int[] checkWaste(int targetLength, int small, int large) {
 
@@ -82,6 +133,8 @@ public class CarportCalculator {
 
         return new int[]{Small, Large};
     }
+
+    // _____________________________________________________________________
 
     public int[] checkWaste(double targetLengthCm, double targetWidthCm, int smallCm, int largeCm) {
 
@@ -118,11 +171,4 @@ public class CarportCalculator {
         return new int[]{bestSmall, bestLarge};
     }
 
-
-
-
-
-    //TODO: Make following:
-    // Beslag og skruer
-
-}
+} // CarportCalculator end

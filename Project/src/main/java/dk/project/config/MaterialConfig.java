@@ -7,10 +7,6 @@ import java.util.Map;
 
 public class MaterialConfig {
 
-    // TODO | Jonas Comments - 24/11
-    // TODO | Vi skal vel ikke skrive ID på (hardcoded) men have det loadet via getId fx.
-    // TODO | Hvad siger du? Antager hardcoded er midlertidigt - bevidst.
-
     // Attributes
     public static final int ID_UNDERSTERN_360 = 1;        // Brædt 360
     public static final int ID_UNDERSTERN_540 = 2;        // Brædt 540
@@ -42,6 +38,7 @@ public class MaterialConfig {
     public static final int ID_HAENGSEL_390 = 28;         // Hængsel 390mm
     public static final int ID_VINKELBESLAG_35 = 29;      // Vinkelbeslag 35
 
+    // _______________________________________________________________________
 
     public Map<String, Integer> getConfig(String type) {
         switch (type) {
@@ -78,6 +75,4 @@ public class MaterialConfig {
         return Map.of();
     }
 
-
-
-}
+} // MaterialConfig end
