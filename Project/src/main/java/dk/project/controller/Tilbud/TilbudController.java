@@ -58,8 +58,7 @@ public class TilbudController {
                 Fog
                 """, customer.getFirstName(), "https://fog.guacamoleboy.dk", orderId);
 
-                /* Debug */
-                System.out.println("Forsøger at sende til: " + customerEmail);
+                System.out.println("Forsøger at sende til: " + customerEmail); // DEBUG | Issue #223
 
                 /* If all worked out -> send mail */
                 MailSetup.sendMail(customerEmail, subject, body);
