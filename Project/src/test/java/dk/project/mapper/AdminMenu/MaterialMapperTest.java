@@ -99,7 +99,7 @@ class MaterialMapperTest {
 
         // Arrange
         Material material = new Material(
-                2,
+                1,
                 "Tagplade Plast",
                 "Klar bølgeplast",
                 "stk",
