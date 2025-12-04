@@ -8,7 +8,6 @@ import com.lowagie.text.FontFactory;
 import com.lowagie.text.PageSize;
 import com.lowagie.text.pdf.PdfWriter;
 import dk.project.DTO.MaterialUsage;
-import dk.project.controller.Calculator.CalculatorController;
 import dk.project.entity.CarportOrder;
 import dk.project.entity.Order;
 import dk.project.exception.DatabaseException;

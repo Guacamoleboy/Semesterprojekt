@@ -6,6 +6,8 @@
 
 document.addEventListener("click", async (e) => {
 
+    if (!e.target.closest("#sendOfferBtn")) return;
+
     const target = e.target.closest("#sendOfferBtn");
     const orderId = target.dataset.orderId;
     const finalPriceEl = document.getElementById("tilbud-final-price");
