@@ -40,19 +40,26 @@ class OrderMapperTest {
             Statement stmt = conn.createStatement()) {
 
             // Clear
-            stmt.execute("TRUNCATE TABLE orders, customers, carport_orders RESTART IDENTITY CASCADE");
+            stmt.execute("TRUNCATE TABLE orders, carport_orders, carport_category, customers RESTART IDENTITY CASCADE");
 
             // Customers
             stmt.execute("""
-                    INSERT INTO customers (firstname, lastname, email, phone, street, city, zipcode, country) VALUES
-                    ('Jonas', 'Guacamole', 'jonas@test.com', '12345678', 'Street 1', 'City', '1000', 'Denmark')
-                    """);
+            INSERT INTO customers (firstname, lastname, email, phone, street, city, zipcode, country) VALUES
+            ('Jonas', 'Guacamole', 'jonas@test.com', '12345678', 'Street 1', 'City', '1000', 'Denmark')
+            """);
 
-            // Carport Order
+            // Carport Category
             stmt.execute("""
-                    INSERT INTO carport_orders (customer_id, carport_category_id, width, length, height, created_at)
-                    VALUES (1, 1, 300, 500, 250, NOW())
-                    """);
+            INSERT INTO carport_category (name) VALUES
+            ('Standard Carport')
+            """);
+
+            // Carport Orders
+            stmt.execute("""
+            INSERT INTO carport_orders (customer_id, carport_category_id, width, length, height, created_at)
+            VALUES (1, 1, 300, 500, 250, NOW())
+            """);
+
         }
 
     }
