@@ -35,14 +35,24 @@ class MaterialMapperTest {
         try (Connection conn = Database.getConnection();
             Statement stmt = conn.createStatement()) {
 
-            stmt.execute("TRUNCATE TABLE materials RESTART IDENTITY CASCADE");
+            // Clear
+            stmt.execute("TRUNCATE TABLE materials_category, materials RESTART IDENTITY CASCADE");
+
+            // Materials Category
             stmt.execute("""
-                INSERT INTO materials
-                    (category_id, name, description, unit, length, width, height, price)
-                VALUES
-                    (1, 'Regel 45x95 mm', 'Trykimprægneret træ', 'stk', 300, 45, 95, 29.95),
-                    (1, 'Skruer 5x40 mm', 'Galvaniserede skruer', 'pakke', NULL, NULL, NULL, 49.95)
+            INSERT INTO materials_category (name) VALUES
+            ('Træ & Tagplader')
             """);
+
+            // Materials
+            stmt.execute("""
+            INSERT INTO materials
+                (category_id, name, description, unit, length, width, height, price)
+            VALUES
+                (1, 'Regel 45x95 mm', 'Trykimprægneret træ', 'stk', 300, 45, 95, 29.95),
+                (1, 'Skruer 5x40 mm', 'Galvaniserede skruer', 'pakke', NULL, NULL, NULL, 49.95)
+            """);
+
         }
 
     }
