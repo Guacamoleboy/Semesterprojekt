@@ -102,9 +102,8 @@ window.addEventListener("DOMContentLoaded", async () => {
                 form.method = "POST";
                 form.action = "/calculate";
 
-                const orderIdInput = document.querySelector("input[name='order_id']");
-                const orderId = orderIdInput ? orderIdInput.value : "";
-
+                const orderIdText = btn.closest(".request-item").querySelector("p strong").parentElement.textContent;
+                const orderId = orderIdText.replace("Ordre ID:", "").trim();
                 const fields = {
                     length: btn.dataset.length,
                     width: btn.dataset.width,
