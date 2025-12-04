@@ -39,6 +39,10 @@ public class CarportOrder {
         this.createdAt = createdAt;
     }
 
+    public CarportOrder(){
+
+    }
+
     // _________________________________________________________________
 
     public boolean isHasTrapez() {

@@ -1,9 +1,10 @@
+// Package
 package dk.project.mapper.AdminMenu;
 
+// Imports
 import dk.project.db.Database;
 import dk.project.entity.AdminMenu.MaterialCategory;
 import dk.project.exception.DatabaseException;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

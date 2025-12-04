@@ -1,5 +1,7 @@
+// Packages
 package dk.project.mapper;
 
+// Imports
 import dk.project.db.Database;
 import dk.project.entity.CarportCategory;
 import dk.project.exception.DatabaseException;
