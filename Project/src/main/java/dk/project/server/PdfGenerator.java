@@ -9,6 +9,8 @@ import com.lowagie.text.pdf.ColumnText;
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfWriter;
 import java.awt.*;
+import java.util.List;
+import java.util.Map;
 
 public class PdfGenerator {
 
@@ -38,9 +40,10 @@ public class PdfGenerator {
     // _________________________________________________________________
     // Used on Page 2
 
-    public static void addPageWithBackgroundAndRows(Document doc, PdfWriter writer, String backgroundImagePath, String title, String[][] rows) throws Exception {
+    public static void addPageWithMaterialsByCategory(Document doc, PdfWriter writer, String backgroundImagePath, List<Map<String,Object>> materials) throws Exception {
         doc.newPage();
 
+        // Background
         Image bg = Image.getInstance(backgroundImagePath);
         bg.scaleToFit(PageSize.A4.getWidth(), PageSize.A4.getHeight());
         bg.setAbsolutePosition(
@@ -54,64 +57,144 @@ public class PdfGenerator {
         float rightMargin = doc.rightMargin();
         float usableWidth = pageWidth - leftMargin - rightMargin;
 
+        // Fonts
         Font titleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18);
-        Paragraph titlePara = new Paragraph(title, titleFont);
-        titlePara.setSpacingBefore(100);
-        doc.add(titlePara);
-
-        float titleHeightEstimate = 20;
-
-        PdfContentByte canvas = writer.getDirectContent();
-
-        float lineY = doc.top() - 100 - titleHeightEstimate - 20;
-        canvas.setColorStroke(new Color(0, 61, 118));
-        canvas.setLineWidth(2f);
-        float lineWidth = usableWidth * 0.3f;
-        canvas.moveTo(leftMargin, lineY);
-        canvas.lineTo(leftMargin + lineWidth, lineY);
-        canvas.stroke();
-
-        String[] headers = {"Beskrivelse", "Mål (cm)", "Antal", "Enhed"};
         Font headerFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12);
-        int columns = headers.length;
-        float columnWidth = usableWidth / columns;
-
-        float rowY = lineY - 30;
-
-        for (int i = 0; i < columns; i++) {
-            float colCenterX = leftMargin + i * columnWidth + columnWidth / 2;
-            ColumnText.showTextAligned(
-                    canvas,
-                    Element.ALIGN_CENTER,
-                    new com.lowagie.text.Phrase(headers[i], headerFont),
-                    colCenterX,
-                    rowY,
-                    0
-            );
-        }
-
-        float headerLineY = rowY - 10;
-        canvas.setLineWidth(1f);
-        canvas.moveTo(leftMargin, headerLineY);
-        canvas.lineTo(leftMargin + usableWidth, headerLineY);
-        canvas.stroke();
-
         Font rowFont = FontFactory.getFont(FontFactory.HELVETICA, 12);
-        rowY = headerLineY - 20;
-        for (String[] row : rows) {
+
+        // Initial
+        PdfContentByte canvas = writer.getDirectContent();
+        float startY = doc.top() - 80;
+        float offsetY = 20;
+
+        // For loop per categoryId
+        for (int categoryId = 1; categoryId <= 2; categoryId++) {
+
+            // Title
+            String title = categoryId == 1 ? "Træ & Tagplader" : "Beslag & Skruer";
+            ColumnText.showTextAligned(canvas, Element.ALIGN_LEFT, new Phrase(title, titleFont), leftMargin, startY - offsetY, 0);
+
+            // Line under title
+            float lineY = startY - 20 - offsetY;
+            canvas.setLineWidth(2f);
+            canvas.setColorStroke(new Color(0, 61, 118));
+            canvas.moveTo(leftMargin, lineY);
+            canvas.lineTo(leftMargin + usableWidth * 0.3f, lineY);
+            canvas.stroke();
+
+            // Header
+            String[] headers = {"Beskrivelse", "Mål (cm)", "Antal", "Enhed"};
+            int columns = headers.length;
+            float columnWidth = usableWidth / columns;
+            float rowY = lineY - 30;
+
+            // For loop over placement
             for (int i = 0; i < columns; i++) {
+
+                // Placement
                 float colCenterX = leftMargin + i * columnWidth + columnWidth / 2;
-                ColumnText.showTextAligned(
-                        canvas,
-                        Element.ALIGN_CENTER,
-                        new com.lowagie.text.Phrase(row[i], rowFont),
-                        colCenterX,
-                        rowY,
-                        0
-                );
+                int alignment;
+                float posX;
+
+                // Placement
+                switch (i) {
+                    case 0:
+                        alignment = Element.ALIGN_LEFT;
+                        posX = leftMargin + 2;
+                        break;
+                    case 3:
+                        alignment = Element.ALIGN_RIGHT;
+                        posX = leftMargin + usableWidth - 2;
+                        break;
+                    default:
+                        alignment = Element.ALIGN_CENTER;
+                        posX = colCenterX;
+                        break;
+                }
+
+                ColumnText.showTextAligned(canvas, alignment, new Phrase(headers[i], headerFont), posX, rowY - offsetY, 0);
+
             }
-            rowY -= 20;
+
+            // Initial
+            float headerLineY = rowY - 10 - offsetY;
+            canvas.setLineWidth(1f);
+            canvas.moveTo(leftMargin, headerLineY);
+            canvas.lineTo(leftMargin + usableWidth, headerLineY);
+            canvas.stroke();
+
+            // Rows
+            rowY = headerLineY; // Distance from header & line -> content. For gap add "- 10" for example.
+
+            // For-each loop over our Map object
+            for (Map<String,Object> m : materials) {
+
+                if (!m.get("categoryId").equals(categoryId)) continue;
+
+                String desc = (String) m.get("name");
+                String dimensions = "";
+
+                // Only get dimensions for categoryId -> 1
+                if (categoryId == 1) {
+
+                    // Initial with type casting
+                    Integer length = (Integer)m.get("length");
+                    Integer width = (Integer)m.get("width");
+                    Integer height = (Integer)m.get("height");
+                    boolean first = true;
+
+                    // Checks
+                    if (length != null) {
+                        dimensions += length; first = false;
+                    }
+                    if (width != null) {
+                        if(!first) dimensions += " x "; dimensions += width; first = false;
+                    }
+                    if (height != null) {
+                        if(!first) dimensions += " x "; dimensions += height;
+                    }
+
+                }
+
+                // Initial
+                String amount = String.valueOf(m.get("amount"));
+                String unit = (String)m.get("unit");
+                String[] row = {desc, dimensions, amount, unit};
+
+                // For loop over columns
+                for (int i = 0; i < columns; i++) {
+                    float colCenterX = leftMargin + i * columnWidth + columnWidth / 2;
+                    int alignment;
+                    float posX;
+
+                    // Switch case over i for columns
+                    switch (i) {
+                        case 0:
+                            alignment = Element.ALIGN_LEFT;
+                            posX = leftMargin + 2;
+                            break;
+                        case 3:
+                            alignment = Element.ALIGN_RIGHT;
+                            posX = leftMargin + usableWidth - 2;
+                            break;
+                        default:
+                            alignment = Element.ALIGN_CENTER;
+                            posX = colCenterX;
+                            break;
+                    }
+
+                    ColumnText.showTextAligned(canvas, alignment, new Phrase(row[i], rowFont), posX, rowY - offsetY, 0);
+
+                }
+
+                rowY -= 20;
+
+            }
+
+            startY = rowY - 40;
+
         }
+
     }
 
     // _________________________________________________________________
