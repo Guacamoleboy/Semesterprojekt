@@ -21,9 +21,7 @@ import io.javalin.Javalin;
 import java.io.FileOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class StatusController {
 
@@ -228,7 +226,28 @@ public class StatusController {
 
                 }
 
-                PdfGenerator.addPageWithBackgroundAndRows(document, writer, page2, "Træ & Tagplader", rowsPage2);
+                // Saves as Map object for later use
+                List<Map<String, Object>> materialsAsMaps = new ArrayList<>();
+
+                // For-each loop over MaterialUsage
+                for (MaterialUsage m : materials) {
+                    // Initial HashMap
+                    Map<String, Object> map = new HashMap<>();
+
+                    map.put("categoryId", m.getMaterial().getCategory_id());
+                    map.put("name", m.getMaterial().getName());
+                    map.put("length", m.getMaterial().getLength());
+                    map.put("width", m.getMaterial().getWidth());
+                    map.put("height", m.getMaterial().getHeight());
+                    map.put("amount", m.getAmount());
+                    map.put("unit", m.getMaterial().getUnit() != null ? m.getMaterial().getUnit() : "stk");
+
+                    // Add
+                    materialsAsMaps.add(map);
+
+                }
+
+                PdfGenerator.addPageWithMaterialsByCategory(document, writer, page2, materialsAsMaps);
                 PdfGenerator.addImageOverBackground(document, page3, renderPage3);
                 PdfGenerator.addFullPageImage(document, page4);
                 document.close();
