@@ -61,7 +61,7 @@ public class UserMapper {
     public User getByUserName(String username) throws SQLException {
         String sql = "SELECT * FROM users WHERE LOWER(username) = ?";
         try (Connection conn = Database.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, username.toLowerCase());
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
@@ -99,7 +99,7 @@ public class UserMapper {
         List<User> users = new ArrayList<>();
 
         try (Connection conn = Database.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, roleId);
 
@@ -121,7 +121,7 @@ public class UserMapper {
     public void updateUser(User user) {
         String sql = "UPDATE users SET username = ?, password_hash = ?, role_id = ? WHERE id = ?";
         try (Connection conn = Database.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, user.getUsername());
             stmt.setString(2, user.getPassword_hash());
             stmt.setInt(3, user.getRoleID());
@@ -142,7 +142,7 @@ public class UserMapper {
         User user = getById(ID);
         String sql = "UPDATE users SET username = ?, password_hash = ?, role_id = ? WHERE id = ?";
         try (Connection conn = Database.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, user.getUsername());
             stmt.setString(2, user.getPassword_hash());
             stmt.setInt(3, user.getRoleID());
@@ -175,7 +175,7 @@ public class UserMapper {
         String sql = "DELETE FROM users WHERE id = ?";
 
         try (Connection conn = Database.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, userId);
             int rows = stmt.executeUpdate();
@@ -194,7 +194,7 @@ public class UserMapper {
         String sql = "DELETE FROM users WHERE id = ?";
 
         try (Connection conn = Database.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, user.getId());
             int rows = stmt.executeUpdate();

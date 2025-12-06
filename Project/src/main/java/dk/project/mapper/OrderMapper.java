@@ -9,10 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.sql.Timestamp;
-import java.sql.Types;
-import java.time.LocalDateTime;
 import java.util.Set;
 
 public class OrderMapper {
@@ -51,7 +48,7 @@ public class OrderMapper {
     public String getStatusById(int id) throws DatabaseException {
         String sql = "SELECT status FROM orders WHERE id = ?";
         try (Connection conn = Database.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, id);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
@@ -70,7 +67,7 @@ public class OrderMapper {
     public Order getById(int id) throws DatabaseException {
         String sql = "SELECT * FROM orders WHERE id = ?";
         try (Connection conn = Database.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, id);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
@@ -85,7 +82,6 @@ public class OrderMapper {
     }
 
     // __________________________________________________________________
-    // TODO Test method | DO NOT REMOVE
 
     public Object getOrderFieldById(String field, int id) throws DatabaseException {
 
@@ -164,37 +160,6 @@ public class OrderMapper {
             throw new DatabaseException("Kunne ikke opdatere total_price", e);
         }
     }
-
-    // __________________________________________________________________
-
-    /*public Order toOrder(ResultSet rs) throws SQLException {
-        Timestamp createdAt = rs.getTimestamp("created_at");
-        
-        CarportCategory category = new CarportCategory();
-        category.setId(1);
-        CarportOrder carportOrder = new CarportOrder(
-                rs.getInt("carport_order_id"),
-                null,
-                category,
-                0.0, 0.0, 0.0,
-                null,
-                null,
-                false,
-                null, null,
-                false,
-                null
-        );
-        
-        return new Order(
-                rs.getInt("id"),
-                null,
-                carportOrder,
-                rs.getDouble("total_price"),
-                rs.getString("status"),
-                createdAt != null ? createdAt.toLocalDateTime() : null,
-                null
-        );
-    }*/
 
     // __________________________________________________________________
 
