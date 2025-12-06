@@ -39,6 +39,7 @@ public class CarportOrder {
         this.createdAt = createdAt;
     }
 
+    // For Unit Tests
     public CarportOrder(){
 
     }

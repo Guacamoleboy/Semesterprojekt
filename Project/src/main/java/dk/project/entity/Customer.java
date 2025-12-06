@@ -18,6 +18,7 @@ public class Customer {
 
     // ________________________________________________________
 
+    // For Unit Tests
     public Customer() {}
 
     public Customer(int id, String firstName, String lastName, String email, String phone,

@@ -1,3 +1,16 @@
+/*
+
+    What is "f"?
+
+    Example:
+    0.0f -> x.xf -> f = float
+
+    Without f it would be double. Since we want and use float we add "f" after.
+
+    - Guac
+
+*/
+
 // Package
 package dk.project.server;
 
@@ -77,7 +90,7 @@ public class PdfGenerator {
             // Line under title
             float lineY = startY - 20 - offsetY;
             canvas.setLineWidth(2f);
-            canvas.setColorStroke(new Color(0, 61, 118));
+            canvas.setColorStroke(new Color(0, 61, 118)); // rgb values of :roof --fog-blue
             canvas.moveTo(leftMargin, lineY);
             canvas.lineTo(leftMargin + usableWidth * 0.3f, lineY);
             canvas.stroke();

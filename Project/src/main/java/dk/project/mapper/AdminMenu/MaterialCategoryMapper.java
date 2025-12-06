@@ -11,6 +11,10 @@ import java.util.List;
 
 public class MaterialCategoryMapper {
 
+    // Attributes
+
+    // _______________________________________________
+
     public List<MaterialCategory> getCategories() throws DatabaseException {
 
         List<MaterialCategory> categories = new ArrayList<>();
@@ -41,7 +45,7 @@ public class MaterialCategoryMapper {
 
         String sql = "SELECT * FROM materials_category WHERE id = ?";
         try (Connection conn = Database.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, id);
             try (ResultSet rs = stmt.executeQuery()) {

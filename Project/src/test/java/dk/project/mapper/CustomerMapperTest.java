@@ -42,7 +42,7 @@ class CustomerMapperTest {
             stmt.execute("""
                 INSERT INTO customers (firstname, lastname, email, phone, street, city, zipcode, country) VALUES
                 ('Jonas', 'Guacamole', 'jonas@test.com', '12345678', 'Street 1', 'City', '1000', 'Denmark'),
-                ('Anna', 'Banan', 'anna@test.com', '87654321', 'Street 2', 'City', '2000', 'Denmark')
+                ('Andreas', 'Rovelt', 'andreas@test.com', '87654321', 'Street 2', 'City', '2000', 'Denmark')
             """);
 
         }
@@ -61,7 +61,7 @@ class CustomerMapperTest {
         assertNotNull(customers);
         assertEquals(2, customers.size());
         assertEquals("Jonas", customers.get(0).getFirstName());
-        assertEquals("Anna", customers.get(1).getFirstName());
+        assertEquals("Andreas", customers.get(1).getFirstName());
 
     }
 
@@ -92,7 +92,7 @@ class CustomerMapperTest {
     void getCustomerByEmail() throws Exception {
 
         // Arrange
-        String existingEmail = "anna@test.com";
+        String existingEmail = "andreas@test.com";
         String missingEmail = "doesnotexist@test.com";
 
         // Act
@@ -101,8 +101,8 @@ class CustomerMapperTest {
 
         // Assert
         assertNotNull(customer);
-        assertEquals("Anna", customer.getFirstName());
-        assertEquals("Banan", customer.getLastName());
+        assertEquals("Andreas", customer.getFirstName());
+        assertEquals("Rovelt", customer.getLastName());
         assertNull(missing);
 
     }

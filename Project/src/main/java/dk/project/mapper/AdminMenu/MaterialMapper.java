@@ -5,16 +5,22 @@ import dk.project.exception.DatabaseException;
 import java.util.ArrayList;
 import java.util.List;
 import dk.project.db.Database;
+
+import javax.annotation.Nullable;
 import java.sql.*;
 
 public class MaterialMapper {
+
+    // Attributes
+
+    // _____________________________________________________________________
 
     public void newMaterial(Material material) throws DatabaseException {
 
         String sql = "INSERT INTO materials  (category_id, name, description, unit, length, width, height, price) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = Database.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
             stmt.setInt(1, material.getCategory_id());
             stmt.setString(2, material.getName());
@@ -80,7 +86,7 @@ public class MaterialMapper {
         String sql = "SELECT * FROM materials WHERE id = ?";
 
         try (Connection conn = Database.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, id);
 
@@ -109,7 +115,7 @@ public class MaterialMapper {
         String sql = "UPDATE materials SET category_id = ?, name = ?, description = ?, unit = ?, length = ?, width = ?, height = ?, price = ? WHERE id = ?";
 
         try (Connection conn = Database.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, material.getCategory_id());
             stmt.setString(2, material.getName());
@@ -145,7 +151,7 @@ public class MaterialMapper {
         String sql = "DELETE FROM materials WHERE id = ?";
 
         try (Connection conn = Database.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, id);
             int rows = stmt.executeUpdate();

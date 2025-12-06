@@ -17,7 +17,7 @@ public class CustomerMapper {
         String sql = "INSERT INTO customers (firstname, lastname, email, phone, street, city, zipcode, country) VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING id";
 
         try (Connection conn = Database.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, customer.getFirstName());
             stmt.setString(2, customer.getLastName());
@@ -55,7 +55,7 @@ public class CustomerMapper {
         String sql = "DELETE FROM customers WHERE id = ?";
 
         try (Connection conn = Database.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, id);
             int rows = stmt.executeUpdate();
@@ -78,7 +78,7 @@ public class CustomerMapper {
         String sql = "UPDATE customers SET firstname = ?, lastname = ?, email = ?, phone = ?, street = ?, city = ?, zipcode = ?, country = ? WHERE id = ?";
 
         try (Connection conn = Database.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, customer.getFirstName());
             stmt.setString(2, customer.getLastName());
@@ -135,7 +135,7 @@ public class CustomerMapper {
         String sql = "SELECT * FROM customers WHERE id = ?";
 
         try (Connection conn = Database.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, id);
 
@@ -163,9 +163,9 @@ public class CustomerMapper {
     public List<Customer> getCustomerByName(String name) throws DatabaseException {
 
         List<Customer> customers = new ArrayList<>();
-        //TODO: Skal laves
 
         return customers;
+
     }
 
     // _____________________________________________________________________

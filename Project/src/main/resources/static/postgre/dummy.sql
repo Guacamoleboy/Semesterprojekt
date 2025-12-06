@@ -43,9 +43,9 @@ INSERT INTO materials (category_id, name, description, unit, length, width, heig
 (1, 'Lægte 420', '38x73 mm ubh. til bagside af dør', 'stk', 420, 3.8, 7.3, 35.00),
 (1, 'Reglar 270', '45x95 mm ub. løsholter til skur gavle', 'stk', 270, 4.5, 9.5, 27.00),
 (1, 'Reglar 240', '45x95 mm ub. løsholter til skur sider', 'stk', 240, 4.5, 9.5, 22.00),
-(1, 'Spær 600', '45x195 mm spærtræ ubh. remme i sider, sadles ned i stolper', 'stk', 600, 4.5, 19.5, 310.00),
+(1, 'Spær 600 | Rem', '45x195 mm spærtræ ubh. remme i sider, sadles ned i stolper', 'stk', 600, 4.5, 19.5, 310.00),
 (1, 'Spær 480', '45x195 mm spærtræ ubh. remme i sider, sadles ned i stolper (skur del, deles)', 'stk', 480, 4.5, 19.5, 250.00),
-(1, 'Spær 600', '45x195 mm spærtræ ubh. 15 stk spær, monteres på rem', 'stk', 600, 4.5, 19.5, 330.00),
+(1, 'Spær 600 | Tagbjælker', '45x195 mm spærtræ ubh. 15 stk spær, monteres på rem', 'stk', 600, 4.5, 19.5, 330.00),
 (1, 'Stolpe 300', '97x97 mm trykimp. Stolper nedgraves 90 cm i jord', 'stk', 300, 9.7, 9.7, 190.00),
 (1, 'Brædt 210', '19x100 mm trykimp. beklædning af skur 1 på 2', 'stk', 210, 1.9, 10, 40.00),
 (1, 'Vandbrædt 540', '19x100 mm trykimp. på stern i sider', 'stk', 540, 1.9, 10, 65.00),
@@ -72,7 +72,7 @@ INSERT INTO carport_category (name) VALUES
 ('Høj rejsning');
 
 INSERT INTO carport_orders (customer_id, carport_category_id, width, length, height, angle, roof, has_tool_shed, tool_shed_width, tool_shed_length, has_trapez) VALUES
-(1, 1, 500.00, 600.00, 250.00, 15.00, 'Fladt tag', FALSE, NULL, NULL, FALSE),
+(1, 1, 600.00, 780.00, 250.00, 15.00, 'Fladt tag', FALSE, NULL, NULL, FALSE),
 (2, 2, 400.00, 500.00, 240.00, 20.00, 'Rejsning', TRUE, 150.00, 200.00, TRUE),
 (5, 1, 450.00, 550.00, 245.00, 18.00, 'Fladt tag', FALSE, NULL, NULL, FALSE);
 
