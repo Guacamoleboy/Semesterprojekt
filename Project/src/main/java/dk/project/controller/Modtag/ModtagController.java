@@ -117,8 +117,6 @@ public class ModtagController {
                         java.time.LocalDateTime.now(), null
                 );
 
-                // TODO: Jonas Comment 01/12-2025
-                // TODO: Why is this done like this? Seems dumb creating it twice #ChatGPT
                 // Generates a new order with correct ID
                 OrderMapper orderMapper = new OrderMapper();
                 int orderId = orderMapper.newOrder(order);
@@ -128,6 +126,7 @@ public class ModtagController {
                 e.printStackTrace();
                 ctx.json(Map.of("success", false, "error", e.getMessage()));
             }
+
         });
 
     }

@@ -143,11 +143,21 @@ public class StatusController {
                         c.getRoof()
                 );
 
-                /* Svg initial setup */
-                String svg = SvgGenerator.generateTopViewSvg(600, 780, 15, 6);
+                // Svg Setup
+                int rafterSpacing = 55;
+                int poleSpacing = 310;
+                int svgLength = (int) c.getWidth();
+                int svgWidth = (int) c.getLength();
+
+                // Svg Calc
+                int rafterAmount = (int) Math.ceil((double) svgWidth / rafterSpacing);
+                int polesAmount = (int) Math.ceil((double) svgWidth / poleSpacing);
+
+                // Svg initial setup
+                String svg = SvgGenerator.generateTopViewSvg(svgLength, svgWidth , rafterAmount, polesAmount);
                 SvgGenerator.saveSvgFile(svg, orderNumber + "_render.svg");
 
-                /* Render to -> .png */
+                // Render to -> .png
                 Path pngPath = Path.of("src/main/resources/static/pdf/modtag/" + orderNumber + "_render.png");
                 SvgConverter.convertSvgToPng(svg, pngPath);
 

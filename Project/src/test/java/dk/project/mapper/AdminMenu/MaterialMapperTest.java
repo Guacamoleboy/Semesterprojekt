@@ -49,7 +49,7 @@ class MaterialMapperTest {
             INSERT INTO materials
                 (category_id, name, description, unit, length, width, height, price)
             VALUES
-                (1, 'Regel 45x95 mm', 'Trykimprægneret træ', 'stk', 300, 45, 95, 29.95),
+                (1, 'Tryk Træ 45x95 mm', 'Trykimprægneret træ', 'stk', 300, 45, 95, 29.95),
                 (1, 'Skruer 5x40 mm', 'Galvaniserede skruer', 'pakke', NULL, NULL, NULL, 49.95)
             """);
 
@@ -68,7 +68,7 @@ class MaterialMapperTest {
         // Assert
         assertNotNull(list);
         assertEquals(2, list.size());
-        assertEquals("Regel 45x95 mm", list.get(0).getName());
+        assertEquals("Tryk Træ 45x95 mm", list.get(0).getName());
         assertEquals("Skruer 5x40 mm", list.get(1).getName());
 
     }
@@ -84,7 +84,7 @@ class MaterialMapperTest {
         // Assert
         assertNotNull(m);
         assertEquals(1, m.getId());
-        assertEquals("Regel 45x95 mm", m.getName());
+        assertEquals("Tryk Træ 45x95 mm", m.getName());
         assertEquals(300, m.getLength());
         assertEquals(45, m.getWidth());
         assertEquals(95, m.getHeight());
@@ -129,7 +129,7 @@ class MaterialMapperTest {
 
         // Arrange
         Material m = materialMapper.getMaterialByID(1);
-        m.setName("Opdateret Regel");
+        m.setName("Opdateret Tryk Træ");
         m.setPrice(39.95);
 
         // Act
@@ -137,7 +137,7 @@ class MaterialMapperTest {
 
         // Assert
         Material updated = materialMapper.getMaterialByID(1);
-        assertEquals("Opdateret Regel", updated.getName());
+        assertEquals("Opdateret Tryk Træ", updated.getName());
         assertEquals(39.95, updated.getPrice());
 
     }
