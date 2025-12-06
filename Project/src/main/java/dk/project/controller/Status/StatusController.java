@@ -8,7 +8,6 @@ import com.lowagie.text.FontFactory;
 import com.lowagie.text.PageSize;
 import com.lowagie.text.pdf.PdfWriter;
 import dk.project.DTO.MaterialUsage;
-import dk.project.controller.Calculator.CalculatorController;
 import dk.project.entity.CarportOrder;
 import dk.project.entity.Order;
 import dk.project.exception.DatabaseException;
@@ -22,9 +21,7 @@ import io.javalin.Javalin;
 import java.io.FileOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class StatusController {
 
@@ -146,11 +143,21 @@ public class StatusController {
                         c.getRoof()
                 );
 
-                /* Svg initial setup */
-                String svg = SvgGenerator.generateTopViewSvg(600, 780, 15, 6);
+                // Svg Setup
+                int rafterSpacing = 55;
+                int poleSpacing = 310;
+                int svgLength = (int) c.getWidth();
+                int svgWidth = (int) c.getLength();
+
+                // Svg Calc
+                int rafterAmount = (int) Math.ceil((double) svgWidth / rafterSpacing);
+                int polesAmount = (int) Math.ceil((double) svgWidth / poleSpacing);
+
+                // Svg initial setup
+                String svg = SvgGenerator.generateTopViewSvg(svgLength, svgWidth , rafterAmount, polesAmount);
                 SvgGenerator.saveSvgFile(svg, orderNumber + "_render.svg");
 
-                /* Render to -> .png */
+                // Render to -> .png
                 Path pngPath = Path.of("src/main/resources/static/pdf/modtag/" + orderNumber + "_render.png");
                 SvgConverter.convertSvgToPng(svg, pngPath);
 
@@ -229,7 +236,28 @@ public class StatusController {
 
                 }
 
-                PdfGenerator.addPageWithBackgroundAndRows(document, writer, page2, "Træ & Tagplader", rowsPage2);
+                // Saves as Map object for later use
+                List<Map<String, Object>> materialsAsMaps = new ArrayList<>();
+
+                // For-each loop over MaterialUsage
+                for (MaterialUsage m : materials) {
+                    // Initial HashMap
+                    Map<String, Object> map = new HashMap<>();
+
+                    map.put("categoryId", m.getMaterial().getCategory_id());
+                    map.put("name", m.getMaterial().getName());
+                    map.put("length", m.getMaterial().getLength());
+                    map.put("width", m.getMaterial().getWidth());
+                    map.put("height", m.getMaterial().getHeight());
+                    map.put("amount", m.getAmount());
+                    map.put("unit", m.getMaterial().getUnit() != null ? m.getMaterial().getUnit() : "stk");
+
+                    // Add
+                    materialsAsMaps.add(map);
+
+                }
+
+                PdfGenerator.addPageWithMaterialsByCategory(document, writer, page2, materialsAsMaps);
                 PdfGenerator.addImageOverBackground(document, page3, renderPage3);
                 PdfGenerator.addFullPageImage(document, page4);
                 document.close();

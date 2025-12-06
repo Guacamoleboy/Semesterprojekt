@@ -1,5 +1,7 @@
+// Packages
 package dk.project.mapper;
 
+// Imports
 import dk.project.db.Database;
 import dk.project.entity.CarportCategory;
 import dk.project.exception.DatabaseException;
@@ -14,7 +16,7 @@ public class CarportCategoryMapper {
     public CarportCategory getById(int id) throws DatabaseException {
         String sql = "SELECT * FROM carport_category WHERE id = ?";
         try (Connection conn = Database.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, id);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {

@@ -1,10 +1,13 @@
+// Package
 package dk.project.controller.AdminMenu;
 
+// Imports
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 
 public class CMSController {
 
+    // Attributes
     private static final CMSController controller = new CMSController();
 
     // _______________________________________________
@@ -20,7 +23,7 @@ public class CMSController {
 
     private void getCMSFees(Context ctx) {
 
-        //TODO: Laves gebyre? (Opsætnings, leverings og administrations gebyre?)
+        // TODO: Last week | Add or remove from Project
 
     }
 
@@ -28,9 +31,8 @@ public class CMSController {
 
     private void updateCMSFees(Context ctx) {
 
-        //TODO: Laves gebyre? (Opsætnings, leverings og administrations gebyre?)
-
+        // TODO: Last week | Add or remove from Project
 
     }
-}
 
+}

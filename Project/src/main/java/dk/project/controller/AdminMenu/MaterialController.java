@@ -1,5 +1,7 @@
+// Package
 package dk.project.controller.AdminMenu;
 
+// Imports
 import dk.project.DTO.MaterialDTO;
 import dk.project.entity.AdminMenu.MaterialCategory;
 import dk.project.entity.AdminMenu.Material;
@@ -8,12 +10,12 @@ import dk.project.mapper.AdminMenu.MaterialCategoryMapper;
 import dk.project.mapper.AdminMenu.MaterialMapper;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class MaterialController {
 
+    // Attributes
     private static final MaterialController controller = new MaterialController();
     private final MaterialMapper materialMapper = new MaterialMapper();
     private final MaterialCategoryMapper categoryMapper = new MaterialCategoryMapper();
@@ -36,7 +38,6 @@ public class MaterialController {
 
         List<Material> materials = materialMapper.getMaterials();
         List<MaterialCategory> categories = categoryMapper.getCategories();
-
         List<MaterialDTO> DTOMaterialList = new ArrayList<>();
 
         for (Material material : materials) {
@@ -60,8 +61,8 @@ public class MaterialController {
         String idParam = ctx.formParam("serialnumber");
         String name = ctx.formParam("name");
         String categoryIdParam = ctx.formParam("category_id");
-
         Integer id = null;
+
         try {
 
             if (idParam != null && !idParam.isEmpty()) {
@@ -70,7 +71,6 @@ public class MaterialController {
 
         } catch (NumberFormatException e) {
 
-            //TODO: Notification - Forkert input (Skal være tal)!!
             ctx.status(400);
 
         }
@@ -136,9 +136,9 @@ public class MaterialController {
         stringPrice == null || stringPrice.isEmpty() ||
         stringCategoryId == null || stringCategoryId.isEmpty()) {
 
-            //TODO: Notification!!
             ctx.status(400);
             return;
+
         }
 
         try {
@@ -156,8 +156,8 @@ public class MaterialController {
 
         } catch (NumberFormatException e) {
 
-            //TODO: Notification - Forkert input (Skal være tal)!!
             ctx.status(400);
+
         }
     }
 
@@ -177,7 +177,6 @@ public class MaterialController {
 
         if (idParam == null || idParam.isEmpty()) {
 
-            //TODO: Notification - ID er påkrævet!
             ctx.status(400);
             return;
 
@@ -196,7 +195,6 @@ public class MaterialController {
 
             if (material == null) {
 
-                //TODO: Notification - Materiale ikke fundet!
                 ctx.status(404);
                 return;
 
@@ -216,10 +214,10 @@ public class MaterialController {
 
         } catch (NumberFormatException e) {
 
-            //TODO: Notification - Skal være et tal (Forkert input!)!
             ctx.status(400);
 
         }
+
     }
 
     // _______________________________________________
@@ -232,7 +230,6 @@ public class MaterialController {
 
             if (idParam == null || idParam.isEmpty()) {
 
-                //TODO: Notification - ID er påkrævet!
                 ctx.status(400);
                 return;
 
@@ -244,14 +241,12 @@ public class MaterialController {
 
         } catch (NumberFormatException e) {
 
-            //TODO: Notification - Forkert input - Skal være et tal!
             ctx.status(400);
 
         }
     }
 
     // _______________________________________________
-
 
     private String getMaterialCategoryName(Material material, List<MaterialCategory> categories) {
 

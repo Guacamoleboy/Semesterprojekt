@@ -1,5 +1,7 @@
+// Package
 package dk.project.controller.Login;
 
+// Imports
 import dk.project.entity.User;
 import dk.project.mapper.UserMapper;
 import dk.project.server.ThymeleafSetup;
@@ -9,7 +11,10 @@ import org.mindrot.jbcrypt.BCrypt;
 
 public class LoginController {
 
+    // Attributes
     UserMapper usermapper = new UserMapper();
+
+    // _______________________________________________
 
     public static void registerRoutes(Javalin app) {
 
@@ -17,11 +22,13 @@ public class LoginController {
 
         app.get("/login", ctx -> ctx.html(ThymeleafSetup.render("login.html", null)));
         app.post("/login", controller::login);
+
     }
 
     // _______________________________________________
 
     private void login(Context ctx) {
+
         String username = ctx.formParam("username");
         String password = ctx.formParam("password");
 

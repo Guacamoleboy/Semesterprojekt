@@ -57,7 +57,7 @@ public class CarportOrderMapper {
         String sql = "DELETE FROM carport_orders WHERE id = ?";
 
         try (Connection conn = Database.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, id);
 
@@ -81,7 +81,7 @@ public class CarportOrderMapper {
                 "has_tool_shed = ?, tool_shed_width = ?, tool_shed_length = ?, has_trapez = ? WHERE id = ?";
 
         try (Connection conn = Database.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, order.getCustomer().getId());
             stmt.setInt(2, order.getCategory().getId());
@@ -146,7 +146,7 @@ public class CarportOrderMapper {
         String sql = "SELECT * FROM carport_orders WHERE id = ?";
 
         try (Connection conn = Database.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, id);
 
@@ -178,7 +178,7 @@ public class CarportOrderMapper {
         String sql = "SELECT * FROM carport_orders WHERE user_id = ? ORDER BY id";
 
         try (Connection conn = Database.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, userId);
 

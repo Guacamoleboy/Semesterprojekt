@@ -1,19 +1,20 @@
+// Package
 package dk.project.controller.AdminMenu;
 
+// Imports
 import dk.project.entity.User;
 import dk.project.exception.DatabaseException;
 import dk.project.mapper.UserMapper;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 import org.mindrot.jbcrypt.BCrypt;
-
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
 
 public class UserController {
 
-
+    // Attributes
     private static final UserController controller = new UserController();
     private final UserMapper userMapper = new UserMapper();
 
@@ -35,8 +36,8 @@ public class UserController {
         String idParam = ctx.formParam("id");
         String username = ctx.formParam("username");
         String roleParam = ctx.formParam("role");
-
         int id = 0;
+
         if (idParam != null && !idParam.isEmpty()) {
 
             try { id = Integer.parseInt(idParam); } catch (NumberFormatException ignore) {}
@@ -44,6 +45,7 @@ public class UserController {
         }
 
         int roleID = 0;
+
         if (roleParam != null && !roleParam.isEmpty()) {
 
             try { roleID = Integer.parseInt(roleParam); } catch (NumberFormatException ignore) {}
@@ -73,14 +75,13 @@ public class UserController {
         }
 
         ctx.json(result);
-    }
 
+    }
 
     // _______________________________________________
 
     private void createUser(Context ctx) {
 
-        //TODO: Skal lige lave rigtige notifications!
         String username = ctx.formParam("username");
         String password = ctx.formParam("password");
         String roleID = ctx.formParam("role");
@@ -98,7 +99,7 @@ public class UserController {
 
             User user = new User();
             user.setUsername(username);
-            user.setPassword_hash(BCrypt.hashpw(password, BCrypt.gensalt())); // sikker hashing
+            user.setPassword_hash(BCrypt.hashpw(password, BCrypt.gensalt()));
             user.setRoleID(id);
             user.setCreatedAt(new Timestamp(System.currentTimeMillis()));
 
@@ -123,6 +124,7 @@ public class UserController {
         String stringuserid = ctx.formParam("id");
         String newusername = ctx.formParam("username");
         String stringroleID = ctx.formParam("role");
+
         try {
 
             if (newusername == null || stringroleID == null || stringuserid == null) {
@@ -140,9 +142,7 @@ public class UserController {
             user.setUsername(newusername);
             user.setRoleID(roleID);
 
-
             userMapper.updateUser(user);
-
 
         } catch (NumberFormatException e) {
 
@@ -182,6 +182,7 @@ public class UserController {
             ctx.status(500).result("Fejl ved sletning af bruger!");
 
         }
+
     }
 
 }

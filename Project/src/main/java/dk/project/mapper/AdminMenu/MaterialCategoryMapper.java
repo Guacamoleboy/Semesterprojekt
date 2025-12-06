@@ -1,14 +1,19 @@
+// Package
 package dk.project.mapper.AdminMenu;
 
+// Imports
 import dk.project.db.Database;
 import dk.project.entity.AdminMenu.MaterialCategory;
 import dk.project.exception.DatabaseException;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MaterialCategoryMapper {
+
+    // Attributes
+
+    // _______________________________________________
 
     public List<MaterialCategory> getCategories() throws DatabaseException {
 
@@ -40,7 +45,7 @@ public class MaterialCategoryMapper {
 
         String sql = "SELECT * FROM materials_category WHERE id = ?";
         try (Connection conn = Database.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, id);
             try (ResultSet rs = stmt.executeQuery()) {
