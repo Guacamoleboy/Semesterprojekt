@@ -2523,7 +2523,6 @@ body::-webkit-scrollbar { /* All other browsers */
 
 /* ___________________________________________ */
 
-
 @media screen and (max-width: 390px) and (orientation: portrait){
 
     /* ########################################################### */
@@ -2533,6 +2532,7 @@ body::-webkit-scrollbar { /* All other browsers */
     /* Overall Settings */
     html, body {
         overflow-y: auto !important;
+        background-color: var(--fog-blue) !important;
     }
 
     /* ########################################################### */
@@ -2568,7 +2568,7 @@ body::-webkit-scrollbar { /* All other browsers */
     .hero-2 {
         margin-top: 7rem !important;
         padding-bottom: 2rem !important;
-        height: auto !important;
+        height: 40rem !important;
     }
 
     /* Section 3 */

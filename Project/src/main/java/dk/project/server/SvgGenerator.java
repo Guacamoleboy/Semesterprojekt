@@ -34,19 +34,45 @@ public class SvgGenerator {
 
             double x = (i == rafterAmount - 1) ? width - woodWidth : i * raftersMargin;
 
+            // Rafters
             raftersCalc.append(
                     String.format(
                             "<rect x=\"%s\" y=\"0\" width=\"%s\" height=\"%s\" />\n",
                             x, woodWidth, length
                     )
             );
+
+            // rafterMargin Visual Text
+            if (i < 2) {
+
+                double startX = x;
+                double endX = x + raftersMargin;
+                double arrowY = length + 20;
+
+                // Arrow
+                raftersCalc.append(String.format("""
+                <line x1="%s" y1="%s" x2="%s" y2="%s"
+                    stroke="#000" marker-start="url(#beginArrow)" marker-end="url(#endArrow)" />
+                """,
+                startX, arrowY, endX, arrowY
+                ));
+
+                // Text
+                raftersCalc.append(String.format("""
+                <text x="%s" y="%s" font-size="20" text-anchor="middle">55</text>
+                """,
+                (startX + endX) / 2, arrowY - 5
+                ));
+
+            }
+
         }
 
         // __________________________________________________________________
 
         StringBuilder polesCalc = new StringBuilder();
         for (int i = 0; i < polesAmount; i++) {
-            int x = i * poleSpacing;
+            int x = 110 + i * poleSpacing;
 
             polesCalc.append(String.format("""
                 <rect x="%s" y="32" width="%s" height="%s" />
