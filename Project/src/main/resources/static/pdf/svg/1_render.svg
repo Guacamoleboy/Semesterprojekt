@@ -33,7 +33,13 @@
 
         <!-- Spær -->
         <rect x="0.0" y="0" width="4.5" height="600" />
+<line x1="0.0" y1="620.0" x2="55.0" y2="620.0"
+    stroke="#000" marker-start="url(#beginArrow)" marker-end="url(#endArrow)" />
+<text x="27.5" y="615.0" font-size="20" text-anchor="middle">55</text>
 <rect x="55.0" y="0" width="4.5" height="600" />
+<line x1="55.0" y1="620.0" x2="110.0" y2="620.0"
+    stroke="#000" marker-start="url(#beginArrow)" marker-end="url(#endArrow)" />
+<text x="82.5" y="615.0" font-size="20" text-anchor="middle">55</text>
 <rect x="110.0" y="0" width="4.5" height="600" />
 <rect x="165.0" y="0" width="4.5" height="600" />
 <rect x="220.0" y="0" width="4.5" height="600" />
@@ -57,12 +63,12 @@
         <line class="svg-cross" x1="55" y1="569.5" x2="600" y2="35" stroke="#000000" stroke-dasharray="5,5"/>
 
         <!-- Stolper -->
-        <rect x="0" y="32" width="10" height="10" />
-<rect x="0" y="562" width="10" height="10" />
-<rect x="310" y="32" width="10" height="10" />
-<rect x="310" y="562" width="10" height="10" />
-<rect x="620" y="32" width="10" height="10" />
-<rect x="620" y="562" width="10" height="10" />
+        <rect x="110" y="32" width="10" height="10" />
+<rect x="110" y="562" width="10" height="10" />
+<rect x="420" y="32" width="10" height="10" />
+<rect x="420" y="562" width="10" height="10" />
+<rect x="730" y="32" width="10" height="10" />
+<rect x="730" y="562" width="10" height="10" />
 
 
     </svg>

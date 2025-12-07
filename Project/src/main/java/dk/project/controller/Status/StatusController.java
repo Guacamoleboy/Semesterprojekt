@@ -150,6 +150,7 @@ public class StatusController {
                 int svgWidth = (int) c.getLength();
 
                 // Svg Calc
+                // Math.ceil rounds up to nearest whole number from a decimal point of view.
                 int rafterAmount = (int) Math.ceil((double) svgWidth / rafterSpacing);
                 int polesAmount = (int) Math.ceil((double) svgWidth / poleSpacing);
 
