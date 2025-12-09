@@ -119,7 +119,7 @@ public class UserController {
 
             // Save file in correct path
             String filename = uploadedFile.filename();
-            Path uploadPath = Paths.get("src/main/resources/public/images/staff/", filename);
+            Path uploadPath = Paths.get("src/main/resources/static/images/staff/", filename);
 
             // Saves file to uploadPath
             try (OutputStream os = java.nio.file.Files.newOutputStream(uploadPath)) {
