@@ -118,28 +118,6 @@ public class UserMapper {
 
     // ________________________________________________________________________________
 
-    public String getRoleNameByID(int id) throws DatabaseException {
-        String sql = "SELECT name FROM roles WHERE id = ?";
-
-        try (Connection conn = Database.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            stmt.setInt(1, id);
-            ResultSet rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                return rs.getString("name");
-            } else {
-                return null;
-            }
-
-        } catch (SQLException e) {
-            throw new DatabaseException("Fejl ved hentning af rolletype for ID: " + id);
-        }
-    }
-
-    // ________________________________________________________________________________
-
     public void updateUser(User user) {
         String sql = "UPDATE users SET username = ?, password_hash = ?, role_id = ? WHERE id = ?";
         try (Connection conn = Database.getConnection();
