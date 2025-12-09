@@ -22,6 +22,7 @@ public class LoginController {
 
         app.get("/login", ctx -> ctx.html(ThymeleafSetup.render("login.html", null)));
         app.post("/login", controller::login);
+        app.post("/logout", controller::logOut);
 
     }
 
@@ -58,6 +59,13 @@ public class LoginController {
         } catch (Exception e) {
             ctx.redirect("/login?error=500");
         }
+    }
+
+    // _______________________________________________
+
+    private void logOut(Context ctx) {
+        ctx.sessionAttribute("user", null);
+        ctx.redirect("/login");
     }
 
 }
