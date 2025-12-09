@@ -99,6 +99,9 @@ document.addEventListener("DOMContentLoaded", function() {
             case "offerCreatedAdmin":
                 showNotification("Tilbud afsendt", "green");
                 break;
+            case "loggedOut":
+                showNotification("Du er logged ud!", "fog");
+                break;
         }
     }
 
