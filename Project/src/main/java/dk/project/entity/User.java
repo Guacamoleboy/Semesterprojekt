@@ -9,20 +9,34 @@ public class User {
     private String username;
     private int roleID;
     private String password_hash;
+    private String picture;
     private Timestamp createdAt;
 
     // __________________________________________________________
 
-    public User (int id, String username, int roleID, String password_hash, Timestamp createdAt) {
+    public User (int id, String username, int roleID, String password_hash, String picture, Timestamp createdAt) {
         this.id = id;
         this.username = username;
         this.roleID = roleID;
         this.password_hash = password_hash;
         this.createdAt = createdAt;
+        this.picture = picture;
     }
 
     public User() {
 
+    }
+
+    // __________________________________________________________
+
+    public String getPicture() {
+        return this.picture;
+    }
+
+    // __________________________________________________________
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     // __________________________________________________________

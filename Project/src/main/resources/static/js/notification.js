@@ -102,6 +102,9 @@ document.addEventListener("DOMContentLoaded", function() {
             case "loggedOut":
                 showNotification("Du er logged ud!", "fog");
                 break;
+            case "userCreated":
+                showNotification("Bruger oprettet", "fog");
+                break;
         }
     }
 
