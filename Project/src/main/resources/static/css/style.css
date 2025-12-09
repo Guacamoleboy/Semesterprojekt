@@ -1867,7 +1867,6 @@ body::-webkit-scrollbar { /* All other browsers */
     overflow-y: auto;
     flex: 1 1 0;
     max-width: none;
-
     min-height: 100vh;
 }
 
@@ -2013,6 +2012,18 @@ body::-webkit-scrollbar { /* All other browsers */
 .profile-picture-top img {
     width: 10rem;
     height: auto;
+}
+
+#pictureInput {
+    border-radius: 5px !important;
+    color: var(--fog-blue) !important;
+    background-color: var(--fog-white) !important;
+    font-size: 0.8rem !important;
+    padding: 0.2rem 0.4rem !important;
+    height: 1.7rem !important;
+    text-align: left;
+    line-height: 1.7rem;
+    vertical-align: middle;
 }
 
 /* ___________________________________________ */

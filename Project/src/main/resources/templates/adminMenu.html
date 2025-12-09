@@ -46,7 +46,7 @@
         <!-- Side Menu Start -->
         <div class="guac-col-2 profile-nav">
             <div class="profile-picture-top guac-justify-center guac-align-center">
-                <img src="/images/page-content/menu/pp-1.png" alt="Profile picture">
+                <img th:src="${user.picture}" alt="Profile picture">
             </div>
             <div class="profile-title">
                 <h3 th:text="${#strings.capitalizeWords(user.username)}">Brugernavn</h3>
@@ -125,7 +125,6 @@
 
                 <div id="CMSsearchUser"></div>
 
-
                 <div class="order-nav-row">
                     <button type="submit" class="guac-btn action-btn" id="searchUserbtn">Søg bruger</button>
                     <button type="button" id="prevCMSUsers" class="guac-btn action-btn" style="display:none">Forrige</button>
@@ -138,25 +137,31 @@
             <hr class="section-divider">
 
             <!--  Content Section -->
-            <div class="content-section" id="addNewUserAdmin">
-                <h2>Tilføj ny bruger</h2>
-                <p>Udfyld oplysninger for at oprette en ny bruger:</p>
-                <div class="guac-row input-group">
-                    <div class="guac-col">
-                        <label >Brugernavn</label>
-                        <input type="text" name="username" placeholder="Brugernavn...">
+            <form id="addNewUserForm" enctype="multipart/form-data">
+                <div class="content-section" id="addNewUserAdmin">
+                    <h2>Tilføj ny bruger</h2>
+                    <p>Udfyld oplysninger for at oprette en ny bruger:</p>
+                    <div class="guac-row input-group">
+                        <div class="guac-col">
+                            <label >Brugernavn</label>
+                            <input type="text" name="username" placeholder="Brugernavn...">
+                        </div>
+                        <div class="guac-col">
+                            <label>Password</label>
+                            <input type="password" name="password" placeholder="Password...">
+                        </div>
+                        <div class="guac-col">
+                            <label>rolle ID</label>
+                            <input type="number" name="role" placeholder="1...">
+                        </div>
+                        <div class="guac-col">
+                            <label>Profilbillede</label>
+                            <input type="file" name="picture" id="pictureInput">
+                        </div>
                     </div>
-                    <div class="guac-col">
-                        <label>Password</label>
-                        <input type="password" name="password" placeholder="Password...">
-                    </div>
-                    <div class="guac-col">
-                        <label>rolle ID</label>
-                        <input type="email" name="role" placeholder="1...">
-                    </div>
+                    <button type="button" id="createUser" class="guac-btn action-btn">Opret bruger</button>
                 </div>
-                <button type="button" id= "createUser" class="guac-btn action-btn">Opret bruger</button>
-            </div>
+            </form>
             <!--  Content Section -->
 
             <hr class="section-divider"> <!-- Important to have in the end for sticky UI feel -->

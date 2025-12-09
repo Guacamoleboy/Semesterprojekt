@@ -52,6 +52,7 @@ class UserMapperTest {
         u.setUsername("unittest");
         u.setPassword_hash("guacamoleboy123!");
         u.setRoleID(1);
+        u.setPicture("/images/staff/1_photo.png");
         u.setCreatedAt(new Timestamp(System.currentTimeMillis()));
 
         // Act
