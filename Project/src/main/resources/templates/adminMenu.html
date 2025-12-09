@@ -49,8 +49,8 @@
                 <img src="/images/page-content/menu/pp-1.png" alt="Profile picture">
             </div>
             <div class="profile-title">
-                <h3>Jonas Larsen</h3>
-                <p>Sælger</p>
+                <h3 th:text="${#strings.capitalizeWords(user.username)}">Brugernavn</h3>
+                <p th:text="${#strings.capitalizeWords(role)}">Rolle</p>
             </div>
             <div class="profile-buttons">
                 <div class="dropdown">
@@ -88,6 +88,9 @@
                         <a class="guac-btn guac-btn-profile" href="#">Prisliste</a>
                         <a class="guac-btn guac-btn-profile" href="#">Søg</a>
                     </div>
+                </div>
+                <div class="dropdown">
+                    <a class="guac-btn guac-btn-profile dropdown-toggle" id="logOutAdminMenu">Log ud</a>
                 </div>
             </div>
             <div class="profile-end-logo guac-justify-center guac-align-center">

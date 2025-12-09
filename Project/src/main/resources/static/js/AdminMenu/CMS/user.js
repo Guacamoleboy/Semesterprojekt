@@ -11,6 +11,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // _________________________________________________
 
+    document.getElementById("logOutAdminMenu").addEventListener("click", () => {
+        window.location.href = "/logout";
+    });
+
+    // _________________________________________________
+
     CMSuserSearch.addEventListener("click", async function () {
 
         const form = new FormData(document.getElementById("CMSuserSearch"));
@@ -259,4 +265,5 @@ window.addEventListener("DOMContentLoaded", () => {
         container.prepend(hideBtn);
 
     }
+
 });
