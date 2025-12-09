@@ -27,6 +27,13 @@ public class UserController {
         app.post("/updateUser", controller::updateUser);
         app.post("/deleteUser", controller::deleteUser);
 
+        // ____________________________________________________
+
+        app.get("/logout", ctx -> {
+            ctx.sessionAttribute("user", null);
+            ctx.redirect("/login?success=loggedOut");
+        });
+
     }
 
     // _______________________________________________
