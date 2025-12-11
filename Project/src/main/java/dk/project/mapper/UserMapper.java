@@ -15,14 +15,15 @@ public class UserMapper {
     // _____________________________________________________________________
 
     public void newUser(User user) throws DatabaseException {
-        String sql = "INSERT INTO users (username, role_id, password_hash, created_at) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO users (username, role_id, password_hash, picture, created_at) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = Database.getConnection();
             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
             stmt.setString(1, user.getUsername());
             stmt.setInt(2, user.getRoleID());
             stmt.setString(3, user.getPassword_hash());
-            stmt.setTimestamp(4, user.getCreatedAt());
+            stmt.setString(4, user.getPicture());
+            stmt.setTimestamp(5, user.getCreatedAt());
             stmt.executeUpdate();
 
             // Gets the auto generated ID and adds it to our User Object
@@ -165,6 +166,7 @@ public class UserMapper {
                 rs.getString("username"),
                 rs.getInt("role_id"),
                 rs.getString("password_hash"),
+                rs.getString("picture"),
                 rs.getTimestamp("created_at")
         );
     }
@@ -204,6 +206,28 @@ public class UserMapper {
             }
         } catch (SQLException e) {
             throw new RuntimeException("Error deleting user with ID " + user.getId(), e);
+        }
+    }
+
+    // ________________________________________________________________________________
+
+    public String getRoleNameByID(int id) throws DatabaseException {
+        String sql = "SELECT name FROM roles WHERE id = ?";
+
+        try (Connection conn = Database.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return rs.getString("name");
+            } else {
+                return null;
+            }
+
+        } catch (SQLException e) {
+            throw new DatabaseException("Fejl ved hentning af rolletype for ID: " + id);
         }
     }
 

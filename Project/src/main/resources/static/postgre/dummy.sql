@@ -18,9 +18,9 @@ INSERT INTO roles (name) VALUES
 ('admin');
 
 -- Users using our BCrypt extension
-INSERT INTO users (username, password_hash, role_id) VALUES
-('employee', crypt('sale', gen_salt('bf')), 1),
-('admin', crypt('admin', gen_salt('bf')), 2);
+INSERT INTO users (username, password_hash, role_id, picture) VALUES
+('employee', crypt('sale', gen_salt('bf')), 1, '/images/staff/1_photo.png'),
+('admin', crypt('admin', gen_salt('bf')), 2, '/images/staff/2_photo.png');
 
 INSERT INTO customers (firstname, lastname, email, phone, street, city, zipcode, country) VALUES
 ('Mads', 'Kristensen', 'mads.kristensen@example.com', '+4522334455', 'Nørrebrogade 102', 'København', '2200', 'Denmark'),

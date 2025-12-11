@@ -54,6 +54,7 @@
     --am-nav-bar: #0e5ba8;
     --am-action-btn-hover: #0074e0;
     --am-product-card: #00000040;
+    --am-red: #b60000;
 
 }
 
@@ -1811,6 +1812,11 @@ body::-webkit-scrollbar { /* All other browsers */
     margin-bottom: 1.0rem !important;
 }
 
+#logOutAdminMenu:hover {
+    opacity: 1 !important;
+    background-color: var(--am-red) !important;
+    color: var(--fog-white) !important;
+}
 
 /* ___________________________________________ */
 
@@ -1861,7 +1867,6 @@ body::-webkit-scrollbar { /* All other browsers */
     overflow-y: auto;
     flex: 1 1 0;
     max-width: none;
-
     min-height: 100vh;
 }
 
@@ -2007,6 +2012,18 @@ body::-webkit-scrollbar { /* All other browsers */
 .profile-picture-top img {
     width: 10rem;
     height: auto;
+}
+
+#pictureInput {
+    border-radius: 5px !important;
+    color: var(--fog-blue) !important;
+    background-color: var(--fog-white) !important;
+    font-size: 0.8rem !important;
+    padding: 0.2rem 0.4rem !important;
+    height: 1.7rem !important;
+    text-align: left;
+    line-height: 1.7rem;
+    vertical-align: middle;
 }
 
 /* ___________________________________________ */
@@ -2523,7 +2540,6 @@ body::-webkit-scrollbar { /* All other browsers */
 
 /* ___________________________________________ */
 
-
 @media screen and (max-width: 390px) and (orientation: portrait){
 
     /* ########################################################### */
@@ -2533,6 +2549,7 @@ body::-webkit-scrollbar { /* All other browsers */
     /* Overall Settings */
     html, body {
         overflow-y: auto !important;
+        background-color: var(--fog-blue) !important;
     }
 
     /* ########################################################### */
@@ -2568,7 +2585,7 @@ body::-webkit-scrollbar { /* All other browsers */
     .hero-2 {
         margin-top: 7rem !important;
         padding-bottom: 2rem !important;
-        height: auto !important;
+        height: 40rem !important;
     }
 
     /* Section 3 */
