@@ -11,6 +11,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // _________________________________________________
 
+    document.getElementById("logOutAdminMenu").addEventListener("click", () => {
+        window.location.href = "/logout";
+    });
+
+    // _________________________________________________
+
     CMSuserSearch.addEventListener("click", async function () {
 
         const form = new FormData(document.getElementById("CMSuserSearch"));
@@ -30,13 +36,32 @@ window.addEventListener("DOMContentLoaded", () => {
 
     CMScreateUserBtn.addEventListener("click", async (e) => {
 
-        const section = CMScreateUserBtn.closest(".content-section");
+        const form = document.getElementById("addNewUserForm");
+        const username = form.querySelector('input[name="username"]').value.trim();
+        const password = form.querySelector('input[name="password"]').value.trim();
+        const roleInput = form.querySelector('input[name="role"]');
+        const role = roleInput.value.trim();
+        const pictureInput = form.querySelector('input[name="picture"]');
+        const pictureFile = pictureInput.files[0]; // To only allow first picture in case multiple has been selected
+
+        if (!username || !password || !role) {
+            console.log("Udfyld alle felter!");
+            return;
+        }
+
+        const roleNumber = Number(role);
+        if (isNaN(roleNumber) || (roleNumber !== 1 && roleNumber !== 2)) {
+            showNotification("Skriv venligst kun 1 eller 2!", "fog");
+            return;
+        }
 
         const formData = new FormData();
-        formData.append("username", section.querySelector('input[name="username"]').value);
-        formData.append("password", section.querySelector('input[name="password"]').value);
-        formData.append("role", section.querySelector('input[name="role"]').value);
+        formData.append("username", username);
+        formData.append("password", password);
+        formData.append("role", roleNumber);
+        formData.append("picture", pictureFile);
 
+        console.log("Picture:", pictureFile); // Debug
 
         const res = await fetch("/createUser", {
             method: "POST",
@@ -44,9 +69,12 @@ window.addEventListener("DOMContentLoaded", () => {
         });
 
         if (res.ok) {
-            section.querySelector('input[name="username"]').value = "";
-            section.querySelector('input[name="password"]').value = "";
-            section.querySelector('input[name="role"]').value = "";
+            console.log("Bruger oprettet!");
+            document.querySelector('input[name="username"]').value = "";
+            document.querySelector('input[name="password"]').value = "";
+            document.querySelector('input[name="role"]').value = "";
+            if (pictureInput) pictureInput.value = "";
+            window.location.href = "/menu?success=userCreated";
         } else {
             console.log("Noget gik galt. Prøv igen.");
         }
@@ -259,4 +287,5 @@ window.addEventListener("DOMContentLoaded", () => {
         container.prepend(hideBtn);
 
     }
+
 });

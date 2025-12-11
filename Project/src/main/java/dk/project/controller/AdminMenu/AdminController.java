@@ -7,10 +7,13 @@ import dk.project.server.ThymeleafSetup;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 import java.util.Map;
+import dk.project.exception.DatabaseException;
+import dk.project.mapper.UserMapper;
 
 public class AdminController {
 
     // Attributes
+    UserMapper userMapper = new UserMapper();
 
     // _______________________________________________
 
@@ -21,7 +24,7 @@ public class AdminController {
 
     // _______________________________________________
 
-    private void displayMenu(Context ctx) {
+    private void displayMenu(Context ctx) throws DatabaseException  {
 
         User user = ctx.sessionAttribute("user");
 
@@ -30,7 +33,9 @@ public class AdminController {
             return;
         }
 
-        ctx.html(ThymeleafSetup.render("adminMenu.html", Map.of("user", user)));
+        String roleName = userMapper.getRoleNameByID(user.getRoleID());
+        ctx.html(ThymeleafSetup.render("adminMenu.html", Map.of("user", user, "role", roleName)));
+
     }
 
 }

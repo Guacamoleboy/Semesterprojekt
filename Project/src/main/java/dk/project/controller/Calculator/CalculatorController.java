@@ -3,6 +3,7 @@ package dk.project.controller.Calculator;
 
 // Imports
 import dk.project.DTO.MaterialUsage;
+import dk.project.entity.User;
 import dk.project.server.ThymeleafSetup;
 import dk.project.service.CarportCalculationService;
 import io.javalin.Javalin;
@@ -19,6 +20,22 @@ public class CalculatorController {
     // _________________________________________________________________________
 
     public static void registerRoutes(Javalin app) {
+
+        app.get("/tilbud", ctx -> {
+
+            // Validation for /tilbud
+            User user = ctx.sessionAttribute("user");
+
+            if (user == null) {
+                ctx.redirect("/login?error=notLoggedIn");
+                return;
+            }
+
+            ctx.html(ThymeleafSetup.render("tilbud.html", null));
+
+        });
+
+        // _______________________________________________________________
 
         app.post("/calculate", controller::startCalculate);
 
