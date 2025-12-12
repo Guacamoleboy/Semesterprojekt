@@ -68,14 +68,16 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         {
             title: "Du har modtaget et tilbud",
-            text: `Vi har afsendt et tilbud til dig.
-                   Du har nu mulighed for at godkende vores tilbud. Prisen er fast og ændres ikke selv om priserne på materialer stiger fra vores side af.
-                   <br><br>20.000 kr`,
+            text: `Vi har afsendt et tilbud til dig.<br>
+                   Prisen er <strong>fast</strong> og ændres ikke selv om priserne på materialer stiger fra vores side.
+                   <br><br><span class="status-final-price">20.000</span>`,
             showButtons: true,
         },
         {
             title: "Du har godkendt vores tilbud",
-            text: `Vi har afsendt dit endelige tilbud til din mail<br><br><a href="/pdf/modtag/${order_id}.pdf" download>Download .pdf</a>`,
+            text: `Vi har afsendt dit endelige tilbud til din mail.
+                   <br><br>
+                   <a href="/content/pdf/modtag/${order_id}.pdf" target="_blank">Åben dit tilbud (.pdf)</a>`,
             showButtons: false,
         },
         {
@@ -161,7 +163,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 text.innerHTML = `
                 Vi har afsendt dit endelige tilbud til din mail.
                 <br><br>
-                <a href="/pdf/modtag/${order_id}.pdf" target="_blank">Åben dit tilbud (.pdf)</a>
+                <a href="/content/pdf/modtag/${order_id}.pdf" target="_blank">Åben dit tilbud (.pdf)</a>
             `;
 
             } catch (err) {

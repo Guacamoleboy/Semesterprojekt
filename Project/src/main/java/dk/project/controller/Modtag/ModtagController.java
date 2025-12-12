@@ -72,6 +72,8 @@ public class ModtagController {
 
         app.post("/generate-offer", ctx -> {
 
+            System.out.println("generate-offer DEBUG");
+
             try {
 
                 // Initial

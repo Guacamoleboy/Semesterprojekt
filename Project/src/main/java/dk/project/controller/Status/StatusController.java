@@ -159,12 +159,12 @@ public class StatusController {
                 SvgGenerator.saveSvgFile(svg, orderNumber + "_render.svg");
 
                 // Render to -> .png
-                Path pngPath = Path.of("src/main/resources/static/pdf/modtag/" + orderNumber + "_render.png");
+                Path pngPath = Path.of("content/pdf/modtag/" + orderNumber + "_render.png");
                 SvgConverter.convertSvgToPng(svg, pngPath);
 
                 // Setup
-                Path modtagDir = Path.of("src/main/resources/static/pdf/modtag");
-                Path backupDir = Path.of("src/main/resources/static/pdf/backup");
+                Path modtagDir = Path.of("content/pdf/modtag/");
+                Path backupDir = Path.of("content/pdf/backup/");
 
                 // Naming
                 Path outputPath = modtagDir.resolve(orderNumber + ".pdf");
@@ -187,11 +187,11 @@ public class StatusController {
                 }
 
                 // Content
-                String page1 = "src/main/resources/static/pdf/content/frontpage.png";
-                String page2 = "src/main/resources/static/pdf/content/stykliste.png";
-                String page3 = "src/main/resources/static/pdf/content/tegning.png";
-                String page4 = "src/main/resources/static/pdf/content/vejledning.png";
-                String renderPage3 = "src/main/resources/static/pdf/modtag/" + orderNumber + "_render.png";
+                String page1 = "content/pdf/content/frontpage.png";
+                String page2 = "content/pdf/content/stykliste.png";
+                String page3 = "content/pdf/content/tegning.png";
+                String page4 = "content/pdf/content/vejledning.png";
+                String renderPage3 = "content/pdf/modtag/" + orderNumber + "_render.png";
 
                 // Stykliste content
                 String textPage2 = "Stykliste her";
