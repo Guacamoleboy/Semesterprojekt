@@ -1,4 +1,11 @@
+/*
+
+    Not sure what this is. Ebou made it before leaving us.
+
+*/
+
 document.addEventListener("DOMContentLoaded", () => {
+
     const urlParams = new URLSearchParams(window.location.search);
     const length = urlParams.get("length") || localStorage.getItem("carport_length") || "600";
     const width = urlParams.get("width") || localStorage.getItem("carport_width") || "320";
@@ -18,12 +25,5 @@ document.addEventListener("DOMContentLoaded", () => {
         resume[3].querySelector(".modtag-resume-value").textContent = toolShed;
         resume[4].querySelector(".modtag-resume-value").textContent = `${toolShedWidth} x ${toolShedLength} x ${toolShedHeight} cm`;
     }
-
-    /* wtf is this @Ebou
-    const telefon = document.querySelector('input[type="tel"]');
-    if (telefon) {
-        telefon.value = contact;
-    }
-    */
 
 });

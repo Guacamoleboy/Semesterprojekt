@@ -201,7 +201,7 @@ public class SvgGenerator {
     public static void saveSvgFile(String svgContent, String fileName) throws IOException {
 
         /* Path of file */
-        Path svgDir = Path.of("src/main/resources/static/pdf/svg");
+        Path svgDir = Path.of("content/pdf/svg");
 
         /* Validation of directory (Path) */
         if (!Files.exists(svgDir)) {
