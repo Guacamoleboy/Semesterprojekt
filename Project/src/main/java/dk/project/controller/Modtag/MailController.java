@@ -6,7 +6,7 @@ import dk.project.server.ThymeleafSetup;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 import javax.mail.*;
-import dk.project.server.MailSetup;
+import dk.project.server.MailSetupAPI;
 
 public class MailController {
 
@@ -53,8 +53,14 @@ public class MailController {
 
                 """, firstname, lastname, email, phone);
 
-        String recipients = email + ",fog@travlr.dk";
-        boolean sent = MailSetup.sendMail(recipients, "Fog - Carport", mailBody);
+        // Initial + Setup
+        String[] recipients = new String[]{email, "fog@travlr.dk"};
+        boolean sent = true;
+
+        // Sends our mail
+        for (String recipient : recipients) {
+            sent = sent && MailSetupAPI.sendMail(recipient, "Fog - Carport", mailBody);
+        }
 
         if (sent) {
             ctx.redirect("/tak");

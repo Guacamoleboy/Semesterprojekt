@@ -7,7 +7,7 @@ import dk.project.entity.Order;
 import dk.project.exception.DatabaseException;
 import dk.project.mapper.CustomerMapper;
 import dk.project.mapper.OrderMapper;
-import dk.project.server.MailSetup;
+import dk.project.server.MailSetupAPI;
 import io.javalin.Javalin;
 
 public class TilbudController {
@@ -61,7 +61,13 @@ public class TilbudController {
                 System.out.println("Forsøger at sende til: " + customerEmail); // DEBUG | Issue #223
 
                 /* If all worked out -> send mail */
-                MailSetup.sendMail(customerEmail, subject, body);
+                boolean sent = MailSetupAPI.sendMail(customerEmail, subject, body);
+
+                if (sent) {
+                    System.out.println("Tilbud sendt til: " + customerEmail);
+                } else {
+                    System.err.println("Kunne ikke sende tilbud til: " + customerEmail);
+                }
 
             } catch (DatabaseException e) {
                 ctx.status(500).result("Kunne ikke opdatere ordre: " + e.getMessage());
