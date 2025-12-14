@@ -29,7 +29,7 @@ public class Database {
     private static final String host = System.getenv().getOrDefault("DB_HOST", "localhost");
     private static final String port = System.getenv().getOrDefault("DB_PORT", "5432");
     private static final String user = System.getenv().getOrDefault("DB_USER", "postgres");
-    private static final String password = System.getenv().getOrDefault("DB_PASSWORD", "postgres");
+    private static final String password = System.getenv().getOrDefault("DB_PASSWORD", "Jegfuckinghadernyepasswords123!");
     private static final String URL_TEMPLATE = "jdbc:postgresql://%s:%s/%s";
     private static HikariDataSource hikariDataSource;
 
