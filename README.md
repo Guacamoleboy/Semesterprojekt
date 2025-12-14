@@ -31,6 +31,12 @@ Clone or Fork the Project
 This app is a school project meaning stuff may not work as intended and be fully implemented intentionally.
 That being said it should work just fine as it is and have no bugs or issues.
 
+Our main branch and development branch is for project development only (local)
+Our deployment branch is for Linux Droplet Deployment. This means they don't have the same things.
+
+For example:
+Our deployment branch has MailServiceAPI instead of MailService to bypass SMTP block from Digital Ocean.
+
 ## Frameworks / Technologies used
 
 - Guacamoleboy Framework + Animations (wow)
