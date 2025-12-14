@@ -96,9 +96,11 @@ public class UserController {
 
     private void createUser(Context ctx) {
 
+        String tmpDir = System.getProperty("java.io.tmpdir");
+
         // Important | DO NOT REMOVE
         ctx.req().setAttribute("jakarta.servlet.multipartConfig",
-        new MultipartConfigElement("C:/temp", 10_000_000, 10_000_000, 1024));
+        new MultipartConfigElement(tmpDir, 10_000_000, 10_000_000, 1024));
 
         String username = ctx.formParam("username");
         String password = ctx.formParam("password");
@@ -119,7 +121,7 @@ public class UserController {
 
             // Save file in correct path
             String filename = uploadedFile.filename();
-            Path uploadPath = Paths.get("src/main/resources/static/images/staff/", filename);
+            Path uploadPath = Paths.get("content/images/staff/", filename);
 
             // Saves file to uploadPath
             try (OutputStream os = java.nio.file.Files.newOutputStream(uploadPath)) {
@@ -138,10 +140,13 @@ public class UserController {
             userMapper.newUser(user);
 
             // Clears C:/temp file after to prevent stacking
-            File tempDir = new File("C:/temp");
+            // Not needed on Linux Droplet Deployment
+            /*
+            File tempDir = new File(tmpDir);
             for (File f : tempDir.listFiles()) {
                 f.delete();
             }
+            */
 
             ctx.redirect("/menu?success=userCreated");
 
